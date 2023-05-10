@@ -1,0 +1,303 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+.font-second,
+.link-details,
+.slide-rev-subtitle,
+.octf-btn,
+select,
+.main-navigation ul,
+.page-header,
+.post-box .post-cat a,
+.post-box .entry-meta,
+.post-box .link-box a,
+.post-box .quote-box .quote-text,
+.page-pagination li a,
+.page-pagination li span,
+.blog-post .tagcloud a,
+.drop-cap,
+.post-nav,
+.comments-area .comment-item .comment-meta .comment-time,
+.comments-area .comment-item .comment-meta .comment-reply-link,
+.comment-form .logged-in-as,
+.widget .tagcloud a,
+.widget table,
+.widget .recent-news .post-on,
+.ot-heading,
+.ot-flip-box .number-title span,
+.ot-counter,
+.ot-counter span,
+.ot-countdown li span,
+.line-progress .percent,
+.project_filters li a,
+.projects-grid .projects-box .portfolio-info .portfolio-cates,
+.project-slider .projects-box .portfolio-info .portfolio-cates,
+.ot-team .team-info span,
+.member-info li span,
+.ot-accordions .acc-item .acc-toggle,
+.ot-tabs .tab-link,
+.ot-testimonials .t-head,
+.features-service-wrapper .features-service-item .features-service-content,
+div.elementor-widget-heading.elementor-widget-heading .elementor-heading-title,
+.elementor-element .elementor-widget-button .elementor-button,
+.elementor-default .elementor-widget-text-editor .elementor-drop-cap,
+.elementor-widget-wp-widget-polylang .lang-item,
+#lang_choice_wp-widget-polylang,
+.mmenu-wrapper .mobile_mainmenu,
+.woocommerce ul.products li.product,
+.woocommerce-page ul.products li.product,
+.woocommerce ul.products li.product .added_to_cart,
+.woocommerce ul.products li.product .product_type_grouped,
+.woocommerce-page ul.products li.product .added_to_cart,
+.woocommerce-page ul.products li.product .product_type_grouped,
+.woocommerce table.shop_table,
+.woocommerce .quantity .qty,
+.cart_totals h2,
+#add_payment_method .cart-collaterals .cart_totals table td,
+#add_payment_method .cart-collaterals .cart_totals table th,
+.woocommerce-cart .cart-collaterals .cart_totals table td,
+.woocommerce-cart .cart-collaterals .cart_totals table th,
+.woocommerce-checkout .cart-collaterals .cart_totals table td,
+.woocommerce-checkout .cart-collaterals .cart_totals table th,
+.woocommerce .site ul.product_list_widget li a:not(.remove),
+.woocommerce .widget_shopping_cart .cart_list .quantity,
+.woocommerce .widget_shopping_cart .total strong,
+.woocommerce.widget_shopping_cart .total strong,
+.woocommerce .widget_shopping_cart .total .woocommerce-Price-amount,
+.woocommerce.widget_shopping_cart .total .woocommerce-Price-amount,
+.woocommerce-mini-cart__buttons a.button.wc-forward,
+.woocommerce .woocommerce-widget-layered-nav-list,
+.woocommerce .widget_price_filter .price_slider_amount,
+.woocommerce .widget_price_filter .price_slider_amount button.button,
+.product_meta>span,
+.woocommerce div.product .entry-summary p.price,
+.woocommerce div.product .entry-summary span.price {
+  font-family: Roboto !important;
+}
+
+.page-header {
+  width: 100%;
+  height: 400px;
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
+  background: #1b1d21 center center no-repeat;
+  background-size: cover;
+}
+
+.page-header .inner {
+  margin-top: -13px;
+}
+
+.flex-middle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.page-header .page-title {
+  font-size: 42px;
+  color: #fff;
+  margin-bottom: 0;
+  flex: 1;
+  padding: 10px 0;
+}
+
+.page-header .breadcrumbs {
+  margin-bottom: 0;
+  font-size: 14px;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.page-header .breadcrumbs li {
+  display: inline-block;
+  color: #fff;
+}
+
+.page-header .breadcrumbs li:before {
+  content: "";
+  font-family: "Flaticon";
+  font-size: 9px;
+  color: rgba(255, 255, 255, 0.6);
+  margin: -2px 8px 0;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.page-header .breadcrumbs li:first-child:before {
+  display: none;
+}
+
+.page-header .breadcrumbs li a {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.page-header .breadcrumbs li a:hover {
+  color: #fff;
+}
+
+@media (max-width: 992px) {
+  .page-header .inner {
+    display: block;
+  }
+}
+
+@media (max-width: 767px) {
+  .page-header .container {
+    width: 100%;
+  }
+
+  .page-header .page-title {
+    font-size: 36px;
+  }
+
+  .page-header .breadcrumbs {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 600px) {
+  .page-header {
+    height: 200px;
+    padding: 40px 0;
+  }
+
+  .page-header .page-title {
+    font-size: 30px;
+  }
+}
+
+.privacy {
+  background-color: rgb(255, 255, 255);
+  font-family: Roboto !important;
+
+  p {
+    color: rgb(78, 78, 78);
+    // text-indent: 70px;
+    text-align: justify;
+    font-family: Roboto !important;
+  }
+  li{
+    margin-top: 10px;
+    font-size: 15px;
+  }
+}
+
+.terms {
+  background-color: rgb(255, 255, 255);
+  font-family: Roboto !important;
+  color: rgb(53, 52, 52);
+  text-align: justify;
+  font-family: Roboto !important;
+ 
+}
+.term{
+  p {
+    line-height: 2rem !important;
+  }
+}
+
+h3,
+.elementor-widget.elementor-widget-heading h3.elementor-heading-title {
+  font-family: 30px Roboto !important;
+  font-size: 30px;
+  font-weight: 400;
+}
+
+.page-header {
+  width: 100%;
+  height: 400px;
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
+  background: #1b1d21 center center no-repeat;
+  background-size: cover;
+}
+
+.flex-middle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bg_img {
+  background-image: url("../../asset/images/contactUs.jpg")
+}
+
+.elementor-widget-container {
+  background-image: url(https://dservice.in/wp-content/uploads/2021/09/Driver-Icon-1.png);
+  background-position: center right;
+  background-repeat: no-repeat;
+  background-size: 7% auto;
+}
+
+.is_highlight {
+  border: 2px solid #ff6c00;
+  color: #ff6c00;
+  background-color: #fdeddf;
+  border-radius: 10px;
+  width: 90px;
+  text-align: center;
+}
+
+.highlightabout {
+  border: 2px solid #ff6c00;
+  color: #ff6c00;
+  background-color: #fdeddf;
+  border-radius: 10px;
+  width: 150px;
+  text-align: center;
+}
+
+.icon-box {
+  margin-top: 35px;
+}
+
+.icon-main {
+  background: #fdeddf;
+  width: 60px;
+  height: 60px;
+  line-height: 60px;
+  border-radius: 50% 50% 50% 50%;
+  color: #fe8423;
+  text-align: center;
+}
+
+.icon-main i {
+  font-size: 27px;
+  line-height: 60px;
+}
+
+.phoneIcon {
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+}
+
+.formcontainer {
+  margin-top: -50px;
+}
+
+.inputbox {
+  height: 45px !important;
+  border: 1.5px solid rgb(187, 187, 187);
+  outline: 1.5px solid rgb(187, 187, 187);
+}
+
+.inputtextbox {
+  height: 90px !important;
+  border: 1.5px solid rgb(187, 187, 187);
+  outline: 1.5px solid rgb(187, 187, 187);
+}
+
+.elementor-icon-box-icon{
+  fill: #E35C22;
+  color: #E35C22;
+  border-color: #E35C22;
+}
+.aboutus{
+  background-image: url("../../asset/images/AboutUs.jpg");
+}

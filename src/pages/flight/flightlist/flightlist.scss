@@ -1,0 +1,1148 @@
+.ticketlabels-roundtrip {
+
+    ul {
+        margin-left: -25px !important;
+    }
+}
+
+.flightmodifysearch_header {
+    background-image: url(../../../asset/images/newbakground.svg);
+    height: 205px;
+    width: 100%;
+    margin-top: 60px;
+}
+
+.roundtrip-modifysearch {
+
+    width: 90% !important;
+    font-family: QuickSand, Avenir, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    border-radius: 8px;
+    // background-color: rgba(215, 225, 233, 0.888);
+    position: relative;
+    top: 30px;
+
+    h5 {
+        font-weight: 700;
+    }
+
+}
+
+.flight-modifysearch {
+    width: 85% !important;
+    font-family: QuickSand, Avenir, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    border-radius: 8px;
+    // background-color: rgba(215, 225, 233, 0.888);
+    position: relative;
+    top: 40px;
+    min-height: 150px;
+
+    h5 {
+        font-weight: 700;
+    }
+}
+
+.flightlistcontent-roundtrip {
+
+    width: 88% !important;
+    font-family: QuickSand, Avenir, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+.flightlistcontent {
+    width: 80% !important;
+    font-family: QuickSand, Avenir, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+}
+
+.listWrapper {
+
+    display: flex;
+    min-height: 1024px;
+    margin-top: 30px;
+}
+
+.flightlistfilter-roundtrip {
+    flex: 1;
+    top: 110px;
+    position: sticky;
+    height: max-content;
+    border-radius: 8px;
+    max-width: 285px;
+    background: rgb(255, 255, 255);
+}
+
+.flightlistfilter {
+    flex: 1;
+    top: 110px;
+    position: sticky;
+    height: max-content;
+    border-radius: 8px;
+    background: rgb(255, 255, 255);
+}
+
+.filtersearch {
+    justify-content: space-between;
+
+    p {
+        font-size: 12px;
+        color: gray;
+    }
+
+    button {
+        width: 70px;
+        height: 20px;
+        border-radius: 6px;
+        border: 1px solid rgba(25, 71, 138, .5);
+        background: #19478a;
+        color: white;
+        font-size: 12px;
+        font-weight: 500;
+        text-align: center;
+        padding-top: 1px !important;
+    }
+}
+
+.faretype {
+    accent-color: red;
+}
+
+.departure {
+
+    ul {
+        flex-direction: row;
+        box-sizing: border-box;
+        display: flex;
+        place-content: center space-between;
+        align-items: center;
+        list-style-type: none;
+    }
+
+    li {
+        width: 25%;
+        margin-right: 7px;
+        border: 2px solid #ebebeb;
+        border-radius: 6px;
+        padding: 7px 0;
+        cursor: pointer;
+        text-align: center;
+
+
+
+
+        img {
+            width: 41px;
+            height: 25px;
+            border-radius: 5px;
+        }
+    }
+}
+
+.flight_on_departure {
+
+    li.active {
+        // background-color: #4CAF50;
+        background-color: #555;
+        color: white;
+    }
+
+    li:hover:not(.active) {
+        background-color: rgb(213, 210, 205);
+        color: rgb(34, 32, 32);
+    }
+
+    li:hover {
+        background-color: #555;
+        color: white;
+    }
+}
+
+.flight_on_arrival {
+
+    li.active {
+        // background-color: #4CAF50;
+        background-color: #555;
+        color: white;
+    }
+
+    li:hover:not(.active) {
+        background-color: rgb(213, 210, 205);
+        color: rgb(34, 32, 32);
+    }
+
+    li:hover {
+        background-color: #555;
+        color: white;
+    }
+
+}
+
+.stop {
+
+    ul {
+        flex-direction: row;
+        box-sizing: border-box;
+        display: flex;
+        place-content: center flex-start;
+        align-items: center;
+        list-style-type: none;
+    }
+
+    li {
+        margin-right: 12px;
+        cursor: pointer;
+
+    }
+
+    .stopdiv {
+        width: 65px;
+        height: 28px;
+        line-height: 28px;
+        border-radius: 6px;
+        font-size: 18px;
+        font-weight: 500;
+        text-align: center;
+        border: 1px solid #ebebeb;
+        // background-color: rgb(243, 246, 248);
+    }
+}
+
+
+.flight_on_stop {
+
+    li.active {
+        // background-color: #4CAF50;
+        background-color: #555;
+        color: white;
+        border-radius: 6px;
+    }
+
+    li:hover:not(.active) {
+        background-color: rgb(213, 210, 205);
+        color: rgb(34, 32, 32);
+        border-radius: 6px;
+    }
+
+    li:hover {
+        background-color: #555;
+        color: white;
+        border-radius: 6px;
+    }
+}
+
+.flight-arrowicon {
+    transform: rotate(90deg);
+}
+
+.slider {
+    width: 85%;
+
+    .rangevalue {
+        display: flex;
+        justify-content: space-between;
+
+    }
+}
+
+.pre-airlines {
+
+    input {
+        accent-color: red;
+    }
+}
+
+.carousel-color {
+    background-color: rgb(194, 241, 198);
+}
+
+.flightlistresult {
+    flex: 3;
+
+}
+
+.labellist {
+    flex-direction: row;
+    box-sizing: border-box;
+    display: flex;
+    place-content: center space-between;
+    align-items: center;
+    list-style-type: none;
+    font-family: Roboto, sans-serif;
+    font-weight: 700;
+}
+
+.ticketcard-roundtrip {
+    min-height: 110px;
+    min-width: 480px;
+    width: auto;
+    border-radius: 0.5rem;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 5px;
+    background-color: rgb(255, 255, 255);
+    margin-top: 1rem;
+}
+
+.ticketcard {
+    min-height: 110px;
+    // border:2px solid red;
+    width: auto;
+    border-radius: 0.5rem;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 5px;
+    background-color: rgb(255, 255, 255);
+    margin-top: 1rem;
+}
+
+.ticketcard:hover {
+    // transform: scale(1, 1.1);
+    // border: 0.5px solid rgb(8, 69, 48);
+    box-shadow: -1px -3px 4px 5px rgba(123, 119, 119, 0.25),
+        -2px -3px 4px 5px rgba(225, 221, 221, 0.819);
+}
+
+.ticketdeals {
+    display: flex;
+    justify-content: space-between;
+}
+
+.tag {
+    color: rgb(166, 17, 36);
+    width: 55px;
+    height: 45px;
+    margin-top: -8px;
+    margin-bottom: 0%;
+    position: relative;
+    right: 10px;
+    float: left;
+    transform: rotate(-45deg);
+
+
+}
+
+.taglabel {
+    color: white;
+    right: 46px;
+    top: 6px;
+    font-size: 10px;
+    position: relative;
+}
+
+.dealcoupon {
+    position: relative;
+    right: 30px;
+    color: #198a7b;
+    font-weight: 700;
+    font-size: 15px;
+}
+
+.bestvalue {
+    float: end;
+    position: relative;
+    background-color: rgb(63, 197, 221);
+    color: white;
+    font-size: 15px;
+    height: fit-content;
+    padding: 2px 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.ticketcontent {
+    ul {
+        list-style-type: none;
+        flex-direction: row;
+        box-sizing: border-box;
+        display: flex;
+        justify-content: space-between;
+        padding: 0% !important;
+        margin: 0% !important;
+        position: relative;
+        // text-align: justify;
+        //  place-content: center flex-start;
+    }
+}
+
+.ticketcontent-roundtrip {
+    ul {
+        list-style-type: none;
+        flex-direction: row;
+        box-sizing: border-box;
+        display: flex;
+        justify-content: space-between;
+        padding: 0% !important;
+        position: relative;
+        // text-align: justify;
+        //  place-content: center flex-start;
+    }
+
+    li {
+        h5 {
+            font-size: 17px;
+            font-weight: bold;
+        }
+    }
+}
+
+.ticketdata-roundtrip {
+
+    p {
+        font-size: 14px;
+        font-weight: bold;
+    }
+
+    span {
+        line-height: 0.5px;
+    }
+}
+
+.ticketdata {
+    flex-direction: row;
+    box-sizing: border-box;
+    display: flex;
+    // place-content: center flex-start;
+    // align-items: center;
+}
+
+.path {
+    height: 40px;
+    width: 40px;
+    transform: rotate(45deg);
+    margin-bottom: 0%;
+}
+
+.pathflip {
+    height: 40px;
+    width: 40px;
+    transform: rotate(225deg);
+    margin-bottom: 0%;
+}
+
+.pathinter {
+    height: 40px;
+    width: 40px;
+    transform: rotate(45deg);
+    margin-bottom: -4%;
+    margin-top: -4%;
+
+}
+
+.pathinterflip {
+    height: 40px;
+    width: 40px;
+    transform: rotate(225deg);
+    margin-bottom: 0%;
+}
+
+.datainfo-roundtrip {
+    font-size: 12px;
+}
+
+.datainfo_location-roundtrip {
+    font-size: 13px;
+    font-weight: 700;
+    color: rgb(79, 77, 77);
+}
+
+.datainfo_duration-roundtrip {
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.datainfo_time-roundtrip {
+    margin-top: -6px;
+    font-size: 13px;
+    color: rgb(79, 77, 77);
+    font-weight: 600;
+}
+
+.datainfo {
+    line-height: 0.5;
+}
+
+.refund-roundtrip {
+    color: #00a850;
+    font-size: 13px;
+}
+
+.seat {
+    height: 30px;
+    width: 30px;
+}
+
+.ticketprice-roundtrip {
+    font-size: 18px;
+    color: darkblue;
+    font-weight: 700;
+}
+
+.ticketprice {
+    font-size: 25px;
+}
+
+.farebtn {
+    font-size: 18px !important;
+    color: white !important;
+}
+
+.moreinfobtn {
+    font-size: 12px;
+    margin-top: 8px;
+    font-weight: 700;
+    color: red;
+    cursor: pointer;
+}
+
+.refund {
+    font-size: 10px;
+    color: #198a7b;
+}
+
+.labelnote {
+    font-size: 11px;
+    color: orange;
+}
+
+.package_Flightname {
+    p {
+        font-size: 12px;
+    }
+
+    small {
+        font-size: 10px;
+        margin-top: 2px;
+    }
+}
+
+.flight-daterange {
+    height: 60px;
+    width: 150px;
+    margin: 0px 15px 0px 0px;
+    border-radius: 8px;
+    border: 2.5px solid #dfdfdf;
+    cursor: pointer;
+    color: #625f5f;
+    font-size: 17px;
+    font-weight: 700;
+
+    p {
+        background-color: rgba(255, 255, 255, 0.03);
+        margin-top: -12px;
+        margin-bottom: 0%;
+        margin-left: 22px;
+        font-family: Quicksand, Avenir, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+        font-size: 14px;
+        display: inline-flex;
+        font-weight: 700;
+        color: rgb(134, 131, 131);
+        position: absolute;
+    }
+}
+
+.flightbookdetail {
+
+    .nav-tabs {
+        justify-content: space-between !important;
+        border: none !important;
+    }
+
+    .nav-link {
+        color: #1b0e5e !important;
+        font-family: QuickSand, Avenir, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+        font-size: 16px !important;
+        font-weight: 700 !important;
+        position: relative;
+        cursor: pointer;
+    }
+
+    .nav-tabs .nav-link.active {
+
+        color: rgb(255, 77, 0) !important;
+        border-bottom: 5px solid !important;
+        border: 0px solid;
+        padding: 10px 5px;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+}
+
+.flightfiltername {
+    max-height: 220px !important;
+    overflow-y: scroll !important;
+}
+
+.roundtrip-overviews {
+
+    width: 93% !important;
+    margin-left: 18px;
+    position: relative;
+    top: 10px;
+
+    ul {
+        flex-direction: row;
+        box-sizing: border-box;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        list-style-type: none;
+        padding: 0% !important;
+
+        .roundtrip-flightdata {
+            min-width: 60px;
+            padding: 0px 12px;
+        }
+
+    }
+}
+
+.package-selection {
+    input {
+        accent-color: blue;
+        height: 18px;
+        width: 18px;
+    }
+}
+
+.overviews {
+    width: 93% !important;
+    margin-left: 28px;
+    position: relative;
+    top: 15px;
+    border: 0.5px solid rgba(196, 194, 194, 0.878);
+    border-radius: 12px;
+
+    ul {
+        flex-direction: row;
+        box-sizing: border-box;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        list-style-type: none;
+    }
+
+}
+
+.fl-label {
+    font-size: 12px;
+    display: block;
+}
+
+.add_card {
+    text-align: right;
+
+    p {
+        font-size: 14px;
+    }
+
+    h6 {
+        color: rgb(79, 77, 77);
+        font-weight: bold;
+    }
+}
+
+.dep-label {
+
+    font-size: 12px;
+}
+
+.table-style {
+    font-size: 15px;
+
+    table {
+        border: 0.5px solid rgba(224, 224, 224, 0.799);
+        width: 90%;
+        height: 100%;
+        margin-left: 40px;
+        margin-top: 20px;
+
+        th {
+            background-color: #00a850;
+            color: #ebebeb;
+            border: 0.5px solid #ebebeb;
+            padding-left: 10px;
+        }
+
+        td {
+            padding-left: 20px;
+            border: 0.5px solid rgba(223, 218, 218, 0.799);
+        }
+    }
+
+    ul {
+        font-size: 12px;
+        width: 90%;
+    }
+}
+
+.roundtrip-table-style {
+    table {
+        border: 0.5px solid rgba(128, 128, 128, 0.799);
+        width: 90%;
+        height: 100%;
+        margin-left: 24px;
+        margin-top: 20px;
+        font-size: 13px;
+
+        td {
+            padding-left: 10px;
+            border: 0.5px solid rgba(128, 128, 128, 0.799);
+        }
+    }
+}
+
+.price-label {
+
+    font-size: 13px;
+    color: blue;
+    font-weight: 700;
+}
+
+.cancellation {
+
+    display: flex;
+    width: 100%;
+    height: 100%;
+
+    .CancellationCharges {
+        flex: 2;
+    }
+
+    .RescheduleCharges {
+        flex: 2;
+    }
+}
+
+.ticket-content {
+    width: 100% !important;
+}
+
+.yourselection {
+    width: 100%;
+    min-height: 100px;
+    border-radius: 8px;
+    border: 1px solid #0ca514bb;
+    background-color: #ebffebce;
+
+    ul {
+        list-style-type: none;
+        flex-direction: row;
+        box-sizing: border-box;
+        display: flex;
+        justify-content: space-between;
+        padding: 0% !important;
+        position: relative;
+        // text-align: justify;
+        //  place-content: center flex-start;
+    }
+
+    li {
+        h5 {
+            font-size: 17px;
+            font-weight: bold;
+        }
+    }
+}
+
+.fare-package {
+    padding: 0px 20px 30px 15px;
+}
+
+.fare-package_details {
+    font-size: 14px;
+    font-family: QuickSand, Avenir, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    width: 700px;
+    color: gray;
+
+    h6 {
+        font-weight: 700;
+        color: #e68014;
+    }
+
+    td {
+        padding-left: 20px;
+    }
+
+    img {
+        height: 15px;
+        width: 15px;
+    }
+
+    span {
+        padding-left: 10px;
+    }
+}
+
+.fare-package_price {
+    padding: 38px 10px;
+}
+
+.paymentmodel {
+
+    background-color: "#D0F0C0";
+    border-radius: "20px"
+}
+
+.datemodirountrange {
+    height: 50px;
+    width: 250px;
+    border-radius: 8px;
+    // padding:" 0px 20px",
+    border: 2.5px solid #dfdfdf;
+    cursor: pointer;
+    color: #242222;
+    font-size: 15px;
+    padding-bottom: 5px;
+
+
+    p {
+        background-color: #fff;
+        margin-top: -14px;
+        margin-bottom: 0%;
+        margin-left: 22px;
+        font-family: Quicksand, Avenir, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+        font-size: 14px;
+        display: inline-flex;
+        font-weight: 700;
+        color: rgb(119, 119, 119);
+        position: absolute;
+    }
+}
+
+@media only screen and (min-width:"200px") and (max-width:"300px") {
+    .flightlistcontent {
+        width: 80% !important;
+        font-family: QuickSand, Avenir, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+        margin-top: 300px !important;
+    }
+
+    .listmodifyflightsearch-area {
+        width: 250px;
+        border: 2.5px solid #dfdfdf;
+        border-radius: 8px;
+        height: 50px;
+        background: rgb(255, 255, 255);
+        cursor: pointer;
+        position: relative;
+
+        p {
+            margin-top: -10px;
+            margin-bottom: 0%;
+            margin-left: 22px;
+            font-family: Quicksand, Avenir, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+            font-size: 12px;
+            display: inline-flex;
+            font-weight: 700;
+            color: rgb(119, 119, 119);
+            position: absolute;
+
+        }
+
+        input {
+            width: 100%;
+            height: 45px;
+            border: none;
+            background: rgb(255, 255, 255);
+            font-family: Roboto, Quicksand, Avenir, -apple-system, "Segoe UI", "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+            color: rgb(4, 4, 4);
+            border: none;
+            outline: none;
+            border-radius: 8px;
+            outline: 0px;
+            font-size: 16px;
+            // line-height: 28px;
+            padding: 19px 35px;
+            font-weight: 700;
+        }
+    }
+
+    .modifyicon {
+        display: none;
+    }
+
+    .listmodifydateselection {
+
+        height: 50px;
+        width: 250px;
+        margin-left: 0px;
+        border-radius: 8px;
+        // padding:" 0px 20px",
+        border: 2.5px solid #dfdfdf;
+        cursor: pointer;
+        color: #242222;
+        font-size: 17px;
+        padding-bottom: -115px;
+
+        p {
+            margin-top: -10px;
+            margin-bottom: 0%;
+            margin-left: 22px;
+            font-family: Quicksand, Avenir, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+            font-size: 12px;
+            display: inline-flex;
+            font-weight: 700;
+            color: rgb(119, 119, 119);
+            position: absolute;
+
+        }
+    }
+
+    .listmodifyflightbuttons {
+        display: flex;
+        -webkit-box-align: center;
+        align-items: center;
+        -webkit-box-pack: center;
+        justify-content: center;
+        margin-top: 22px !important;
+        margin-left: 50px !important;
+
+    }
+
+    .listWrapper {
+        display: flex;
+        min-height: 1024px;
+        margin-top: 30px;
+        flex-direction: column;
+    }
+
+    .flightlistfilter {
+        flex: 1;
+        top: 110px;
+        position: unset;
+        height: max-content;
+        border-radius: 8px;
+        background: rgb(255, 255, 255);
+
+    }
+
+    .labellist {
+        flex-direction: column;
+        box-sizing: border-box;
+        display: flex;
+        place-content: center space-between;
+        align-items: center;
+        list-style-type: none;
+        font-family: Roboto, sans-serif;
+        font-weight: 700;
+    }
+
+    .modifyflight_searchdate {
+        padding: 10px 5px 7px 0px;
+        width: 250px;
+    }
+
+    .datemodirountrange {
+        height: 50px;
+        width: 250px;
+        border-radius: 8px;
+        // padding:" 0px 20px",
+        border: 2.5px solid #dfdfdf;
+        cursor: pointer;
+        color: #242222;
+        font-size: 15px;
+        padding-bottom: 5px;
+
+
+        p {
+            background-color: #fff;
+            margin-top: -14px;
+            margin-bottom: 0%;
+            margin-left: 2px;
+            font-family: Quicksand, Avenir, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+            font-size: 14px;
+            display: inline-flex;
+            font-weight: 700;
+            color: rgb(119, 119, 119);
+            position: absolute;
+        }
+    }
+
+    .flight-daterange {
+        height: 60px;
+        width: 204px !important;
+        margin: 0px 0px 30px -58px;
+        border-radius: 8px;
+        border: 2.5px solid #dfdfdf; //#dfdfdf
+        cursor: pointer;
+        color: #625f5f;
+        font-size: 17px;
+        font-weight: 700;
+
+        p {
+            background-color: rgb(255, 255, 255);
+            margin-top: -12px;
+            margin-bottom: 0%;
+            margin-left: 2px;
+            padding-left: 8px;
+            font-family: Quicksand, Avenir, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+            font-size: 13px;
+            display: inline-flex;
+            font-weight: 700;
+            color: rgb(134, 131, 131);
+            position: absolute;
+        }
+    }
+}
+
+@media only screen and (min-width:"301px") and (max-width:"380px") {
+    .flight-daterange {
+        height: 60px;
+        width: 250px !important;
+        margin: 0px 0px 25px -40px;
+        border-radius: 8px;
+        border: 2.5px solid #dfdfdf; //#dfdfdf
+        cursor: pointer;
+        color: #625f5f;
+        font-size: 17px;
+        font-weight: 700;
+
+        p {
+            background-color: rgb(255, 255, 255);
+            margin-top: -12px;
+            margin-bottom: 0%;
+            margin-left: 2px;
+            padding-left: 8px;
+            font-family: Quicksand, Avenir, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+            font-size: 13px;
+            display: inline-flex;
+            font-weight: 700;
+            color: rgb(134, 131, 131);
+            position: absolute;
+        }
+    }
+}
+
+@media only screen and (min-width:"381px") and (max-width:"400px") {
+    .flight-daterange {
+        height: 60px;
+        width: 250px !important;
+        margin: 0px 0px 25px -40px;
+        border-radius: 8px;
+        border: 2.5px solid #dfdfdf; //#dfdfdf
+        cursor: pointer;
+        color: #625f5f;
+        font-size: 17px;
+        font-weight: 700;
+
+        p {
+            background-color: rgb(255, 255, 255);
+            margin-top: -12px;
+            margin-bottom: 0%;
+            margin-left: 2px;
+            padding-left: 8px;
+            font-family: Quicksand, Avenir, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+            font-size: 13px;
+            display: inline-flex;
+            font-weight: 700;
+            color: rgb(134, 131, 131);
+            position: absolute;
+        }
+    }
+}
+
+@media only screen and (min-width:"410px") and (max-width:"450px") {
+    .flight-daterange {
+        height: 60px;
+        width: 302px !important;
+        margin: 0px 0px 25px -2px;
+        border-radius: 8px;
+        border: 2.5px solid #dfdfdf; //#dfdfdf
+        cursor: pointer;
+        color: #625f5f;
+        font-size: 17px;
+        font-weight: 700;
+
+        p {
+            background-color: rgb(255, 255, 255);
+            margin-top: -12px;
+            margin-bottom: 0%;
+            margin-left: 2px;
+            padding-left: 8px;
+            font-family: Quicksand, Avenir, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+            font-size: 13px;
+            display: inline-flex;
+            font-weight: 700;
+            color: rgb(134, 131, 131);
+            position: absolute;
+        }
+    }
+}
+
+@media only screen and (min-width:"510px") and (max-width:"560px") {
+    .flight-daterange {
+        height: 60px;
+        width: 460px !important;
+        margin: 0px 0px 25px -38px;
+        border-radius: 8px;
+        border: 2.5px solid #dfdfdf; //#dfdfdf
+        cursor: pointer;
+        color: #625f5f;
+        font-size: 17px;
+        font-weight: 700;
+
+        p {
+            background-color: rgb(255, 255, 255);
+            margin-top: -12px;
+            margin-bottom: 0%;
+            margin-left: 2px;
+            padding-right: 8px;
+            font-family: Quicksand, Avenir, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+            font-size: 13px;
+            display: inline-flex;
+            font-weight: 700;
+            color: rgb(134, 131, 131);
+            position: absolute;
+        }
+    }
+}
+
+@media only screen and (min-width:"760px") and (max-width:"820px") {
+    .flight-daterange {
+        height: 60px;
+        width: 132px !important;
+        margin: 0px 10px 25px 0px;
+        border-radius: 8px;
+        border: 2.5px solid #dfdfdf; //#dfdfdf
+        cursor: pointer;
+        color: #625f5f;
+        font-size: 17px;
+        font-weight: 700;
+
+        p {
+            background-color: rgb(255, 255, 255);
+            margin-top: -12px;
+            margin-bottom: 0%;
+            margin-left: 2px;
+            padding-right: 8px;
+            font-family: Quicksand, Avenir, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+            font-size: 13px;
+            display: inline-flex;
+            font-weight: 700;
+            color: rgb(134, 131, 131);
+            position: absolute;
+        }
+    }
+}
+
+@media only screen and (min-width:"821px") and (max-width:"1024px") {
+
+    .flight-daterange {
+        height: 70px;
+        width: 110px !important;
+        margin: 0px 10px 25px 0px;
+        border-radius: 8px;
+        border: 2.5px solid #830e0e; //#dfdfdf
+        cursor: pointer;
+        color: #625f5f;
+        font-size: 17px;
+        font-weight: 700;
+
+        p {
+            background-color: rgb(255, 255, 255);
+            margin-top: -12px;
+            margin-bottom: 0%;
+            margin-left: 2px;
+            padding-right: 8px;
+            font-family: Quicksand, Avenir, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+            font-size: 13px;
+            display: inline-flex;
+            font-weight: 700;
+            color: rgb(134, 131, 131);
+            position: absolute;
+        }
+    }
+}

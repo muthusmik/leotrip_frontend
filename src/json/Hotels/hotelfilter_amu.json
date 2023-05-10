@@ -1,0 +1,39 @@
+[
+    {
+        "id":1,
+        "Amenit_field":"Air Conditioning"
+    },
+    {
+        "id":2,
+        "Amenit_field":"Parking"
+    },
+    {
+        "id":3,
+        "Amenit_field":"Banquet hall"
+    },
+    {
+        "id":4,
+        "Amenit_field":"Bonfire"
+    },
+    {
+        "id":5,
+        "Amenit_field":"Swimming Pool"
+    },
+    {
+        "id":6,
+        "Amenit_field":"Indoor Entertainment"
+    },
+    {
+        "id":7,
+        "Amenit_field":"Free Internet"
+    },
+    {
+        "id":8,
+        "Amenit_field":"CCTV surveillance"
+    },
+    {
+        "id":9,
+        "Amenit_field":"Travel Assistance"
+    }
+]
+

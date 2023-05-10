@@ -1,0 +1,1220 @@
+.modifysearch_header {
+    background-image: url(../../../asset/images/backgroundimage.png);
+    height: 140px;
+    width: 100%;
+    margin-top: 60px;
+    padding-top: 15px;
+}
+
+
+
+.modifybussearch {
+    width: 82% !important;
+    font-family: QuickSand, Avenir, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    border-radius: 8px;
+    background-color: rgb(255, 255, 255);
+    margin-top: 30px;
+    // top: 30px;
+    // height: 110px;
+
+    h5 {
+        font-weight: 700;
+        color: #1b0e5e;
+    }
+}
+
+.bus-depature {
+    color: #934d0b;
+    font-weight: 700;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: clip;
+}
+
+.bus-return {
+    font-weight: 700;
+    color: #934d0b;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: clip;
+}
+
+
+.travel-date {
+    font-weight: 700;
+    color: #934d0b;
+}
+
+.buslistcontent {
+    width: 80% !important;
+    font-family: QuickSand, Avenir, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+}
+
+.listWrapper {
+
+    display: flex;
+    min-height: 1024px;
+
+}
+
+
+.buslistfilter {
+    flex: 1;
+    top: 110px;
+    position: sticky;
+    height: max-content;
+    border-radius: 8px;
+    background: rgb(255, 255, 255);
+
+}
+
+.filtersearch {
+    justify-content: space-between;
+
+    p {
+        font-size: 12px;
+        color: gray;
+    }
+
+    button {
+        width: 70px;
+        height: 20px;
+        border-radius: 6px;
+        border: 1px solid rgba(25, 71, 138, .5);
+        background: #19478a;
+        color: white;
+        font-size: 12px;
+        font-weight: 500;
+        text-align: center;
+        padding-top: 1px !important;
+    }
+}
+
+.bustype {
+    input {
+        accent-color: red;
+    }
+
+}
+
+
+
+.time-period {
+
+    ul {
+        flex-direction: row;
+        box-sizing: border-box;
+        display: flex;
+        place-content: center space-between;
+        align-items: center;
+        list-style-type: none;
+    }
+
+    li {
+        width: 25%;
+        margin-right: 7px;
+        border: 2px solid #ebebeb;
+        border-radius: 6px;
+        padding: 7px 0;
+        cursor: pointer;
+        text-align: center;
+
+
+
+        img {
+            width: 41px;
+            height: 25px;
+            border-radius: 5px;
+        }
+    }
+
+    li:hover {
+        background-color: orange;
+        color: white;
+        transform: scale(1, 1.2);
+
+        img {
+            background-color: white;
+        }
+    }
+
+}
+
+
+
+.arrowicon {
+    transform: rotate(90deg);
+}
+
+
+
+.buslistresult {
+    flex: 3;
+    // min-height: 1900px;
+}
+
+.buslabellist {
+    box-sizing: border-box;
+    list-style-type: none;
+    font-family: Roboto, sans-serif;
+    font-weight: 700;
+}
+
+.busticketcard {
+    min-height: 150px;
+    width: auto;
+    border-radius: 0.5rem;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 5px;
+    background-color: rgb(255, 255, 255);
+    margin-top: 1rem;
+
+}
+
+.busticketcard:hover {
+    // transform: scale(1, 1.1);
+    // border: 0.5px solid rgb(8, 69, 48);
+    box-shadow: -1px -3px 4px 5px rgba(123, 119, 119, 0.25),
+        -2px -3px 4px 5px rgba(225, 221, 221, 0.819);
+}
+
+.busticketdeals {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+
+.busdealcoupon {
+    position: relative;
+    right: 30px;
+    color: #198a7b;
+    font-weight: 700;
+    font-size: 15px;
+}
+
+.bus-seats {
+    float: end;
+    position: relative;
+    background-color: rgb(221, 174, 63);
+    color: white;
+    font-size: 15px;
+    height: fit-content;
+    padding: 2px 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.busticketcontent {
+    min-height: 120px;
+
+    ul {
+        list-style-type: none;
+        flex-direction: row;
+        box-sizing: border-box;
+        display: flex;
+        justify-content: space-between;
+        padding: 0% !important;
+        position: relative;
+        // text-align: justify;
+        //  place-content: center flex-start;
+    }
+
+}
+
+.busticketdata {
+    flex-direction: row;
+    box-sizing: border-box;
+    display: flex;
+    // place-content: center flex-start;
+    // align-items: center;
+}
+
+.bus-dep {
+    text-align: right;
+}
+
+.bus-ret {
+    text-align: left;
+}
+
+
+
+.striked {
+    text-decoration: line-through;
+    color: gray;
+    margin-bottom: 0% !important;
+    text-align: center;
+}
+
+
+.datainfo {
+    line-height: 0.5px !important;
+}
+
+
+
+.busticketprice {
+    font-size: 25px;
+}
+
+.bus-farebtn {
+    font-size: 16px !important;
+    color: white !important;
+}
+
+
+
+.buslabelnote {
+    font-size: 10px;
+
+}
+
+.nav-tabs {
+    // justify-content: space-between !important;
+    border: none !important;
+}
+
+.nav-link {
+    color: #1b0e5e !important;
+    font-family: QuickSand, Avenir, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-size: 16px !important;
+    font-weight: 700 !important;
+    position: relative;
+    cursor: pointer;
+}
+
+.nav-tabs .nav-link.active {
+
+    color: rgb(255, 77, 0) !important;
+    border-bottom: 5px solid !important;
+    border: 0px solid;
+    padding: 10px 5px;
+    margin-left: 10px;
+    margin-right: 10px;
+    outline: none !important;
+
+
+}
+
+.seatinfo {
+    margin-left: 70px;
+    flex-direction: row;
+    box-sizing: border-box;
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .booked {
+        height: 15px;
+        width: 15px;
+        border: 0.5px solid black;
+        border-radius: 4px;
+        background-color: rgba(154, 150, 150, 0.825);
+    }
+
+    .available {
+        height: 15px;
+        width: 15px;
+        border: 1px solid black;
+        border-radius: 4px;
+        background-color: white;
+    }
+
+    .ladies {
+        height: 15px;
+        width: 15px;
+        border: 0.5px solid black;
+        border-radius: 4px;
+        background-color: rgb(221, 60, 192);
+    }
+
+    .men {
+        height: 15px;
+        width: 15px;
+        border: 0.5px solid black;
+        border-radius: 4px;
+        background-color: rgb(41, 79, 203);
+    }
+
+    .selected {
+        height: 15px;
+        width: 15px;
+        border: 0.5px solid black;
+        border-radius: 4px;
+        background-color: rgb(41, 203, 103);
+    }
+
+
+
+
+    label {
+        padding-right: 25px;
+        padding-left: 4px;
+    }
+}
+
+.bustable-style {
+
+
+    table {
+        border: 0.5px solid rgba(128, 128, 128, 0.799);
+        width: 90%;
+        height: 100%;
+        margin: 20px auto;
+
+        td {
+            padding-left: 20px;
+            border: 0.5px solid rgba(128, 128, 128, 0.799);
+        }
+    }
+}
+
+.note {
+    font-size: 12px;
+    color: red;
+}
+
+.otherinfo {
+    font-size: 14px;
+    text-align: justify;
+}
+
+.boardingpoint {
+    height: "270px"
+}
+
+
+.travelpoints {
+
+    margin: 5px auto;
+    height: 300px;
+
+
+    input {
+        accent-color: blue;
+        cursor: pointer;
+        height: 15px;
+        width: 15px;
+    }
+}
+
+.pointaddress {
+    margin-top: 20px;
+    min-height: 60px;
+    width: 200px;
+    border: 2px solid gray;
+    border-radius: 8px;
+
+
+    h6 {
+        margin: 5px 10px;
+        word-wrap: break-word;
+    }
+}
+
+.busflitername{
+    max-height: 263px !important;
+  overflow-y: scroll !important;
+  white-space: nowrap;
+  width: 270px !important;
+  overflow-x: scroll !important;
+}
+
+.busfliteredname{
+    
+}
+.filtername{
+    height: 35px !important;
+}
+.filtername:hover{
+    background-color: #efffed;
+}
+
+.point-info {
+    border-bottom: 2px solid gray;
+    margin-bottom: 0px;
+    font-weight: 700;
+    text-align: center;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.Proceed {
+    background-color: #198a7b;
+    color: white;
+    font-size: 15px;
+    border-radius: 6px;
+    border: none;
+    align-items: center;
+    margin: 15px auto;
+
+}
+
+.Proceed:hover {
+    background-color: #135e54;
+}
+
+.background-theme {
+    height: 240px;
+    flex: 1;
+    top: 85px;
+    margin-top: 70px;
+    padding-top: 0.5px;
+    background-image: url('../../../asset/images/backgroundimage.png');
+
+}
+
+.buspackageinfo {
+    margin-top: 60px;
+}
+
+.bus-pakagedetail {
+
+    margin-top: -110px;
+    padding-bottom: 180px;
+
+}
+
+.listWrapper {
+
+    display: flex;
+    min-height: 1024px;
+
+}
+
+
+.bus-paydetail {
+    top: 110px;
+    position: sticky;
+    height: max-content;
+    border-radius: 8px;
+}
+
+.accordion-button {
+    background-color: rgb(255, 255, 255) !important;
+    height: 65px;
+}
+
+.accordion-button:focus {
+    box-shadow: none;
+}
+
+.accordion-button:not(.collapsed) {
+    color: #070707;
+}
+
+
+
+.nseat,
+.snseat,
+.bseat,
+.rseat,
+.sseat,
+.srseat,
+.hseat,
+.bhseat,
+.rhseat,
+.shseat,
+.srhseat,
+.vseat,
+.bvseat,
+.rvseat,
+.svseat,
+.srvseat,
+.lower,
+.upper {
+    background: url(https://image.srdv.in/bus/layout/transparent-backgro-seatlayout.gif) no-repeat left top;
+}
+
+.bseat {
+    background-position: 0px -40px;
+    cursor: default;
+}
+
+/*for booked seat*/
+.rseat {
+    background-position: -20px -20px;
+}
+
+/*for reserved seat*/
+.snseat {
+    background-position: 0px -60px;
+}
+
+/*for selected seat*/
+.srseat {
+    background-position: -20px -60px;
+}
+
+/*for selected reserved seat*/
+.hseat {
+    width: 40px;
+    background-position: -40px 0;
+    z-index: 2;
+}
+
+/*for horizontal seat*/
+.bhseat {
+    background-position: -40px -40px;
+    cursor: default;
+    width: 40px;
+    z-index: 2;
+}
+
+/*for booked horizontal seat*/
+.rhseat {
+    background-position: -80px -20px;
+    width: 40px;
+    z-index: 2;
+}
+
+/*for reserved horizontal seat*/
+.shseat {
+    background-position: -40px -60px;
+    width: 40px;
+    z-index: 2;
+}
+
+/*for selected horizontal seat*/
+.srhseat {
+    background-position: -80px -60px;
+    width: 40px;
+    z-index: 2;
+}
+
+/*for selected reserved horizontal seat*/
+.vseat {
+    background-position: -124px 0;
+}
+
+/*for vertical seat*/
+.bvseat {
+    background-position: -166px 0;
+}
+
+/*for booked vertical seat*/
+.rvseat {
+    background-position: -145px -40px;
+}
+
+/*for reserved vertical seat*/
+.svseat {
+    background-position: -187px 0px;
+}
+
+/*for selected vertical seat*/
+.srvseat {
+    background-position: -187px -40px;
+}
+
+/*for selected reserved vertical seat*/
+.busSeatlft .lower {
+    background-position: -38px -83px;
+}
+
+.busSeatlft .upper {
+    background-position: -69px -83px;
+}
+
+/* bus layout */
+
+.busSeat {
+    height: 50px;
+    padding: 10px;
+    margin-bottom: 10px;
+    float: left;
+    width: 90%;
+    height: 100px;
+}
+
+.busseat_left {
+    float: left;
+    width: 63%;
+}
+
+.outerseat {
+    width: 100%;
+    // float: left;
+    height: 172px;
+    border: 1px solid #d6d6d6;
+    background: #fff;
+}
+
+.outerlowerseat {
+    border: 1px solid #e0e0e0;
+    width: 100%;
+    margin-top: 10px;
+    // float: left;
+    height: 160px;
+    border: 1px solid #d6d6d6;
+    background: #fff;
+}
+
+.layout {
+    width: 50%;
+    float: left;
+}
+
+.seatdesp {
+    float: right;
+    width: 30%;
+    padding: 1% 2%;
+    border: 1px solid #e0e0e0
+}
+
+.seatdesp .seatsSelected {
+    float: none;
+}
+
+.seatdesp .seatsSelected label {
+    font-weight: normal;
+}
+
+.layout .laybtm {
+    float: right;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    width: 30%;
+}
+
+.laybtm select {
+    width: 100%;
+    margin-right: 10px;
+    margin-top: 2px;
+    float: left;
+}
+
+.laybtm .continueBtn {
+    float: right;
+    padding: 0;
+    width: 15%;
+}
+
+.resultBox h2 {
+    width: 100%;
+    float: left;
+    text-align: center;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.bus_siting {
+    width: 100%;
+    float: left;
+}
+
+.bus_siting .left {
+    float: left;
+}
+
+.bus_siting .mid {
+    width: 81.5%;
+    float: left;
+    padding-top: 8px;
+}
+
+.mid p {
+    width: 100%;
+    text-align: center;
+    border: none;
+    font-size: 14px;
+    margin: 0px;
+}
+
+.bus_siting .right {
+    float: right;
+}
+
+.seats {
+    float: left;
+    padding: 3px 5px;
+}
+
+.seats p {
+    margin: 10px 0;
+    padding: 0px;
+}
+
+.seats p span {
+    float: left;
+    margin: 5px;
+    padding: 0px;
+    font-weight: bold;
+}
+
+.seats p code {
+    float: left;
+    margin: 8px 13px 0 0;
+}
+
+.busrow,
+.slrow {
+    width: 97%;
+    float: left;
+}
+
+.busrow a {
+    width: 45px;
+    height: 40px;
+    margin: 8px;
+    float: right;
+}
+
+.boarding {
+    float: left;
+    margin-top: 25px;
+    margin-left: 25px;
+}
+
+.seat_detail {
+    float: right;
+    height: 109px;
+    margin-top: 25px;
+    padding-left: 28px;
+    width: 114px;
+}
+
+.seat_detail span {
+    float: left;
+    width: 100%;
+    margin: 6px 0;
+}
+
+/*sleeper*/
+.slrow a,
+.sl_ladies,
+.sl_booked,
+.sl_selected,
+.sl_avlble {
+    width: 82px;
+    height: 26px;
+    margin: 7px;
+    float: right;
+}
+
+/*sleeper end*/
+.passanger_head {
+    width: 768px;
+    padding: 3px;
+    border-bottom: 2px solid #eeeded;
+    float: left;
+    padding: 0 0 8px;
+}
+
+.ps_detail p {
+    margin: 6px 0;
+}
+
+.ps_detail p code {
+    width: 87px;
+    float: left;
+    font-size: 12px;
+}
+
+.r_head {
+    margin: 5px 0;
+    font-weight: bold;
+    padding-left: 17px;
+}
+
+.rightContainer h3 {
+    float: left;
+    width: 100%;
+    margin: 10px 0 0;
+    font-size: 13px;
+}
+
+.input {
+    border: 1px solid #d7621c;
+    padding: 2px 0;
+}
+
+.seat_price {
+    max-width: 35%;
+    float: right;
+    border-right: 1px solid #c0c0c0;
+    padding-right: 15px;
+    margin-top: 25px;
+    margin-right: 2%;
+    min-height: 105px;
+}
+
+.seat_price p {
+    width: 100%;
+    border: none;
+}
+
+.seat_price p code {
+    float: left;
+}
+
+.seat_price p label {
+    width: 80px;
+    float: left;
+    font-weight: bold;
+}
+
+.travelAgency {
+    border: 1px solid #C8C8C8;
+    border-radius: 5px 5px 5px 5px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    padding: 8px;
+    font-size: 12px;
+}
+
+
+.nseat,
+.snseat,
+.bseat,
+.rseat,
+.sseat,
+.srseat,
+.hseat,
+.bhseat,
+.rhseat,
+.shseat,
+.srhseat,
+.vseat,
+.bvseat,
+.rvseat,
+.svseat,
+.srvseat,
+.lower,
+.upper {
+    float: left;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    cursor: pointer
+}
+
+
+.bseat {
+    cursor: default;
+}
+
+/*for booked seat*/
+.hseat {
+    width: 40px;
+    z-index: 2;
+}
+
+/*for horizontal seat*/
+.bhseat {
+    cursor: default;
+    width: 40px;
+    z-index: 2;
+}
+
+/*for booked horizontal seat*/
+.rhseat {
+    width: 40px;
+    z-index: 2;
+}
+
+/*for reserved horizontal seat*/
+.shseat {
+    width: 40px;
+    z-index: 2;
+}
+
+/*for selected horizontal seat*/
+.srhseat {
+    width: 40px;
+    z-index: 2;
+}
+
+/*for selected reserved horizontal seat*/
+
+
+.vseat {
+    height: 40px;
+    z-index: 2;
+    width: 20px
+}
+
+/*for vertical seat*/
+.bvseat {
+    cursor: default;
+    height: 40px;
+}
+
+/*for booked vertical seat*/
+.rvseat {
+    height: 40px;
+}
+
+/*for reserved vertical seat*/
+.svseat {
+    height: 40px;
+}
+
+/*for selected vertical seat*/
+.srvseat {
+    height: 40px;
+}
+
+/*for selected reserved vertical seat*/
+
+.busbox {
+    border-bottom: 2px solid #dee4f6;
+    float: left;
+    width: 98.7%;
+    padding: 1% 1% 2%;
+}
+
+.busbox .errorMessage {
+    text-align: center;
+    font-weight: bold;
+}
+
+.seatsmall dfn,
+.seatdesp .seatbig dfn {
+    float: left;
+}
+
+.seatsmall {
+    list-style: none;
+    margin: 0;
+    float: left
+}
+
+.seatbig {
+    list-style: none;
+    margin-bottom: 10px;
+    float: left;
+    border-bottom: 1px solid #cccccc;
+    padding-bottom: 15px
+}
+
+.seatsmall li,
+.seatbig li {
+    width: 100%;
+    float: left;
+    padding: 5px 0 !important;
+}
+
+.seatsmall li dfn,
+.seatbig li dfn {
+    float: left;
+    width: 20px;
+    height: 20px;
+}
+
+.seatsmall li span,
+.seatbig li span {
+    float: left;
+    width: 120px;
+    padding-left: 5px;
+    font-size: 11px
+}
+
+.seatbig dfn.wd5 {
+    width: 40px;
+}
+
+.seatbig dfn.wd6 {
+    width: 40px;
+}
+
+.seatbig dfn.wd7 {
+    width: 40px;
+}
+
+.seatbig dfn.wd8 {
+    width: 40px;
+}
+
+.seatdesp div {
+    padding: 2px 0px;
+}
+
+.seatdesp div label {
+    font-weight: bold;
+}
+
+.busSeatrgt {
+    width: 300px;
+    float: left;
+    /*margin-left:15px;*/
+}
+
+.busSeatlft {
+    width: 30px;
+    float: left;
+    margin: 10px 0px 10px 20px
+}
+
+.busSeatlft .lower {
+    width: 15px;
+    height: 60px;
+    cursor: default;
+}
+
+.busSeatlft .upper {
+    width: 15px;
+    height: 60px;
+    cursor: default;
+}
+
+.PaxErrorMessage {
+    border: 1px solid red;
+    font-weight: bold;
+    margin-top: 5px;
+    text-align: center;
+    width: 100%;
+}
+
+.bus_bord_seat_rs {
+    float: left;
+    width: 100%;
+    margin-top: 2%;
+}
+
+.boarding_point {
+    width: 40%;
+    float: left;
+}
+
+.boarding_point span {
+    width: 41%;
+    float: left;
+    font-weight: bold;
+    margin-top: 4px;
+}
+
+.boarding_point select {
+    width: 50%;
+    float: left;
+    margin: 0 0 0 10px
+}
+
+.total_amount,
+.select_seat {
+    width: 25%;
+    float: left;
+    font-weight: bold;
+}
+
+.total_amount label,
+.select_seat label {
+    width: 30%;
+    float: left;
+}
+
+.total_amount span {
+    float: left;
+}
+
+.select_seat span {
+    float: left;
+    width: 100px;
+    word-wrap: break-word;
+}
+
+.seatcontainer {
+    clear: both;
+    height: 104px;
+    z-index: 2;
+    zoom: 1;
+    word-spacing: normal;
+    position: relative;
+}
+
+.btn_bg {
+    border-radius: 5px;
+    float: right;
+    font-size: 12px;
+    font-weight: normal;
+    padding: 4px;
+}
+
+.btn_bg a {
+    text-decoration: none;
+}
+
+.bus-seat-status {
+    // padding-bottom: 15px;
+}
+
+.bus-seat-status .sts {
+    font-weight: 600;
+    color: #b6b5b5;
+    padding-left: 5px;
+    margin-top: -12px !important;
+}
+
+.bus-payment-col {
+
+    padding: 5px 0px;
+    margin-bottom: 15px;
+
+}
+
+.bus-deatail-wrapp {
+
+    margin-top: 25px;
+
+}
+
+.boaring-point {
+
+    margin-bottom: 15px;
+
+}
+
+.pay-busrp {
+    margin-top: -15px;
+    color:#b6b5b5;;
+    font-weight: 900;
+}
+
+.fourseats{width: 60px;display: inline-block;}
+	.fourseats img{display: block;margin-top: 10px;margin-bottom: 10px; margin:10px auto;}
+	.fivesheats{display: block;margin: 0 auto;}
+	.downsheats{margin-top: 38px;}
+	.relative{position: relative;}
+	.firstsheats{float: left;}
+	.lastsheats{float: left;}
+	.sheatcol{padding: 15px; background: #fbfbfb; border: 1px solid #eee; -webkit-border-radius: 4px; -moz-border-radius: 4px; -ms-border-radius: 4px; -o-border-radius: 4px; border-radius: 4px; float: none;} 
+	.sheatcol [class*="col-"]{float: none;}
+	.sheatcol,.mytable{display: table;float: none;width: 100%;}
+	.sheatcol>*,.mytable>*{display: table-cell;float: none;}
+	.sheatcontainer{ padding: 15px 30px;}
+	.sheatinforow{display: table; table-layout: fixed;width: 100%;  padding-bottom: 30px;width: 105.5%;}
+	.sheatinforow>*{display: table-cell;float: none;padding-left: 0;vertical-align: top;padding-right: 30px;} 
+	.sheatinfo>div{margin-bottom: 10px;}
+	.sheatinfo>div>*{vertical-align: middle;margin: 2px; font-size: 14px;color: #666666;}
+	.mspan{ display: inline-block;}
+	.sheetanumber{font-size: 24px !important;}
+	.sheatinfo .btn{-webkit-border-radius: 4px; -moz-border-radius: 4px; -ms-border-radius: 4px; -o-border-radius: 4px; border-radius: 4px;}
+
+	.showfarediv{display:none;}
+
+@media only screen and (min-width:"300px") and (max-width:"420px") {
+    .modifycontent{
+        padding-left: 35px;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-left: 20px;
+    }
+    .buslistcontent {
+        width: 80% !important;
+        font-family: QuickSand, Avenir, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+        margin-top: 300px !important;
+    }
+   .icon{
+    display: none !important;
+   }
+   .buslistfilter {
+    flex: 1;
+    top: 110px;
+    position: unset;
+    height: max-content;
+    border-radius: 8px;
+    background: rgb(255, 255, 255);
+
+}
+
+}

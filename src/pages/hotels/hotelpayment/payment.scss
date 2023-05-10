@@ -1,0 +1,36 @@
+.listWrapper {
+
+  display: flex;
+  min-height: 1024px;
+
+}
+.billing-content{
+  margin-top: 110px;
+}
+
+.hotelinfopay {
+  
+  top: 110px;
+  position: sticky;
+  height: max-content;
+  border-radius: 8px;
+  //margin-top: -15px;
+}
+
+.hotelpay-detail{
+    margin-top: -125px;
+    padding-bottom:180px;
+}
+
+.accordion-button {
+  background-color: rgb(255, 255, 255) !important;
+  height: 65px;
+}
+
+.accordion-button:focus {
+  box-shadow: none;
+}
+
+.accordion-button:not(.collapsed) {
+  color: #070707;
+}
