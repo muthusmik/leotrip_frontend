@@ -39,7 +39,7 @@
     margin-left: 0px;
     padding-right: 0rem;
     margin-top: -15px;
-
+    height: 275px;
   }
 
 }
@@ -52,7 +52,7 @@
   background: rgb(255, 255, 255);
   cursor: pointer;
   position: relative;
-  margin-left: 10px;
+  margin-right: 30px;
 
 
   p {
@@ -118,21 +118,18 @@
 .daterange {
   height: 60px;
   width: 200px;
-  margin: 0px 18px 0px 0px; //left 8px
+  margin: 0px 18px 0px 0px;
   border-radius: 8px;
-  // padding:" 0px 20px",
   border: 2.5px solid #dfdfdf;
   cursor: pointer;
   color: #625f5f;
   font-size: 17px;
   font-weight: 700;
-  padding-bottom: -115px;
 
   p {
     background-color: rgb(255, 255, 255);
-    margin-top: -12px;
-    margin-bottom: 0%;
-    margin-left: 5px;
+    padding: 0px 8px 0px 0px;
+    margin: -12px 0px 0% 5px;
     font-family: Quicksand, Avenir, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     font-size: 14px;
     display: inline-flex;
@@ -177,11 +174,6 @@
     font-weight: bold;
     height: 40px;
   }
-
-  // option:hover{
-  //   background-color: #100de9;
-  //   color: white;
-  // } 
 }
 
 .guestoption:hover {
@@ -225,10 +217,6 @@
   cursor: pointer;
 }
 
-
-
-
-
 .roomageinfo {
   font-family: sans-serif;
   font-size: small;
@@ -242,16 +230,12 @@
   font-size: 16px;
 }
 
-
-
 .hotelbutton {
   display: flex;
   -webkit-box-align: center;
-  align-items: center;
   -webkit-box-pack: center;
   justify-content: center;
-  margin-top: 30px;
-
+  margin-top: 0px;
 }
 
 .hotelbtnsearch {
@@ -260,7 +244,6 @@
   align-items: center;
   -webkit-box-pack: center;
   justify-content: center;
-  // background: rgb(255, 94, 0);
   background: #3B77DC;
   padding: 16px 45px;
   border-radius: 30px;
@@ -272,7 +255,6 @@
   border: 0px;
   cursor: pointer;
   letter-spacing: 2px;
-  margin-bottom: -75px;
 }
 
 .hotelbtnsearch:hover {
@@ -417,7 +399,7 @@
 
 @media only screen and (min-width:"200px") and (max-width:"300px") {
   .hotelsearch {
-    min-height: 370px;
+    min-height: 430px;
     position: static;
 
     .headerImage {
@@ -426,7 +408,6 @@
       background-size: cover;
       height: 360px;
       background-position: bottom;
-      // position: absolute;
       padding-top: 30px;
       width: 100%;
       margin-top: 65px;
@@ -467,7 +448,7 @@
 
   .daterange {
     height: 60px;
-    width: 200px !important;
+    width: 216px !important;
     margin: 30px 18px 0px 8px;
     border-radius: 8px;
     // padding:" 0px 20px",
@@ -551,7 +532,7 @@
     height: 60px;
     border: 2.5px solid #dfdfdf;
     border-radius: 8px;
-    margin-left: -40px !important;
+    margin-left: -47px !important;
 
     p {
       background-color: #ffffff;
@@ -602,12 +583,12 @@
 
 }
 
-@media only screen and (min-width:"300px") and (max-width:"370px") {
+@media only screen and (min-width:"300px") and (max-width:"380px") {
   .hotelsearch {
-    min-height: 370px;
+    min-height: 300px;
     position: static;
-    height: auto;
-    width: 96%;
+    height: 290px;
+    width: 100%;
 
     .headerImage {
       background-image: url(../../asset/images/newbakground.svg);
@@ -617,7 +598,7 @@
       background-position: bottom;
       // position: absolute;
       padding-top: 30px;
-      width: 109%;
+      width: 100%;
       margin-top: 65px;
     }
 
@@ -645,22 +626,21 @@
       position: relative;
       z-index: 6;
       width: 99%;
+      height: 425px;
       margin-left: 5px;
       padding-right: 1rem;
       margin-top: -15px;
-      // height: 400px;
     }
 
   }
 
   .daterange {
     height: 60px;
-    width: 150px;
-    // margin-left:-40px;
+    width: 142px;
     margin: 5px 0px 20px 10px;
     border-radius: 8px;
     padding: 0px 10px;
-    border: 2.5px solid #dfdfdf;
+    border: 2.5px solid #dfdfdf; //#dfdfdf
     cursor: pointer;
     color: #2422228e;
     font-size: 14px;
@@ -682,8 +662,8 @@
   }
 
   .hotelsearchbox {
-    width: 310px;
-    border: 2.5px solid #dfdfdf;
+    width: 294px;
+    border: 2.5px solid #dfdfdf; //#dfdfdf
     border-radius: 8px;
     height: 60px;
     background: rgb(255, 255, 255);
@@ -737,9 +717,9 @@
   }
 
   .guestoption {
-    width: 310px;
+    width: 294px;
     height: 60px;
-    border: 2.5px solid #dfdfdf;
+    border: 2.5px solid #dfdfdf; //#dfdfdf
     border-radius: 8px;
     margin-left: -46px !important;
 
@@ -786,11 +766,11 @@
 
 }
 
-@media only screen and (min-width:"371px") and (max-width:"400px") {
+@media only screen and (min-width:"381px") and (max-width:"400px") {
   .hotelsearch {
     min-height: 320px;
     position: static;
-    height: auto;
+    height: 300px;
     width: 100%;
 
     .headerImage {
@@ -799,7 +779,6 @@
       background-size: cover;
       height: 320px;
       background-position: bottom;
-      // position: absolute;
       padding-top: 30px;
       width: 100%;
       margin-top: 65px;
@@ -811,7 +790,6 @@
       font-weight: bold;
       font-size: 24px;
       font-weight: 700;
-      // margin: 19px 0;
       margin-bottom: 18px;
       letter-spacing: 1px;
 
@@ -832,7 +810,7 @@
       margin-left: 5px;
       padding-right: 1rem;
       margin-top: -15px;
-      // height: 400px;
+      height: 425px;
     }
 
   }
@@ -840,11 +818,10 @@
   .daterange {
     height: 60px;
     width: 160px;
-    // margin-left:-40px;
     margin: 5px 0px 20px 6%;
     border-radius: 8px;
     padding: 0px 10px;
-    border: 2.5px solid #dfdfdf;
+    border: 2.5px solid #dfdfdf; //#dfdfdf
     cursor: pointer;
     color: #2422228e;
     font-size: 14px;
@@ -1164,10 +1141,10 @@
 
 @media only screen and (min-width:"510px") and (max-width:"560px") {
   .daterange {
-    height: 75px;
-    width: 200px;
+    height: 65px;
+    width: 205px;
     padding: 0px;
-    margin: 30px 30px 30px -10px;
+    margin: 30px 20px 30px 0px;
     border-radius: 8px;
     border: 2.5px solid #dfdfdf;
     cursor: pointer;
@@ -1243,7 +1220,7 @@
       margin-left: 0px;
       padding-right: 1rem;
       margin-top: -15px;
-      height: 405px;
+      height: 400px;
 
     }
 
@@ -1266,10 +1243,9 @@
   .guestoption {
     width: 418px;
     height: 60px;
-    border: 2.5px solid #dfdfdf;
+    border: 2.5px solid #dfdfdf; //#dfdfdf
     border-radius: 8px;
-    // margin-left: -5px ;
-    margin: 0px 30px 30px 18px !important;
+    margin: 0px 30px 30px 13px !important;
 
     p {
       background-color: #fff;
@@ -1295,11 +1271,6 @@
       font-weight: bold;
       height: 40px;
     }
-
-    // option:hover{
-    //   background-color: #100de9;
-    //   color: white;
-    // } 
   }
 
   .hotelsearchbox {
@@ -1350,6 +1321,14 @@
       color: rgba(36, 35, 35, 0.474);
       opacity: 1;
     }
+  }
+  .roomOptions {
+    position: 'relative';
+    z-index: 7;
+    top: 25px;
+    width: 350px;
+    margin-top: -20px;
+    margin-left: 0px;
   }
 }
 
@@ -1460,7 +1439,7 @@
     height: 70px;
     border: 2.5px solid #dfdfdf;
     border-radius: 8px;
-    margin-left: 35px !important;
+    margin-left: 15px !important;
 
     p {
       background-color: #fff;
@@ -1486,11 +1465,6 @@
       font-weight: bold;
       height: 40px;
     }
-
-    // option:hover{
-    //   background-color: #100de9;
-    //   color: white;
-    // } 
   }
 
   .hotelsearchbox {
@@ -1541,103 +1515,83 @@
       opacity: 1;
     }
   }
+  .roomOptions {
+    position: 'relative';
+    z-index: 7;
+    top: 25px;
+    width: 420px;
+    margin-top: -10px;
+    margin-left: 0px;
+  }
 }
 
-@media only screen and (min-width:"821px") and (max-width:"1025px") {
-  .daterange {
-    height: 70px;
-    width: 150px;
-    margin: 30px 30px 0px 0px;
-    border-radius: 8px;
-    border: 2.5px solid #dfdfdf; //#dfdfdf
-    cursor: pointer;
-    color: #242222;
-    font-size: 14px;
-    padding-bottom: -115px;
-    margin-top: -24px;
+@media only screen and (min-width:"821px") and (max-width:"950px") {
 
-    p {
+  .hotelsearch {
+    min-height: 370px;
+    position: static;
+    height: auto;
+    width: 100%;
+
+    .headerImage {
+      background-image: url(../../asset/images/newbakground.svg);
+      background-repeat: no-repeat;
+      background-size: cover;
+      height: 300px;
+      background-position: bottom;
+      padding-top: 30px;
+      width: 100%;
+      margin-top: 63px;
+    }
+
+
+    h2 {
+      text-align: center;
+      font-family: Quicksand, Avenir, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+      font-weight: bold;
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 18px;
+      letter-spacing: 1px;
+
+    }
+
+    .searchcontainer {
       background-color: rgb(255, 255, 255);
-      margin-top: -12px;
-      margin-bottom: 0%;
-      margin-left: 2px;
-      padding-right: 8px;
-      font-family: Quicksand, Avenir, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-      font-size: 14px;
-      display: inline-flex;
-      font-weight: 700;
-      color: rgb(134, 131, 131);
-      position: absolute;
-    }
-  }
-
-  .nights {
-    border-radius: 10px;
-    // background-color:#fdfdff;
-    width: 48px;
-    height: 32px;
-    margin-top: -20px !important;
-    padding: 3px;
-    padding-top: 6px;
-    margin-left: -45px;
-    margin-right: -18px;
-    z-index: 9;
-    display: flex;
-    // cursor: pointer;
-  }
-
-  .guestoption {
-    width: 210px;
-    height: 70px;
-    border: 2.5px solid #dfdfdf;
-    border-radius: 8px;
-    margin-left: 10px !important;
-
-    p {
-      background-color: #fff;
-      margin-top: -12px;
-      margin-bottom: 0%;
-      // width: 38px;
-      margin-left: 10px;
-      font-family: Quicksand, Avenir, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-      font-size: 14px;
-      display: inline-flex;
-      font-weight: 700;
-      color: rgb(119, 119, 119);
-      position: absolute;
-      z-index: 3;
+      border-radius: 1.2rem;
+      padding: 2.5rem;
+      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 5px;
+      position: relative;
+      z-index: 6;
+      width: auto;
+      margin-left: 0px;
+      padding-right: 0rem;
+      margin-top: -15px;
+      height: 275px;
     }
 
   }
 
-  .bp_room_select {
-    height: 53px !important;
-    width: 180px !important;
-    border: none !important;
-    outline: none !important;
-    font-family: Roboto, Quicksand, Avenir, -apple-system, "Segoe UI", "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-    color: #0404045d;
-    padding-left: 20px;
-    font-weight: 700;
-    -webkit-appearance: none;
+  .hotelcontent {
+    padding: 0px !important;
   }
 
   .hotelsearchbox {
-    width: 200px;
-    border: 2.5px solid #dfdfdf;
+    width: 190px;
+    border: 2.5px solid #dfdfdf; //#dfdfdf
     border-radius: 8px;
-    height: 70px;
+    height: 60px;
     background: rgb(255, 255, 255);
     cursor: pointer;
     position: relative;
-    margin-left: -13px;
-    margin-right: 20px;
+    margin: 0px 10px 0px 0px;
 
     p {
       background-color: #fff;
       margin-top: -12px;
       margin-bottom: 0%;
       width: 38px;
+      padding: 0px 8px 0px 8px;
       margin-left: 15px;
       font-family: Quicksand, Avenir, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
       font-size: 14px;
@@ -1661,8 +1615,7 @@
       border-radius: 8px;
       outline: 0px;
       font-size: 16px;
-      // line-height: 28px;
-      padding: 19px 35px;
+      padding: 19px 15px;
       font-weight: 700;
     }
 
@@ -1670,5 +1623,95 @@
       color: rgba(36, 35, 35, 0.474);
       opacity: 1;
     }
+  }
+
+  .hotelsearchbox:hover {
+    border: 2.5px solid #6e6d6d;
+  }
+
+  .content {
+    padding: 0px 0px 0px 0px !important;
+  }
+
+    .daterange {
+      height: 60px;
+      width: 150px;
+      margin: 0px 0px 0px 20px;
+      border-radius: 8px;
+      border: 2.5px solid #dfdfdf;
+      cursor: pointer;
+      color: #242222;
+      font-size: 13px;
+      padding: 0px;
+
+      p {
+        background-color: rgb(255, 255, 255);
+        margin-top: -12px;
+        margin-bottom: 0%;
+        margin-left: 5px;
+        font-family: Quicksand, Avenir, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+        font-size: 14px;
+        display: inline-flex;
+        font-weight: 700;
+        color: rgb(134, 131, 131);
+        position: absolute;
+      }
+    }
+  
+
+  .nights {
+    border-radius: 10px;
+    width: 48px;
+    height: 32px;
+    padding: 3px;
+    margin-top: 20px;
+    margin-left: 125px;
+    z-index: 9;
+    display: flex;
+    position: absolute;
+  }
+  .guestoption {
+    width: 190px;
+    height: 60px;
+    border: 2.5px solid #dfdfdf;//#dfdfdf
+    border-radius: 8px;
+    margin-left: 30px !important;
+
+    p {
+      background-color: #fff;
+      margin-top: -12px;
+      margin-bottom: 0%;
+      margin-left: 15px;
+      font-family: Quicksand, Avenir, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+      font-size: 14px;
+      display: inline-flex;
+      font-weight: 700;
+      color: rgb(119, 119, 119);
+      position: absolute;
+      z-index: 3;
+    }
+  }
+  .bp_room_select {
+    background-color: #ffffff;
+    width: 100px !important;
+  }
+  .roomOptions {
+    position: 'relative';
+    z-index: 7;
+    top: 25px;
+    width: 250px;
+    margin-top: -10px;
+    margin-left: 0px;
+  }
+}
+
+@media only screen and (min-width:"980px") and (max-width:"1030px") {
+  .roomOptions {
+    position: 'relative';
+    z-index: 7;
+    top: 25px;
+    width: 250px;
+    margin-top: -20px;
+    margin-left: 0px;
   }
 }

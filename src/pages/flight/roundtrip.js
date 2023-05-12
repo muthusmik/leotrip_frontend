@@ -262,7 +262,7 @@ const RoundTrip = () => {
 
     return (
         <>
-            <div className='d-inline-flex flex-wrap content '>
+            <div className='d-inline-flex flex-wrap content'>
                 
                     <div className="search-area mt-4">
                         <p className='w-auto bg-white '>From</p>
