@@ -70,7 +70,7 @@ export default function MultiDatePickers({ onSelect, Searchstyle, required, sele
     <div className='headerSearchItem'>
       <div onClick={handleClick} className={Searchstyle}>
         <div className='row d-inline-flex content'>
-          <div className='col daterange '>
+          <div className='col daterange'>
             <p className='mb-0' style={style2}><FontAwesomeIcon icon={faCalendarDays} className="ms-2 me-1 text-secondary " />Check-in</p>
             <div className=' p-3 ms-1'>{`${checkInDate.toString()}`}</div>
           </div>

@@ -146,8 +146,8 @@ const Bus = () => {
                                         <h6 className="text-success fw-bold h5">Book Your Tickets With Best Deals</h6>
                                         {(source_city === '' || destination_city === '' || source_city.localeCompare(destination_city) === 0) ? <h6 className="font-weight-bold text-danger">{errormsg}</h6> : null}
                                         <div className='d-inline-flex content mt-5 my-4 bussearch_content'>
-                                            <div className='bussearchbox border-bottom border-2 mt-2'>
-                                                <p>FROM</p>
+                                            <div className='bussearchbox border-bottom border-2 mt-2 '>
+                                                <p className="bg-white px-2">FROM</p>
                                                 <div>
                                                     <AutoSuggest
                                                         suggestions={suggestions}
@@ -174,7 +174,7 @@ const Bus = () => {
                                                 <FontAwesomeIcon icon={faArrowRightArrowLeft} onClick={() => switchText(from,to)} className="Switcharrow" />
                                             </div>
                                             <div className='bussearchbox border-bottom border-2 mt-2'>
-                                                <p>TO</p>
+                                                <p className="bg-white px-2">TO</p>
 
                                    
                                             <AutoSuggest
@@ -198,9 +198,9 @@ const Bus = () => {
                                             />
                                         </div>
 
-                                        <div className='buspickup border-bottom border-2  mt-2 me-5'>
+                                        <div className='buspickup mt-2 me-5'>
                                             <div className=' buspickupdate'>
-                                                <p className="w-auto,bg-white">Pickup Date</p>
+                                                <p className="px-2 bg-white">Pickup Date</p>
                                                 <CustomDatePickers
                                                     value={date}
                                                     Searchstyle="Bus_searchdate"

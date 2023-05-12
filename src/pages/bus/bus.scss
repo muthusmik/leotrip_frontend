@@ -61,27 +61,21 @@
 .buspickup {
   height: 60px;
   width: 260px;
-  margin-left: 25px;
+  margin-left: 10px;
   border-radius: 8px;
-  // padding:" 0px 20px",
-  border: 2.5px solid #dfdfdf;
+  border: 2.5px solid #dfdfdf;//#dfdfdf
   cursor: pointer;
   color: rgb(29, 26, 26);
-  font-size: 17px;
-  padding-bottom: -115px;
+  font-size: 14px;
 
 
   p {
-    background-color: #fff;
-    margin-top: -12px;
-    margin-bottom: 0%;
-    margin-left: 22px;
+    margin: -12px 0px 0% 22px;
     font-family: Quicksand, Avenir, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     font-size: 14px;
     display: inline-flex;
     font-weight: 700;
     color: rgba(119, 119, 119, 0.662);
-
     position: absolute;
   }
 
@@ -93,7 +87,7 @@
   align-items: center;
   -webkit-box-pack: center;
   justify-content: center;
-  margin-top: 30px;
+  // margin-top: 0px;
 
 }
 
@@ -131,13 +125,10 @@
   background: rgb(255, 255, 255);
   cursor: pointer;
   position: relative;
+  margin-right: 10px;
 
   p {
-    background-color: #fff;
-    margin-top: -12px;
-    margin-bottom: 0%;
-    width: 38px;
-    margin-left: 22px;
+    margin: -12px 0px 0% 22px;
     font-family: Quicksand, Avenir, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     font-size: 14px;
     display: inline-flex;
@@ -145,7 +136,6 @@
     color: rgb(107, 103, 103);
     position: absolute;
     text-align: center;
-
   }
 
   input {
@@ -179,17 +169,13 @@
   min-height: 55px;
   padding: 13px;
   cursor: pointer;
-  // border-right: 1.8px solid rgb(218, 215, 215);
   outline: none;
   margin-bottom: 5px;
 }
 
 .bus_calander {
-  width: 650px;
-  margin-left: -130px;
+  width: 342px;
 }
-
-
 
 .no-autocomplete {
   color: #999;

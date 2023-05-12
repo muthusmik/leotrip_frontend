@@ -336,8 +336,7 @@ const Hotels = () => {
                                     <div className='text-center'>
                                         {(hotellocation === '' || rooms === 0) ? <h6 className="text-danger ">{errormsg}</h6> : null}
                                     </div>
-                                    <div className='hotelbutton'>
-
+                                    <div className='hotelbutton '>
                                         <CustomButton customstyle="hotelbtnsearch" onClick={() => handleSubmit(checkInDate, checkOutDate)} value='SEARCH HOTELS'></CustomButton>
                                     </div>
                                 </div>

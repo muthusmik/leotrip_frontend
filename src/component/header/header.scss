@@ -36,8 +36,14 @@
     }
 }
 
-@media only screen and (min-width:"760px") and (max-width:"1025px") {
+@media only screen and (min-width:"760px") and (max-width:"950px") {
     .headerImage{
         margin-bottom:180px;
+    }
+}
+
+@media only screen and (min-width:"980px") and (max-width:"1025px") {
+    .headerImage{
+        margin-bottom:100px;
     }
 }
