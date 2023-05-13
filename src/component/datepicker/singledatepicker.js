@@ -64,7 +64,7 @@ export default function CustomDatePickers({ onDayClick, Searchstyle, selected, c
         {`${value.toString()}`}
       </div>
       {open && (
-        <Card className={calanderstyle} style={{ position: 'absolute', zIndex: '1' }} ref={refOne}>
+        <Card className={calanderstyle} style={{ position: 'absolute', zIndex: '1'}} ref={refOne}>
           <Card.Body >
             <DayPicker
               fromDate={new Date()}
