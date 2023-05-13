@@ -140,13 +140,13 @@ const Bus = () => {
                         <CustomNavbar />
                         <div className="headImage">
                             <div className="container">
-                                <h2 className="text-white text-center ">Bus Ticket Booking</h2>
+                                <h2 className="text-white text-center mt-5">Bus Ticket Booking</h2>
                                 <div className='bussearchcontainer mt-0 mx-auto'>
 
                                         <h6 className="text-success fw-bold h5">Book Your Tickets With Best Deals</h6>
                                         {(source_city === '' || destination_city === '' || source_city.localeCompare(destination_city) === 0) ? <h6 className="font-weight-bold text-danger">{errormsg}</h6> : null}
                                         <div className='d-inline-flex content mt-5 my-4 bussearch_content'>
-                                            <div className='bussearchbox border-bottom border-2 mt-2 '>
+                                            <div className='bussearchbox  mt-2 '>
                                                 <p className="bg-white px-2">FROM</p>
                                                 <div>
                                                     <AutoSuggest
@@ -173,7 +173,7 @@ const Bus = () => {
                                             <div className='icon d-flex justify-content-center my-4 switchicon'>
                                                 <FontAwesomeIcon icon={faArrowRightArrowLeft} onClick={() => switchText(from,to)} className="Switcharrow" />
                                             </div>
-                                            <div className='bussearchbox border-bottom border-2 mt-2'>
+                                            <div className='bussearchbox mt-2'>
                                                 <p className="bg-white px-2">TO</p>
 
                                    
@@ -198,7 +198,7 @@ const Bus = () => {
                                             />
                                         </div>
 
-                                        <div className='buspickup mt-2 me-5'>
+                                        <div className='buspickup mt-2'>
                                             <div className=' buspickupdate'>
                                                 <p className="px-2 bg-white">Pickup Date</p>
                                                 <CustomDatePickers
