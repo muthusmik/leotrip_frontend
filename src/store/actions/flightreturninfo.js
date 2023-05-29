@@ -15,4 +15,8 @@ const setError = (error) => ({
   error,
 });
 
-export { loadFlightReturnInfo, setFlightReturnInfo, setError };
+const clearReducer = (clear) => ({
+  type:FLIGHTRETURNINFO.LOAD_CLEARREDUCER,
+  clear
+});
+export { loadFlightReturnInfo, setFlightReturnInfo, setError,clearReducer };

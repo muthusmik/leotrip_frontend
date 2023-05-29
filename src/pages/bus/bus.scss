@@ -1,16 +1,17 @@
 .bussearch {
-  min-height: 350px;
+  min-height: 370px;
   position: static;
   height: auto;
-  margin-top: -5px;
+
 
   .headImage {
-    background-image: url(../../asset/images/newbakground.svg);
+    background-image: url(../../asset/images/backgroundimage.png);
     background-repeat: no-repeat;
     background-size: cover;
-    height: 323px;
+    height: 353px;
     background-position: bottom;
-    padding-top: 5px;
+    // position: absolute;
+    padding-top: 20px;
     width: 100%;
     margin-top: 70px;
   }
@@ -19,10 +20,10 @@
     text-align: center;
     font-family: Quicksand, Avenir, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     font-weight: bold;
-    font-size: 24px;
+    font-size: 21px;
     font-weight: 700;
-    margin: 30px 0;
-    margin-bottom: 30px;
+    margin: 20px 0;
+    margin-bottom: 40px;
     letter-spacing: 1px;
   }
 
@@ -33,11 +34,12 @@
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 5px;
     position: relative;
     z-index: 6;
-    width: fit-content;
-    margin-left: 00px;
+    width: 93%;
+    margin-left: 50px;
     padding-right: 1rem;
-    margin-top: -8px !important;
+    margin-top: -14px !important;
   }
+
 }
 
 .switch_icon {
@@ -53,26 +55,35 @@
   background-color: #98989c;
 }
 
+
+
 .buspickup {
   height: 60px;
   width: 260px;
-  margin-left: 10px;
+  margin-left: 25px;
   border-radius: 8px;
-  border: 2.5px solid #dfdfdf; //#dfdfdf
+  // padding:" 0px 20px",
+  border: 2.5px solid #dfdfdf;
   cursor: pointer;
-  color: rgb(29, 26, 26);
-  font-size: 14px;
+  color: #242222;
+  font-size: 17px;
+  padding-bottom: -115px;
 
 
   p {
-    margin: -12px 0px 0% 22px;
+    background-color: #fff;
+    margin-top: -14px;
+    margin-bottom: 0%;
+    margin-left: 22px;
     font-family: Quicksand, Avenir, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     font-size: 14px;
     display: inline-flex;
     font-weight: 700;
-    color: rgba(119, 119, 119, 0.662);
+    color: rgb(119, 119, 119);
+
     position: absolute;
   }
+
 }
 
 .busbutton {
@@ -81,47 +92,76 @@
   align-items: center;
   -webkit-box-pack: center;
   justify-content: center;
+  margin-top: 30px;
+
+}
+
+.react-autosuggest__suggestions-container{
+  position: absolute !important;
+  z-index: 2;
+  background-color: rgba(226, 222, 222, 0.904)!important;
+  max-height: 310px !important;
+  width: 300px !important;
+  overflow-y: scroll!important;
+
+  
+  ul{
+    list-style-type: none !important;
+    margin-top:1px;
+    margin-bottom:1px;
+  }
+  li{
+    height: 30px;
+    width: 110%;
+    margin-left: -30px;
+    padding-left: 15px;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgb(224, 224, 224)!important;
+    color: rgb(0, 0, 0);
+    font-size: 14px;
+    font-weight: bold;
+    height: 40px;
+    padding-top: 5px;
+  }
+ 
+  li:hover{
+    background-color: #0e5bce;
+    color: white;
+  } 
 }
 
 .busbtnsearch {
-  display: inline-flex;
-  -webkit-box-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  justify-content: center;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
   background: rgb(3, 126, 207);
-  border-radius: 30px;
-  font-size: 22px;
-  line-height: 28px;
-  font-weight: 700;
-  color: rgb(255, 255, 255);
-  padding: 16px 45px;
-  outline: 0px;
-  border: 0px;
-  cursor: pointer;
-  letter-spacing: 2px;
-  margin-bottom: -67px;
-  width: 350px;
-}
-
-.busbtnsearch:hover {
-  background: url('../../asset/images/bg2.png');
-  background-size: cover;
-  background-repeat: no-repeat;
+  border-radius: 30px !important;
+  font-size: 22px !important;
+  line-height: 28px !important;
+  font-weight: 700 !important;
+  color: rgb(255, 255, 255)!important;
+  padding: 16px 45px !important;
+  outline: 0px !important;
+  border: 0px !important;
+  letter-spacing: 2px !important;
+  margin-bottom: -67px !important;
 }
 
 .bussearchbox {
-  width: 350px;
+  width: 330px;
   border: 2.5px solid #dfdfdf;
   border-radius: 8px;
   height: 60px;
   background: rgb(255, 255, 255);
   cursor: pointer;
   position: relative;
-  margin-right: 10px;
 
   p {
-    margin: -12px 0px 0% 22px;
+    background-color: #fff;
+    margin-top: -15px;
+    margin-bottom: 0%;
+    width: 38px;
+    margin-left: 22px;
     font-family: Quicksand, Avenir, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     font-size: 14px;
     display: inline-flex;
@@ -129,6 +169,7 @@
     color: rgb(107, 103, 103);
     position: absolute;
     text-align: center;
+
   }
 
   input {
@@ -138,15 +179,18 @@
     background: rgb(255, 255, 255);
     font-family: Roboto, Quicksand, Avenir, -apple-system, "Segoe UI", "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     color: rgb(4, 4, 4);
+    border: none;
     outline: none;
     border-radius: 8px;
-    font-size: 15px;
-    padding: 19px 20px;
+    outline: 0px;
+    font-size: 16px;
+    // line-height: 28px;
+    padding: 19px 35px;
     font-weight: 700;
   }
 
   input::placeholder {
-    color: rgba(36, 35, 35, 0.451);
+    color: rgb(36, 35, 35);
     opacity: 1;
   }
 }
@@ -159,13 +203,17 @@
   min-height: 55px;
   padding: 13px;
   cursor: pointer;
+  // border-right: 1.8px solid rgb(218, 215, 215);
   outline: none;
   margin-bottom: 5px;
 }
 
 .bus_calander {
-  width: 342px;
+  width: 650px;
+  margin-left: -130px;
 }
+
+
 
 .no-autocomplete {
   color: #999;
@@ -202,12 +250,8 @@
   ul {
     list-style: none !important;
   }
-
   white-space: nowrap !important;
-}
 
-.switchicon{
-  margin-top: -50px;
 }
 
 .switchicon:hover {
@@ -215,1129 +259,6 @@
 }
 
 .Switcharrow {
-  color: #3B77DC;
+  color: green;
   font-size: 20px;
-}
-
-@media only screen and (min-width:"200px") and (max-width:"300px") {
-  .bussearch {
-    min-height: 310px;
-    position: static;
-    height: auto;
-    margin-top: -5px;
-
-    .headImage {
-      background-image: url(../../asset/images/newbakground.svg);
-      background-repeat: no-repeat;
-      background-size: cover;
-      height: 323px;
-      background-position: bottom;
-      padding-top: 5px;
-      width: 100%;
-      margin-top: 70px;
-    }
-
-    h2 {
-      text-align: center;
-      font-family: Quicksand, Avenir, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-      font-weight: bold;
-      font-size: 24px;
-      font-weight: 700;
-      margin: 30px 0;
-      margin-bottom: 30px;
-      letter-spacing: 1px;
-    }
-
-    .bussearchcontainer {
-      background-color: rgb(255, 255, 255);
-      border-radius: 1.2rem;
-      padding: 2.5rem;
-      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 5px;
-      position: relative;
-      z-index: 6;
-      width: 93%;
-      margin-left: 15px;
-      padding-right: 1rem;
-      margin-top: -8px !important;
-      height: 405px;
-    }
-  }
-
-  .bussearchbox {
-    width: 175px;
-    border: 2.5px solid #dfdfdf;
-    border-radius: 8px;
-    height: 60px;
-    background: rgb(255, 255, 255);
-    cursor: pointer;
-    position: relative;
-    margin: 0px 0px 10px -35px;
-
-    p {
-      margin: -12px 0px 0% 22px;
-      font-family: Quicksand, Avenir, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-      font-size: 14px;
-      display: inline-flex;
-      font-weight: 700;
-      color: rgb(107, 103, 103);
-      position: absolute;
-      text-align: center;
-    }
-
-    input {
-      width: 100%;
-      height: 55px;
-      border: none;
-      background: rgb(255, 255, 255);
-      font-family: Roboto, Quicksand, Avenir, -apple-system, "Segoe UI", "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-      color: rgb(4, 4, 4);
-      outline: none;
-      border-radius: 8px;
-      font-size: 16px;
-      padding: 19px 20px;
-      font-weight: 700;
-    }
-
-    input::placeholder {
-      color: rgba(36, 35, 35, 0.451);
-      opacity: 1;
-    }
-  }
-
-  .switchicon {
-    display: none !important;
-  }
-
-  .buspickup {
-    height: 60px;
-    width: 175px;
-    margin-left: -35px;
-    border-radius: 8px;
-    border: 2.5px solid #dfdfdf; //#dfdfdf
-    cursor: pointer;
-    color: #242222a5;
-    font-size: 17px;
-
-    p {
-      margin: -12px 0px 0% 22px;
-      font-family: Quicksand, Avenir, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-      font-size: 14px;
-      display: inline-flex;
-      font-weight: 700;
-      color: rgb(119, 119, 119);
-      position: absolute;
-    }
-  }
-
-  .bussearch_content {
-    margin-top: 10px !important;
-  }
-
-  .busbutton {
-    display: flex;
-    -webkit-box-align: center;
-    align-items: center;
-    -webkit-box-pack: center;
-    justify-content: center;
-    margin: 0px 0px 0px -20px;
-    
-  }
-
-  .busbtnsearch {
-    display: inline-flex;
-    -webkit-box-align: center;
-    align-items: center;
-    -webkit-box-pack: center;
-    justify-content: center;
-    background: rgb(3, 126, 207);
-    border-radius: 30px;
-    font-size: 22px;
-    line-height: 28px;
-    font-weight: 700;
-    color: rgb(255, 255, 255);
-    padding: 16px 20px;
-    outline: 0px;
-    border: 0px;
-    cursor: pointer;
-    letter-spacing: 2px;
-    width: 180px;
-  }
-
-  .busbtnsearch:hover {
-    background: url('../../asset/images/bg2.png');
-    background-size: cover;
-    background-repeat: no-repeat;
-  }
-}
-
-@media only screen and (min-width:"301px") and (max-width:"380px") {
-  .bussearch {
-    min-height: 310px;
-    position: static;
-    height: auto;
-    margin-top: -5px;
-
-    .headImage {
-      background-image: url(../../asset/images/newbakground.svg);
-      background-repeat: no-repeat;
-      background-size: cover;
-      height: 323px;
-      background-position: bottom;
-      padding-top: 5px;
-      width: 100%;
-      margin-top: 70px;
-    }
-
-    h2 {
-      text-align: center;
-      font-family: Quicksand, Avenir, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-      font-weight: bold;
-      font-size: 24px;
-      font-weight: 700;
-      margin: 30px 0;
-      margin-bottom: 30px;
-      letter-spacing: 1px;
-    }
-
-    .bussearchcontainer {
-      background-color: rgb(255, 255, 255);
-      border-radius: 1.2rem;
-      padding: 2.5rem;
-      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 5px;
-      position: relative;
-      z-index: 6;
-      width: 93%;
-      margin-left: 15px;
-      padding-right: 1rem;
-      margin-top: -8px !important;
-      height: 405px;
-    }
-  }
-
-  .bussearchbox {
-    width: 260px;
-    border: 2.5px solid #dfdfdf;
-    border-radius: 8px;
-    height: 60px;
-    background: rgb(255, 255, 255);
-    cursor: pointer;
-    position: relative;
-    margin: 0px 0px 10px -35px;
-
-    p {
-      margin: -12px 0px 0% 22px;
-      font-family: Quicksand, Avenir, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-      font-size: 14px;
-      display: inline-flex;
-      font-weight: 700;
-      color: rgb(107, 103, 103);
-      position: absolute;
-      text-align: center;
-    }
-
-    input {
-      width: 100%;
-      height: 55px;
-      border: none;
-      background: rgb(255, 255, 255);
-      font-family: Roboto, Quicksand, Avenir, -apple-system, "Segoe UI", "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-      color: rgb(4, 4, 4);
-      outline: none;
-      border-radius: 8px;
-      font-size: 16px;
-      padding: 19px 20px;
-      font-weight: 700;
-    }
-
-    input::placeholder {
-      color: rgba(36, 35, 35, 0.451);
-      opacity: 1;
-    }
-  }
-
-  .switchicon {
-    display: none !important;
-  }
-
-  .buspickup {
-    height: 60px;
-    width: 260px;
-    margin-left: -35px;
-    border-radius: 8px;
-    border: 2.5px solid #dfdfdf; //#dfdfdf
-    cursor: pointer;
-    color: #242222a5;
-    font-size: 17px;
-
-    p {
-      margin: -12px 0px 0% 22px;
-      font-family: Quicksand, Avenir, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-      font-size: 14px;
-      display: inline-flex;
-      font-weight: 700;
-      color: rgb(119, 119, 119);
-      position: absolute;
-    }
-  }
-
-  .bussearch_content {
-    margin-top: 10px !important;
-  }
-
-  .busbutton {
-    display: flex;
-    -webkit-box-align: center;
-    align-items: center;
-    -webkit-box-pack: center;
-    justify-content: center;
-    margin: 13px 0px 0px -20px;
-  }
-
-  .busbtnsearch {
-    display: inline-flex;
-    -webkit-box-align: center;
-    align-items: center;
-    -webkit-box-pack: center;
-    justify-content: center;
-    background: rgb(3, 126, 207);
-    border-radius: 30px;
-    font-size: 22px;
-    line-height: 28px;
-    font-weight: 700;
-    color: rgb(255, 255, 255);
-    padding: 16px 20px;
-    outline: 0px;
-    border: 0px;
-    cursor: pointer;
-    letter-spacing: 2px;
-    width: 250px;
-  }
-
-  .busbtnsearch:hover {
-    background: url('../../asset/images/bg2.png');
-    background-size: cover;
-    background-repeat: no-repeat;
-  }
-}
-
-@media only screen and (min-width:"381px") and (max-width:"400px"){
-  .bussearch {
-    min-height: 310px;
-    position: static;
-    height: auto;
-    margin-top: -5px;
-
-    .headImage {
-      background-image: url(../../asset/images/newbakground.svg);
-      background-repeat: no-repeat;
-      background-size: cover;
-      height: 323px;
-      background-position: bottom;
-      padding-top: 5px;
-      width: 100%;
-      margin-top: 70px;
-    }
-
-    h2 {
-      text-align: center;
-      font-family: Quicksand, Avenir, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-      font-weight: bold;
-      font-size: 24px;
-      font-weight: 700;
-      margin: 30px 0;
-      margin-bottom: 30px;
-      letter-spacing: 1px;
-    }
-
-    .bussearchcontainer {
-      background-color: rgb(255, 255, 255);
-      border-radius: 1.2rem;
-      padding: 2.5rem;
-      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 5px;
-      position: relative;
-      z-index: 6;
-      width: 93%;
-      margin-left: 15px;
-      padding-right: 1rem;
-      margin-top: -8px !important;
-      height: 405px;
-    }
-  }
-
-  .bussearchbox {
-    width: 280px;
-    border: 2.5px solid #dfdfdf;
-    border-radius: 8px;
-    height: 60px;
-    background: rgb(255, 255, 255);
-    cursor: pointer;
-    position: relative;
-    margin: 0px 0px 10px -35px;
-
-    p {
-      margin: -12px 0px 0% 22px;
-      font-family: Quicksand, Avenir, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-      font-size: 14px;
-      display: inline-flex;
-      font-weight: 700;
-      color: rgb(107, 103, 103);
-      position: absolute;
-      text-align: center;
-    }
-
-    input {
-      width: 100%;
-      height: 55px;
-      border: none;
-      background: rgb(255, 255, 255);
-      font-family: Roboto, Quicksand, Avenir, -apple-system, "Segoe UI", "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-      color: rgb(4, 4, 4);
-      outline: none;
-      border-radius: 8px;
-      font-size: 16px;
-      padding: 19px 20px;
-      font-weight: 700;
-    }
-
-    input::placeholder {
-      color: rgba(36, 35, 35, 0.451);
-      opacity: 1;
-    }
-  }
-
-  .switchicon {
-    display: none !important;
-  }
-
-  .buspickup {
-    height: 60px;
-    width: 280px;
-    margin-left: -35px;
-    border-radius: 8px;
-    border: 2.5px solid #dfdfdf; //#dfdfdf
-    cursor: pointer;
-    color: #242222a5;
-    font-size: 17px;
-
-    p {
-      margin: -12px 0px 0% 22px;
-      font-family: Quicksand, Avenir, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-      font-size: 14px;
-      display: inline-flex;
-      font-weight: 700;
-      color: rgb(119, 119, 119);
-      position: absolute;
-    }
-  }
-
-  .bussearch_content {
-    margin-top: 10px !important;
-  }
-
-  .busbutton {
-    display: flex;
-    -webkit-box-align: center;
-    align-items: center;
-    -webkit-box-pack: center;
-    justify-content: center;
-    margin: 13px 0px 0px -20px;
-  }
-
-  .busbtnsearch {
-    display: inline-flex;
-    -webkit-box-align: center;
-    align-items: center;
-    -webkit-box-pack: center;
-    justify-content: center;
-    background: rgb(3, 126, 207);
-    border-radius: 30px;
-    font-size: 22px;
-    line-height: 28px;
-    font-weight: 700;
-    color: rgb(255, 255, 255);
-    padding: 16px 20px;
-    outline: 0px;
-    border: 0px;
-    cursor: pointer;
-    letter-spacing: 2px;
-    width: 250px;
-  }
-
-  .busbtnsearch:hover {
-    background: url('../../asset/images/bg2.png');
-    background-size: cover;
-    background-repeat: no-repeat;
-  }
-}
-
-@media only screen and (min-width:"405px") and (max-width:"450px"){
-  .bussearch {
-    min-height: 310px;
-    position: static;
-    height: auto;
-
-    .headImage {
-      background-image: url(../../asset/images/newbakground.svg);
-      background-repeat: no-repeat;
-      background-size: cover;
-      height: 323px;
-      background-position: bottom;
-      padding-top: 5px;
-      width: 100%;
-      margin-top: 70px;
-    }
-
-    h2 {
-      text-align: center;
-      font-family: Quicksand, Avenir, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-      font-weight: bold;
-      font-size: 24px;
-      font-weight: 700;
-      margin: 30px 0;
-      margin-bottom: 30px;
-      letter-spacing: 1px;
-    }
-
-    .bussearchcontainer {
-      background-color: rgb(255, 255, 255);
-      border-radius: 1.2rem;
-      padding: 2.5rem;
-      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 5px;
-      position: relative;
-      z-index: 6;
-      width: 93%;
-      margin-left: 15px;
-      padding-right: 1rem;
-      margin-top: -8px !important;
-      height: 405px;
-    }
-  }
-
-  .bussearchbox {
-    width: 280px;
-    border: 2.5px solid #dfdfdf;//#dfdfdf
-    border-radius: 8px;
-    height: 60px;
-    background: rgb(255, 255, 255);
-    cursor: pointer;
-    position: relative;
-    margin: 0px 0px 10px 0px;
-
-    p {
-      margin: -12px 0px 0% 22px;
-      font-family: Quicksand, Avenir, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-      font-size: 14px;
-      display: inline-flex;
-      font-weight: 700;
-      color: rgb(107, 103, 103);
-      position: absolute;
-      text-align: center;
-    }
-
-    input {
-      width: 100%;
-      height: 55px;
-      border: none;
-      background: rgb(255, 255, 255);
-      font-family: Roboto, Quicksand, Avenir, -apple-system, "Segoe UI", "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-      color: rgb(4, 4, 4);
-      outline: none;
-      border-radius: 8px;
-      font-size: 16px;
-      padding: 19px 20px;
-      font-weight: 700;
-    }
-
-    input::placeholder {
-      color: rgba(36, 35, 35, 0.451);
-      opacity: 1;
-    }
-  }
-
-  .switchicon {
-    display: none !important;
-  }
-
-  .buspickup {
-    height: 60px;
-    width: 280px;
-    margin-left: 0px;
-    border-radius: 8px;
-    border: 2.5px solid #dfdfdf; //#dfdfdf
-    cursor: pointer;
-    color: #242222a5;
-    font-size: 17px;
-
-    p {
-      margin: -12px 0px 0% 22px;
-      font-family: Quicksand, Avenir, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-      font-size: 14px;
-      display: inline-flex;
-      font-weight: 700;
-      color: rgb(119, 119, 119);
-      position: absolute;
-    }
-  }
-
-  .bussearch_content {
-    margin-top: 10px !important;
-  }
-
-  .busbutton {
-    display: flex;
-    -webkit-box-align: center;
-    align-items: center;
-    -webkit-box-pack: center;
-    justify-content: center;
-    margin: 13px 0px 0px -20px;
-  }
-
-  .busbtnsearch {
-    display: inline-flex;
-    -webkit-box-align: center;
-    align-items: center;
-    -webkit-box-pack: center;
-    justify-content: center;
-    background: rgb(3, 126, 207);
-    border-radius: 30px;
-    font-size: 22px;
-    line-height: 28px;
-    font-weight: 700;
-    color: rgb(255, 255, 255);
-    padding: 16px 20px;
-    outline: 0px;
-    border: 0px;
-    cursor: pointer;
-    letter-spacing: 2px;
-    width: 250px;
-  }
-
-  .busbtnsearch:hover {
-    background: url('../../asset/images/bg2.png');
-    background-size: cover;
-    background-repeat: no-repeat;
-  }
-}
-
-@media only screen and (min-width:"500px") and (max-width:"550px"){
-  .bussearch {
-    min-height: 470px;
-    position: static;
-    height: auto;
-
-    .headImage {
-      background-image: url(../../asset/images/newbakground.svg);
-      background-repeat: no-repeat;
-      background-size: cover;
-      height: 323px;
-      background-position: bottom;
-      padding-top: 5px;
-      width: 100%;
-      margin-top: 70px;
-    }
-
-    h2 {
-      text-align: center;
-      font-family: Quicksand, Avenir, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-      font-weight: bold;
-      font-size: 24px;
-      font-weight: 700;
-      margin: 30px 0;
-      margin-bottom: 30px;
-      letter-spacing: 1px;
-    }
-
-    .bussearchcontainer {
-      background-color: rgb(255, 255, 255);
-      border-radius: 1.2rem;
-      padding: 2.5rem;
-      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 5px;
-      position: relative;
-      z-index: 6;
-      width: 93%;
-      margin-left: 15px;
-      padding-right: 1rem;
-      margin-top: -8px !important;
-      height: 380px;
-    }
-  }
-
-  .bussearchbox {
-    width: 350px;
-    border: 2.5px solid #dfdfdf;//#dfdfdf
-    border-radius: 8px;
-    height: 60px;
-    background: rgb(255, 255, 255);
-    cursor: pointer;
-    position: relative;
-    margin: 0px 0px 10px 0px;
-
-    p {
-      margin: -12px 0px 0% 22px;
-      font-family: Quicksand, Avenir, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-      font-size: 14px;
-      display: inline-flex;
-      font-weight: 700;
-      color: rgb(107, 103, 103);
-      position: absolute;
-      text-align: center;
-    }
-
-    input {
-      width: 100%;
-      height: 55px;
-      border: none;
-      background: rgb(255, 255, 255);
-      font-family: Roboto, Quicksand, Avenir, -apple-system, "Segoe UI", "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-      color: rgb(4, 4, 4);
-      outline: none;
-      border-radius: 8px;
-      font-size: 16px;
-      padding: 19px 20px;
-      font-weight: 700;
-    }
-
-    input::placeholder {
-      color: rgba(36, 35, 35, 0.451);
-      opacity: 1;
-    }
-  }
-
-  .switchicon {
-    display: none !important;
-  }
-
-  .buspickup {
-    height: 60px;
-    width: 350px;
-    margin-left: 0px;
-    border-radius: 8px;
-    border: 2.5px solid #dfdfdf; //#dfdfdf
-    cursor: pointer;
-    color: #242222a5;
-    font-size: 17px;
-
-    p {
-      margin: -12px 0px 0% 22px;
-      font-family: Quicksand, Avenir, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-      font-size: 14px;
-      display: inline-flex;
-      font-weight: 700;
-      color: rgb(119, 119, 119);
-      position: absolute;
-    }
-  }
-
-  .bussearch_content {
-    margin-top: 10px !important;
-  }
-
-  .busbutton {
-    display: flex;
-    -webkit-box-align: center;
-    align-items: center;
-    -webkit-box-pack: center;
-    justify-content: center;
-    margin: 13px 0px 0px -20px;
-  }
-
-  .busbtnsearch {
-    display: inline-flex;
-    -webkit-box-align: center;
-    align-items: center;
-    -webkit-box-pack: center;
-    justify-content: center;
-    background: rgb(3, 126, 207);
-    border-radius: 30px;
-    font-size: 22px;
-    line-height: 28px;
-    font-weight: 700;
-    color: rgb(255, 255, 255);
-    padding: 16px 20px;
-    outline: 0px;
-    border: 0px;
-    cursor: pointer;
-    letter-spacing: 2px;
-    width: 250px;
-  }
-
-  .busbtnsearch:hover {
-    background: url('../../asset/images/bg2.png');
-    background-size: cover;
-    background-repeat: no-repeat;
-  }
-}
-
-@media only screen and (min-width:"760px") and (max-width:"820px") {
-  .bussearch {
-    min-height: 250px;
-    position: static;
-    height: auto;
-    margin-top: -5px;
-
-    .headImage {
-      background-image: url(../../asset/images/newbakground.svg);
-      background-repeat: no-repeat;
-      background-size: cover;
-      height: 280px;
-      background-position: bottom;
-      padding-top: 5px;
-      width: 100%;
-      margin-top: 70px;
-    }
-
-    h2 {
-      text-align: center;
-      font-family: Quicksand, Avenir, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-      font-weight: bold;
-      font-size: 24px;
-      font-weight: 700;
-      margin: 30px 0;
-      margin-bottom: 30px;
-      letter-spacing: 1px;
-    }
-
-    .bussearchcontainer {
-      background-color: rgb(255, 255, 255);
-      border-radius: 1.2rem;
-      padding: 2.5rem;
-      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 5px;
-      position: relative;
-      z-index: 6;
-      width: auto;
-      margin-left: 0px;
-      padding-right: 1rem;
-      margin-top: -8px !important;
-    }
-  }
-
-  .bussearch_content {
-    flex-wrap: wrap;
-    margin-top: 0px !important;
-  }
-
-  .bussearchbox {
-    width: 200px;
-    border: 2.5px solid #dfdfdf;
-    border-radius: 8px;
-    height: 60px;
-    background: rgb(255, 255, 255);
-    cursor: pointer;
-    position: relative;
-    margin-right: 10px;
-
-    p {
-      background-color: #fff;
-      margin-top: -12px;
-      margin-bottom: 0%;
-      width: auto;
-      margin-left: 22px;
-      font-family: Quicksand, Avenir, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-      font-size: 14px;
-      display: inline-flex;
-      font-weight: 700;
-      color: rgb(107, 103, 103);
-      position: absolute;
-      text-align: center;
-    }
-
-    input {
-      width: 100%;
-      height: 55px;
-      border: none;
-      background: rgb(255, 255, 255);
-      font-family: Roboto, Quicksand, Avenir, -apple-system, "Segoe UI", "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-      color: rgb(4, 4, 4);
-      border: none;
-      outline: none;
-      border-radius: 8px;
-      outline: 0px;
-      font-size: 16px;
-      padding: 19px 35px;
-      font-weight: 700;
-    }
-
-    input::placeholder {
-      color: rgba(36, 35, 35, 0.451);
-      opacity: 1;
-    }
-  }
-
-  .buspickup {
-    height: 60px;
-    width: 200px;
-    border-radius: 8px;
-    border: 2.5px solid #dfdfdf; //#dfdfdf
-    cursor: pointer;
-    color: #242222a5;
-    font-size: 17px;
-    margin-left: 0px;
-
-    p {
-      margin: -12px 0px 0% 22px;
-      font-family: Quicksand, Avenir, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-      font-size: 14px;
-      display: inline-flex;
-      font-weight: 700;
-      color: rgb(119, 119, 119);
-      position: absolute;
-    }
-  }
-  .switchicon:hover {
-    background-color: rgb(209, 209, 216);
-  }
-  .Switcharrow {
-    color: #3B77DC;
-    font-size: 20px;
-  }
-}
-
-@media only screen and (min-width:"850px") and (max-width:"920px") {
-  .bussearch {
-    min-height: 250px;
-    position: static;
-    height: auto;
-    margin-top: -5px;
-
-    .headImage {
-      background-image: url(../../asset/images/newbakground.svg);
-      background-repeat: no-repeat;
-      background-size: cover;
-      height: 280px;
-      background-position: bottom;
-      padding-top: 5px;
-      width: 100%;
-      margin-top: 70px;
-    }
-
-    h2 {
-      text-align: center;
-      font-family: Quicksand, Avenir, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-      font-weight: bold;
-      font-size: 24px;
-      font-weight: 700;
-      margin: 30px 0;
-      margin-bottom: 30px;
-      letter-spacing: 1px;
-    }
-
-    .bussearchcontainer {
-      background-color: rgb(255, 255, 255);
-      border-radius: 1.2rem;
-      padding: 2.5rem;
-      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 5px;
-      position: relative;
-      z-index: 6;
-      width: auto;
-      margin-left: 0px;
-      padding-right: 1rem;
-      margin-top: -8px !important;
-    }
-  }
-
-  .bussearch_content {
-    flex-wrap: wrap;
-    margin-top: 0px !important;
-  }
-
-  .switchicon:hover {
-    background-color: rgb(209, 209, 216);
-  }
-  .Switcharrow {
-    color: #3B77DC;
-    font-size: 20px;
-  }
-
-  .bussearchbox {
-    width: 200px;
-    border: 2.5px solid #dfdfdf;
-    border-radius: 8px;
-    height: 60px;
-    background: rgb(255, 255, 255);
-    cursor: pointer;
-    position: relative;
-    margin-right: 10px;
-
-    p {
-      background-color: #fff;
-      margin-top: -12px;
-      margin-bottom: 0%;
-      width: auto;
-      margin-left: 22px;
-      font-family: Quicksand, Avenir, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-      font-size: 14px;
-      display: inline-flex;
-      font-weight: 700;
-      color: rgb(107, 103, 103);
-      position: absolute;
-      text-align: center;
-    }
-
-    input {
-      width: 100%;
-      height: 55px;
-      border: none;
-      background: rgb(255, 255, 255);
-      font-family: Roboto, Quicksand, Avenir, -apple-system, "Segoe UI", "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-      color: rgb(4, 4, 4);
-      border: none;
-      outline: none;
-      border-radius: 8px;
-      outline: 0px;
-      font-size: 16px;
-      padding: 19px 35px;
-      font-weight: 700;
-    }
-
-    input::placeholder {
-      color: rgba(36, 35, 35, 0.451);
-      opacity: 1;
-    }
-  }
-
-  .buspickup {
-    height: 60px;
-    width: 200px;
-    border-radius: 8px;
-    border: 2.5px solid #dfdfdf; //#dfdfdf
-    cursor: pointer;
-    color: #242222a5;
-    font-size: 17px;
-    margin-left: 0px;
-
-    p {
-      margin: -12px 0px 0% 22px;
-      font-family: Quicksand, Avenir, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-      font-size: 14px;
-      display: inline-flex;
-      font-weight: 700;
-      color: rgb(119, 119, 119);
-      position: absolute;
-    }
-  }
-}
-
-@media only screen and (min-width:"950px") and (max-width:"1030px") {
-  .bussearch {
-    min-height: 250px;
-    position: static;
-    height: auto;
-    margin-top: -5px;
-
-    .headImage {
-      background-image: url(../../asset/images/newbakground.svg);
-      background-repeat: no-repeat;
-      background-size: cover;
-      height: 280px;
-      background-position: bottom;
-      padding-top: 5px;
-      width: 100%;
-      margin-top: 70px;
-    }
-
-    h2 {
-      text-align: center;
-      font-family: Quicksand, Avenir, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-      font-weight: bold;
-      font-size: 24px;
-      font-weight: 700;
-      margin: 30px 0;
-      margin-bottom: 30px;
-      letter-spacing: 1px;
-    }
-
-    .bussearchcontainer {
-      background-color: rgb(255, 255, 255);
-      border-radius: 1.2rem;
-      padding: 2.5rem;
-      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 5px;
-      position: relative;
-      z-index: 6;
-      width: auto;
-      margin-left: 0px;
-      padding-right: 1rem;
-      margin-top: -8px !important;
-    }
-  }
-
-  .bussearch_content {
-    flex-wrap: wrap;
-    margin-top: 0px !important;
-  }
-
-  .switchicon:hover {
-    background-color: rgb(209, 209, 216);
-  }
-  .Switcharrow {
-    color: #3B77DC;
-    font-size: 20px;
-  }
-
-  .bussearchbox {
-    width: 275px;
-    border: 2.5px solid #dfdfdf;
-    border-radius: 8px;
-    height: 60px;
-    background: rgb(255, 255, 255);
-    cursor: pointer;
-    position: relative;
-    margin-right: 10px;
-
-    p {
-      background-color: #fff;
-      margin-top: -12px;
-      margin-bottom: 0%;
-      width: auto;
-      margin-left: 22px;
-      font-family: Quicksand, Avenir, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-      font-size: 14px;
-      display: inline-flex;
-      font-weight: 700;
-      color: rgb(107, 103, 103);
-      position: absolute;
-      text-align: center;
-    }
-
-    input {
-      width: 100%;
-      height: 55px;
-      border: none;
-      background: rgb(255, 255, 255);
-      font-family: Roboto, Quicksand, Avenir, -apple-system, "Segoe UI", "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-      color: rgb(4, 4, 4);
-      border: none;
-      outline: none;
-      border-radius: 8px;
-      outline: 0px;
-      font-size: 16px;
-      padding: 19px 35px;
-      font-weight: 700;
-    }
-
-    input::placeholder {
-      color: rgba(36, 35, 35, 0.451);
-      opacity: 1;
-    }
-  }
-
-  .buspickup {
-    height: 60px;
-    width: 275px;
-    border-radius: 8px;
-    border: 2.5px solid #dfdfdf; //#dfdfdf
-    cursor: pointer;
-    color: #242222a5;
-    font-size: 17px;
-    margin-left: 0px;
-
-    p {
-      margin: -12px 0px 0% 22px;
-      font-family: Quicksand, Avenir, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-      font-size: 14px;
-      display: inline-flex;
-      font-weight: 700;
-      color: rgb(119, 119, 119);
-      position: absolute;
-    }
-  }
 }

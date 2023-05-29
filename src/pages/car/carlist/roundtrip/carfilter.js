@@ -6,7 +6,7 @@ import { faIndianRupeeSign,faCircleCheck } from '@fortawesome/free-solid-svg-ico
 import Seater from '../../../../asset/images/bus/seat.png';
 import InputRange from "react-input-range";
 import 'react-input-range/lib/css/index.css';
-import CarFilterData from '../../../../json/Car/carfilter.json'
+
 
 const CarFilter = () => {
 
@@ -54,7 +54,7 @@ const CarFilter = () => {
                     <li><FontAwesomeIcon icon={faCircleCheck} className="text-primary me-3" />Experienced & polite drivers with clean & comfortable cabs</li>
                 </ul>
             </div>
-            <div className='carfilter'>
+            {/* <div className='carfilter'>
                 <div className='filtersearch d-flex mt-2 border-bottom border-1'>
                     <div className='ms-3 mt-1 mb-2'>
                         <div><strong>Filters</strong></div>
@@ -112,7 +112,7 @@ const CarFilter = () => {
                         )}
                     </div>
                 </div>
-            </div>
+            </div> */}
         </>
     )
 }

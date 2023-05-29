@@ -7,7 +7,7 @@ const initialState = {
 };
 
 const reducer = (state = initialState, action) => {
-  // console.log("iam in HOTEL Destination Payload reducer.lll...",action.type)   
+ 
   switch (action.type) {
     case HOTEL_DESTINATION.LOAD_HOTELDESTINATION:
     return {

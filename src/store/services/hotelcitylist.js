@@ -13,17 +13,17 @@ const hotelcitylist = async (citylist) => {
    
   };
   
-  // console.log("ia m in the service");
+
   try {
     const hotelcitylistdata = await axios.get(
       hotelcitylistUrl,
       citylist,
       { headers: headers }
     );
-    //  console.log("hotelcitylist customdata",hotelcitylistdata.data);
+   
     return hotelcitylistdata.data;
   } catch (error) {
-    // console.log(error);
+  
   }
 };
 

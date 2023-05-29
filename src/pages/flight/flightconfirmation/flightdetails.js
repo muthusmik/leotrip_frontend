@@ -18,14 +18,8 @@ const Flightdetails = () => {
     const handleShow = () => setShow(true);
 
 
-
-
-
     const flightoneway = useSelector(state => state.FlightOneway);
     const flightinfo = useSelector(state => state.FlightOnewayInfo);
-
-
-
 
 
     /* # Destination */
@@ -47,8 +41,6 @@ const Flightdetails = () => {
             )
         }
     }
-
-
     /*    # Inner Card Duration */
 
     const HandleBtw = (value) => {

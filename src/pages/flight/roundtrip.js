@@ -17,8 +17,8 @@ import InputGroup from 'react-bootstrap/InputGroup';
 import { loadFlightList } from "../../store/actions/flightsearch"
 import MultiDatePickers from '../../component/datepicker/flightmultipicker';
 import { addDays, format } from 'date-fns';
-const RoundTrip = () => {
-
+const RoundTrip = (props) => {
+   
     /* # AirportCityList */
     const [airportcity, setAirportcity] = useState()
 
@@ -38,7 +38,7 @@ const RoundTrip = () => {
 
     const handleSubmit = () => {
 
-        console.log("K-paper", options, "yy", selectedDay, "gk", returnselection)
+        
 
         if (fromaddress == '') {
             setErrormsg('Please Enter the Valid Location !');
@@ -51,7 +51,7 @@ const RoundTrip = () => {
         }
         else {
             setErrormsg('')
-            console.log("options",options);
+       
             history.push("/flight/flightlist-roundtrip",{state:options})
 
             const flightSearchList = {
@@ -99,6 +99,8 @@ const RoundTrip = () => {
             localStorage.setItem('destinationdata', JSON.stringify(toaddress));
             localStorage.setItem('triptype', JSON.stringify(triptype));
 
+            localStorage.setItem("JourneyTrip","2")
+
         }
 
     }
@@ -109,7 +111,6 @@ const RoundTrip = () => {
     const [toaddress, setToaddress] = React.useState("");
     /*  #swapping */
     const switchText = (from, to) => {
-        console.log("swapping", to.suggestion.airport_city_name);
         handleSelection(to)
         handleSelectiondestination(from)
         setValueDes(to.suggestion.airport_city_name)
@@ -165,9 +166,7 @@ const RoundTrip = () => {
     const handleReturnDateClick = (day) => {
         setReturnDate(format(day, 'PP'))
         setReturnSelection(day)
-        console.log("jk-paper", day)
     };
-    
     useEffect(() => {
         // set current date on component load
         setReturnDate(moment(new Date()).add(1, 'day').format('MMM DD, yyyy'));
@@ -262,15 +261,14 @@ const RoundTrip = () => {
 
     return (
         <>
-            <div className='d-inline-flex flex-wrap content'>
-                
-                    <div className="search-area mt-4">
-                        <p className='w-auto bg-white '>From</p>
+            <div className='d-inline-flex'>
+                <div>
+                    <div className="search-area mt-4" style={{ width: "270px" }}>
+                        <p>From</p>
                         <AutoSuggest
                             suggestions={suggestions}
                             onSuggestionsFetchRequested={({ value }) => {
                                 setValueDes(value);
-                                // console.log("I am selected in ...............................",value)
                                 setSuggestions(getSuggestions(valueDes));
                             }}
                             onSuggestionSelected={(_, suggestionValue) => { handleSelection(suggestionValue) }}
@@ -282,24 +280,23 @@ const RoundTrip = () => {
 
                                 onChange: (_, { newValue, method }) => {
                                     setValueDes(newValue);
-                                    //    console.log("newValue",newValue)
+                                  
                                 }
                             }}
                             highlightFirstSuggestion={true}
                         />
                     </div>
-                
-                <div className='icon justify-content-center'>
+                </div>
+                <div className='icon d-flex justify-content-center'>
                     <FontAwesomeIcon icon={faArrowRightArrowLeft} onClick={() => switchText(fromaddress, toaddress)} style={{ fontSize: "20px", color: "green" }} />
                 </div>
-                <div className="search-area mt-4" >
-                    <p className='w-auto bg-white'>To</p>
+                <div className="search-area mt-4" style={{ width: "270px" }}>
+                    <p style={{ width: "20px" }}>To</p>
                     <AutoSuggest
                         suggestions={suggestions}
 
                         onSuggestionsFetchRequested={({ value }) => {
                             setDestinationdata(value);
-                            // console.log("I am selected in ...............................",value)
                             setSuggestions(getSuggestions(destinationdata));
                         }}
                         onSuggestionSelected={(_, suggestionValue) => { handleSelectiondestination(suggestionValue) }}
@@ -311,7 +308,6 @@ const RoundTrip = () => {
 
                             onChange: (_, { newValue, method }) => {
                                 setDestinationdata(newValue);
-                                //    console.log("newValue",newValue)
                             }
                         }}
                         highlightFirstSuggestion={true}
@@ -320,7 +316,7 @@ const RoundTrip = () => {
                 <MultiDatePickers
                     departure={date}
                     returndate={returndate}
-                    Searchstyle="flight_rangesearchdate"//hotel.scss
+                    Searchstyle="flight_searchdate"
                     selected={selectedRange}
                     onSelect={handleRangeSelect}
                     required="required"
@@ -350,12 +346,12 @@ const RoundTrip = () => {
                         calanderstyle="flight_calander"
                     />
                 </div> */}
-                <div className='traveloption mt-3 traveloption1'>
-                    <p className='w-auto bg-white'>Travellers & Class</p>
+                <div className='traveloption mt-4'>
+                    <p>Travellers & Class</p>
                     <div className="headerSearchItem">
                         <div
                             onClick={() => setOpen(true)}
-                            className="w-100 mt-1 text-center" style={{ height: "60px"}}>
+                            className="w-100 mt-1 text-center" style={{ height: "60px" }}>
                             <span className="headerSearchText">&nbsp;&nbsp;&nbsp;{`${options.adult} adult · ${options.children} children · ${options.Infants} Infants Travel Class: ${triptype.className}`}</span>
                         </div>
                         {open && (

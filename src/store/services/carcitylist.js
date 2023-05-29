@@ -13,17 +13,17 @@ const Carcitylist = async (citylist) => {
    
   };
   
-   console.log("ia m in the service carcitlisyyy",citylist);
+ 
   try {
     const carcitylistdata = await axios.get(
       carcitylistUrl,
       citylist,
       { headers: headers }
     );
-     console.log("carcitylist customdata",carcitylistdata);
+   
     return carcitylistdata.data;
   } catch (error) {
-    // console.log(error);
+   
   }
 };
 

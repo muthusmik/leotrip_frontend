@@ -6,7 +6,7 @@ import { hotelcitylist } from "../services/hotelcitylist";
 
 export function* handleHotelLoad(action) {
   try {
-    // console.log("iam in the saga(hotelcitylist)",action);
+   
     const hoteldata = yield call(hotelcitylist, action.hotel);
     if (hoteldata && hoteldata.error) throw hoteldata.error;
     yield put(setHotelCityList(hoteldata));

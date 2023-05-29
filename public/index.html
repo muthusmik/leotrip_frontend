@@ -2,120 +2,25 @@
 <html lang="en">
 
 <head>
-	<meta charset="utf-8" />
-	
-	<script
-		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAkzGFpcY6vS6TPkyooPpOPNW7mX63S4GE&libraries=places"></script>
-	<link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<meta name="theme-color" content="#000000" />
-	<meta name="description" content=">Hotel | Flight booking" />
-	<link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap" rel="stylesheet">
-	<link href="https://use.fontawesome.com/releases/v5.0.2/css/all.css" rel="stylesheet">
-	<script src="jquery-3.6.1.min.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-	<title>Hotel | Flight booking</title>
-	<script async="" charset="UTF-8" src="https://embed.tawk.to/_s/v4/app/637ddf31c8f/languages/en.js"></script>
-	<script type="text/javascript">
-		var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
-		(function () {
-			var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
-			s1.async = true;
-			s1.src = 'https://embed.tawk.to/637debc7daff0e1306d8fcee/1gihu217l';
-			s1.charset = 'UTF-8';
-			s1.setAttribute('crossorigin', '*');
-			s0.parentNode.insertBefore(s1, s0);
-		})();
-	</script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-	<script>
-
-
-		var seatnumber = new Array();
-		var price = new Array();
-		var previousclass = "";
-		var fairtotal = 0;
-
-
-		function AddRemoveSeat(randomid, seatno, routeid, seatprice) {
-			var classOfDiv = document.getElementById(routeid + '' + seatno).className;
-			var splitvar = $('#' + routeid + '' + seatno).attr('class').split(' ')[0];
-			var newseatprice = 0;
-			if ($('#' + routeid + '' + seatno).hasClass("s" + splitvar)) {
-				newseatprice = calculatemarkup(seatprice);
-				for (var j = 0; j < seatnumber.length; j++) {
-					if (seatnumber[j] === seatno) price.splice(j, 1);
-				}
-				for (var i = 0; i < seatnumber.length; i++) {
-					if (seatnumber[i] === seatno) seatnumber.splice(i, 1);
-				}
-				fairtotal = fairtotal - newseatprice;
-				$('#' + routeid + '' + seatno).removeClass("s" + splitvar);
-			} else {
-				newseatprice = calculatemarkup(seatprice);
-				/* previousclass=classOfDiv;		  */
-				price.push(newseatprice);
-				fairtotal = eval(price.join('+'));
-				seatnumber.push(seatno);
-				$('#' + routeid + '' + seatno).addClass("s" + classOfDiv);
-			}
-			$('.busseats').val(seatnumber);
-			$('.total_fair').val(fairtotal);
-			$('.total_fair_without_con').html(fairtotal);
-			var num_seat = $('.shseat').length;
-			var num_nseat = $('.snseat').length;
-			$('.num_selected').val(num_seat + num_nseat);
-		}
-
-
-		function calculatemarkup(seatprice) {
-			var totalfare_admin = 0;
-			var amount_total = 0;
-			var amount_dsa = 0;
-			var markup_dsa = "";
-			if (Array.isArray(markup_dsa)) {
-				if (markup_dsa['busdsamrk_type'] == "fix") {
-					amount_dsa = (markup_dsa['busdsamrk_amount']);
-				} else {
-					amount_dsa = (seatprice * markup_dsa['busdsamrk_amount']) / 100;
-				}
-			} else if (typeof markup_dsa.busdsamrk_type !== 'undefined') {
-				if (markup_dsa.busdsamrk_type == "fix") {
-					amount_dsa = (markup_dsa.busdsamrk_amount);
-				} else {
-					amount_dsa = (seatprice * markup_dsa.busdsamrk_amount) / 100;
-				}
-			}
-			var totalfare = Math.round(amount_dsa) + Math.round(seatprice);
-			return totalfare;
-		}
-
-		$(".book_btn").click(function () {
-			if (!$('.boarding_loc').val()) {
-				alert("Please Select Boarding Point");
-			}
-			if (!$('.dropping_loc').val()) {
-				alert("Please Select Dorp Point");
-			}
-			if (!$('.busseats').val()) {
-				alert("Please Select Seat");
-			}
-			if ($('.boarding_loc').val() && $('.busseats').val()) {
-				$('#bus_seat').submit();
-			}
-		})
-	</script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-	<script async="" charset="UTF-8" src="https://embed.tawk.to/_s/v4/app/637ddf31c8f/languages/en.js"></script>
+  <meta charset="utf-8" />
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAkzGFpcY6vS6TPkyooPpOPNW7mX63S4GE&libraries=places"></script>
+  <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#000000" />
+  <meta name="description" content=">Hotel | Flight booking" />
+  <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap" rel="stylesheet">
+  <link href="https://use.fontawesome.com/releases/v5.0.2/css/all.css" rel="stylesheet">
+ 
+  <title>Hotel | Flight booking</title>
 </head>
 
 <body>
-	<noscript>You need to enable JavaScript to run this app.</noscript>
-	<div id="root"></div>
-	
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+  <div id="root"></div>
+  
 </body>
 
 </html>

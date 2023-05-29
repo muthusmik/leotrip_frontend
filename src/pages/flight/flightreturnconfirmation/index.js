@@ -11,11 +11,16 @@ import { Form } from 'react-bootstrap';
 import '../../preloader.scss';
 import Card from 'react-bootstrap/Card';
 import warning from "../../../asset/images/warning.png"
+import { useLocation } from 'react-router-dom';
 
-const PackageDetails = () => {
+const PackageDetails = (props) => {
+ 
+    const location=useLocation();
+    console.log("propss.ss.",location.state.mode);
     const [selectedvalue, onselectvalue] = useState(false);
 
-    const [validated, setValidated] = useState(false)
+    const [validated, setValidated] = useState(false);
+    const [resData, setResData] = useState(false)
     const handleValidate = (event) => {
         const form = event.currentTarget;
         if (form.checkValidity() === false) {
@@ -27,33 +32,40 @@ const PackageDetails = () => {
         if (form.checkValidity() === true) {
             onselectvalue(form.checkValidity());
             setValidated(false);
+            
         }
     };
     const [isValid,setIsValid] =useState(false)
     const handleValid = (val) => {
+        console.log("validata",val)
         setIsValid(val)
+    }
+    
+    const handleData = (val) => {
+        console.log("PostResdata",val)
+        setResData(val)
     }
     return (
         <>
             <div className='container flight-pakagedetail  pb-5'>
-                <Form noValidate validated={validated} onClick={handleValidate}>
+             
                     <div className="row listWrapper">
                         <div className="col-8">
-                            <Form noValidate validated={validated} onClick={handleValidate}>
+                          
                                 <Flightdetails />
-                                <TravelerDetails onhandle={handleValid} />
-                                <Cancellation />
+                                <TravelerDetails onhandle={handleValid} handleData={handleData} />
+                                {/* <Cancellation/>
                                 <Insurance />
-                                <Transfer />
-                            </Form>
+                                <Transfer /> */}
+                         
 
                         </div>
                         <div className="col-4 flight-paydetail">
-                            <FareDetails selected={selectedvalue} validate={isValid} />
+                            <FareDetails selected={selectedvalue} validate={isValid} resData={resData} mode={location.state.mode} />
                             {/* <Promte /> */}
                         </div>
                     </div>
-                </Form>
+             
             </div>
         </>
     )
@@ -94,7 +106,7 @@ const PackageInfo = () => {
                 {(flightinfo.data?.length > 0) ? (
                     <h6 className='ms-3'>
                         <span>{flightinfo.data[0].Results.Segments[0][0].Origin.CityName}({flightinfo.data[0].Results.Segments[0][0].Origin.CityCode}) - {HandleDestination(flightinfo.data[0].Results.Segments[0])}</span>
-                        {/* <small style={{ fontSize: "14px" }}>&nbsp;Oneway</small> */}
+                        <small style={{ fontSize: "14px" }}>&nbsp;RoundTrip</small>
                     </h6>
                 ) : null}
 
@@ -104,24 +116,23 @@ const PackageInfo = () => {
 }
 
 
-const FlightreturnConfirmation = () => {
+const FlightConfirmation = () => {
     React.useEffect(() => {
         window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
     }, []);
 
     const flightoneway = useSelector(state => state.FlightOneway);
-    // console.log(flightoneway)
+
     const flightinfo = useSelector(state => state.FlightOnewayInfo);
-    // console.log(flightinfo)
+
     return (
         <>
             {(flightoneway.data?.length > 0) && (flightinfo.data?.length > 0) ? (
                 <>
                     <div>
-
-                        <CustomNavbar />
-                        <div className='background-theme'>
-                            < PackageInfo />
+                        {/* <CustomNavbar /> */}
+                        <div className='flightbackground-theme'>
+                            <PackageInfo />
                         </div>
                         <PackageDetails />
 
@@ -153,4 +164,4 @@ const FlightreturnConfirmation = () => {
     )
 }
 
-export default FlightreturnConfirmation;
+export default FlightConfirmation;

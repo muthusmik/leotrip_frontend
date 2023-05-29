@@ -17,6 +17,7 @@ import ErrorPage from '../404page';
 import { loadBusCityList } from '../../store/actions/buscitylist';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRightArrowLeft } from '@fortawesome/free-solid-svg-icons';
+
 const Bus = () => {
     const [city, setCity] = useState()
     React.useEffect(() => {
@@ -42,8 +43,8 @@ const Bus = () => {
         else if (destination_city == '') {
             setErrormsg('Please Enter the Valid Location !');
         }
-        else if(source_city.localeCompare(destination_city) === 0 ){
-            setErrormsg('Destination is same as source');
+        else if (source_city.localeCompare(destination_city) === 0) {
+            setErrormsg('Source and Destination cannot be same');
         }
         else {
             setErrormsg('')
@@ -61,8 +62,9 @@ const Bus = () => {
             let localstores = [];
             localstores.push({ "from": from });
             localstores.push({ "to": to });
+            localstores.push({ "depart_date": depart_date });
             localStorage.setItem('bussearch', JSON.stringify(localstores));
-            history.push("/bus/buslist", { state: { source_city, destination_city, depart_date } })
+            history.push("/bus/buslist", { state: { source_city, destination_city, depart_date }})
         }
     }
     const buscitylist = useSelector(state => state.BusCityList);
@@ -101,9 +103,6 @@ const Bus = () => {
 
     const [value, setValue] = useState("");
     const [valueDes, setValueDes] = useState("");
-    // console.log("i am A1",value);
-    // console.log("i am A2",valueDes);
-    // console.log("i am A4",city)
     const [suggestions, setSuggestions] = useState([]);
     function getSuggestions(value) {
         const inputValue = value.trim().toLowerCase();
@@ -112,13 +111,9 @@ const Bus = () => {
             lang.CityName.toLowerCase().slice(0, inputLength) === inputValue
         );
     }
-    //  console.log("i am A3",suggestions);
-
     const [from, setFrom] = useState("")
 
     const handleSelection = (suggestionValue) => {
-        console.log(".......", suggestionValue)
-
         setFrom(suggestionValue);
         setSource_city(suggestionValue.suggestion.CityName)
         setSource_city_Id(suggestionValue.suggestion.CityId)
@@ -134,95 +129,95 @@ const Bus = () => {
     }
     return (
         <>
-             {/* {(buscitylist.data) ? ( */}
-                <>
-                    <div className='bussearch'>
-                        <CustomNavbar />
-                        <div className="headImage">
-                            <div className="container">
-                                <h2 className="text-white text-center mt-5">Bus Ticket Booking</h2>
-                                <div className='bussearchcontainer mt-0 mx-auto'>
+            {/* {(buscitylist.data) ? ( */}
+            <>
+                <div className='bussearch'>
+                    {/* <CustomNavbar /> */}
+                    <div className="headImage">
+                        <div className="container">
+                            <h2 className="text-white text-center ">Bus Ticket Booking</h2>
+                            <div className='bussearchcontainer mt-3'>
 
-                                        <h6 className="text-success fw-bold h5">Book Your Tickets With Best Deals</h6>
-                                        {(source_city === '' || destination_city === '' || source_city.localeCompare(destination_city) === 0) ? <h6 className="font-weight-bold text-danger">{errormsg}</h6> : null}
-                                        <div className='d-inline-flex content mt-5 my-4 bussearch_content'>
-                                            <div className='bussearchbox  mt-2 '>
-                                                <p className="bg-white px-2">FROM</p>
-                                                <div>
-                                                    <AutoSuggest
-                                                        suggestions={suggestions}
-                                                        onSuggestionsFetchRequested={({ value }) => {
-                                                            setValue(value);
-                                                            setSuggestions(getSuggestions(value));
-                                                        }}
-                                                        onSuggestionSelected={(_, suggestionValue) => { handleSelection(suggestionValue) }}
-                                                        getSuggestionValue={suggestion => suggestion.CityName}
-                                                        renderSuggestion={suggestion => <span className="suggesstionList">{suggestion.CityName}</span>}
-                                                        inputProps={{
-                                                            placeholder: "Enter Source",
-                                                            value: value,
-                                                            onChange: (_, { newValue, method }) => {
-                                                                setValue(newValue);
-                                                                //    console.log("newValue",method)
-                                                            }
-                                                        }}
-                                                        highlightFirstSuggestion={true}
-                                                    />
-                                                </div>
-                                            </div>
-                                            <div className='icon d-flex justify-content-center my-4 switchicon'>
-                                                <FontAwesomeIcon icon={faArrowRightArrowLeft} onClick={() => switchText(from,to)} className="Switcharrow" />
-                                            </div>
-                                            <div className='bussearchbox mt-2'>
-                                                <p className="bg-white px-2">TO</p>
-
-                                   
+                                <h6 className="text-success fw-bold h5">Book Your Tickets With Best Deals</h6>
+                                <div className='d-inline-flex content mt-5 my-4'>
+                                    <div className='bussearchbox border-bottom border-2 mt-2'>
+                                        <p>FROM</p>
+                                        <div>
                                             <AutoSuggest
                                                 suggestions={suggestions}
                                                 onSuggestionsFetchRequested={({ value }) => {
-                                                    setValueDes(value);
-                                                    setSuggestions(getSuggestions(valueDes));
+                                                    setValue(value);
+                                                    setSuggestions(getSuggestions(value));
                                                 }}
-                                                onSuggestionSelected={(_, suggestionValue) => { handleSelectiondestination(suggestionValue) }}
+                                                onSuggestionSelected={(_, suggestionValue) => { handleSelection(suggestionValue) }}
                                                 getSuggestionValue={suggestion => suggestion.CityName}
                                                 renderSuggestion={suggestion => <span className="suggesstionList">{suggestion.CityName}</span>}
                                                 inputProps={{
-                                                    placeholder: "Enter Destination",
-                                                    value: valueDes,
+                                                    placeholder: "Enter Source",
+                                                    value: value,
                                                     onChange: (_, { newValue, method }) => {
-                                                        setValueDes(newValue);
-                                                        //    console.log("newValue",method)
+                                                        setValue(newValue);
                                                     }
                                                 }}
                                                 highlightFirstSuggestion={true}
                                             />
                                         </div>
+                                    </div>
+                                    <div className='icon d-flex justify-content-center my-4 switchicon'>
+                                        <FontAwesomeIcon icon={faArrowRightArrowLeft} onClick={() => switchText(from, to)} className="Switcharrow" />
+                                    </div>
+                                    <div className='bussearchbox border-bottom border-2 mt-2'>
+                                        <p>TO</p>
 
-                                        <div className='buspickup mt-2'>
-                                            <div className=' buspickupdate'>
-                                                <p className="px-2 bg-white">Pickup Date</p>
-                                                <CustomDatePickers
-                                                    value={date}
-                                                    Searchstyle="Bus_searchdate"
-                                                    selected={depart_date}
-                                                    onDayClick={handleDayClick}
-                                                    required="required"
-                                                    calanderstyle="bus_calander"
-                                                />
-                                            </div>
+
+                                        <AutoSuggest
+                                            suggestions={suggestions}
+                                            onSuggestionsFetchRequested={({ value }) => {
+                                                setValueDes(value);
+                                                setSuggestions(getSuggestions(valueDes));
+                                            }}
+                                            onSuggestionSelected={(_, suggestionValue) => { handleSelectiondestination(suggestionValue) }}
+                                            getSuggestionValue={suggestion => suggestion.CityName}
+                                            renderSuggestion={suggestion => <span className="suggesstionList">{suggestion.CityName}</span>}
+                                            inputProps={{
+                                                placeholder: "Enter Destination",
+                                                value: valueDes,
+                                                onChange: (_, { newValue, method }) => {
+                                                    setValueDes(newValue);
+                                                }
+                                            }}
+                                            highlightFirstSuggestion={true}
+                                        />
+                                    </div>
+
+                                    <div className='buspickup border-bottom border-2  mt-2'>
+                                        <div className=' buspickupdate'>
+                                            <p>Pickup Date</p>
+                                            <CustomDatePickers
+                                                value={date}
+                                                Searchstyle="Bus_searchdate"
+                                                selected={depart_date}
+                                                onDayClick={handleDayClick}
+                                                required="required"
+                                                calanderstyle="bus_calander"
+                                            />
                                         </div>
                                     </div>
-                                    <div className='busbutton'>
-                                        <CustomButton customstyle='busbtnsearch btn btn-primary ' onClick={() => handleSubmit(date)} value="SEARCH BUS"></CustomButton>
-                                    </div>
-
                                 </div>
+                                <div className="text-center">
+                                    {(source_city === '' || destination_city === '' || source_city.localeCompare(destination_city) === 0) ? <h6 className="font-weight-bold text-danger">{errormsg}</h6> : null}
+                                </div>
+                                <div className='busbutton'>
+                                    <CustomButton customstyle='busbtnsearch btn btn-primary ' onClick={() => handleSubmit(date)} value="SEARCH BUS"></CustomButton>
+                                </div>
+
                             </div>
                         </div>
                     </div>
-                    <Homepage/>
-                    <Footer />
-                </>
+                </div>
+                <Homepage />
+                <Footer />
+            </>
             {/* ) : <ErrorPage />} */}
         </>
     );

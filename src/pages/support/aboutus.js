@@ -4,6 +4,7 @@ import { Row, Col } from "react-bootstrap";
 import logo from "../../asset/images/logo.png"
 import driver from "../../asset/images/Car-Drivers.jpg"
 import Footer from "./footer";
+import './support.scss';
 import Header from "./header";
 const AboutUs = () => {
     const history = useHistory();
@@ -16,12 +17,12 @@ const AboutUs = () => {
 
 
     return (
-        <div className="terms">
+        <div>
             <Header />
-            <div class="page-header flex-middle aboutus">
-                <div class="container">
-                    <div class="inner ">
-                        <h1 class="page-title">About Us</h1>
+            <div className="page-header flex-middle bg_img">
+                <div className="container">
+                    <div className="inner ">
+                        <h1 className="page-title">About Us</h1>
                     </div>
                 </div>
             </div>

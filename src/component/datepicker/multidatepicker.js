@@ -69,19 +69,17 @@ export default function MultiDatePickers({ onSelect, Searchstyle, required, sele
   return (
     <div className='headerSearchItem'>
       <div onClick={handleClick} className={Searchstyle}>
-        <div className='row d-inline-flex content'>
+        <div className='d-flex content'>
           <div className='col daterange'>
-            <p className='mb-0' style={style2}><FontAwesomeIcon icon={faCalendarDays} className="ms-2 me-1 text-secondary " />Check-in</p>
+            <p className='mb-0' style={style2}><FontAwesomeIcon icon={faCalendarDays} className="ms-2 me-1 text-secondary "/>Check-in</p>
             <div className=' p-3 ms-1'>{`${checkInDate.toString()}`}</div>
           </div>
 
-          <div className='nights d-flex justify-content-center my-2 '>
-            <div className='mt-1'>
-            <Badge className='nights_badge mt-1 py-1' bg="success" >{nights} &nbsp;nights</Badge>
-            </div>
+          <div className='nights d-flex justify-content-center my-3 '>
+            <Badge bg="success" >{nights} &nbsp;nights</Badge>
           </div>
-          <div className='col daterange'>
-            <p className='mb-0' style={style2}><FontAwesomeIcon icon={faCalendarDays} className="ms-2 me-1 text-secondary " />Check-out</p>
+          <div className='col daterange ms-2'>
+            <p className='mb-0' style={style2}><FontAwesomeIcon icon={faCalendarDays} className="ms-3 me-1 text-secondary "/>Check-out</p>
             <div className=' p-3 ms-1'>{`${checkOutDate.toString()}`}</div>
           </div>
         </div>

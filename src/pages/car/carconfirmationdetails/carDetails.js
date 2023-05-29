@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import CarBookingData from '../../../json/Car/carbookinglist'
 import car from "../../../asset/images/car/car5.png";
 import Badge from 'react-bootstrap/Badge';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -40,12 +39,12 @@ const Cardetails = () => {
             </div>
         </Popover>
     );
-    let { selectedItem } = CarBookingData.find(item => item.id === 1);
+  
 
 
     const location = useLocation();
 
-    // console.log(location, "i am about paymentdata")
+   
     const [cardetail, setCardetail] = React.useState(location.state.state.data)
 
 
@@ -59,10 +58,8 @@ const Cardetails = () => {
 
     const carlist = useSelector(state => state.Car);
     const store = useStore()
-    // console.log("car conform page----->", carlist);
-
+    
     useEffect(() => {
-        // console.log("state value index "+location.index)
     }, [location])
 
     return (
@@ -96,23 +93,23 @@ const Cardetails = () => {
                                         <ul type="none" className='small'>
                                             <li>
                                                 <FontAwesomeIcon icon={faCircleCheck} className="text-primary me-1" />
-                                                <span>{cardetail.Fare.TotalKmCharged} kms included. After that {numberFormat(cardetail.Fare.OutStationExtraKmRate)}/km</span>
+                                                <span>{cardetail.Fare.TotalKmCharged} kms for {numberFormat(cardetail?.Fare?.BaseFare)}. For extra kilometers {numberFormat(cardetail.Fare.OutStationExtraKmRate, "INR")}/km</span>
                                             </li>
-                                            <li>
+                                            {/* <li>
                                                 <FontAwesomeIcon icon={faCircleCheck} className="text-primary me-1" />
                                                 <span>Free cancellation until 1 hour before pickup</span>
+                                            </li> */}
+                                            <li>
+                                                <FontAwesomeIcon icon={faCircleCheck} className="text-primary me-1" />
+                                                <span>Advance amount for this cab is {numberFormat(cardetail.Fare.AdvanceAmount)} only</span>
                                             </li>
                                             <li>
                                                 <FontAwesomeIcon icon={faCircleCheck} className="text-primary me-1" />
-                                                <span>Reserve this cab at {numberFormat(cardetail.Fare.AdvanceAmount)} only</span>
+                                                <span>Outstation driver allowance is {numberFormat(cardetail.Fare.OutStationDriverAllowance)} only</span>
                                             </li>
                                             <li>
                                                 <FontAwesomeIcon icon={faCircleCheck} className="text-primary me-1" />
-                                                <span>Outstation driver allowance at {numberFormat(cardetail.Fare.OutStationDriverAllowance)} only</span>
-                                            </li>
-                                            <li>
-                                                <FontAwesomeIcon icon={faCircleCheck} className="text-primary me-1" />
-                                                <span>waiting charges at {numberFormat(cardetail.Fare.LocalExtraHrRate)}/Hrs</span>
+                                                <span>waiting charges is {numberFormat(cardetail.Fare.LocalExtraHrRate)}/Hrs</span>
                                             </li>
                                         </ul>
                                     </div>
@@ -129,13 +126,13 @@ const Cardetails = () => {
                         >
                             <Badge bg="success" className='mx-1'>Free Waiting upto 45 minutes</Badge>
                         </OverlayTrigger>
-                        <OverlayTrigger
+                        {/* <OverlayTrigger
                             trigger={['hover', 'focus']}
                             placement="bottom"
                             overlay={cancel}
                         >
                             <Badge bg="success" className='mx-1'>Free cancellation until 1 hour before pickup</Badge>
-                        </OverlayTrigger>
+                        </OverlayTrigger> */}
                         <OverlayTrigger
                             trigger={['hover', 'focus']}
                             placement="bottom"

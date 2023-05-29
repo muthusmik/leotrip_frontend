@@ -3,16 +3,16 @@ const CarOfferDetails =
 
       {
          id: 1,
-         Banner: require("../../asset/images/offers/car.jpg"),
+         Banner: require("../../asset/images/offers/car1.jpg"),
          Description: "Car",
          offer: "Get Up To Rs.500 OFF On First Booking!",
          valid: "New Offer",
       },
       {
          id: 2,
-         Banner: require("../../asset/images/offers/car.jpg"),
+         Banner: require("../../asset/images/offers/car3.jpg"),
          Description: "Car",
-         offer: "Get Up To Rs.500 OFF On First Booking!",
+         offer: "Get Up To Rs.200 OFF on Booking Above 250KM!",
          valid: "New Offer",
       },
       {

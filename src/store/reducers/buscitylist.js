@@ -7,7 +7,7 @@ const initialState = {
 };
 
 const reducer = (state = initialState, action) => {
-  //  console.log("iam in bussss reducer",action)
+
   switch (action.type) {
     case BUSCITYLIST.LOAD:
       return {

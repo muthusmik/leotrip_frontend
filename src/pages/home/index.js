@@ -18,10 +18,10 @@ function Home() {
 
    return (
       <div>
-         <CustomNavbar /* onhandle={onhandle} *//>
+        
          <div><Header  /* selected={selectedvalue} *//></div>
          <div className='mt-5'><Homepage /></div>
-        <div><Footer /></div> 
+         <Footer />
       </div>
    )
 };

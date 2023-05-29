@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React, { useState, useRef } from "react";
 import { useHistory } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
@@ -9,99 +9,41 @@ import { faAnglesRight } from '@fortawesome/free-solid-svg-icons';
 import Accordion from 'react-bootstrap/Accordion';
 import { useSelector, useDispatch } from "react-redux";
 import { useLocation } from 'react-router-dom';
-import { loadFlightOnewayBook } from '../../../store/actions/flightonewaybook';
+import FlightPayUForm from '../flightpayment/flightpayu';
 import { useEffect } from "react";
 
 
-export const FareDetails = ({ selected,validate }) => {
+export const FareDetails = ({ selected, validate, resData, mode }) => {
 
   const location = useLocation()
-  // console.log(location, "i am about flightbookdata")
-const [isValid,setIsValid] =useState(false)
+  console.log("FareDetails.....Mode", mode)
 
+  const flightinfo = useSelector(state => state.FlightOnewayInfo);
+  const flightretun = useSelector(state => state.FlightReturnInfo)
+  let DepartFlightPrice = flightinfo.data[0].Results.Fare
+  let ArrivalFlightPrice = (flightretun?.data).length > 0 ? flightretun.data[0].Results.Fare : [];
+  console.log("bbqqq", flightinfo)
+  console.log("kkkq", flightretun)
+  const [onshow, setOnhow] = useState();
   useEffect(() => {
-    setIsValid(validate)
-  },[])
-  // console.log("pricing page",isValid)
+    const usertoken = JSON.parse(localStorage.getItem('token'))
+    if ((usertoken) && (validate == true)) {
+      setOnhow(true)
+      console.log("whitebow")
+    }
+    else {
+      setOnhow(false)
+      console.log("rainbow")
+    }
+  }, [validate])
+
 
   const history = useHistory();
 
   const dispatch = useDispatch();
 
-  const handleSelect = (TraceId, SrdvIndex, ResultIndex) => {
+  const handleSelect = (TraceId, SrdvIndex, ResultIndex, BaseFare, tax) => {
 
-    // // # flightBook
-
-    const flightonewaybook = [
-
-      {
-        "EndUserIp": "107.180.105.183",
-        "ClientId": "180109",
-        "UserName": "SKdigPa8",
-        "Password": "A$JSkEf4#4",
-        "SrdvType": "MixAPI",
-        "SrdvIndex": SrdvIndex,
-        "TraceId": TraceId,
-        "ResultIndex": ResultIndex,
-        "Passengers": [
-          {
-            "Title": "Mr",
-            "FirstName": "sairam",
-            "LastName": "SRDV",
-            "PaxType": "1",
-            "DateOfBirth": "1992-02-15",
-            "Gender": "1",
-            "PassportNo": "",
-            "PassportExpiry": "",
-            "AddressLine1": "Noida",
-            "City": "Noida",
-            "CountryCode": "IN",
-            "CountryName": "India",
-            "ContactNo": "9643737502",
-            "Email": "brajesh@srdvtechnologies.com",
-            "IsLeadPax": true,
-            "Fare": {
-              "BaseFare": 2000,
-              "Tax": 667,
-              "TransactionFee": "0",
-              "YQTax": 0,
-              "AdditionalTxnFeeOfrd": 0,
-              "AdditionalTxnFeePub": 0,
-              "AirTransFee": "0"
-            }
-          },
-          {
-            "Title": "Mr",
-            "FirstName": "nambi",
-            "LastName": "SRDV",
-            "PaxType": "2",
-            "DateOfBirth": "2012-02-15",
-            "Gender": "1",
-            "PassportNo": "",
-            "PassportExpiry": "",
-            "AddressLine1": "Noida",
-            "City": "Noida",
-            "CountryCode": "IN",
-            "CountryName": "India",
-            "ContactNo": "9643737502",
-            "Email": "brajesh@srdvtechnologies.com",
-            "IsLeadPax": false,
-            "Fare": {
-              "BaseFare": 2000,
-              "Tax": 667,
-              "TransactionFee": "0",
-              "YQTax": 0,
-              "AdditionalTxnFeeOfrd": 0,
-              "AdditionalTxnFeePub": 0,
-              "AirTransFee": "0"
-            }
-          }
-        ]
-      }
-    ]
-    dispatch(loadFlightOnewayBook(flightonewaybook));
-
-    history.push("/flight/Flightpayment")
   }
 
   const numberFormat = (value, cur) =>
@@ -111,9 +53,8 @@ const [isValid,setIsValid] =useState(false)
       maximumFractionDigits: 0
     }).format(value);
 
-  const flightinfo = useSelector(state => state.FlightOnewayInfo);
-  const flightreturninfo = useSelector(state => state.FlightReturnInfo);
-   //console.log("iam raja", flightinfo)
+
+
   return (
     <>
       <Card>
@@ -121,7 +62,7 @@ const [isValid,setIsValid] =useState(false)
           <div className="row">
             <div className="col-8">
               <h4>Price Summary</h4>
-              <h6 className="small"> Inclusive of GST</h6>
+              {/* <h6 className="small"> Inclusive of GST</h6> */}
             </div>
           </div>
         </Card.Header>
@@ -132,29 +73,33 @@ const [isValid,setIsValid] =useState(false)
                 <h6 className="mb-0">Base Fare</h6>
               </div>
               <div className="col-4" style={{ textAlign: "right" }}>
-                <h6>{numberFormat(flightinfo.data[0].Results.Fare.BaseFare+(flightreturninfo.data[0]?.Results?.Fare?.BaseFare ? flightreturninfo.data[0].Results.Fare.BaseFare: 0), flightinfo.data[0].Results.Fare.Currency)}</h6>
+                <h6>{numberFormat(flightinfo.data[0].Results.Fare.BaseFare, flightinfo.data[0].Results.Fare.Currency)}</h6>
               </div>
             </div>
-            <div className="row">
-              <div className="col-8">
-                <h6>Discount</h6>
-              </div>
-              <div className="col-4" style={{ textAlign: "right" }}>
-                <h6 className="text-success">{numberFormat(flightinfo.data[0].Results.Fare.Discount, flightinfo.data[0].Results.Fare.Currency)} </h6>
-              </div>
+            <div>
+              {(flightinfo.data[0].Results.Fare.Discount != 0) ? (
+                <div className="row">
+                  <div className="col-8">
+                    <h6>Discount</h6>
+                  </div>
+                  <div className="col-4" style={{ textAlign: "right" }}>
+                    <h6 className="text-success">{numberFormat(flightinfo.data[0].Results.Fare.Discount, flightinfo.data[0].Results.Fare.Currency)} </h6>
+                  </div>
+                </div>
+              ) : null}
             </div>
             <div className="row">
               <div className="col-8">
                 <h6>Taxes &amp; fees</h6>
               </div>
               <div className="col-4" style={{ textAlign: "right" }}>
-                <h6>{numberFormat(flightinfo.data[0].Results.Fare.Tax+(flightreturninfo.data[0]?.Results?.Fare?.Tax ? flightreturninfo.data[0].Results.Fare.Tax: 0), flightinfo.data[0].Results.Fare.Currency)}</h6>
+                <h6>{numberFormat(flightinfo.data[0].Results.Fare.Tax + flightinfo.data[0].Results.Fare.OtherCharges, flightinfo.data[0].Results.Fare.Currency)}</h6>
               </div>
               {/* <div className="col-8">
                 <h6>Hojoy offer</h6>
               </div>
               <div className="col-4" style={{ textAlign: "right" }}>
-                <h6>{numberFormat(flightinfo.data[0].Results.Fare.PublishedFare-flightinfo.data[0].Results.Fare.OfferedFare, flightinfo.data[0].Results.Fare.Currency)}</h6>
+                <h6>{numberFormat(flightinfo.data[0].Results.Fare.PublishedFare - flightinfo.data[0].Results.Fare.OfferedFare, flightinfo.data[0].Results.Fare.Currency)}</h6>
               </div> */}
             </div>
             <hr />
@@ -163,20 +108,109 @@ const [isValid,setIsValid] =useState(false)
                 <h6>Payable Amount</h6>
               </div>
               <div className="col-4" style={{ textAlign: "right" }}>
-                <b className="text-danger">{numberFormat(flightinfo.data[0].Results.Fare.OfferedFare+(flightreturninfo.data[0]?.Results?.Fare?.OfferedFare ? flightreturninfo.data[0].Results.Fare.OfferedFare: 0), flightinfo.data[0].Results.Fare.Currency)}</b>
+                {console.log("flightinfo.data[0].Results.Fare.PublishedFare",flightinfo.data[0].Results.Fare.PublishedFare)}
+                <b className="text-danger">{numberFormat(flightinfo.data[0].Results.Fare.PublishedFare, flightinfo.data[0].Results.Fare.Currency)}</b>
+                {/* <b className="text-danger">{(flightinfo.data[0].Results.Fare.PublishedFare, flightinfo.data[0].Results.Fare.Currency)}</b> */}
               </div>
             </div>
             <br />
-            <div className=" d-grid gap-2">
-              {(selected === false || isValid===true) ? (
+            {(flightretun.data).length <= 0 ?
+              <>
+                (onshow === false) ? (
                 <>
                   <h6 className="small text-danger text-center">Please fill the Guest details and submit the form</h6>
-                  <Button  disabled onClick={() => handleSelect(flightinfo.data[0].TraceId, flightinfo.data[0].Results.SrdvIndex, flightinfo.data[0].Results.ResultIndex)}>Pay &amp; confirm now</Button></>
-              ) : (<Button  onClick={() => handleSelect(flightinfo.data[0].TraceId, flightinfo.data[0].Results.SrdvIndex, flightinfo.data[0].Results.ResultIndex)}>Pay &amp; confirm now</Button>)}
-            </div>
-          </Card.Body>
+                </>
+                ) : null
+                <div className=" d-grid gap-2">
+                  {onshow && (
+                    <>
+                      <FlightPayUForm resData={resData} mode={mode} />
+                    </>
+                  )}
+                </div>
+              </>
+              : null}
+          </Card.Body >
+
         )}
-      </Card>
+        {
+          (flightretun.data?.length > 0) && (
+            
+            <Card.Body>
+              <h6 className="text-primary fw-bold">Second Flight Price Details</h6>
+              <div className="row">
+                <div className="col-8">
+                  <h6 className="mb-0">Base Fare</h6>
+                </div>
+                <div className="col-4" style={{ textAlign: "right" }}>
+                  <h6>{numberFormat(flightretun.data[0].Results.Fare.BaseFare, flightretun.data[0].Results.Fare.Currency)}</h6>
+                </div>
+              </div>
+              <div>
+                {(flightretun.data[0].Results.Fare.Discount != 0) ? (
+                  <div className="row">
+                    <div className="col-8">
+                      <h6>Discount</h6>
+                    </div>
+                    <div className="col-4" style={{ textAlign: "right" }}>
+                      <h6 className="text-success">{numberFormat(flightretun.data[0].Results.Fare.Discount, flightretun.data[0].Results.Fare.Currency)} </h6>
+                    </div>
+                  </div>
+                ) : null}
+              </div>
+              <div className="row">
+                <div className="col-8">
+                  <h6>Taxes &amp; fees</h6>
+                </div>
+                <div className="col-4" style={{ textAlign: "right" }}>
+                  <h6>{numberFormat(flightretun.data[0].Results.Fare.Tax + flightretun.data[0].Results.Fare.OtherCharges, flightretun.data[0].Results.Fare.Currency)}</h6>
+                </div>
+                {/* <div className="col-8">
+                  <h6>Hojoy offer</h6>
+                </div>
+                <div className="col-4" style={{ textAlign: "right" }}>
+                  <h6>{numberFormat(flightretun.data[0].Results.Fare.PublishedFare - flightretun.data[0].Results.Fare.OfferedFare, flightretun.data[0].Results.Fare.Currency)}</h6>
+                </div> */}
+              </div>
+              <hr />
+              <div className="row">
+                <div className="col-8">
+                  <h6>Payable Amount</h6>
+                </div>
+                <div className="col-4" style={{ textAlign: "right" }}>
+              {/* <small className="fw-bold"><del>{numberFormat(flightretun.data[0].Results.Fare.PublishedFare, flightretun.data[0].Results.Fare.Currency)}</del></small><br/> */}
+                  <b className="text-danger">{numberFormat(flightretun.data[0].Results.Fare.PublishedFare, flightretun.data[0].Results.Fare.Currency)}</b>
+                </div>
+              </div>
+              <br />
+
+              {/* payment total */}
+              <div className="row">
+                <div className="col-8">
+                  <h6>Total Travel Fare (Inc all taxes)</h6>
+                </div>
+                <div className="col-4" style={{ textAlign: "right" }}>
+                  <b className="text-danger">{numberFormat(flightretun.data[0].Results.Fare.PublishedFare + flightinfo.data[0].Results.Fare.PublishedFare, flightinfo.data[0].Results.Fare.Currency)}</b>
+                </div>
+              </div>
+              {(onshow === false) ? (
+                <>
+                  <h6 className="small text-danger text-center">Please fill the Guest details and submit the form</h6>
+                </>
+              ) : null}
+              <div className=" d-grid gap-2">
+                {onshow && (
+                  <>
+                    <FlightPayUForm resData={resData} booktype={(flightretun.data?.length > 0) ? true : false} />
+                  </>
+                )}
+              </div>
+              {/* payment total */}
+            </Card.Body>
+
+          )
+        }
+      </Card >
     </>
   )
 }

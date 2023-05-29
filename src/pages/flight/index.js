@@ -5,6 +5,8 @@ import { loadAirLine } from "../../store/actions/airline"
 import OneWay from './oneway';
 import RoundTrip from './roundtrip';
 import MultiCity from './multicity';
+import localStorage from 'redux-persist/es/storage';
+
 import { useDispatch } from "react-redux";
 import { useLocation } from "react-router-dom";
 
@@ -18,18 +20,16 @@ export const FlightContainer = () => {
 
 
     return (
-        <div className='flightcon'>
+        <div>
             <div className='triptype' value={value}>
-                <div className="form-check form-check-inline inp">
+                <div className="form-check form-check-inline" style={{ alignItems: 'center' }}>
                     <input className="check-input" type="radio" name="triptype" id="oneway" value="oneway" defaultChecked onClick={onhandle}></input>
                     <label className="check-label" htmlFor="oneway">One Way</label>
                 </div>
-                <div className="form-check form-check-inline inp">
-                    <input className="check-input" type="radio" name="triptype" id="roundtrip" value="roundtrip"  onClick={onhandle}></input>
+                <div className="form-check form-check-inline" style={{ alignItems: 'center' }}>
+                    <input className="check-input" type="radio" name="triptype" id="roundtrip" value="roundtrip" onClick={onhandle}></input>
                     <label className="check-label" htmlFor="round-trip">Round-trip</label>
-
                 </div>
-
                 {/* <div className="form-check form-check-inline">
                     <input className="check-input" type="radio" name="triptype" id="multicity" value="multicity" onClick={onhandle} ></input>
                     <label className="check-label" htmlFor="multi-city">Multi-city</label>
@@ -91,11 +91,10 @@ export const Flight = () => {
         }
         dispatch(loadAirLine(airline));
 
-    }, [dispatch])
+    }, [])
 
-    localStorage.clear();
     return (
-        <div className='flightsearch' >
+        <div className='flightsearch'>
             <h2 className='text-white'>Book Domestic and International Flight Tickets</h2>
             <div className='field mt-3'>
                 <FlightContainer />

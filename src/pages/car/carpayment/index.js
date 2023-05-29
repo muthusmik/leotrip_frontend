@@ -1,10 +1,11 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import CustomNavbar from '../../../component/navbar/Navbar';
 import CarPaymentDetails from './carpaymentdetails';
 import CarPaymentPrice from './carpayment';
 import './payment.scss';
-import { useSelector } from "react-redux";
+import { useSelector,useDispatch} from "react-redux";
 import Footer from '../../../component/footer/footer';
+import { CarBookingDetails } from '../../../store/services/car';
 import moment from 'moment';
 const CarPayMethod = () => {
     return (
@@ -26,12 +27,16 @@ const CarPayMethod = () => {
 const CarContent = () => {
     // store access
     const carlist = useSelector(state => state.Car);
-    //    console.log("trip-info header", carlist.data[0].RequestData)
+    
+    const dispatch = useDispatch();
+    const CarbookingData = useSelector(state => state.CarBook)
+
+    
 
     return (
         <>
-            <div className="container text-white buspackageinfo">
-                <h3 name="Review your Booking" className="">Payment</h3>
+            <div className="container text-white buspackageinfo pt-5">
+                <h3 name="Review your Booking" className="">Payment and Bookingdetails</h3>
                 {(carlist.data[0]?.length > 0) ? 
                 <h5>
                    <span> {carlist.data[0] && carlist.data[0].RequestData.CityData[0].Name} - {carlist.data[0] && carlist.data[0].RequestData.CityData[1].Name}</span>
@@ -51,7 +56,7 @@ const CarPayment = () => {
 
     return (
         <>
-            <CustomNavbar />
+            {/* <CustomNavbar /> */}
             <div>
                 <div className='carpaybackground-theme'>
                     <CarContent />

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Card from 'react-bootstrap/Card';
 import Badge from 'react-bootstrap/Badge';
+import { InputGroup } from 'react-bootstrap';
 import Accordion from 'react-bootstrap/Accordion';
 import icici from '../../../asset/images/bus/ICICI.png';
 import bus from '../../../asset/images/bus/bus.png';
@@ -18,23 +19,22 @@ export const Busdetails = () => {
     const location = useLocation();
 
     // store access
-    // const businfo = useSelector(state => state.BusInfo);
-    // const store = useStore()
-    // console.log("trip-info", businfo.data.Result)
+   
+  
     const [busdata, setBusData] = useState(location.state.state);
-    // console.log("setBusData.....", busdata)
+  
 
-    const businfo = useSelector(state => state.BusInfo);
-    const buslist = useSelector(state => state.Bus);
-    // console.log("trip-list..........", businfo)
+   
+    
+   
     const seat = location.state
-    console.log("trip-list..........", seat)
+   
 
     // Modal views
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-    // const [show, setShow] = useState(false);
+   
     return (
         <>
             <Card>
@@ -95,6 +95,7 @@ export const Busdetails = () => {
                                 <h6>Boarding Point Details</h6>
                                 <h6 className='fw-bold text-danger'>{seat.boardingPoints}</h6>
                                 <p className="mb-0" style={{ fontSize: "12px" }}>{seat.boardLocation}</p>
+                                <p className="mb-0" style={{ fontSize: "12px" }}>{seat.boardaddress}</p>
                                 <Badge bg="primary">{moment(seat.boardTime).format("MMM DD YYYY hh:mm a")}</Badge>
                             </div>
                         </Card.Body>
@@ -103,24 +104,23 @@ export const Busdetails = () => {
                 <div className='col-6'>
                     <Card>
                         <Card.Body>
-                            <div className="container">
+                            <div className="container p-1">
                                 <h6>Dropping Point Details</h6>
                                 <h6 className='fw-bold text-danger'>{seat.droppingPoints}</h6>
                                 <p className="mb-0" style={{ fontSize: "12px" }}>{seat.dropLocation}</p>
-                                <Badge bg="primary mt-0">{moment(seat.dropTime).format("MMM DD YYYY hh:mm a")}</Badge>
+                                <Badge bg="primary mt-3">{moment(seat.dropTime).format("MMM DD YYYY hh:mm a")}</Badge>
                             </div>
                         </Card.Body>
                     </Card>
                 </div>
-
             </div>
-            <Card className='mt-2 text-success' style={{ backgroundColor: "#e6ffe6" }}>
+            {/* <Card className='mt-2 text-success' style={{ backgroundColor: "#e6ffe6" }}>
                 <Card.Body>
                     <p className='fs-6'>You made the right choice. Travellers liked this bus for</p>
                     <Badge bg="success">Cleanliness</Badge>
                     <Badge bg="success ms-2">Punctuality</Badge>
                 </Card.Body>
-            </Card>
+            </Card> */}
         </>
     )
 }
@@ -294,6 +294,7 @@ export const TripType = () => {
     };
 
     const onChange = e => {
+        console.log("newyear",e)
         setValue(e.target.value);
     };
     return (
@@ -302,13 +303,13 @@ export const TripType = () => {
                 <Accordion.Item eventKey="1" className='mt-3'>
                     <Accordion.Header><h5>Trip Type</h5></Accordion.Header>
                     <Accordion.Body>
-                        <Form noValidate validated={validated}>
-
+                        <Form  validated={validated}>
                             <Form.Group onChange={onChange} value={value}>
                                 <div className="row">
-                                    <div className="col-3">
+                                <InputGroup hasValidation>
+                                    <div className="col-3"> 
                                         <Form.Check
-                                            className="h6 pb-3 fw-bold"
+                                            className="h6 pb-3 fw-bold checkstatus"
                                             label="Personal"
                                             name="trip_type"
                                             type="radio"
@@ -318,7 +319,7 @@ export const TripType = () => {
                                     </div>
                                     <div className="col-3">
                                         <Form.Check
-                                            className="h6 pb-3 fw-bold"
+                                            className="h6 pb-3 fw-bold checkstatus"
                                             label="Business"
                                             name="trip_type"
                                             type="radio"
@@ -328,9 +329,9 @@ export const TripType = () => {
                                     <Form.Control.Feedback type="invalid">
                                         Please provide a valid State.
                                     </Form.Control.Feedback>
+                                 </InputGroup>
                                 </div>
                                 <div className='col-3 text-end'>
-
                                 </div>
                             </Form.Group>
                         </Form>

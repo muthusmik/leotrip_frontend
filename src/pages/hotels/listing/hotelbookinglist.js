@@ -11,13 +11,13 @@ import { loadHotelInfo } from "../../../store/actions/hotelinfo";
 import { loadBlockRoom } from "../../../store/actions/blockroom";
 import Parser from 'html-react-parser';
 import { previewFile } from "rsuite/esm/utils";
-import warning from "../../../asset/images/warning.png"
+import nomessage from "../../../asset/images/nomessage.png"
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Popover from 'react-bootstrap/Popover'
 import nodata from '../../../asset/images/hotel/no-result-found.png'
 import './hotelloader.scss'
 import { loadHotelRoom } from "../../../store/actions/hotelroom";
-
+import ErrorImage from "../../../asset/images/hotel/noimage.jpg"
 const HotelBooking = ({ filter, handleError /* handleMessage */ }) => {
 
 
@@ -27,7 +27,7 @@ const HotelBooking = ({ filter, handleError /* handleMessage */ }) => {
 
     // useEffect(() =>{
     //     setMessage(handleError)
-    //     console.log("i am lose",handleError) 
+     
     // },[handleError])
 
 
@@ -38,13 +38,14 @@ const HotelBooking = ({ filter, handleError /* handleMessage */ }) => {
 
     const Hotel = useSelector(state => state.HotelSearch)
 
-    console.log("iam bird", Hotel?.error?.errors)
+   
     const guestdetails = JSON.parse(localStorage.getItem('roomGuest'));
-    console.log('roomGuest', guestdetails)
+  
+    const [imageUrl,setImageUrl]= useState(ErrorImage);
 
-    const handleSubmit = (HotelCode, ResultIndex, hotel) => {
+    const handleSubmit = (HotelCode, ResultIndex, hotel,HotelName) => {
 
-        console.log("hotel details........", hotel)
+        
         /* # Hotelinfo dispatch */
         const hotelInfo = {
             "ResultIndex": ResultIndex,
@@ -60,8 +61,8 @@ const HotelBooking = ({ filter, handleError /* handleMessage */ }) => {
             "TraceId": Hotel.data[2]
         }
         dispatch(loadHotelRoom(hotelRoom));
-        history.push("/hotel/hoteldetails")
-        console.log("data result id.....", HotelCode)
+        history.push("/hotel/hoteldetails",{ state:{ResultIndex:ResultIndex, HotelCode:HotelCode,TraceId:Hotel.data[2],HotelName:HotelName}})
+
     }
 
     /* # STORE value assing to state*/
@@ -71,11 +72,9 @@ const HotelBooking = ({ filter, handleError /* handleMessage */ }) => {
     useEffect(() => {
         setHotelSearchList(filter);
         setError(handleError)
-        /* if (handleMessage === "") {
-            setHotelSearchList([]);
-        } */
+        
     }, [filter, handleError])
-    console.log("setHotelSearchList .. error", error)
+
     // # Loader
     var preloadTime;
 
@@ -115,7 +114,7 @@ const HotelBooking = ({ filter, handleError /* handleMessage */ }) => {
             setViewImage(true)
             setShowImage(idx)
         }
-        // console.log('cliked');
+       
     };
 
     const [show, setShow] = useState('');
@@ -124,7 +123,7 @@ const HotelBooking = ({ filter, handleError /* handleMessage */ }) => {
     }
 
 
-    console.log("hi Iam Buusha", hotelSearchList)
+    
 
 
     const percentage = (base, offer) => {
@@ -142,24 +141,21 @@ const HotelBooking = ({ filter, handleError /* handleMessage */ }) => {
     return (
         <>
             {(hotelSearchList?.length > 0) ?
-                <Card className="p-2 py-auto mb-3">
-                    <h6>showing <span className="fw-bold">{hotelSearchList.length}&nbsp;Hotels</span></h6>
-                </Card>
-                : <Card className="p-2 py-auto mb-3">
-                    <h6>showing <span className="fw-bold">0&nbsp;Hotels</span></h6>
-                </Card>}
+                <div className="p-2 py-auto">
+                    <h6 className="hotel-result">showing <span className="fw-bold">{hotelSearchList.length}&nbsp;Hotels</span></h6>
+                </div>
+                : null}
             {(handleError === false && hotelSearchList && hotelSearchList.length > 0) ? (hotelSearchList) && (hotelSearchList).map((hotel, index) => (
                 <div className="hotelbooking mb-4" key={index}>
                     <div className="hotel-card bg-white shadow  d-flex">
                         <div className="hotel-card_images">
                             <div className="carouselslider">
                                 <img src={hotel.HotelPicture}
-                                    // onClick={() => handleShowDialog(index)}
                                     onClick={() => handleSubmit(hotel.HotelCode, hotel.ResultIndex)}
                                     onError={event => {
-                                        event.target.src = "http://photos.hotelbeds.com/giata/original/36/365958/365958a_hb_r_001.jpg"
+                                        event.target.src ="http://localhost:3000/images/noimage.jpg"
                                         event.onerror = null
-                                    }} className=" w-100" alt="HotelImage" />
+                                    }} className=" w-100" />
                             </div>
                             {/* {(viewImage) ? showImage === index && (
                                     <dialog
@@ -231,17 +227,17 @@ const HotelBooking = ({ filter, handleError /* handleMessage */ }) => {
 
                                             </Col>
                                             <Col>
-                                                {(hotel.Price.PublishedPrice !== hotel.Price.OfferedPriceRoundedOff) && (
+                                                {/* {(hotel.Price.PublishedPrice !== hotel.Price.OfferedPriceRoundedOff) && (
                                                     <p class="offeredprice">{percentage(hotel.Price.PublishedPrice, hotel.Price.OfferedPriceRoundedOff)}%&nbsp;off</p>
-                                                )}
+                                                )} */}
                                                 {/* <FontAwesomeIcon icon={faHeart} onClick={() => handleIconClick(index)} className={(index === view && like === true) ? ("like") : ("unlike")} /> */}
                                             </Col>
                                             <div className="hotel-card_pricing text-end my-end">
-                                                <h5 className="fw-bold text-danger">{numberFormat(hotel.Price.OfferedPriceRoundedOff, hotel.Price.CurrencyCode)}</h5>
-                                                <h6 className="text-striked text-muted fw-bold">{numberFormat(hotel.Price.PublishedPrice, hotel.Price.CurrencyCode)}</h6>
+                                                <h5 className="fw-bold text-danger">{numberFormat(hotel.Price.PublishedPrice, hotel.Price.CurrencyCode)}</h5>
+                                                {/* <h6 className="text-striked text-muted fw-bold">{numberFormat(hotel.Price.PublishedPrice, hotel.Price.CurrencyCode)}</h6> */}
                                                 {/* <h6 className="text-success"><b>{hotel.Price.offer}</b></h6> */}
                                                 <h6 className="small">per 1 night</h6>
-                                                <Button customstyle="btn  btn-primary fw-bold" onClick={() => handleSubmit(hotel.HotelCode, hotel.ResultIndex, hotel)}>Check Rooms</Button>
+                                                <Button customstyle="btn  btn-primary fw-bold" onClick={() => handleSubmit(hotel.HotelCode, hotel.ResultIndex, hotel,hotel.HotelName)}>Check Rooms</Button>
                                             </div>
                                         </Row>
                                     </Col>
@@ -270,10 +266,11 @@ const HotelBooking = ({ filter, handleError /* handleMessage */ }) => {
                     <p className="text-center my-auto"><img src={nodata} alt={nodata} width="40%" height="60%" /></p>
                 </Card>
             ) : (Hotel?.error?.errors) ? (
-                <Card className='ms-4'>
-                    <h2>Something went wrong</h2>
-                    <p className="text-center"><img src={warning} alt={warning} width="30%" height="30%" /></p>
-                    <h5 className="text-center fw-bold">{Hotel?.error?.errors}</h5>
+                <Card className="border-0 h-50">
+                    <div className='ms-4 text-center oops-page mt-4'>
+                        <p><img src={nomessage} alt={nomessage} width="30%" height="30%" /></p>
+                        <h4 className='fw-bold mt-5'><span style={{ fontSize: "25px" }}>O</span>ops! try again later </h4>
+                    </div>
                 </Card>
             ) :
                 <Card className="hotelLoader  text-center pb-3 ">

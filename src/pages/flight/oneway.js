@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import './flight.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRightArrowLeft } from '@fortawesome/free-solid-svg-icons';
-import CustomDatePickers from "../../component/datepicker/singledatepicker"
+import CustomDatePickers from "../../component/datepicker/singledatepicker";
 import CustomButton from '../../component/button';
 import { useHistory } from 'react-router-dom';
 import moment from "moment";
@@ -14,7 +14,7 @@ import Card from 'react-bootstrap/Card';
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import Button from 'react-bootstrap/Button';
-import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import { faPlus,faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import { faMinus } from '@fortawesome/free-solid-svg-icons';
 
 
@@ -36,23 +36,24 @@ const OneWay = () => {
 
     /* # Error Handle */
     const [errormsg, setErrormsg] = useState('');
-
-
-
+    const [fromerrormsg,setFromerrormsg] = useState('');
+    const [toerrormsg,setToErrormsg] = useState('');
+   
     const handleSubmit = () => {
-
+    
         if (fromaddress == '') {
-            setErrormsg('Please Enter the Valid Location !');
+            setFromerrormsg('Please Select the Valid Location !');
         }
         else if (toaddress == '') {
-            setErrormsg('Please Enter the Valid Location !');
+            setToErrormsg('Please Select the Valid Location !');
         }
-        else if ((fromaddress.suggestion.airport_code).localeCompare(toaddress.suggestion.airport_code) === 0) {
+        else if((fromaddress.suggestion.airport_code).localeCompare(toaddress.suggestion.airport_code)===0){
             setErrormsg('Source and Destination cannot be same');
         }
         else {
             setErrormsg('')
-            history.push("/flight/flightlist-oneway", { state: options })
+            history.push("/flight/flightlist-oneway",{state:options})
+
             const flightSearchList = {
                 "EndUserIp": "107.180.105.183",
                 "ClientId": "180109",
@@ -82,12 +83,15 @@ const OneWay = () => {
             localstores.push({ "Travelclass": triptype.className });
             localstores.push({ "Departure": moment(selectedDay).format("MMM DD YYYY") });
             localstores.push({ "Travellers": options });
-            localstores.push({ "JourneyType": "1" })
+            localstores.push({"JourneyType":"1"})
+
             localstores.push({ "Return": moment(selectedDay).add(1, 'day').format("MMM DD YYYY") });
             localStorage.setItem('travelDetails', JSON.stringify(localstores));
             localStorage.setItem('sourcedata', JSON.stringify(fromaddress));
             localStorage.setItem('destinationdata', JSON.stringify(toaddress));
             localStorage.setItem('triptype', JSON.stringify(triptype));
+            localStorage.setItem("JourneyTrip","1")
+
         }
 
     }
@@ -98,11 +102,11 @@ const OneWay = () => {
     const [toaddress, setToaddress] = React.useState("");
     /*  #swapping */
     const switchText = (from, to) => {
-        console.log("swapping", to.suggestion.airport_city_name);
+       
         handleSelection(to)
         handleSelectiondestination(from)
         setValueDes(to.suggestion.airport_city_name)
-        setDestinationdata(from.suggestion.airport_city_name);
+        setDestinationdata(from.suggestion.airport_city_name);  
     }
     /* # DatePicker */
     const [selectedDay, setSelectedDay] = useState(Date);
@@ -114,29 +118,29 @@ const OneWay = () => {
     };
     useEffect(() => {
         /* # set current date on component load */
-        setDate(format(new Date(), 'PP'))
+         setDate(format(new Date(), 'PP'))
 
-        /*  # On clicking Outside */
+         /*  # On clicking Outside */
         document.addEventListener("keydown", hideOnEscape, true)
         document.addEventListener("click", hideOnClickOutside, true)
     }, [])
 
 
 
-    /* # Hide on outside click */
+     /* # Hide on outside click */
 
-    const refOne = useRef(null);
-    // hide dropdown on ESC press
-    const hideOnEscape = (e) => {
-        if (e.key === "Escape") {
-            setOpen(false)
-        }
-    }
-    const hideOnClickOutside = (e) => {
-        if (refOne.current && !refOne.current.contains(e.target)) {
-            setOpen(false)
-        }
-    }
+     const refOne = useRef(null);
+     // hide dropdown on ESC press
+     const hideOnEscape = (e) => {
+         if (e.key === "Escape") {
+             setOpen(false)
+         }
+     }
+     const hideOnClickOutside = (e) => {
+         if (refOne.current && !refOne.current.contains(e.target)) {
+             setOpen(false)
+         }
+     }
 
 
 
@@ -207,49 +211,49 @@ const OneWay = () => {
         }
     }
 
-
+    
 
     return (
         <>
             <>
-                <div className='d-inline-flex flex-wrap  content'>
-                    <div className="search-area mt-4 ">
-                        <p className='bg-white w-auto'>From</p>
-                        <AutoSuggest
-                            suggestions={suggestions}
-                            onSuggestionsFetchRequested={({ value }) => {
-                                setValueDes(value);
-                                // console.log("I am selected in ...............................",value)
-                                setSuggestions(getSuggestions(valueDes));
-                            }}
-                            onSuggestionSelected={(_, suggestionValue) => { handleSelection(suggestionValue) }}
-                            getSuggestionValue={suggestion => suggestion.airport_city_name}
-                            renderSuggestion={suggestion => <span className="suggesstionList">{suggestion.airport_city_name} ({suggestion.airport_name})</span>}
-                            inputProps={{
-                                placeholder: "Enter city or airport",
-                                value: valueDes,
-
-                                onChange: (_, { newValue, method }) => {
-                                    setValueDes(newValue);
-                                    //    console.log("newValue",newValue)
-                                }
-                            }}
-                            highlightFirstSuggestion={true}
-                        />
+                <div className='d-inline-flex content'>
+                    <div>
+                        <div className="search-area mt-4">
+                            <p>From</p>
+                            <AutoSuggest
+                                suggestions={suggestions}
+                                onSuggestionsFetchRequested={({ value }) => {
+                                    setValueDes(value);
+                                    setSuggestions(getSuggestions(valueDes));
+                                }}
+                                onSuggestionSelected={(_, suggestionValue) => { handleSelection(suggestionValue) }}
+                                getSuggestionValue={suggestion => suggestion.airport_city_name}
+                                renderSuggestion={suggestion => <span className="suggesstionList">{suggestion.airport_city_name } ({suggestion.airport_name})</span>}
+                                inputProps={{
+                                    placeholder: "Enter city or airport",
+                                    value: valueDes,
+                                    onChange: (_, { newValue, method }) => {
+                                        setValueDes(newValue);
+                                    }
+                                }}
+                                highlightFirstSuggestion={true}
+                            />
+                        </div>
+                        {(fromaddress === '') ? <h6 className="font-weight-bold text-danger mt-2">{fromerrormsg}</h6> : null}
                     </div>
-                    <div className='icon  justify-content-center'>
-                        <FontAwesomeIcon icon={faArrowRightArrowLeft} onClick={() => switchText(fromaddress, toaddress)} style={{ fontSize: "20px", color: "#3B77DC" }} />
+                    <div className='icon d-flex justify-content-center'>
+                        <FontAwesomeIcon icon={faArrowRightArrowLeft} onClick={() => switchText(fromaddress, toaddress)} style={{ fontSize: "20px", color: "green" }} />
                     </div>
 
 
                     <div className="search-area mt-4">
-                        <p style={{ width: "20px", backgroundColor: "white", width: "auto" }}>To</p>
+                        <p style={{ width: "20px" }}>To</p>
                         <AutoSuggest
                             suggestions={suggestions}
 
                             onSuggestionsFetchRequested={({ value }) => {
                                 setDestinationdata(value);
-                                // console.log("I am selected in ...............................",value)
+                 
                                 setSuggestions(getSuggestions(destinationdata));
                             }}
                             onSuggestionSelected={(_, suggestionValue) => { handleSelectiondestination(suggestionValue) }}
@@ -261,14 +265,15 @@ const OneWay = () => {
 
                                 onChange: (_, { newValue, method }) => {
                                     setDestinationdata(newValue);
-                                    //    console.log("newValue",newValue)
+            
                                 }
                             }}
                             highlightFirstSuggestion={true}
                         />
+                        {(toaddress === '') ? <h6 className="font-weight-bold text-danger mt-2">{toerrormsg}</h6> : null}
                     </div>
                     <div className='dateselection mt-4'>
-                        <p className='bg-white w-auto'>Departure</p>
+                        <p>Departure</p>
                         <CustomDatePickers
                             maxDate={moment().format("PP")}
                             value={date}
@@ -278,13 +283,14 @@ const OneWay = () => {
                             calanderstyle="flight_calander"
                         />
                     </div>
-                    <div className='traveloption mt-4 traveloptionmedia'>
-                        <p className='bg-white'>Travellers & Class</p>
+                    <div className='traveloption mt-4'>
+                        <p>Travellers & Class</p>
                         <div className="headerSearchItem">
                             <div
                                 onClick={() => setOpen(true)}
-                                className="w-100 mt-1 text-center" style={{ height: "60px" }}>
-                                <span className="headerSearchText">&nbsp;&nbsp;&nbsp;{`${options.adult} adult · ${options.children} children · ${options.Infants} Infants Travel Class: ${triptype.className}`}</span>
+                                className="w-100 mt-1 text-center" style={{ height: "60px"}}>
+                                <span className="headerSearchText">&nbsp;&nbsp;&nbsp;{`${options.adult} adult · ${options.children} children · ${options.Infants} Infants `}&nbsp;&nbsp;<FontAwesomeIcon icon={faChevronDown} style={{color: "#3772d7",}} /></span>
+                                <span className="headerTravel">Travel Class: {triptype.className}</span>
                             </div>
                             {open && (
                                 <Card className="travelmenucard" style={{ position: 'relative', zIndex: '1' }} ref={refOne}>
@@ -338,11 +344,11 @@ const OneWay = () => {
                                                 <Button variant="outline-primary mx-3" onClick={() => handleChange("FirstClass")} >First Class</Button>
                                                 <Button variant="outline-primary mx-3" onClick={() => handleChange("AllClass")} >All Class</Button>
                                             </div> */}
-                                            <Form.Select className='w-50 mx-auto fw-bold' onChange={(e) => handleChange(e.target.value)}>
+                                            <Form.Select className='w-50 mx-auto fw-bold' onChange={(e)=>handleChange(e.target.value)}>
                                                 <option className="fw-bold" value="AllClass">All Class</option>
                                                 <option className="fw-bold" value="Economy">Economy</option>
                                                 <option className="fw-bold" value="Business">Business</option>
-                                                <option className="fw-bold" value="FirstClass">First Class</option>
+                                                <option className="fw-bold"  value="FirstClass">First Class</option>
                                             </Form.Select>
                                         </div>
                                     </Card.Body>
@@ -355,9 +361,9 @@ const OneWay = () => {
                     </div>
                 </div>
                 <div className='text-center'>
-                    {(fromaddress === '' || toaddress === '' || ((fromaddress.suggestion.airport_code).localeCompare(toaddress.suggestion.airport_code) === 0)) ? <h6 className="font-weight-bold text-danger mt-2">{errormsg}</h6> : null}
+                  {(fromaddress?.suggestion?.airport_code === toaddress?.suggestion?.airport_code) ? <h6 className="font-weight-bold text-danger mt-2">{errormsg}</h6> : null}
                 </div>
-                <div className='flightbuttononeway'>
+                <div className='flightbutton'>
                     <CustomButton customstyle='flightbtnsearch' onClick={() => handleSubmit()} value='SEARCH FLIGHTS'></CustomButton>
                 </div>
             </>

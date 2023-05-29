@@ -7,7 +7,7 @@ const initialState = {
 };
 
 const reducer = (state = initialState, action) => {
-  //  console.log("iam in flightsss reducer",action)
+ 
   switch (action.type) {
     case FLIGHTONEWAY.LOAD:
       return {

@@ -6,7 +6,7 @@ import { flightSearchList } from "../services/flight";
 
 export function* handleFlightSearch(action) {
   try {
-    //  console.log("iam in the flightsearchsaga",action);
+   
     const searchData = yield call(flightSearchList, action.flight);
     if (searchData && searchData.error) throw searchData.error;
     yield put(setFlightList(searchData));

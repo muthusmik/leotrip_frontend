@@ -7,7 +7,7 @@ const initialState = {
 };
 
 const reducer = (state = initialState, action) => {
-  //  console.log("iam in flightsss reducer",action)
+  
   switch (action.type) {
     case FLIGHTRETURNINFO.LOAD:
       return {
@@ -26,6 +26,10 @@ const reducer = (state = initialState, action) => {
         loading: false,
         data: [],
         error: action.error,
+      };
+    case FLIGHTRETURNINFO.LOAD_CLEARREDUCER:
+      return {
+        initialState
       };
     default:
       return state;

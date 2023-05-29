@@ -18,7 +18,7 @@
 }
 
 .hotelpay-detail{
-    margin-top: -125px;
+    margin-top: -75px;
     padding-bottom:180px;
 }
 
@@ -33,4 +33,14 @@
 
 .accordion-button:not(.collapsed) {
   color: #070707;
+}
+
+.hotelpaybackground-theme{
+  height: 200px;
+  flex: 1;
+  top: 85px;
+  margin-top: 70px;
+  padding-top: 0.5px;
+  background-image: url('../../../asset/images/backgroundimage.png');
+
 }

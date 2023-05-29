@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import '../../flightlist/flightlist.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTag } from '@fortawesome/free-solid-svg-icons';
-import { faMoneyBill1,faSortNumericUp,faSortNumericDown } from '@fortawesome/free-solid-svg-icons';
+import { faMoneyBill1, faSortNumericUp, faSortNumericDown } from '@fortawesome/free-solid-svg-icons';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import Flight from '../../../../asset/images/flight/flight.png';
 import Seat from '../../../../asset/images/flight/seat.png';
@@ -16,7 +16,7 @@ import { loadFlightOneway } from '../../../../store/actions/flightoneway';
 import { loadFlightOnewayInfo } from '../../../../store/actions/flightonewayinfo';
 import Parser from 'html-react-parser';
 import moment from "moment";
-import warning from "../../../../asset/images/warning.png"
+import nomessage from "../../../../asset/images/nomessage.png"
 import './loader.scss';
 import nodata from '../../../../asset/images/hotel/no-result-found.png'
 import { useLocation } from 'react-router-dom';
@@ -31,7 +31,7 @@ const Flightbookinglist = ({ filteredValue, handleError }) => {
     const Destination = FlightSearchList?.data?.Destination;
     const location = useLocation()
     const traveldetails = location.state.state
-    console.log("traveldetails",traveldetails)
+    console.log("traveldetails", traveldetails)
 
     const [flightList, setFlightList] = useState([])
 
@@ -39,7 +39,7 @@ const Flightbookinglist = ({ filteredValue, handleError }) => {
         setFlightList([])
         if (filteredValue) {
             setFlightList(filteredValue)
-            console.log("flightSet value2",filteredValue)
+            console.log("flightSet value2", filteredValue)
         }
         else if (FlightSearchList?.data?.Message) {
             setFlightList("")
@@ -47,7 +47,7 @@ const Flightbookinglist = ({ filteredValue, handleError }) => {
         setSorting(true)
     }, [filteredValue])
 
-console.log("flightSet value",filteredValue)
+    console.log("flightSet value", filteredValue)
 
 
     /* # fare opening */
@@ -113,7 +113,7 @@ console.log("flightSet value",filteredValue)
         dispatch(loadFlightOnewayInfo(flightonewayinfo));
         // fare quote dispatch here
 
-        history.push('/flight/flightconfirmation',{state:traveldetails})
+        history.push('/flight/flightconfirmation', { state: traveldetails })
 
     };
 
@@ -153,7 +153,10 @@ console.log("flightSet value",filteredValue)
     const HandleConnecting = (value) => {
         if (value.length == 1) {
             return (
-                value.length - 1 + " " + "Stop"
+                <>
+                    Direct
+                </>
+                // value.length - 1 + " " + "Stop"
             )
         }
         else if (value.length > 1) {
@@ -243,7 +246,7 @@ console.log("flightSet value",filteredValue)
         return 0;
     }
     const [sorting, setSorting] = useState(false);
-    const [isAsc,setIsAsc] = useState(true);
+    const [isAsc, setIsAsc] = useState(true);
     const sortByPrice = () => {
         if (sorting) {
             const sorted = [...flightList].sort(ascPrice)
@@ -251,207 +254,205 @@ console.log("flightSet value",filteredValue)
             setIsAsc(true)
             setFlightList(sorted);
         }
-        else{
+        else {
             const sorted = [...flightList].sort(desPrice)
             setSorting(true)
             setIsAsc(false)
             setFlightList(sorted);
         }
-        
+
     };
 
 
     return (
         <div className='ticket-content flightbookdetail'>
-            <h6>showing <span className="fw-bold">{flightList?.length} Flights</span></h6>
+            <h6 className='flight-result'>showing <span className="fw-bold">{flightList?.length} Flights</span></h6>
             <Card className='my-2 pt-3'>
                 <ul className='labellist'>
                     <li>AIRLINE</li>
                     <li>DEPARTURE</li>
-                    <li>DURATION</li>
-                    <li >ARRIVAL</li>
-                    <li className='me-5'></li>
-                    <li onClick={sortByPrice}>PRICE {isAsc === true ?<FontAwesomeIcon icon={faSortNumericDown}/>:<FontAwesomeIcon icon={faSortNumericUp}/>}</li>
+                    <li className='ms-5'>DURATION</li>
+                    <li className='ms-5'>ARRIVAL</li>
+                    <li className='ms-2'></li>
+                    <li onClick={sortByPrice}>PRICE {isAsc === true ? <FontAwesomeIcon icon={faSortNumericDown} /> : <FontAwesomeIcon icon={faSortNumericUp} />}</li>
                     <li className='me-5'></li>
                     <li className='me-3'>BEST VALUE</li>
                 </ul>
             </Card>
-            {( flightList?.length > 0) ? flightList.map((flight, index) => (
-                <Card className='mb-3'>
-                    <div className='ticketcontent py-2' key={index}>
-                        <Row>
-                            <Col xs={2}>
-                                <div className='ticketdata'>
-                                    <div className='ms-3'>
-                                        <h6 className="my-0"><img src={hanldeAirline(flight?.Segments[0][0]?.Airline?.AirlineCode)} height={30} width={40} /></h6>
-                                        <p className='mb-0'>{flight?.Segments[0][0]?.Airline?.AirlineName}</p>
-                                        <span className='datainfo'>{flight?.Segments[0][0]?.Airline?.AirlineCode}-{flight.Segments[0][0].Airline?.FlightNumber}</span>
-                                    </div>
-                                </div>
-                            </Col>
-                            <Col xs={9} sm={7}>
+            {(flightList?.length > 0) ? flightList.map((flight, index) => (
+                        
+                        <Card className='mb-3'>
+                            <div className='ticketcontent py-2' key={index}>
                                 <Row>
-                                    <Col xs={3} className='text-wrap text-end mt-2' style={{ wordWrap: "break-word" }}>
-                                        <h5 className='mb-0'>{moment(flight.Segments[0][0].DepTime).format("HH:mm")}</h5>
-                                        <h6 className='text-wrap' >{origin}</h6>
+                                    <Col xs={2}>
+                                        <div className='ticketdata text-center ms-1'>
+                                            <div className='ms-4'>
+                                                <h6 className="my-0"><img src={hanldeAirline(flight?.Segments[0][0]?.Airline?.AirlineCode)} height={30} width={40} /></h6>
+                                                <p className='mb-0'>{flight?.Segments[0][0]?.Airline?.AirlineName}</p>
+                                                <span className='datainfo'>{flight?.Segments[0][0]?.Airline?.AirlineCode}-{flight.Segments[0][0].Airline?.FlightNumber}</span>
+                                            </div>
+                                        </div>
+                                    </Col>
+                                    <Col xs={9} sm={8}>
+                                        <Row>
+                                            <Col xs={3} className='text-wrap text-start mt-2' style={{ wordWrap: "break-word" }}>
+                                                <h5 className='mb-0'>{moment(flight.Segments[0][0].DepTime).format("HH:mm")}</h5>
+                                                <h6 className='text-wrap' >{origin}</h6>
 
-                                    </Col>
-                                    <Col xs={2} className='text-center'>
-                                        <small className='mb-0'>{HandleConnecting(flight.Segments[0])}</small>
-                                        <img src={Flight} alt="img" className="path" style={{ marginTop: "-15px" }} />
-                                        <h6 className='datainfo '>{HandleDuration(flight.Segments[0])}</h6>
-                                        {/* <h6 className='datainfo'>{moment({}).seconds(flight.Segments[0][0].Duration).format("HH:mm")}</h6> */}
-                                    </Col>
-                                    <Col xs={3} className="mt-2">
-                                        <h5 className='mb-0'>{HandleArrivalTime(flight?.Segments[0])}</h5>
-                                        <h6 className='text-wrap'>{Destination}</h6>
-                                    </Col>
-                                    <Col xs={1}></Col>
-                                    {/* <Col xs={1} className="text-end">
+                                            </Col>
+                                            <Col xs={2} className='text-center'>
+                                                <small className='mb-0'>{HandleConnecting(flight.Segments[0])}</small>
+                                                <img src={Flight} alt="img" className="path" style={{ marginTop: "-15px" }} />
+                                                <h6 className='datainfo '>{HandleDuration(flight.Segments[0])}</h6>
+                                                {/* <h6 className='datainfo'>{moment({}).seconds(flight.Segments[0][0].Duration).format("HH:mm")}</h6> */}
+                                            </Col>
+                                            <Col xs={3} className="mt-2 text-end ">
+                                                <h5 className='mb-0'>{HandleArrivalTime(flight?.Segments[0])}</h5>
+                                                <h6 className='text-wrap'>{Destination}</h6>
+                                            </Col>
+                                            {/* <Col xs={1}></Col> */}
+                                            {/* <Col xs={1} className="text-end">
                                         <img src={Seat} alt="img" className="seat mb-0" />
                                         <p>{flight.FareDataMultiple[0].FareSegments[0].NoOfSeatAvailable}<span className='labelnote'>LEFT</span></p>
                                     </Col> */}
-                                    <Col xs={3} className='text-end mt-2'>
-                                        <span className='h5 fw-bold'>{numberFormat(flight.OfferedFare, flight.FareDataMultiple[0].Fare.Currency)} </span> <br />
-                                        <small> Seat(s) Left<b>:</b> <b className='text-danger'>{flight.FareDataMultiple[0].FareSegments[0].NoOfSeatAvailable}</b></small>
+                                            <Col xs={3} className='text-end mt-2'>
+                                                <span className='h5 fw-bold'>{numberFormat(flight.FareDataMultiple[0].Fare.PublishedFare, flight.FareDataMultiple[0].Fare.Currency)} </span> <br />
+                                                <small> Seat(s) Left<b>:</b> <b className='text-danger'>{flight.FareDataMultiple[0].FareSegments[0].NoOfSeatAvailable}</b></small>
+                                            </Col>
+                                        </Row>
+                                    </Col>
+                                    <Col xs={1} sm={2} className='text-end mt-2'>
+                                        <Button size='sm' className='me-3 farebtn' onClick={() => handleselect(index)}>View Fare</Button>
+
+                                        <p className='moreinfobtn  me-3 mb-0' onClick={() => handleselection(index)} ><FontAwesomeIcon icon={faPlus} /> Flight Details</p>
+                                        {/* <small className="refund mt-0 me-3  fw-bold"><FontAwesomeIcon icon={faMoneyBill1}/> Refundable</small> */}
+                                        <small className="refund mt-0 me-3  fw-bold">{handleRefund(flight.FareDataMultiple[0].IsRefundable)}</small>
+                                        {/* <small className="refund mt-0 me-3  fw-bold">{!flight.FareDataMultiple[0].IsLCC ? "GDS" : "LCC"}</small> */}
+
                                     </Col>
                                 </Row>
-                            </Col>
-                            <Col xs={1} sm={3} className='text-end mt-2'>
-                                <Button size='sm' className='me-3 farebtn' onClick={() => handleselect(index)}>View Fare</Button>
+                            </div>
+                            {index === compare && open && (
+                                <div className='FareSegments'>
+                                    <div className='fare-package mt-3'>
 
-                                <p className='moreinfobtn  me-3 mb-0' onClick={() => handleselection(index)} ><FontAwesomeIcon icon={faPlus} /> Flight Details</p>
-                                {/* <small className="refund mt-0 me-3  fw-bold"><FontAwesomeIcon icon={faMoneyBill1}/> Refundable</small> */}
-                                <small className="refund mt-0 me-3  fw-bold">{handleRefund(flight.FareDataMultiple[0].IsRefundable)}</small>
-
-
-                            </Col>
-                        </Row>
-                    </div>
-                    {index === compare && open && (
-                        <div className='FareSegments'>
-                            <div className='fare-package mt-3'>
-
-                                <div className='fw-bold' >
-                                    <Row >
-                                        {(flightList?.length > 0) ? flight.FareDataMultiple.map((pricedata, idx) => (
-                                            <>
-
-                                                <Row className='fare-package_details ms-4 mb-2 p-2'>
-                                                    <Col>
-                                                        {/* <h6>package&nbsp;{idx + 1}</h6> */}
-                                                        <div className='d-flex'>
-                                                            <h5 className='text-dark fw-bold'>{pricedata.Source}</h5>
-                                                            {/* <div className='package_Flightname d-flex'>
+                                        <div className='fw-bold' >
+                                            <Row >
+                                                {(flightList?.length > 0) ? flight.FareDataMultiple.map((pricedata, idx) => (
+                                                    <>
+                                                        <Row className='fare-package_details ms-4 mb-2 p-2'>
+                                                            <Col>
+                                                                {/* <h6>package&nbsp;{idx + 1}</h6> */}
+                                                                <div className='d-flex'>
+                                                                    <h5 className='text-dark fw-bold'>{pricedata.Source}</h5>
+                                                                    {/* <div className='package_Flightname d-flex'>
                                                                     <p className='text-danger fw-bold'>{data[0].AirlineName}</p>&nbsp;
                                                                     <small className='text-primary'>{data[0].AirlineCode}-{data[0].FlightNumber}</small>
                                                                 </div> */}
-                                                        </div>
-                                                        <table>
-                                                            <tr>
-                                                                <td><img src={Bag} alt="img" /><span>Check-in baggage</span></td>
-                                                                <td>{pricedata.FareSegments[0].Baggage}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td><img src={TravelSeat} alt="img" /><span>Class</span></td>
-                                                                <td>{pricedata.FareSegments[0].FareClass}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td><img src={Cabin_Bag} alt="img" /><span>Cabin baggage</span></td>
-                                                                <td>{pricedata.FareSegments[0].CabinBaggage}</td>
-                                                            </tr>
-                                                        </table>
-                                                    </Col>
-                                                    <Col xs={3}>
-                                                        <div className='fare-package_price'>
-                                                            <h5 className='h5 text-danger fw-bold'>{numberFormat(pricedata.OfferedFare, pricedata.Fare.Currency)}</h5>
-                                                            <button className='btn btn-primary btn-sm' onClick={() => handleRoute(pricedata.SrdvIndex, pricedata.ResultIndex)}>Book Now</button>
-                                                        </div>
-                                                    </Col>
-                                                </Row>
-
-
-                                            </>
-                                        )) : null}
-                                    </Row>
-                                </div>
-                            </div>
-                        </div>
-                    )}
-                    {index === view && show && (
-                        <div className='moreinfo'>
-                            <Tabs
-                                defaultActiveKey="overview"
-                                id="uncontrolled-tab"
-                                className=" mb-3"
-                                fill
-                            >
-                                <Tab eventKey="overview" title="OVERVIEW" className='pb-5'>
-                                    {flight.Segments[0].map((data, index) => (
-                                        <div className=' overviews mb-2' key={index}>
-                                            <Row className='mt-3'>
-                                                <Col xs={2}>
-                                                    {/* <img src={card.path} alt="img" style={{ height: "35px", width: "35px" }} /> */}
-                                                    <div className='ms-2'>
-                                                        <p className='mb-0'>{data.Airline.AirlineName}</p>
-                                                        <span className='datainfo'>{data.Airline.AirlineCode}-{data.Airline.FlightNumber}</span>
-                                                    </div>
-                                                </Col>
-
-                                                <Col className='text-end'>
-                                                    <p className='mb-0'><b>{data.Origin.CityName}</b></p>
-                                                    <h6 className='mb-0 mt-0'>{moment(data.DepTime).format("HH:mm")}</h6>
-                                                    <span className='mt-0 dep-label'>{data.Origin.AirportName}</span>
-                                                </Col>
-                                                <Col className='text-center '>
-                                                    <img src={Flight} alt="img" className="path mb-0" />
-                                                    <h6 className='datainfo '>{HandleBtw(flight.Segments[0][index])}</h6>
-                                                </Col>
-                                                <Col className=''>
-                                                    <p className='mb-0'><b>{data.Destination.CityName}</b></p>
-                                                    <h6 className='mb-0 mt-0'>{moment(data.ArrTime).format("HH:mm")}</h6>
-                                                    <span className='mt-0 dep-label'>{data.Destination.AirportName}</span>
-                                                </Col>
-                                                {/* <li>
-
-                                                </li> */}
+                                                                </div>
+                                                                <table>
+                                                                    <tr>
+                                                                        <td><img src={Bag} alt="img" /><span>Check-in baggage</span></td>
+                                                                        <td>{pricedata.FareSegments[0].Baggage}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td><img src={TravelSeat} alt="img" /><span>Class</span></td>
+                                                                        <td>{pricedata.FareSegments[0].FareClass}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td><img src={Cabin_Bag} alt="img" /><span>Cabin baggage</span></td>
+                                                                        <td>{pricedata.FareSegments[0].CabinBaggage}</td>
+                                                                    </tr>
+                                                                </table>
+                                                            </Col>
+                                                            <Col xs={3}>
+                                                                <div className='fare-package_price'>
+                                                                    <h5 className='h5 text-danger fw-bold'>{numberFormat(pricedata.Fare.PublishedFare, pricedata.Fare.Currency)}</h5>
+                                                                    <button className='btn btn-primary btn-sm' onClick={() => handleRoute(pricedata.SrdvIndex, pricedata.ResultIndex)}>Book Now</button>
+                                                                </div>
+                                                            </Col>
+                                                        </Row>
+                                                    </>
+                                                )) : null}
                                             </Row>
                                         </div>
-                                    ))}
-                                </Tab>
-                                <Tab eventKey="faredetails" title="FARE DETAILS" className='pb-5 table-style'>
-                                    <h5 className='ms-4'>Fare Summary</h5>
-                                    <table className='table-style'>
-                                        <tr>
-                                            <td>Base Fare <span className='price-label'>(1 Adult )</span></td>
-                                            <td>{numberFormat(flight.FareDataMultiple[0].Fare.BaseFare, flight.FareDataMultiple[0].Fare.Currency)}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Taxes and Fees</td>
-                                            <td>{numberFormat(flight.FareDataMultiple[0].Fare.Tax, flight.FareDataMultiple[0].Fare.Currency)} </td>
-                                        </tr>
-                                        <tr>
-                                            <td><b>Total Fare</b></td>
-                                            <td className='text-danger'><b> {numberFormat(flight.FareDataMultiple[0].Fare.BaseFare + flight.FareDataMultiple[0].Fare.Tax, flight.FareDataMultiple[0].Fare.Currency)}</b></td>
-                                        </tr>
-                                    </table>
-                                </Tab>
-                                <Tab eventKey="baggage" title="BAGGAGE RULES" className='pb-5 table-style'>
-                                    <h5 className='ms-4'>Baggage Summary</h5>
-                                    <table>
-                                        <tr style={{ backgroundColor: "#f3f6f8", fontWeight: "bold" }}>
-                                            <td>Sector/Flight</td>
-                                            <td>Check in Baggage</td>
-                                            <td>Cabin Baggage</td>
-                                        </tr>
-                                        <tr>
-                                            <td>{FlightSearchList.data.Origin} - {FlightSearchList.data.Destination}({flight?.Segments[0][0]?.Airline?.AirlineCode}-{flight.Segments[0][0].Airline?.FlightNumber})</td>
-                                            <td>{flight.FareDataMultiple[0].FareSegments[0].Baggage}</td>
-                                            <td>{flight.FareDataMultiple[0].FareSegments[0].CabinBaggage}</td>
-                                        </tr>
-                                    </table>
-                                </Tab>
-                                {/* <Tab eventKey="cancellation" title="CANCELLATION RULES" >
+                                    </div>
+                                </div>
+                            )}
+                            {index === view && show && (
+                                <div className='moreinfo'>
+                                    <Tabs
+                                        defaultActiveKey="overview"
+                                        id="uncontrolled-tab"
+                                        className=" mb-3"
+                                        fill
+                                    >
+                                        <Tab eventKey="overview" title="OVERVIEW" className='pb-5'>
+                                            {flight.Segments[0].map((data, index) => (
+                                                <div className=' overviews mb-2' key={index}>
+                                                    <Row className='mt-3'>
+                                                        <Col xs={2}>
+                                                            {/* <img src={card.path} alt="img" style={{ height: "35px", width: "35px" }} /> */}
+                                                            <div className='ms-2'>
+                                                                <p className='mb-0'>{data.Airline.AirlineName}</p>
+                                                                <span className='datainfo'>{data.Airline.AirlineCode}-{data.Airline.FlightNumber}</span>
+                                                            </div>
+                                                        </Col>
+
+                                                        <Col className='text-end'>
+                                                            <p className='mb-0'><b>{data.Origin.CityName}</b></p>
+                                                            <h6 className='mb-0 mt-0'>{moment(data.DepTime).format("HH:mm")}</h6>
+                                                            <span className='mt-0 dep-label'>{data.Origin.AirportName}</span>
+                                                        </Col>
+                                                        <Col className='text-center '>
+                                                            <img src={Flight} alt="img" className="path mb-0" />
+                                                            <h6 className='datainfo '>{HandleBtw(flight.Segments[0][index])}</h6>
+                                                        </Col>
+                                                        <Col className=''>
+                                                            <p className='mb-0'><b>{data.Destination.CityName}</b></p>
+                                                            <h6 className='mb-0 mt-0'>{moment(data.ArrTime).format("HH:mm")}</h6>
+                                                            <span className='mt-0 dep-label'>{data.Destination.AirportName}</span>
+                                                        </Col>
+                                                        {/* <li>
+
+                                                </li> */}
+                                                    </Row>
+                                                </div>
+                                            ))}
+                                        </Tab>
+                                        <Tab eventKey="faredetails" title="FARE DETAILS" className='pb-5 table-style'>
+                                            <h5 className='ms-4'>Fare Summary</h5>
+                                            <table className='table-style'>
+                                                <tr>
+                                                    <td>Base Fare <span className='price-label'>(1 Adult )</span></td>
+                                                    <td>{numberFormat(flight.FareDataMultiple[0].Fare.BaseFare, flight.FareDataMultiple[0].Fare.Currency)}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Taxes and Fees</td>
+                                                    <td>{numberFormat(flight.FareDataMultiple[0].Fare.Tax, flight.FareDataMultiple[0].Fare.Currency)} </td>
+                                                </tr>
+                                                <tr>
+                                                    <td><b>Total Fare</b></td>
+                                                    <td className='text-danger'><b> {numberFormat(flight.FareDataMultiple[0].Fare.BaseFare + flight.FareDataMultiple[0].Fare.Tax, flight.FareDataMultiple[0].Fare.Currency)}</b></td>
+                                                </tr>
+                                            </table>
+                                        </Tab>
+                                        <Tab eventKey="baggage" title="BAGGAGE RULES" className='pb-5 table-style'>
+                                            <h5 className='ms-4'>Baggage Summary</h5>
+                                            <table>
+                                                <tr style={{ backgroundColor: "#f3f6f8", fontWeight: "bold" }}>
+                                                    <td>Sector/Flight</td>
+                                                    <td>Check in Baggage</td>
+                                                    <td>Cabin Baggage</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>{FlightSearchList.data.Origin} - {FlightSearchList.data.Destination}({flight?.Segments[0][0]?.Airline?.AirlineCode}-{flight.Segments[0][0].Airline?.FlightNumber})</td>
+                                                    <td>{flight.FareDataMultiple[0].FareSegments[0].Baggage}</td>
+                                                    <td>{flight.FareDataMultiple[0].FareSegments[0].CabinBaggage}</td>
+                                                </tr>
+                                            </table>
+                                        </Tab>
+                                        {/* <Tab eventKey="cancellation" title="CANCELLATION RULES" >
                                     <div className='cancellation'>
                                         <div className='CancellationCharges'>
                                             {(flightoneway.data?.length > 0) ? flightoneway.data[0].result?.Results.map((cancel, index) => (
@@ -467,10 +468,11 @@ console.log("flightSet value",filteredValue)
                                         </div>
                                     </div>
                                 </Tab> */}
-                            </Tabs>
-                        </div>
-                    )}
-                </Card>
+                                    </Tabs>
+                                </div>
+                            )}
+                        </Card>
+                   
             )) : (handleError) ? (
                 <Card className='ms-4 noData'>
                     {/* <h2>No Data Found</h2> */}
@@ -478,11 +480,12 @@ console.log("flightSet value",filteredValue)
                 </Card>
             )
                 : (FlightSearchList?.data?.Message) ? (
-                    <div className='ms-4 text-center mt-4'>
-                        <h3 className='fw-bold'>Something went wrong</h3>
-                        <p><img src={warning} alt={warning} width="30%" height="30%" /></p>
-                        <h5 className='fw-bold'>{FlightSearchList?.data?.Message}</h5>
-                    </div>
+                    <Card className="border-0 h-50">
+                        <div className='ms-4 text-center oops-page mt-4'>
+                            <p><img src={nomessage} alt={nomessage} width="30%" height="30%" /></p>
+                            <h4 className='fw-bold mt-5'><span style={{ fontSize: "25px" }}>O</span>ops! try again later </h4>
+                        </div>
+                    </Card>
                 ) : <div className='Loader text-center pb-3 '>
                     <svg class="svg-calLoader " xmlns="http://www.w3.org/2000/svg" width="230" height="230">
                         <path class="cal-loader__path" d="M86.429 40c63.616-20.04 101.511 25.08 107.265 61.93 6.487 41.54-18.593 76.99-50.6 87.643-59.46 19.791-101.262-23.577-107.142-62.616C29.398 83.441 59.945 48.343 86.43 40z" fill="none" stroke="#0099CC" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="10 10 10 10 10 10 10 432" stroke-dashoffset="77" />

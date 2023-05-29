@@ -51,7 +51,6 @@ const SimilarHotels = () => {
         dispatch(loadHotelRoom(hotelRoom));
 
         history.push("/hotel/hoteldetails")
-        console.log("data result id.....", HotelCode)
        
             window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
        
@@ -83,7 +82,7 @@ const SimilarHotels = () => {
                                     <div className="p-3 bg-white rounded-4 mx-2" style={{height:"630px"}}  onClick={() => handleSubmit(hotel.HotelCode, hotel.ResultIndex)}>
                                         <img src={hotel.HotelPicture}
                                             onError={event => {
-                                                event.target.src = "http://photos.hotelbeds.com/giata/original/36/365958/365958a_hb_r_001.jpg"
+                                                event.target.src ="http://localhost:3000/images/noimage.jpg"
                                                 event.onerror = null
                                             }} className="sliderimg rounded-2" alt="HotelImage" />
                                         <div>
@@ -113,8 +112,8 @@ const SimilarHotels = () => {
                                                 <FontAwesomeIcon icon={faHome} className="text-muted" /> Room Service<br />
                                                 <FontAwesomeIcon icon={faWifi} className="text-muted" />Free Internet</p>
 
-                                            <h6 className="text-muted small"><del>₹{hotel.Price.PublishedPrice}</del></h6>
-                                            <h5 className="fw-bold">₹{hotel.Price.OfferedPriceRoundedOff}</h5>
+                                           
+                                            <h5 className="fw-bold">₹{hotel.Price.PublishedPriceRoundedOff}</h5>
                                             <h6 className="small">1 room per night</h6>
                                         </div>
                                     </div>

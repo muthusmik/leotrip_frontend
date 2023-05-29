@@ -13,27 +13,27 @@ import { Form, Card, Tab, Tabs, Button, Modal, Table, Row, Col, Badge } from 're
 import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch, useStore } from "react-redux";
 import Footer from "../../../component/footer/footer";
-import { loadHotelRoom } from "../../../store/actions/hotelroom";
-import { useLocation } from 'react-router-dom';
-import noImage from "../../../asset/images/no-image.jpg"
+import {loadBlockRoom } from "../../../store/actions/blockroom";
+import { useLocation } from "react-router-dom";
 
 
-
-const MultiHotelList = () => {
-
-
-    /* # STORE */
-    const HotelRoomData = useSelector(state => state.HotelRoom);
-    const store = useStore()
-
-    const guestdetails = JSON.parse(localStorage.getItem('roomGuest'));
-    console.log('roomGuest', guestdetails)
-    console.log(HotelRoomData, "hotelRoom...data")
+const MultiHotelList = (blockValue) => {
 
     const [inclutionView, setInclutionView] = useState(false)
     const [check, setCheck] = useState('')
-    const handleInclutionView = (index) => {
 
+
+
+
+    
+   
+    /* # STORE */
+    const HotelRoomData = useSelector(state => state.HotelRoom);
+    
+    const guestdetails = JSON.parse(localStorage.getItem('NoOfRooms'));
+    
+
+    const handleInclutionView = (index) => {
         setCheck(index)
         /* # TO show and hide */
         if (setInclutionView === true) {
@@ -41,17 +41,15 @@ const MultiHotelList = () => {
         } else {
             setInclutionView(true);
         }
-
     }
     const handleInclutionClose = () => setInclutionView(false);
+
+
     /*  # To fetch model data */
-
     const [show, setShow] = useState(false);
-
     const [view, setView] = useState('');
 
     const handleShow = (index) => {
-
         setView(index)
         /* # TO show and hide */
         if (show === true) {
@@ -59,29 +57,46 @@ const MultiHotelList = () => {
         } else {
             setShow(true);
         }
-
     }
     const handleClose = () => setShow(false);
 
     /* # Routing call */
 
     let history = useHistory();
+
+    const dispatch = useDispatch();
+
     const handleBook = (hotelroom) => {
+
+        let smoking= hotelroom
+        //data[]
+        if( smoking.SmokingPreference=== "NoPreference"){
+            smoking['SmokingPreference']=0;
+        }
+        else{
+            smoking['SmokingPreference']=0;
+        }
+
+        
+
+       
         const blockData = {
-            "HotelCode": "13425699",
-            "ResultIndex": "2",
-            "TraceId": "12455",
-            "HotelName": "Joey s Hostel",
+            "HotelCode": blockValue.blockValue.HotelCode,
+            "ResultIndex": blockValue.blockValue.ResultIndex,
+            "TraceId": blockValue.blockValue.TraceId,
+            "HotelName":blockValue.blockValue.HotelName,
             "GuestNationality": "IN",
-            "NoOfRooms": guestdetails.length,
+            "NoOfRooms": guestdetails,
             "ClientReferenceNo": 0,
             "IsVoucherBooking": true,
-            "HotelRoomsDetails": [hotelroom],
+            "HotelRoomsDetails": [smoking],
             "SrdvType": "SingleTB",
             "SrdvIndex": "SrdvTB",
         }
-        console.log("blockData ..........",blockData);
-        history.push('/hotel/hotelconfirmation', { state: hotelroom })
+        console.log("Im the hotel blocking data payload",blockData);
+        dispatch(loadBlockRoom(blockData))
+    
+        history.push('/hotel/hotelconfirmation', {state:smoking})
     }
 
     const numberFormat = (value, cur) =>
@@ -168,9 +183,7 @@ const MultiHotelList = () => {
                                         {/* <p className="small text-danger"><span className="ms-3 border border-danger p-2 rounded"><FontAwesomeIcon icon={faBell} className="text-warning" /> 30 Rooms Left</span></p> */}
                                         <div className="row">
                                             <div className="col-6 text-end">
-                                                <p className="small "><del>{numberFormat(hotelroom.Price.PublishedPrice, hotelroom.Price.CurrencyCode)}</del>
-                                                    <br />
-                                                    <span className="h5 fw-bold">{numberFormat(hotelroom.Price.OfferedPriceRoundedOff, hotelroom.Price.CurrencyCode)}</span>
+                                                <p  className="h5 fw-bold">{numberFormat(hotelroom.Price.PublishedPrice, hotelroom.Price.CurrencyCode)}
                                                 </p>
                                             </div>
                                             <div className="col-6">
@@ -193,23 +206,31 @@ const MultiHotelList = () => {
     )
 }
 
-const HotelDetails = () => {
+const HotelDetails = (props) => {
 
+    const location = useLocation();
 
+    const [blockneeds,setBlockneeds] = useState({
+        ResultIndex: "",
+        HotelCode: "",
+        TraceId:"",
+        HotelName:""
+      });
+   
     React.useEffect(() => {
-        window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+        window.scrollTo({ top: 0, left: 0, behavior: 'smooth'});
+        setBlockneeds(location.state.state)
     }, []);
-
 
 
     return (
         <>
             <div className="hoteldetails  mb-5">
-                <CustomNavbar />
+                {/* <CustomNavbar /> */}
                 <HotelModifySearch />
                 <Hotelpreview />
                 {/* <HotelContentReport /> */}
-                <MultiHotelList />
+                <MultiHotelList blockValue={blockneeds}/>
                 <Amenities />
                 <Policy />
                 <AboutHotel />

@@ -1,19 +1,26 @@
 import React, { useState, useEffect, useRef } from "react";
-import { withRouter } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
 import { Navbar } from 'react-bootstrap';
 import '../navbar/navbar.scss';
+import Homeicon from '../../asset/images/home.png'
+import Coin from "../../asset/images/login/coin.png";
+import Offers from "../../asset/images/login/discount.png";
+import Suitcase from "../../asset/images/login/suitcase.png";
 import Logo from '../../asset/images/logo.png';
+import Bus from '../../asset/images/bus.png';
+import Car from '../../asset/images/car.png';
+import Hotel from '../../asset/images/hotels.png';
+import Plane from '../../asset/images/airplane.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUserCircle } from '@fortawesome/free-solid-svg-icons';
+import { faUserCircle, faToolbox } from '@fortawesome/free-solid-svg-icons';
 import Login from "../../pages/authentication/login";
+import { Button, Row, Col, Card, Toast } from 'react-bootstrap';
+import { useHistory } from 'react-router-dom';
 
 
-const CustomNavbar = ({ isSticky,onhandle }) => {
+const CustomNavbar = ({ isSticky, onhandle }) => {
 
   const [colorChange, setColorchange] = useState(false);
-  const [modalShow, setModalShow] = React.useState(false);
-  const [open, setOpen] = useState(false);
 
   const changeNavbarColor = () => {
     if (window.scrollY >= 80) {
@@ -25,17 +32,17 @@ const CustomNavbar = ({ isSticky,onhandle }) => {
   };
   window.addEventListener('scroll', changeNavbarColor);
 
-  
+  const [modalShow, setModalShow] = React.useState(false);
+
+  const [open, setOpen] = useState(false);
 
   const toggleShow = () => {
     setOpen(!open)
   }
 
   useEffect(() => {
-
+  
   }, [modalShow])
-
-
   /* # Close toast On clicking outside */
 
   const refOne = useRef(null);
@@ -56,16 +63,37 @@ const CustomNavbar = ({ isSticky,onhandle }) => {
     }
   }
 
-  // const usertoken = JSON.parse(localStorage.getItem('token'))
-  // useEffect(() => {
-
-  // }, [usertoken])
-
-
 
   const refreshPage = () => {
     window.location.reload();
   }
+
+  const usertoken = JSON.parse(localStorage.getItem('token'))
+  useEffect(() => {
+
+  }, [usertoken])
+
+
+
+ 
+  const history = useHistory();
+
+  const handlesignup = () => {
+    if (usertoken == null) {
+      setModalShow(true)
+    }
+    else {
+      history.push("/home/profilepage")
+    }
+  }
+
+  // const activeLink = (isActive) =>{
+  //   return{
+  //     color:isActive? "#fafafa":"#777777",
+  //     backgroundColor:isActive? "#00a850":"#fafafa"
+  //   }
+
+  // }
 
 
   return (
@@ -77,34 +105,35 @@ const CustomNavbar = ({ isSticky,onhandle }) => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <div className='booking'>
-            <div className='container containernavbar'>
-              <ul className="nav nav-Tabs mt-2 mainnavbartabs">
-                <li className="nav-item ms-2">
-                  <NavLink to='/flight' className="nav-link me-2 " name="selection" onClick={() => refreshPage} >
-                    <i class="fa fa-fighter-jet me-2 navicon" aria-hidden="true"></i>
-                    {/* <img src={Plane} alt="plane" className="me-1" style={{ height: "38px", width: "32px" }} /> */}
+            <div className='container'>
+              <ul className="nav nav-Tabs">
+                <li className="nav-item">
+                  <NavLink to='/home' className="nav-link me-2"  name="home" onClick={() => refreshPage} >
+                    <img src={Homeicon} alt="home"  className="me-1" style={{ height: "22px", width: "22px" }}></img>
+                    Home
+                  </NavLink>
+                </li>
+                <li className="nav-item">
+                  <NavLink to='/flight' className="nav-link me-2"  name="flight" onClick={() => refreshPage} >
+                    <img src={Plane} alt="plane" className="me-1" style={{ height: "30px", width: "30px" }} />
                     Flights
                   </NavLink>
                 </li>
                 <li className="nav-item">
-                  <NavLink to='/hotel' className="nav-link" name="selection" onClick={() => refreshPage} >
-                    <i class="fa fa-building me-2" aria-hidden="true"></i>
-
-                    {/* <img src={Hotel} alt="hotel" className="me-1" style={{ height: "25px", width: "24px" }} /> */}
+                  <NavLink to='/hotel' className="nav-link"  name="hotels" onClick={() => refreshPage} >
+                    <img src={Hotel} alt="hotel" className="me-1" style={{ height: "22px", width: "22px" }} />
                     Hotels
                   </NavLink>
                 </li>
                 <li className="nav-item">
-                  <NavLink to='/bus' className="nav-link" name="selection" onClick={() => refreshPage} >
-                    <i class="fa fa-bus me-2" aria-hidden="true"></i>
-                    {/* <img src={Bus} alt="bus" className="me-1" style={{ height: "22px", width: "25px" }} /> */}
+                  <NavLink to='/bus' className="nav-link"  name="bus" onClick={() => refreshPage} >
+                    <img src={Bus} alt="bus" className="me-1" style={{ height: "22px", width: "22px" }} />
                     Bus
                   </NavLink>
                 </li>
                 <li className="nav-item">
-                  <NavLink to='/car' className="nav-link" name="selection" onClick={() => refreshPage} >
-                    <i class="fa fa-car me-2" aria-hidden="true"></i>
-                    {/* <img src={Car} alt="car" className="me-1" style={{ height: "22px", width: "22px" }} /> */}
+                  <NavLink to='/car' className="nav-link"  name="car" onClick={() => refreshPage} >
+                    <img src={Car} alt="car" className="me-1" style={{ height: "22px", width: "22px" }} />
                     Car
                   </NavLink>
                 </li>
@@ -112,35 +141,45 @@ const CustomNavbar = ({ isSticky,onhandle }) => {
             </div>
           </div>
         </Navbar.Collapse>
-        <div className="d-flex justify-content-end mt-2">
-          <div className=" me-5 hoyjoyTriphistory">
-
-            {/* <NavLink to='/home/triphistory' style={{ textDecoration: "none" }} className="d-flex mt-2">
-              <FontAwesomeIcon icon={faToolbox} style={{ fontSize: "22px", color: "gray", padding: "1px", marginRight: "8px", marginTop: "5px" }} />
-              <div className="d-flex flex-column">
-                <p className="mb-0 text-muted" style={{ fontSize: "10px" }}>My Trips</p>
-                <p className="mt-0 mb-0" style={{ color: "#2b2d91", fontSize: "13px" }}>Manage Booking</p>
-              </div>
-            </NavLink> */}
-          </div>
-          <div className="mb-2">
-            <div className="register" onClick={() => setModalShow(true)}>
-              <FontAwesomeIcon icon={faUserCircle} style={{ fontSize: "25px", color: "#3B77DC" }} />
-              <a className="ms-2 mb-0  fw-bold mt-1" style={{ fontSize: "10px" }}>LOGIN<span style={{ color: "#3B77DC" }}> / </span><span style={{ color: "#3B77DC" }}>SIGNUP</span></a>
-              <i class="fa fa-chevron-down" aria-hidden="true" style={{ color: "#3B77DC", marginTop: "8px", marginLeft: "5px", fontSize: "10px" }}></i>
-              <Login
-                show={modalShow}
-                ModalSetter={setModalShow}
-                onHide={() => setModalShow(false)}
-              />
+        <div className="d-flex justify-content-end">
+          {(usertoken) ? (
+            <div className=" me-3 hoyjoyTriphistory">
+              <small className="mb-0">My Trip</small>
+              <NavLink to='/home/triphistory' style={{ textDecoration: "none" }} className="d-flex mt-0">
+                <FontAwesomeIcon icon={faToolbox} style={{ fontSize: "20px", color: "orange" }} />
+                <p className="mt-0 ms-1" style={{ color: "#2b2d91" }}>Manage Booking</p>
+              </NavLink>
             </div>
+          ) : null}
+          <div className="mt-2">
+            {(usertoken) ? (
+              <div className="register" onClick={toggleShow}>
+                <FontAwesomeIcon icon={faUserCircle} style={{ fontSize: "28px", color: "orange" }} />
+                <a className="ms-2 mb-0 link-success fw-bold" onClick={() => handlesignup()}>View profile</a>
+              </div>
+            ) : (
+              <div className="register" onClick={toggleShow}>
+                <FontAwesomeIcon icon={faUserCircle} style={{ fontSize: "28px", color: "orange" }} />
+                <a className="ms-2 mb-0 link-success fw-bold" onClick={() => handlesignup()}>Login / Signup</a>
+                <Login
+                  show={modalShow}
+                  ModalSetter={setModalShow}
+                  onHide={() => setModalShow(false)}
+                />
+              </div>
+            )}
+
             {/* <Toast show={open} onClose={toggleShow} className="Logintoast" ref={refOne}>
               <Toast.Body>
                 <div className='p-2'>
                   <div>
                     <h5 className="fw-bold mb-0">Hey Traveller</h5>
                     <p className="m-0">Get exclusive deals & Manage your trips</p>
-                    <button className="btn btn-warning w-100 mt-2 fw-bold" onClick={() => setModalShow(true)}>Login/Sign Up</button>
+                    {(usertoken) ? (
+                      <button className="btn btn-warning w-100 mt-2 fw-bold" onClick={() => handlesignup()}>Profile</button>
+                    ) : (
+                      <button className="btn btn-warning w-100 mt-2 fw-bold" onClick={() => handlesignup()}>Login/Sign Up</button>
+                    )}
                   </div>
                   <div className="ms-3 pt-1">
                     <div className="d-flex mt-2">
@@ -149,16 +188,14 @@ const CustomNavbar = ({ isSticky,onhandle }) => {
                         <h6 className="ms-2 fw-bold text-dark">Offers</h6>
                       </NavLink>
                     </div>
-                    <div className="d-flex">
-                      <img src={Suitcase} alt="img" style={{ height: "20px", width: "20px" }}></img>
-                      <NavLink to='/home/triphistory' style={{ textDecoration: "none" }}>
-                        <h6 className="ms-2 fw-bold text-dark">Manage Booking</h6>
-                      </NavLink>
-                    </div>
-                    <div className="d-flex">
-                      <img src={Coin} alt="img" style={{ height: "20px", width: "20px" }}></img>
-                      <h6 className="ms-2 fw-bold">Wallet</h6>
-                    </div>
+                    {(usertoken) ? (
+                      <div className="d-flex">
+                        <img src={Suitcase} alt="img" style={{ height: "20px", width: "20px" }}></img>
+                        <NavLink to='/home/triphistory' style={{ textDecoration: "none" }}>
+                          <h6 className="ms-2 fw-bold text-dark">Manage Booking</h6>
+                        </NavLink>
+                      </div>
+                    ) : null}
                   </div>
                 </div>
               </Toast.Body>
@@ -166,9 +203,10 @@ const CustomNavbar = ({ isSticky,onhandle }) => {
           </div>
         </div>
       </Navbar>
+
     </div>
 
 
   );
 };
-export default withRouter(CustomNavbar);
+export default CustomNavbar;

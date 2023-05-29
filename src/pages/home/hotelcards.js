@@ -28,32 +28,6 @@ const SimilarHotels = () => {
         // lazyLoad: true,
         // autoplay: true,
         // autoplaySpeed: 2000,
-        responsive: [
-            {
-              breakpoint: 1024,
-              settings: {
-                slidesToShow: 3,
-                slidesToScroll: 3,
-                infinite: true,
-                dots: true
-              }
-            },
-            {
-              breakpoint: 600,
-              settings: {
-                slidesToShow: 2,
-                slidesToScroll: 2,
-                initialSlide: 2
-              }
-            },
-            {
-              breakpoint: 450,
-              settings: {
-                slidesToShow: 1,
-                slidesToScroll: 1
-              }
-            }
-          ]
     }
 
 
@@ -64,7 +38,7 @@ const SimilarHotels = () => {
 
     return (
         <>
-            <Card className="container mt-5 Hojoyhotelcards   cardrad" >
+            <Card className="container mt-5 cardrad" >
               
                     <h5 className="fw-bold text-center mt-3">Nearby Hotels</h5>
               

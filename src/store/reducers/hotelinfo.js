@@ -7,7 +7,7 @@ const initialState = {
 };
 
 const reducer = (state = initialState, action) => {
-  // console.log("iam in HOTEL INFO reducer",action)
+
   switch (action.type) {
     case HOTEL_INFO.LOAD_INFO:
       return {

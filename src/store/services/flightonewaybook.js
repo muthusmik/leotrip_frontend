@@ -2,26 +2,30 @@ import axios from "axios";
 import {
   flightonewaybookUrl,
 } from "../../constants.js";
-
+// import {
+//    testfligtbookUrl,
+//  } from "../../constants.js";
 
 const flightonewaybook = async (user) => {
-  // console.log("flightonewaybook service payload",user)
+ 
+  const usertoken = JSON.parse(localStorage.getItem('token'))
+  console.log("cccb", usertoken)
   const headers = {
     "Content-Type": "application/json",
-   
+    'Authorization':`Bearer ${usertoken}`
   };
   
-  // console.log("ia m in the service");
+ 
   try {
     const flightonewaybookdata = await axios.post(
       flightonewaybookUrl,
       user[0],
-      { headers: headers }
+      { headers: headers}
     );
-    //  console.log("flightonewaybook data .I am..",flightonewaybookUrl,"payload data",user[0]);
-    return [flightonewaybookdata.data];
+  
+    return flightonewaybookdata.data;
   } catch (error) {
-    // console.log(error);
+    return error.response.data
   }
 };
 

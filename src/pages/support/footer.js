@@ -1,6 +1,6 @@
 import React from "react";
 import { Row,Col } from "react-bootstrap";
-
+import './support.scss';
 const Footer = () => {
     return (
         <div className="bg-dark">
@@ -25,7 +25,7 @@ const Footer = () => {
                             <h6 class="title-box ">
                                 Call Us 24/7
                             </h6>
-                            <p className="text-white"> (91)-98491 44844 / (91)-93939 60999</p>
+                            <p className="text-white">  (91)-89777 81 999 /(91)-89777 82 999</p>
                         </div>
                     </div>
                 </Col>
@@ -38,7 +38,7 @@ const Footer = () => {
                             <h6 class="title-box fw-bold">
                                 Mail Us
                             </h6>
-                            <p className="text-white"> hojoycomforts@gmail.com</p>
+                            <p className="text-white"> abcinkahotels@gmail.com</p>
                         </div>
                     </div>
                 </Col>

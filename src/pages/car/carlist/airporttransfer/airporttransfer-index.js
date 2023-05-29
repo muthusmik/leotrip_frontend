@@ -1,7 +1,7 @@
 import React from "react";
 import "../../carlist/carlist.scss";
 import CustomNavbar from '../../../../component/navbar/Navbar';
-import CarModifySearch from '../carmodifysearch';
+import CarModifySearch from './carmodifysearch';
 import CarFilter from './carfilter';
 import CarBookingList from './carbookinglist';
 

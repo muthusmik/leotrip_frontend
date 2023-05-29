@@ -7,7 +7,7 @@ const initialState = {
 };
 
 const reducer = (state = initialState, action) => {
-  // console.log("iam in flight reducer",action)
+ 
   switch (action.type) {
     case FLIGHT_SEARCH.LOAD_SEARCH:
       return {

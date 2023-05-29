@@ -7,7 +7,7 @@ const initialState = {
 };
 
 const reducer = (state = initialState, action) => {
-  //  console.log("iam in bus book reducer",action)
+  
   switch (action.type) {
     case BUSBOOK.LOAD:
       return {

@@ -56,7 +56,6 @@ export default function MultiDatePickers({ onSelect, Searchstyle, required, sele
     }
   }
 
-  console.log("sasi",checkInDate,"akkk",checkOutDate)
 
   var startDate = moment(checkInDate).format("DD/MM/YYYY");
   var endDate = moment(checkOutDate).format("DD/MM/YYYY");
@@ -69,7 +68,7 @@ export default function MultiDatePickers({ onSelect, Searchstyle, required, sele
   return (
     <div className='headerSearchItem'>
       <div onClick={handleClick} className={Searchstyle}>
-        <div className='row d-inline-flex content'>
+        <div className='d-flex content'>
           <div className='col modifydaterange'>
             <p className='mb-0' style={style2}><FontAwesomeIcon icon={faCalendarDays} className="ms-2 me-1 text-secondary " />Check-in</p>
             <div className=' p-3 ms-1'>{`${checkInDate.toString()}`}</div>
@@ -78,7 +77,7 @@ export default function MultiDatePickers({ onSelect, Searchstyle, required, sele
           <div className='nights d-flex justify-content-center my-2'>
             <Badge bg="success" >{nights} &nbsp;nights</Badge>
           </div>
-          <div className='col modifydaterange me-3'>
+          <div className='col modifydaterange ms-2'>
             <p className='mb-0' style={style2}><FontAwesomeIcon icon={faCalendarDays} className="ms-3 me-1 text-secondary " />Check-out</p>
             <div className=' p-3 ms-1'>{`${checkOutDate.toString()}`}</div>
           </div>

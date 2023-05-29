@@ -7,24 +7,28 @@ const initialState = {
 };
 
 const reducer = (state = initialState, action) => {
-  //  console.log("iam in airportcitylist reducer",action.type)
+
   switch (action.type) {
     case SIGNUP.LOAD_SIGNUP:
       return {
         ...state,
         loading: true,
       };
-    case SIGNUP.SIGNUP_SUCCESS:
+    case SIGNUP.LOAD_SUCCESS:
       return {
         loading: false,
         data: action.signup,
         error: "",
       };
-    case SIGNUP.SIGNUP_FAIL:
+    case SIGNUP.LOAD_FAIL:
       return {
         loading: false,
         data: [],
         error: action.error,
+      };
+    case SIGNUP.LOAD_CLEARREDUCER:
+      return {
+        initialState
       };
     default:
       return state;

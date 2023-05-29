@@ -4,23 +4,23 @@ import {
 } from "../../constants.js"
 
 const busBook= async (user) => {
-  // console.log("bus book wdm service payload.......",user)
+  const usertoken = JSON.parse(localStorage.getItem('token'))
+  console.log("cccb", usertoken)
   const headers = {
     "Content-Type": "application/json",
-   
+    'Authorization':`Bearer ${usertoken}`
   };
   
-  // console.log("ia m in the service");
+
   try {
     const busdata = await axios.post(
         busBookUrl,
       user,
       { headers: headers }
     );
-    // console.log("bus book data in service.........",busdata.data,user);
-    return [user,busdata.data];
+
+    return busdata.data.result.Result;
   } catch (error) {
-    // console.log(error);
   }
 };
 

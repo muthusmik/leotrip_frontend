@@ -1,4 +1,4 @@
-import React, { useState, } from 'react';
+import React, { useState} from 'react';
 import Card from 'react-bootstrap/Card';
 import { Form, InputGroup, Tabs, Tab } from 'react-bootstrap';
 import Nav from 'react-bootstrap/Nav';
@@ -16,7 +16,6 @@ import moment from 'moment'
 const DriverDetails = () => {
     const [sliderRef, setSliderRef] = useState(null)
     const Destination = JSON.parse(localStorage.getItem('carsearch'));
-    console.log("------Destination------",Destination)
 
     const sliderSettings = {
         arrows: true,
@@ -42,12 +41,12 @@ const DriverDetails = () => {
                         </div>
                     </div>
                 </div>
-                <div>
+                {/* <div>
                     <h5>Images of selected vehicle category</h5>
                     <div className='container border p-2' style={{ fontSize: "13px", backgroundColor: "#FFFACD" }}>Car images shown here are for representation purpose only. Actual car will belong to the same model but may not be the exact one as shown in the images</div>
-                </div>
+                </div> */}
 
-                <Tabs
+                {/* <Tabs
                     defaultActiveKey="ALL"
                     id="uncontrolled-tab-example"
                     className="mb-3 pill"
@@ -127,9 +126,9 @@ const DriverDetails = () => {
                         </Slider>
                     </Tab>
 
-                </Tabs>
+                </Tabs> */}
 
-                <div className="mt-5">
+                <div className="mt-1">
                     <h5 class="font16 fontBold textDark">About our drivers</h5>
                     <FontAwesomeIcon icon={faCheck} style={{ color: "green", fontSize: "20px", float: "left", marginRight: "10px" }} />
                     <p >100% of drivers are police verified, licensed and audited</p>

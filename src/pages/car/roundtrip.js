@@ -6,8 +6,8 @@ import CustomButton from "../../component/button";
 import { useDispatch, useSelector, useStore } from "react-redux";
 import { geocodeByAddress, getLatLng } from "react-places-autocomplete";
 import LocalSearch from "../../component/autocomplete/localsearch";
-import CustomDatePickers from "../../component/datepicker/singledatepicker"
-import { format } from 'date-fns';
+import MultiDatePickers from "../../component/datepicker/carmultidatepicker"
+import { addDays, format } from 'date-fns';
 import TimePicker from "rc-time-picker";
 import moment from "moment";
 import { loadCarList } from '../../store/actions/car';
@@ -18,24 +18,34 @@ import AutoSuggest from "react-autosuggest";
 
 const RoundTrip = () => {
 
-
-
     const [city, setCity] = useState([])
 
-    const [errormsg, setErrormsg] = useState('');
+    const [fromerrormsg, setFromErrormsg] = useState('');
+    const [toerrormsg, setToErrormsg] = useState('');
+    const [botherrormsg, setBothErrormsg] = useState('');
 
     const history = useHistory();
     const dispatch = useDispatch();
 
-    const handleSubmit = (pickupdate,returndate) => {
-        if (fromaddress == '') {
-            setErrormsg('Please Enter the Valid Location !');
+
+
+    const handleSubmit = (pickupdate, returndate) => {
+        if (fromaddress === '') {
+            setFromErrormsg('Please Enter the Valid Location !');
+
         }
-        else if (toaddress == '') {
-            setErrormsg('Please Enter the Valid Location !');
+        else if (toaddress === '') {
+            setToErrormsg('Please Enter the Valid Destination !');
+
+        }
+        else if ((fromaddress_city_Id === toaddress_city_Id) && (fromaddress === toaddress)) {
+            setBothErrormsg('Source and Destination cannot be same');
+
         }
         else {
-            setErrormsg('')
+            setFromErrormsg('')
+            setToErrormsg('')
+            setBothErrormsg('')
             const carlist = {
                 "EndUserIp": "107.180.105.183",
                 "ClientId": "180109",
@@ -54,10 +64,9 @@ const RoundTrip = () => {
             localstores.push({ "from": from });
             localstores.push({ "to": to });
             localstores.push({ "pickup": pickupdate });
-            localstores.push({ "pickuptime": time });
             localstores.push({ "triptype": "1" });
             localstores.push({ "drop": returndate });
-            localstores.push({ "droptime": returntime });
+            localstores.push({ "hours": "0" });
             localStorage.setItem('carsearch', JSON.stringify(localstores));
             localStorage.setItem('triptypename', JSON.stringify("roundtrip"));
 
@@ -79,7 +88,7 @@ const RoundTrip = () => {
     /*  #swapping */
 
     const switchText = (from, to) => {
-        console.log("swapping",to.suggestion.airport_city_name);
+
         handleSelection(to)
         handleSelectiondestination(from)
         setValueDes(from.suggestion.caoncitlst_city_name)
@@ -89,53 +98,37 @@ const RoundTrip = () => {
 
 
 
-    /* # DatePicker(pickup) */
-
-    const [selectedDay, setSelectedDay] = useState(Date);
-    const [date, setDate] = useState('')
-
-    const handleDayClick = (day) => {
-        setDate(format(day, 'PP'))
-        setSelectedDay(day)
-    };
-    useEffect(() => {
-        // set current date on component load
-        setDate(format(new Date(), 'PP'))
-    }, [])
-
-
-    /* # DatePicker(Return) */
+    /* # DatePicker */
 
     const today = new Date();
-
-    const [returnselection, setReturnSelection] = useState(Date);
-    const [returndate, setReturnDate] = useState('')
-
-    const handleReturnDateClick = (day) => {
-        setReturnDate(format(day, 'PP'))
-        setReturnSelection(day)
-    };
     useEffect(() => {
-        // set current date on component load
-        setReturnDate(moment(new Date()).add(1, 'day').format('MMM DD, yyyy'));
+        setPickupDate(moment(new Date()).add(1, 'day').format('MMM DD, yyyy'))
+        setDropDate(moment(new Date()).add(2, 'day').format('MMM DD, yyyy'));
     }, [])
 
 
-    /*  # Timepicker */
-    const [time, setTime] = useState(moment());
-    const handleSelect = (value) => {
-        setTime(value);
-    }
+    const [selectedRange, setSelectedRange] = useState();
+    const [pickupDate, setPickupDate] = useState('');
+    const [dropDate, setDropDate] = useState('');
 
 
-    /*  # TimePicker(return) */
 
-    const [returntime, setReturnTime] = useState(moment(time).add(1, 'day'));
+    const handleRangeSelect = (range) => {
 
-    const ReturnhandleSelect = (value) => {
+        setSelectedRange(range);
+        if (range?.from) {
+            setPickupDate(format(range.from, 'MMM dd, yyyy'));
+        }
+        if (range?.to) {
+            setDropDate(format(range.to, 'MMM dd, yyyy'));
+        }
 
-        setReturnTime(value);
-    }
+        // const pickup = new Date(pickupDate);
+        // const drop = new Date(dropDate);
+        // const timeDiff = Math.abs(drop.getTime() - pickup.getTime());
+        // const hoursDiff = Math.ceil(timeDiff / (1000 * 60 * 60));
+        // console.log("gjgjg",hoursDiff)
+    };
 
 
     const refOne = useRef(null);
@@ -161,16 +154,12 @@ const RoundTrip = () => {
 
     useEffect(() => {
         setCity(carcitylist.data)
-        console.log("iam star...", carcitylist)
+
     }, [carcitylist])
 
 
     const [valueSrc, setValueSrc] = useState("");
     const [valueDes, setValueDes] = useState("");
-    // console.log("i am A1",valueSrc);
-    // console.log("i am A2",valueDes);
-
-    // console.log("i am A4",city)
 
 
     const [suggestions, setSuggestions] = useState([]);
@@ -182,19 +171,24 @@ const RoundTrip = () => {
             lang.caoncitlst_city_name.toLowerCase().slice(0, inputLength) === inputValue
         );
     }
-    console.log("i am A3", suggestions);
 
-    const [from,setFrom]=useState("")
+    const [from, setFrom] = useState("")
     const handleSelection = (suggestionValue) => {
         setFrom(suggestionValue);
         setFromaddress(suggestionValue.suggestion.caoncitlst_city_name)
         setFromaddress_city_Id(suggestionValue.suggestion.caoncitlst_id)
+        setFromErrormsg('')
+        setToErrormsg('')
+        setBothErrormsg('')
     }
-    const [to,setTo]=useState("")
+    const [to, setTo] = useState("")
     const handleSelectiondestination = (suggestionValue) => {
         setTo(suggestionValue);
         setToaddress(suggestionValue.suggestion.caoncitlst_city_name)
         setToaddress_city_Id(suggestionValue.suggestion.caoncitlst_id)
+        setFromErrormsg('')
+        setToErrormsg('')
+        setBothErrormsg('')
     }
 
     // const handleSelection = (suggestionValue) => {
@@ -207,19 +201,16 @@ const RoundTrip = () => {
     //     setToaddress_city_Id(suggestionValue.suggestion.caoncitlst_id)
     // }
 
-    // console.log("uk",fromaddress)
-    // console.log("tk",toaddress)
-    // console.log("skk",fromaddress_city_Id)
-    // console.log("ppkk",toaddress_city_Id)
+
 
 
 
 
     return (
         <div>
-            {(fromaddress === '' || toaddress === '') ? <h6 className="font-weight-bold text-danger mt-2">{errormsg}</h6> : null}
 
-            <div className='d-inline-flex  flightcontent mt-5 my-4'>
+
+            <div className='d-inline-flex flightcontent mt-5 my-4'>
                 <div>
                     <div className='roundcarsearchbox border-bottom border-2 mt-2'>
 
@@ -251,19 +242,19 @@ const RoundTrip = () => {
 
                                     onChange: (_, { newValue, method }) => {
                                         setValueSrc(newValue);
-                                        //    console.log("newValue",method)
                                     }
                                 }}
                                 highlightFirstSuggestion={true}
                             />
                         </div>
                     </div>
+                    {(fromaddress === '') ? <h6 className="font-weight-bold text-danger mt-2">{fromerrormsg}</h6> : null}
                 </div>
-                <div className='icon d-flex justify-content-center my-4 carRoundTrip_icon'>
+                <div className='icon d-flex justify-content-center my-4'>
                     <FontAwesomeIcon icon={faArrowRightArrowLeft} onClick={() => switchText(from, to)} style={{ fontSize: "20px", color: "green" }} />
                 </div>
                 <div className='roundcarsearchbox border-bottom border-2 mt-2'>
-                    <p className="w-auto ">To</p>
+                    <p>To</p>
                     {/* <LocalSearch
             value={toaddress}
             onChange={(e) => ToAddress(e)}
@@ -293,64 +284,30 @@ const RoundTrip = () => {
 
                                 onChange: (_, { newValue, method }) => {
                                     setValueDes(newValue);
-                                    //    console.log("newValue",method)
                                 }
                             }}
                             highlightFirstSuggestion={true}
                         />
                     </div>
+                    {(toaddress === '') ? <h6 className="font-weight-bold text-danger mt-2">{toerrormsg}</h6> : null}
                 </div>
-                <div className='rounddateselections mt-2'>
-                    <p>Pickup Date</p>
-                    <CustomDatePickers
-                        value={date}
-                        Searchstyle="car_searchdate"
-                        selected={selectedDay}
-                        onDayClick={handleDayClick}
-                        required="required"
-                        calanderstyle="car_calander"
-                    />
-                </div>
-                {/* <div className='rounddateselections mt-2'>
-                    <p>Pickup Time</p>
-                    <div classname="rc-time-picker-panel">
-                        <TimePicker
-                            use12Hours
-                            value={time}
-                            onChange={handleSelect}
-                            focusOnOpen={true}
-                            showSecond={false}
-                            className="ms-3"
-                        />
-                    </div>
-                </div> */}
+                <MultiDatePickers
+                    checkInDate={pickupDate}
+                    checkOutDate={dropDate}
+                    Searchstyle="car_searchdate"
+                    selected={selectedRange}
+                    current={true}
+                    onSelect={handleRangeSelect}
+                    required="required"
+                    calanderstyle="car_calander"
+                />
+            </div>
+            <div className='text-center'>
+                {(fromaddress_city_Id === toaddress_city_Id) ? <h6 className="font-weight-bold text-danger mt-2">{botherrormsg}</h6> : null}
 
-
-                <div className='rounddateselections mt-2 me-5'>
-                    <p>Return Date</p>
-                    <CustomDatePickers
-                        value={returndate}
-                        Searchstyle="car_searchdate"
-                        selected={returnselection}
-                        onDayClick={handleReturnDateClick}
-                        required="required"
-                        calanderstyle="car_calander"
-                    />
-                </div>
-                {/* <div className='rounddateselections mt-2'>
-                    <p>Return Time</p>
-                    <TimePicker
-                        use12Hours
-                        value={returntime}
-                        onChange={ReturnhandleSelect}
-                        focusOnOpen={true}
-                        showSecond={false}
-                        className="ms-3"
-                    />
-                </div> */}
             </div>
             <div className='carbutton'>
-                <CustomButton customstyle='carbtnsearch' onClick={() => { handleSubmit(date,returndate) }} value='SEARCH CAR'></CustomButton>
+                <CustomButton customstyle='carbtnsearch' onClick={() => { handleSubmit(pickupDate, dropDate) }} value='SEARCH CAR'></CustomButton>
             </div>
         </div>
     )

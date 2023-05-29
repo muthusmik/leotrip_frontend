@@ -1,4 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
+import './flightlist.scss'
+import '../flight.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRightArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import CustomDatePickers from "../../../component/datepicker/singledatepicker"
@@ -69,6 +71,7 @@ const FlightModifySearch = () => {
                 localStorage.setItem('sourcedata', JSON.stringify(fromaddress));
                 localStorage.setItem('destinationdata', JSON.stringify(toaddress));
                 localStorage.setItem('triptype', JSON.stringify(triptype));
+                localStorage.setItem( "JourneyTrip",journey )
                 segment = [{
                     "Origin": fromaddress.suggestion?.airport_code,
                     "Destination": toaddress.suggestion?.airport_code,
@@ -93,6 +96,7 @@ const FlightModifySearch = () => {
                 localStorage.setItem('sourcedata', JSON.stringify(fromaddress));
                 localStorage.setItem('destinationdata', JSON.stringify(toaddress));
                 localStorage.setItem('triptype', JSON.stringify(triptype));
+                localStorage.setItem("JourneyTrip",journey)
                 segment = [{
                     "Origin": fromaddress.suggestion?.airport_code,
                     "Destination": toaddress.suggestion?.airport_code,
@@ -123,8 +127,7 @@ const FlightModifySearch = () => {
                 "Segments": segment,
             }
             dispatch(loadFlightList(flightSearchList));
-            console.log("segment", flightSearchList)
-
+           
         }
 
     }
@@ -137,7 +140,7 @@ const FlightModifySearch = () => {
     const [toaddress, setToaddress] = React.useState("");
     /*  #swapping */
     const switchText = (from, to) => {
-        console.log("swapping", to.suggestion.airport_city_name);
+       
         handleSelection(to)
         handleSelectiondestination(from)
         setValueDes(to.suggestion.airport_city_name)
@@ -158,16 +161,16 @@ const FlightModifySearch = () => {
     useEffect(() => {
         // set current date on component load
         const routeDate = new Date(AirlineData[5].Departure)
-        //console.log(new Date(AirlineData[5].Departure), "Date routed")
+       
         setDate(moment(routeDate).format('MMM DD,YYYY'));
         setSelectedDay(routeDate);
     }, [])
 
-    console.log("zoo", date, "SKKK", selectedDay)
+   
 
     /*  # AutoSuggest */
     const AirlineData = JSON.parse(localStorage.getItem('travelDetails'));
-    console.log(AirlineData, ".............airline")
+    
     const [destinationdata, setDestinationdata] = useState(AirlineData[3].Destination);
     const [valueDes, setValueDes] = useState(AirlineData[1].Source);
     const [suggestions, setSuggestions] = useState([]);
@@ -181,13 +184,13 @@ const FlightModifySearch = () => {
     }
 
     const handleSelection = (suggestionValue) => {
-        console.log(suggestionValue, "from address")
+      
         setFromaddress(suggestionValue)
         //const sourcedata =valueDes+"("+fromaddress.suggestion?.airport_code+")"
     }
 
     const handleSelectiondestination = (suggestionValue) => {
-        console.log(suggestionValue, "to address")
+       
         setToaddress(suggestionValue)
         //const sourcedata =valueDes+"("+fromaddress.suggestion?.airport_code+")"
     }
@@ -285,7 +288,7 @@ const FlightModifySearch = () => {
     const onhandle = e => {
         setJourney(e.target.value);
     };
-    console.log("make prefect", journey)
+
 
 
     return (
@@ -306,13 +309,13 @@ const FlightModifySearch = () => {
                 <Row>
                     <div className='d-inline-flex content'>
                         <div>
-                            <div className="modifyflightsearch-area mt-4 listmodifyflightsearch-area">
-                                <p className='w-auto bg-white'>From</p>
+                            <div className="modifyflightsearch-area mt-4">
+                                <p>From</p>
                                 <AutoSuggest
                                     suggestions={suggestions}
                                     onSuggestionsFetchRequested={({ value }) => {
                                         setValueDes(value);
-                                        // console.log("I am selected in ...............................",value)
+                                       
                                         setSuggestions(getSuggestions(valueDes));
                                     }}
                                     onSuggestionSelected={(_, suggestionValue) => { handleSelection(suggestionValue) }}
@@ -324,7 +327,7 @@ const FlightModifySearch = () => {
 
                                         onChange: (_, { newValue, method }) => {
                                             setValueDes(newValue);
-                                            //    console.log("newValue",newValue)
+                                         
                                         }
                                     }}
                                     highlightFirstSuggestion={true}
@@ -334,14 +337,14 @@ const FlightModifySearch = () => {
                         <div className='modifyicon  justify-content-center my-auto'>
                             <FontAwesomeIcon icon={faArrowRightArrowLeft} onClick={() => switchText(fromaddress, toaddress)} style={{ fontSize: "14px", color: "green" }} />
                         </div>
-                        <div className="modifyflightsearch-area mt-4 listmodifyflightsearch-area">
-                            <p className='w-auto bg-white'>To</p>
+                        <div className="modifyflightsearch-area mt-4">
+                            <p>To</p>
                             <AutoSuggest
                                 suggestions={suggestions}
 
                                 onSuggestionsFetchRequested={({ value }) => {
                                     setDestinationdata(value);
-                                    // console.log("I am selected in ...............................",value)
+                                  
                                     setSuggestions(getSuggestions(destinationdata));
                                 }}
                                 onSuggestionSelected={(_, suggestionValue) => { handleSelectiondestination(suggestionValue) }}
@@ -353,15 +356,15 @@ const FlightModifySearch = () => {
 
                                     onChange: (_, { newValue, method }) => {
                                         setDestinationdata(newValue);
-                                        //    console.log("newValue",newValue)
+                                
                                     }
                                 }}
                                 highlightFirstSuggestion={true}
                             />
                         </div>
                         {journey === "1" ? (
-                            <div className='modifydateselection mt-4 listmodifydateselection'>
-                                <p className='w-auto bg-white'>Departure</p>
+                            <div className='modifydateselection mt-4 me-1'>
+                                <p>Departure</p>
                                 <CustomDatePickers
                                     maxDate={moment().format("PP")}
                                     value={date}
@@ -373,6 +376,7 @@ const FlightModifySearch = () => {
                                 />
                             </div>
                         ) : (
+                            <div className='mt-2'>
                             <MultiDatePickers
                                 departure={date}
                                 returndate={returndate}
@@ -382,6 +386,7 @@ const FlightModifySearch = () => {
                                 required="required"
                                 calanderstyle="flight_calander"
                             />
+                            </div>
                             // <div className='modifydateselection mt-4'>
                             //     <p>Return</p>
                             //     <CustomDatePickers
@@ -470,8 +475,8 @@ const FlightModifySearch = () => {
                                 )}
                             </div>
                         </div>
-                        <div className='modifyflightbuttons ms-3 my-auto listmodifyflightbuttons'>
-                            <Button className='btn-sm' onClick={() => handleSubmit()}>UPDATE SEARCH</Button>
+                        <div className='modifyflightbuttons ms-3 my-auto'>
+                            <Button className='btn mt-2' onClick={() => handleSubmit()}>UPDATE SEARCH</Button>
                         </div>
                     </div>
                 </Row>

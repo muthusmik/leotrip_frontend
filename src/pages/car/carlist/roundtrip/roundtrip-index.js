@@ -4,7 +4,7 @@ import CustomNavbar from '../../../../component/navbar/Navbar';
 import CarModifySearch from '../carmodifysearch';
 import CarFilter from './carfilter';
 import CarBookingList from './carbookinglist';
-
+import Footer from "../../../../component/footer/footer";
 
 
 
@@ -39,12 +39,14 @@ const CarListRoundTrip = () => {
         window.scrollTo(0,0);
       }, []);
     return (
-
         <>
-            <CustomNavbar />
+        <div className="mb-5">
+            {/* <CustomNavbar /> */}
             <CarModifySearch />
             <CarListContent />
-        </>
+        </div>
+        <Footer/>
+    </>
 
     );
 

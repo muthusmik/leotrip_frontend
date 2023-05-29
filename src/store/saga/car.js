@@ -6,7 +6,7 @@ import { carlist } from "../services/car";
 
 export function* handleCarLoad(action) {
   try {
-    console.log("iam in the saga(car)",action);
+   
     const cardata = yield call(carlist, action.car);
     if (cardata && cardata.error) throw cardata.error;
     yield put(setCarList(cardata));

@@ -26,10 +26,10 @@ const FlightListContent = () => {
         toid: "MUD",
         price: "₹11,750",
     });
-    // console.log("selected value: ", selectedvalue)
+
     const onhandle = (event) => {
         onselectvalue(event);
-        // console.log("selected value: ", selectedvalue)
+     
 
     }
 
@@ -94,7 +94,7 @@ const FlightlistMulticity = () => {
     }
     return (
         <>
-            <CustomNavbar />
+            {/* <CustomNavbar /> */}
             <FlightModifySearch handleChange={handleChange}/>
             {returnedValue(value)}
         </>

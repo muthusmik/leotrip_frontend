@@ -10,10 +10,11 @@ import { faLocationCrosshairs } from '@fortawesome/free-solid-svg-icons';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { faBed } from '@fortawesome/free-solid-svg-icons';
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
-import { faCalendarDays,faBuildingCircleCheck } from '@fortawesome/free-solid-svg-icons';
+import { faCalendarDays, faBuildingCircleCheck } from '@fortawesome/free-solid-svg-icons';
 import { useSelector, useStore } from "react-redux";
 import { Modal, Row, Col, Card, Button } from 'react-bootstrap';
 import moment from "moment";
+import ErrorImage from "../../../asset/images/noimage.jpg"
 import Slider from 'react-slick'
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa'
 import 'slick-carousel/slick/slick.css'
@@ -29,7 +30,7 @@ const Hotelpreview = () => {
     const HotelInfoData = useSelector(state => state.HotelInfo);
     const store = useStore()
     const HotelRoomData = useSelector(state => state.HotelRoom);
-    //  console.log(HotelRoomData, "hotelroom...previewpagedata")
+
     useEffect(() => {
         // if(HotelInfoData.data[0]?.HotelDetails?.Images[0]){
         // setImageGalery(HotelInfoData.data[0].HotelDetails.Images[0])
@@ -102,12 +103,12 @@ const Hotelpreview = () => {
                     </p>
                     <div className="d-flex">
                         <div className="hotelcarousel" onClick={() => setModalShow(true)}>
-                            <Carousel slide={false} className="carousel-image" prevIcon={false} nextIcon={false} indicators={false} interval={2500}>
-                                {HotelInfoData.data[0].HotelDetails?.Images?.length>0 && HotelInfoData.data[0]?.HotelDetails?.Images?.map(data => (
+                            <Carousel  className="carousel-image" prevIcon={false} nextIcon={false} indicators={false} interval={1500}>
+                                {HotelInfoData.data[0].HotelDetails?.Images?.length > 0 && HotelInfoData.data[0]?.HotelDetails?.Images?.map(data => (
                                     <Carousel.Item>
                                         <img src={data}
                                             onError={event => {
-                                                event.target.src = "http://photos.hotelbeds.com/giata/original/36/365958/365958a_hb_r_001.jpg"
+                                                event.target.src = "http://localhost:3000/images/noimage.jpg"
                                                 event.onerror = null
                                             }} className="w-100" alt="img" />
                                     </Carousel.Item>
@@ -118,26 +119,30 @@ const Hotelpreview = () => {
                             <div className="preview-image " onClick={() => setModalShow(true)}>
 
                                 <img src={HotelInfoData.data[0] && HotelInfoData.data[0]?.HotelDetails?.Images[0]} alt="hotel" onError={event => {
-                                    event.target.src = "http://photos.hotelbeds.com/giata/original/36/365958/365958a_hb_r_001.jpg"
+                                    event.target.src = "http://localhost:3000/images/noimage.jpg"
                                     event.onerror = null
                                 }} />
 
                             </div>
                             <div className="preview-image mt-4" onClick={() => setModalShow(true)}>
                                 <img src={HotelInfoData.data[0] && HotelInfoData.data[0]?.HotelDetails?.Images[6]} alt="hotel" onError={event => {
-                                    event.target.src = "http://photos.hotelbeds.com/giata/original/36/365958/365958a_hb_r_001.jpg"
+                                    event.target.src = "http://localhost:3000/images/noimage.jpg"
                                     event.onerror = null
                                 }} />
                             </div>
                         </div>
+                        
                         <div className="hotelpackage">
+                            
                             <div className="hotelregularpackage">
                                 <div className="d-flex">
+                                    
                                     <div className="ms-2 regular-pack">
                                         <small>Price start at</small>
+                                        
                                         {/* {HotelRoomData.data[0] && HotelRoomData.data[0].DayRates.map(data => ( */}
                                         <h5 className="ms-3 mb-0">
-                                            <b>{HotelRoomData.data[0] && numberFormat(HotelRoomData.data[0]?.DayRates[0]?.Amount, HotelRoomData.data[0]?.Price?.CurrencyCode)}</b></h5>
+                                            <b>{HotelRoomData?.data[0] && numberFormat(HotelRoomData.data[0]?.DayRates[0]?.Amount, HotelRoomData.data[0]?.Price?.CurrencyCode)}</b></h5>
                                         {/* ))} */}
                                         <span><b className="text-success">+{HotelRoomData.data[0] && HotelRoomData?.data[0]?.Price?.CurrencyCode}.{HotelRoomData.data[0] && HotelRoomData.data[0]?.Price?.GST?.TaxableAmount}</b>taxes&amp;otherfees</span>
                                         <p>1 <strong>Room</strong> per night</p>
@@ -147,9 +152,9 @@ const Hotelpreview = () => {
                                         <h6><FontAwesomeIcon icon={faBed} />&nbsp;1 X Room</h6>
                                     </div>
                                 </div>
-                               <div>
-                               </div>
-                               <h6 className="small mt-2 text-center"><FontAwesomeIcon icon={faBuildingCircleCheck} className="text-success" />&nbsp; Free Breakfast</h6>
+                                <div>
+                                </div>
+                                <h6 className="small mt-2 text-center"><FontAwesomeIcon icon={faBuildingCircleCheck} className="text-success" />&nbsp; Free Breakfast</h6>
                                 <div className="mt-2 ms-3">
                                     <a href="#middle" className="pack-option ">VIEW OPTIONS &nbsp;
                                     </a>
@@ -163,7 +168,7 @@ const Hotelpreview = () => {
                                 </div>
                                 <div className="me-3">
                                     <p className="mb-0"><FontAwesomeIcon icon={faCalendarDays} /><small className="ms-2">Check-Out</small></p>
-                                    <h6 className="ms-3 mt-2 small">{moment(hotelSearchData.data[0] && hotelSearchData.data[0]?.CheckInDate, "DD/MM/YYYY").add(hotelSearchData.data[0].NoOfNights, 'days').format('DD/MM/YYYY')}</h6>
+                                    <h6 className="ms-3 mt-2 small">{moment(hotelSearchData.data[0] && hotelSearchData.data[0]?.CheckInDate, "DD/MM/YYYY").add(hotelSearchData.data[0]?.NoOfNights, 'days').format('DD/MM/YYYY')}</h6>
                                     <h6 className="ms-3 mti1 small text-muted" >11:30 AM</h6>
                                 </div>
                             </div>
@@ -183,82 +188,40 @@ const Hotelpreview = () => {
                     >
                         <Modal.Header style={{ backgroundColor: "#C7C8C7" }} closeButton></Modal.Header>
                         <Modal.Body style={{ backgroundColor: "#C7C8C7" }} className="border-dark">
-                            {/* <div>
-                                <>
-                            <Gallery photos={HotelInfoData?.data[0]?.HotelDetails?.Images} onClick={openLightbox} />
-                            <ModalGateway>
-                                {viewerIsOpen ? (
-                                    <Modal onClose={closeLightbox}>
-                                        <Carousel
-                                            currentIndex={currentImage}
-                                            views={HotelInfoData?.data[0]?.HotelDetails?.Images.map(x => ({
-                                                ...x,
-                                                srcset: x,
-                                                // caption: x.title
-                                            }))}
-                                        />
-                                    </Modal>
-                                ) : null}
-                            </ModalGateway>
-                            </>
-                            </div> */}
-                            {/* <Row className=' mx-auto'>
-                                <Col className='controls my-4 text-end'>
-                                    <button onClick={sliderRef?.slickPrev}>
-                                        <FaChevronLeft />
-                                    </button>
-                                </Col>
-                                <Col xs={8} className="my-3">
-                                    <Slider ref={setSliderRef} {...sliderSettings}>
-                                        {HotelInfoData.data[0] && HotelInfoData.data[0].HotelDetails.Images.map((data, index) => (
-                                            <Card Card key={index} className='cards'>
-                                                <div className=' card-list text-center'>
-                                                    <img src={data}
-                                                        onError={event => {
-                                                            event.target.src = "http://photos.hotelbeds.com/giata/original/36/365958/365958a_hb_r_001.jpg"
-                                                            event.onerror = null
-                                                        }} className="w-100" alt="img" onClick={() => setImageGalery(data)} />
-                                                </div>
-                                            </Card>
-                                        ))}
-
-                                    </Slider>
-                                </Col>
-                                <Col className='controls my-4'>
-
-                                    <Button onClick={sliderRef?.slickNext}>
-                                        <FaChevronRight />
-                                    </Button>
-                                </Col>
-                            </Row> */}
-                            {/* <Row>
-                                <Col xs={9} className="mt-5 mx-auto">
-                                    <img src={imageGalery}
-                                        onError={event => {
-                                            event.target.src = "http://photos.hotelbeds.com/giata/original/36/365958/365958a_hb_r_001.jpg"
-                                            event.onerror = null
-                                        }} className="mx-auto w-50" height={400} alt="img" />
-                                </Col>
-                            </Row> */}
+                            <div className="carousel-modelsize">
+                                <Carousel  className="carousel-modelimage"  interval={1400}>
+                                    {HotelInfoData.data[0].HotelDetails?.Images?.length > 0 && HotelInfoData.data[0]?.HotelDetails?.Images?.map(data => (
+                                        <Carousel.Item>
+                                            <img src={data}
+                                                onError={event => {
+                                                    event.target.src = "http://localhost:3000/images/noimage.jpg"
+                                                    event.onerror = null
+                                                }} className="w-100" alt="img" />
+                                        </Carousel.Item>
+                                    ))}
+                                </Carousel>
+                            </div>
                             <Row className="my-5">
-                                {HotelInfoData?.data[0] && HotelInfoData?.data[0]?.HotelDetails.Images.map((data, index) => (
-                                    <Col>
-                                        <img src={data} alt="Hotel Images" onClick={openLightbox} height="250px" width="350px" className="mb-3"/>
-                                        <ModalGateway>
-                                            {viewerIsOpen ? (
-                                                <Modal onClose={closeLightbox}>
-                                                    <Carousel
-                                                        currentIndex={currentImage}
-                                                        views={HotelInfoData?.data[0]?.HotelDetails?.Images.map(x => ({
-                                                            ...x,
-                                                            srcset: x,
-                                                            // caption: x.title
-                                                        }))}
-                                                    />
-                                                </Modal>
-                                            ) : null}
-                                        </ModalGateway>
-                                    </Col>
+                                {HotelInfoData.data[0] && HotelInfoData.data[0].HotelDetails.Images.map((data, index) => (
+                                    <>
+                                        <Col>
+                                            <img src={data} alt="Hotel Images" onClick={openLightbox} height="250px" width="350px" className="mb-3" />
+                                            <ModalGateway>
+                                                {viewerIsOpen ? (
+                                                    <Modal onClose={closeLightbox}>
+                                                        <Carousel
+                                                            currentIndex={currentImage}
+                                                            views={HotelInfoData?.data[0]?.HotelDetails?.Images.map(x => ({
+                                                                ...x,
+                                                                srcset: x,
+                                                                // caption: x.title
+                                                            }))}
+                                                        />
+                                                    </Modal>
+                                                ) : null}
+                                            </ModalGateway>
+                                        </Col>
+                                    </>
                                 ))}
                             </Row>
                         </Modal.Body>

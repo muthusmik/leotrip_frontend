@@ -33,51 +33,7 @@ const Deals = () => {
         slidesToScroll: 1,
         infinite: true,
         lazyLoad: true,
-        responsive: [
-            {
-              breakpoint: 1024,
-              settings: {
-                slidesToShow: 3,
-                slidesToScroll: 3,
-                infinite: true,
-                dots: true
-              }
-            },
-            {
-                breakpoint: 820,
-                settings: {
-                  slidesToShow: 2,
-                  slidesToScroll: 2,
-                  initialSlide: 2
-                }
-              },
-            {
-              breakpoint: 600,
-              settings: {
-                slidesToShow: 2,
-                slidesToScroll: 2,
-                initialSlide: 2
-              }
-            },
-            {
-                breakpoint: 540,
-                settings: {
-                  slidesToShow: 1,
-                  slidesToScroll: 1,
-                  initialSlide: 1
-                }
-              },
-            {
-              breakpoint: 450,
-              settings: {
-                slidesToShow: 1,
-                slidesToScroll: 1
-              }
-            }
-          ]
     }
- 
-
 
     const sliderSettings = {
         dots: false,
@@ -85,32 +41,6 @@ const Deals = () => {
         slidesToScroll: 1,
         infinite: true,
         lazyLoad: true,
-        responsive: [
-            {
-              breakpoint: 1024,
-              settings: {
-                slidesToShow: 3,
-                slidesToScroll: 3,
-                infinite: true,
-                dots: true
-              }
-            },
-            {
-              breakpoint: 600,
-              settings: {
-                slidesToShow: 2,
-                slidesToScroll: 2,
-                initialSlide: 2
-              }
-            },
-            {
-              breakpoint: 450,
-              settings: {
-                slidesToShow: 1,
-                slidesToScroll: 1
-              }
-            }
-          ]
     }
 
     return (
@@ -125,7 +55,7 @@ const Deals = () => {
 
                     <Tabs
                         defaultActiveKey="hotel"
-                        className="w-25 mt-3 mx-auto border  rounded-pill tabsDeals"
+                        className="w-25 mt-3 mx-auto border rounded-pill tabsDeals"
                         justify
                         variant="pills"
                         
@@ -133,31 +63,27 @@ const Deals = () => {
                         <Tab eventKey="hotel" title="Hotel" className="dealsTab" tabClassName="rounded-pill dealstabActive">
                             <Row>
                                 <Col className="my-auto">
-                                    <Button variant="light" size="lg " onClick={SliderReference?.slickPrev} className="slidebutton rounded-circle">
-                                        <FontAwesomeIcon className="slidebtn" icon={faArrowLeftLong} />
+                                    <Button variant="light" size="lg" onClick={SliderReference?.slickPrev} className="slidebutton rounded-circle">
+                                        <FontAwesomeIcon icon={faArrowLeftLong} />
                                     </Button>
                                 </Col>
                                 <Col xs={11}>
-                                    <div className="HojoyBankoffers Hojoyhotelcards mt-3 ">
+                                    <div className="HojoyBankoffers mt-3 ">
                                         <Slider ref={setSliderReference} {...sliderControl}>
                                             {HotelOfferDetails.map((card, index) => (
                                                 <Card className="DealsCARD">
                                                     <Row>
-                                                        <img src={card.hotelImg} alt="img1" className="dealsbannerimage" ></img>
-                                                        <Col xs={8} className="flex-3 ms-2">
-                                                            <h5 className="fw-bold mt-4">{card.hotel_name}</h5>
+                                                        <img src={card.hotelImg} alt="img1" className="dealsbannerimage" width={170} height={135}></img>
+                                                        <Col xs={8} className="flex-3 ms-2  ">
+                                                            <h5 className="fw-bold mt-2">{card.hotel_name}</h5>
                                                             <h4 className="text-muted fw-bold">{card.location}</h4>
-                                                            <div className="top">
-                                                                <div className="text">{card.hotel_name}</div>
-                                                            </div>
                                                         </Col>
-                                                        <Col className="mt-4 text-end">
+                                                        <Col className="mt-2 text-end">
                                                             <h5 className="text-danger fw-bold">{card.offerprice}</h5>
                                                             <h5 className="text-danger small fw-bold"><del>{card.originalprice}</del></h5>
                                                             <h5 className="text-muted small">Per night</h5>
                                                         </Col>
                                                     </Row>
-
                                                 </Card>
                                             ))}
                                         </Slider>
@@ -231,7 +157,28 @@ const Deals = () => {
 
 const Homepage = () => {
 
+    const [location, setLocation] = useState({});
 
+    React.useEffect(() => {
+        getLocation()
+    }, []);
+
+    const  getLocation=()=> {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(showPosition);
+        } else {
+          console.log("Geolocation is not supported by this browser.");
+        }
+      }
+
+
+      function showPosition(position) {
+        const lat = position.coords.latitude;
+        const long = position.coords.longitude;
+        setLocation({ lat, long });
+      }
+
+     console.log("hahaha",location)
 
     return (
         <>

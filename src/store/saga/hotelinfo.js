@@ -6,7 +6,7 @@ import { hotelInfo } from "../services/hotelinfo";
 
 export function* handleHotelInfo(action) {
   try {
-    // console.log("iam in the hotelInfosaga",action);
+   
     const searchData = yield call(hotelInfo, action.hotelinfo);
     if (searchData && searchData.error) throw searchData.error;
     yield put(setHotelInfo(searchData));

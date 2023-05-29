@@ -37,11 +37,11 @@ const CarListOneway = () => {
 
         <>
             <div className="mb-5">
-                <CustomNavbar />
+                {/* <CustomNavbar /> */}
                 <CarModifySearch />
                 <CarListContent />
             </div>
-            <Footer />
+            <Footer/>
         </>
 
     );

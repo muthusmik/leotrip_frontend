@@ -3,6 +3,7 @@ import "../timepicker.css";
 import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector, useStore } from "react-redux";
 import { Button, Row } from 'react-bootstrap';
+import MultiDatePickers from "../../../component/datepicker/carmultidatepicker"
 import CustomDatePickers from "../../../component/datepicker/singledatepicker"
 import { format } from 'date-fns';
 import TimePicker from "rc-time-picker";
@@ -17,88 +18,120 @@ import { useLocation } from "react-router-dom";
 const CarModifySearch = () => {
     useEffect(() => {
         const Destination = JSON.parse(localStorage.getItem('carsearch'));
-        console.log('Destination........', Destination[4].triptype);
         handleSelection(Destination[0].from)
         handleSelectiondestination(Destination[1].to)
-        setTriptype(Destination[4].triptype);
+        setTriptype(Destination[3].triptype);
     }, [])
     const location = useLocation()
     const Destination = JSON.parse(localStorage.getItem('carsearch'));
-    console.log(location)
+    console.log("fjfjfj", Destination)
 
 
     const [city, setCity] = useState([])
 
-    const [errormsg, setErrormsg] = useState('');
+    const [fromerrormsg, setFromErrormsg] = useState('');
+    const [toerrormsg, setToErrormsg] = useState('');
+    const [botherrormsg, setBothErrormsg] = useState('');
 
     const history = useHistory();
     const dispatch = useDispatch();
 
-    const handleSubmit = (pickup) => {
-        const carlist = {
-            "EndUserIp": "107.180.105.183",
-            "ClientId": "180109",
-            "UserName": "SKdigPa8",
-            "Password": "A$JSkEf4#4",
-            "FromCity": fromaddress_city_Id,
-            "ToCity": toaddress_city_Id,
-            "PickUpDate": moment(date).format("DD/MM/YYYY"),
-            "DropDate": moment(dropdate).format("DD/MM/YYYY"),
-            "Hours": triptype,
-            "TripType": Destination[4].triptype
+    const handleSubmit = (pickupdate, returndate) => {
+
+        console.log("hgdhg", pickupdate, ".....", returndate)
+        if (fromaddress === '') {
+            setFromErrormsg('Please Select the Valid Location !');
+
         }
-        dispatch(loadCarList(carlist));
-        if (triptype === "0") {
-            let localstores = [];
-            localstores.push({ "from": from });
-            localstores.push({ "to": to });
-            localstores.push({ "pickup": pickup });
-            localstores.push({ "pickuptime": time });
-            localstores.push({ "triptype": "0" });
-            localstores.push({ "drop": pickup });
-            localstores.push({ "droptime": time });
-            localStorage.setItem('carsearch', JSON.stringify(localstores));
-            history.push("/car/carlistoneway")
+        else if (toaddress === '') {
+            setToErrormsg('Please Select the Valid Destination !');
+
         }
-        else if (triptype === "1") {
-            let localstores = [];
-            localstores.push({ "from": from });
-            localstores.push({ "to": to });
-            localstores.push({ "pickup": pickup });
-            localstores.push({ "pickuptime": time });
-            localstores.push({ "triptype": "1" });
-            localstores.push({ "drop": dropdate });
-            localstores.push({ "droptime": returntime });
-            localStorage.setItem('carsearch', JSON.stringify(localstores));
-            history.push("/car/carlist-roundtrip")
+        else if ((fromaddress_city_Id === toaddress_city_Id) && (fromaddress === toaddress)) {
+            setBothErrormsg('Source and Destination cannot be same');
+
         }
         else {
-            let localstores = [];
-            localstores.push({ "from": from });
-            localstores.push({ "to": to });
-            localstores.push({ "pickup": pickup });
-            localstores.push({ "pickuptime": time });
-            localstores.push({ "triptype": "2" });
-            localstores.push({ "drop": pickup });
-            localstores.push({ "droptime": time });
-            localStorage.setItem('carsearch', JSON.stringify(localstores));
-            history.push("/car/carlist-airporttransfer")
+            setFromErrormsg('')
+            setToErrormsg('')
+            setBothErrormsg('')
+            const carlist = {
+                "EndUserIp": "107.180.105.183",
+                "ClientId": "180109",
+                "UserName": "SKdigPa8",
+                "Password": "A$JSkEf4#4",
+                "FromCity": fromaddress_city_Id,
+                "ToCity": toaddress_city_Id,
+                "PickUpDate": moment(pickupdate).format("DD/MM/YYYY"),
+                "DropDate": moment(returndate).format("DD/MM/YYYY"),
+                "Hours": "0",
+                "TripType": triptype
+            }
+            dispatch(loadCarList(carlist));
+            if (triptype === "0") {
+                let localstores = [];
+                localstores.push({ "from": from });
+                localstores.push({ "to": to });
+                localstores.push({ "pickup": pickupdate });
+                localstores.push({ "triptype": "0" });
+                localstores.push({ "drop": returndate });
+                localstores.push({ "hours": "0" });
+                localStorage.setItem('carsearch', JSON.stringify(localstores));
+                localStorage.setItem('triptypename', JSON.stringify("oneway"));
+                history.push("/car/carlistoneway")
+            }
+            else {
+                let localstores = [];
+                localstores.push({ "from": from });
+                localstores.push({ "to": to });
+                localstores.push({ "pickup": pickupdate });
+                localstores.push({ "triptype": "1" });
+                localstores.push({ "drop": returndate});
+                localstores.push({ "hours": "0" });
+                localStorage.setItem('carsearch', JSON.stringify(localstores));
+                localStorage.setItem('triptypename', JSON.stringify("roundtrip"));
+                history.push("/car/carlist-roundtrip")
+            }
         }
 
     }
 
+    const handlelocalSubmit = (datevalue) => {
+        if (fromaddress === '') {
+            setFromErrormsg('Please Select the Valid Location !');
+        }
+        else {
+            setFromErrormsg('')
+            const carlist = {
+                "EndUserIp": "107.180.105.183",
+                "ClientId": "180109",
+                "UserName": "SKdigPa8",
+                "Password": "A$JSkEf4#4",
+                "FromCity": fromaddress_city_Id,
+                "ToCity": fromaddress_city_Id,
+                "PickUpDate": moment(datevalue).format("DD/MM/YYYY"),
+                "DropDate": moment(localdropdate).format("DD/MM/YYYY"),
+                "Hours": nohours,
+                "TripType": triptype
+            }
+            dispatch(loadCarList(carlist));
+            let localstores = [];
+            localstores.push({ "from": from });
+            localstores.push({ "to": from });
+            localstores.push({ "pickup": datevalue });
+            localstores.push({ "triptype": "2" });
+            localstores.push({ "drop": localdropdate });
+            localstores.push({ "hours":nohours});
+            localStorage.setItem('carsearch', JSON.stringify(localstores));
+            localStorage.setItem('triptypename', JSON.stringify("Local"));
+            history.push("/car/carlist-local")
+        }
+    }
+
     const carcitylist = useSelector(state => state.carcitylist);
 
-    // const store = useStore()
-    // console.log(store.getState(), "hello")
 
 
-
-    // useEffect(() => {
-    //     console.log("khhhggn", carcitylist)
-    // }, [carcitylist])
-
-    console.log("i am current", carcitylist)
 
     /*  # Source */
 
@@ -114,20 +147,18 @@ const CarModifySearch = () => {
     /*  #swapping */
 
     const switchText = (from, to) => {
-        console.log("swapping", to.suggestion.caoncitlst_city_name);
         handleSelection(to)
         handleSelectiondestination(from)
         setValueDes(from.suggestion.caoncitlst_city_name)
         setValueSrc(to.suggestion.caoncitlst_city_name);
-
     }
 
     /* # DatePicker */
 
     const [selectedDay, setSelectedDay] = useState(Destination[2].pickup);
     const [date, setDate] = useState(Destination[2].pickup)
-    const [selectedDropDay, setSelectedDropDay] = useState(Destination[5].drop);
-    const [dropdate, setDropDate] = useState(Destination[5].drop);
+    const [selectedDropDay, setSelectedDropDay] = useState(Destination[4].drop);
+    const [dropdate, setDropDate] = useState(Destination[4].drop);
 
 
 
@@ -138,27 +169,48 @@ const CarModifySearch = () => {
     useEffect(() => {
         setDate(Destination[2].pickup)
     }, [])
-    console.log("Destination", date)
+
+    console.log("mmml",date)
 
     const handleDropDayClick = (day) => {
         setDropDate(format(day, 'PP'))
         setSelectedDropDay(day)
     };
     useEffect(() => {
-        setDropDate(Destination[5].drop)
+        setDropDate(Destination[4].drop)
     }, [])
-    console.log("Destination", date)
 
-    /*  # Timepicker */
-    const [time, setTime] = useState(moment(Destination[3].pickuptime));
-    const [returntime, setReturnTime] = useState(moment(Destination[6].droptime));
 
-    const handleSelect = (value) => {
-        setTime(value);
+    const [selectedRange, setSelectedRange] = useState();
+    const [pickupDate, setPickupDate] = useState(Destination[2].pickup);
+    const [rdropDate, setRDropDate] = useState(Destination[4].drop);
+    const [nodays, setDays] = useState(1);
+    const [nohours, setNohours] = useState(8);
+    const [localdropdate,setLocaldropdate] =useState(Destination[4].drop);
+    const handleDays = (e) => {
+        console.log("kk", e.target.value)
+        setDays(e.target.value)
+        var totalhours = e.target.value * 8
+        setLocaldropdate(moment(date).add(e.target.value - 1, 'day').format('MMM DD, yyyy'));
+        setNohours(totalhours);
     }
-    const handleReturnSelect = (value) => {
-        setReturnTime(value);
-    }
+
+
+    console.log("ttt", rdropDate)
+
+
+    const handleRangeSelect = (range) => {
+
+        setSelectedRange(range);
+        if (range?.from) {
+            setPickupDate(format(range.from, 'MMM dd, yyyy'));
+        }
+        if (range?.to) {
+            setRDropDate(format(range.to, 'MMM dd, yyyy'));
+        }
+    };
+
+
 
     const refOne = useRef(null);
     const [open, setOpen] = useState()
@@ -183,17 +235,14 @@ const CarModifySearch = () => {
 
     useEffect(() => {
         setCity(carcitylist.data)
-        console.log("iam star...", carcitylist)
+
     }, [carcitylist])
 
 
 
     const [valueSrc, setValueSrc] = useState(Destination[0].from.suggestion.caoncitlst_city_name);
     const [valueDes, setValueDes] = useState(Destination[1].to.suggestion.caoncitlst_city_name);
-    // console.log("i am A1",valueSrc);
-    // console.log("i am A2",valueDes);
 
-    // console.log("i am A4",city)
 
 
     const [suggestions, setSuggestions] = useState([]);
@@ -205,7 +254,7 @@ const CarModifySearch = () => {
             lang.caoncitlst_city_name.toLowerCase().slice(0, inputLength) === inputValue
         );
     }
-    console.log("i am A3", suggestions);
+
     const [from, setFrom] = useState(Destination[0].from)
     const handleSelection = (suggestionValue) => {
         setFrom(suggestionValue);
@@ -219,17 +268,13 @@ const CarModifySearch = () => {
         setToaddress_city_Id(suggestionValue.suggestion.caoncitlst_id)
     }
 
-    console.log("uk", fromaddress)
-    console.log("tk", toaddress)
-    console.log("skk", fromaddress_city_Id)
-    console.log("ppkk", toaddress_city_Id)
 
-    const [triptype, setTriptype] = React.useState(Destination[4].triptype);
+    const [triptype, setTriptype] = React.useState(Destination[3].triptype);
 
     const onhandle = e => {
         setTriptype(e.target.value);
     };
-    console.log("onhandle", triptype)
+
     return (
         <div className='modifycarsearch_header'>
             <div className={(triptype === "1") ? (" modifyroundcarsearch mt-2 mx-auto") : ("container modifycarsearch mt-2")}>
@@ -245,50 +290,116 @@ const CarModifySearch = () => {
                             <label className="check-label" htmlFor="round-trip">Round-trip</label>
                         </div>
                         <div className="form-check form-check-inline">
-                            <input className="check-input" type="radio" name="triptypes" id="airport" value="2" onClick={onhandle} defaultChecked={triptype === "2"} />
-                            <label className="check-label" htmlFor="round-trip">Airport Transfer</label>
+                            <input className="check-input" type="radio" name="triptypes" id="local" value="2" onClick={onhandle} defaultChecked={triptype === "2"} />
+                            <label className="check-label" htmlFor="local">Local</label>
                         </div>
                     </div>
                 </Row>
-                <Row >
-                    <div className='col-lg-row mt-3 my-3 mx-auto'>
-                        <div className='col-lg-3'>
-                            <div className={(triptype === "1") ? ("modifyroundcarsearchbox mt-2") : ("modifycarsearchbox mt-2")}>
-                                <p>From</p>
-                                <div>
-                                    <AutoSuggest
-                                        suggestions={suggestions}
-                                        onSuggestionsFetchRequested={({ value }) => {
-                                            setValueSrc(value);
-                                            setSuggestions(getSuggestions(valueSrc));
-                                        }}
-                                        onSuggestionSelected={(_, suggestionValue) => { handleSelection(suggestionValue) }}
+                {(triptype === "2") ? (
+                    <Row>
+                        <div className="d-inline-flex mt-3 my-3 mx-auto">
+                            <div>
+                                <div className={(triptype === "1") ? ("modifyroundcarsearchbox mt-2") : ("modifycarsearchbox mt-2")}>
+                                    <p>From</p>
+                                    <div>
+                                        <AutoSuggest
+                                            suggestions={suggestions}
+                                            onSuggestionsFetchRequested={({ value }) => {
+                                                setValueSrc(value);
+                                                setSuggestions(getSuggestions(valueSrc));
+                                            }}
+                                            onSuggestionSelected={(_, suggestionValue) => { handleSelection(suggestionValue) }}
 
-                                        getSuggestionValue={suggestion => suggestion.caoncitlst_city_name}
-                                        renderSuggestion={suggestion => <span className="suggesstionList">{suggestion.caoncitlst_city_name}</span>}
-                                        inputProps={{
-                                            placeholder: "Enter Pickup location",
-                                            value: valueSrc,
-
-                                            onChange: (_, { newValue, method }) => {
-                                                setValueSrc(newValue);
-                                                //    console.log("newValue",method)
-                                            }
-                                        }}
-                                        highlightFirstSuggestion={true}
+                                            getSuggestionValue={suggestion => suggestion.caoncitlst_city_name}
+                                            renderSuggestion={suggestion => <span className="suggesstionList">{suggestion.caoncitlst_city_name}</span>}
+                                            inputProps={{
+                                                placeholder: "Enter Pickup location",
+                                                value: valueSrc,
+                                                onChange: (_, { newValue, method }) => {
+                                                    setValueSrc(newValue);
+                                                }
+                                            }}
+                                            highlightFirstSuggestion={true}
+                                        />
+                                    </div>
+                                </div>
+                                {(fromaddress === '') ? <h6 className="font-weight-bold text-danger mt-2">{fromerrormsg}</h6> : null}
+                            </div>
+                            <div className='mt-2'>
+                                <div className='modifydateselections'>
+                                    <p>Pickup Date</p>
+                                    <CustomDatePickers
+                                        maxDate={moment().format("PP")}
+                                        value={date}
+                                        Searchstyle="car_searchdate"
+                                        selected={selectedDay}
+                                        current={true}
+                                        onDayClick={handleDayClick}
+                                        required="required"
+                                        calanderstyle="car_calander"
                                     />
                                 </div>
                             </div>
-                        </div>
-                        <div className="col-lg-3">
-                            <div className='icon d-flex justify-content-center my-3' >
-                                <FontAwesomeIcon icon={faArrowRightArrowLeft} onClick={() => switchText(from, to)} style={{ fontSize: "20px", color: "green" }} />
+                            <div>
+                                <div className='modifydateselections mt-2'>
+                                <p>No Of Days<small className="text-danger">(8hrs/80kms)</small></p>
+                                    <select className="modifysearchcarlocal_nodays" onChange={handleDays}>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                        <option value="7">7</option>
+                                        <option value="8">8</option>
+                                        <option value="9">9</option>
+                                        <option value="10">10</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div>
+                                <div className={(triptype === "1") ? ("modifyroundcarbutton ms-4 mt-2") : ("modifycarbutton ms-4  mt-2")}>
+                                    <Button className="btn-md mb-3 me-3" onClick={() => { handlelocalSubmit(date) }}>Modify Search</Button>
+                                </div>
                             </div>
                         </div>
-                        <div className='col-lg-3' >
+                    </Row>
+                ) :
+                    <Row>
+                        <div className='d-inline-flex mt-3 my-3 mx-auto'>
+                            <div>
+                                <div className={(triptype === "1") ? ("modifyroundcarsearchbox mt-2") : ("modifycarsearchbox mt-2")}>
+                                    <p>From</p>
+                                    <div>
+                                        <AutoSuggest
+                                            suggestions={suggestions}
+                                            onSuggestionsFetchRequested={({ value }) => {
+                                                setValueSrc(value);
+                                                setSuggestions(getSuggestions(valueSrc));
+                                            }}
+                                            onSuggestionSelected={(_, suggestionValue) => { handleSelection(suggestionValue) }}
+
+                                            getSuggestionValue={suggestion => suggestion.caoncitlst_city_name}
+                                            renderSuggestion={suggestion => <span className="suggesstionList">{suggestion.caoncitlst_city_name}</span>}
+                                            inputProps={{
+                                                placeholder: "Enter Pickup location",
+                                                value: valueSrc,
+                                                onChange: (_, { newValue, method }) => {
+                                                    setValueSrc(newValue);
+                                                }
+                                            }}
+                                            highlightFirstSuggestion={true}
+                                        />
+                                    </div>
+                                </div>
+                                {(fromaddress === '') ? <h6 className="font-weight-bold text-danger mt-2">{fromerrormsg}</h6> : null}
+                            </div>
+                            <div className='icon d-flex justify-content-center my-3'>
+                                <FontAwesomeIcon icon={faArrowRightArrowLeft} onClick={() => switchText(from, to)} style={{ fontSize: "20px", color: "green" }} />
+                            </div>
                             <div className={(triptype === "1") ? ("modifyroundcarsearchbox mt-2") : ("modifycarsearchbox mt-2")}>
                                 <p>To</p>
-                                <div  >
+                                <div>
                                     <AutoSuggest
                                         suggestions={suggestions}
                                         onSuggestionsFetchRequested={({ value }) => {
@@ -307,99 +418,58 @@ const CarModifySearch = () => {
 
                                             onChange: (_, { newValue, method }) => {
                                                 setValueDes(newValue);
-                                                //    console.log("newValue",method)
+
                                             }
                                         }}
                                         highlightFirstSuggestion={true}
                                     />
                                 </div>
+                                {(toaddress === '') ? <h6 className="font-weight-bold text-danger mt-2">{toerrormsg}</h6> : null}
                             </div>
-                        </div>
-                        {triptype !== "1" ? (<div className='row mt-2'>
-                            <div className='col-lg-3 modifydateselections'>
-                                <p>Pickup Date</p>
-                                <CustomDatePickers
-                                    maxDate={moment().format("PP")}
-                                    value={date}
-                                    Searchstyle="car_searchdate"
-                                    selected={selectedDay}
-                                    onDayClick={handleDayClick}
-                                    required="required"
-                                    calanderstyle="car_calander"
-                                />
-                            </div>
-                            {/* <div className='col-5 modifydateselections'>
-                                <p>Pickup Time</p>
-                                <div classname="rc-time-picker-panel" ref={refOne}>
-                                    <TimePicker
-                                        use12Hours
-                                        value={time}
-                                        focusOnOpen={true}
-                                        onChange={handleSelect}
-                                        showSecond={false}
-
-                                    />
-                                </div>
-                            </div> */}
-
-                        </div>) : (
-                            <div className='row mt-2'>
-                                <div className='col modifyrounddateselections'>
-                                    <p>Pickup Date</p>
-                                    <CustomDatePickers
-                                        maxDate={moment().format("PP")}
-                                        value={date}
-                                        Searchstyle="carroundbutton"
-                                        selected={selectedDay}
-                                        onDayClick={handleDayClick}
+                            {
+                                triptype !== "1" ? (<div className='row mt-2'>
+                                    <div className='col-6 modifydateselections'>
+                                        <p>Pickup Date</p>
+                                        <CustomDatePickers
+                                            maxDate={moment().format("PP")}
+                                            value={date}
+                                            Searchstyle="car_searchdate"
+                                            selected={selectedDay}
+                                            current={true}
+                                            onDayClick={handleDayClick}
+                                            required="required"
+                                            calanderstyle="car_calander"
+                                        />
+                                    </div>
+                                </div>) : (
+                                    <MultiDatePickers
+                                        checkInDate={pickupDate}
+                                        checkOutDate={rdropDate}
+                                        Searchstyle="car_searchdate"
+                                        selected={selectedRange}
+                                        current={true}
+                                        onSelect={handleRangeSelect}
                                         required="required"
                                         calanderstyle="car_calander"
                                     />
+                                )
+                            }
+                            {(triptype !== "1") ? (
+                                <div className={(triptype === "1") ? ("modifyroundcarbutton ms-4 mt-2") : ("modifycarbutton ms-4  mt-2")}>
+                                    <Button className="btn-md mb-3 me-3" onClick={() => { handleSubmit(date, date) }}>Modify Search</Button>
                                 </div>
-                                {/* <div className='col modifyrounddateselections'>
-                                    <p>Pickup Time</p>
-                                    <div classname="rc-time-picker-panel" ref={refOne}>
-                                        <TimePicker
-                                            use12Hours
-                                            value={time}
-                                            focusOnOpen={true}
-                                            onChange={handleSelect}
-                                            showSecond={false}
-                                        />
-                                    </div>
-                                </div> */}
-                                <div className='col modifyrounddateselections'>
-                                    <p>Return Date</p>
-                                    <CustomDatePickers
-                                        maxDate={moment().format("PP")}
-                                        value={dropdate}
-                                        Searchstyle="carroundbutton"
-                                        selected={selectedDropDay}
-                                        onDayClick={handleDropDayClick}
-                                        required="required"
-                                        calanderstyle="car_calander"
-                                    />
+                            ) :
+                                <div className={(triptype === "1") ? ("modifyroundcarbutton ms-4 mt-2") : ("modifycarbutton ms-4  mt-2")}>
+                                    <Button className="btn-md mb-3 me-3" onClick={() => { handleSubmit(pickupDate, rdropDate) }}>Modify Search</Button>
                                 </div>
-                                {/* <div className='col modifyrounddateselections'>
-                                    <p>Return Time</p>
-                                    <div classname="rc-time-picker-panel" ref={refOne}>
-                                        <TimePicker
-                                            use12Hours
-                                            value={returntime}
-                                            focusOnOpen={true}
-                                            onChange={handleReturnSelect}
-                                            showSecond={false}
-
-                                        />
-                                    </div>
-                                </div> */}
-                            </div>)}
-                        <div className={(triptype === "1") ? ("modifyroundcarbutton ms-4 mt-2") : ("modifycarbutton ms-4  mt-2")}>
-                            <Button onClick={() => { handleSubmit(date) }}>Update Modify</Button>
-                        </div>
-                    </div>
-                </Row>
-            </div>
+                            }
+                        </div >
+                    </Row >
+                }
+                <div className='text-center'>
+                    {(fromaddress_city_Id === toaddress_city_Id) ? <h6 className="font-weight-bold text-danger mt-2">{botherrormsg}</h6> : null}
+                </div>
+            </div >
         </div >
     )
 

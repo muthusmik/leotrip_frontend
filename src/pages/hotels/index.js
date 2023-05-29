@@ -19,6 +19,18 @@ import AutoSuggest from "react-autosuggest";
 
 const Hotels = () => {
 
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        /* #hotelcitylist payload */
+        const hotelCityList = {
+            "ClientId": "180109",
+            "UserName": "SKdigPa8",
+            "Password": "A$JSkEf4#4"
+        }
+        dispatch(loadHotelCityList(hotelCityList));
+    }, [dispatch])
+
     const [citylocation, setCityLocation] = useState()
 
     const today = new Date(moment());
@@ -37,7 +49,7 @@ const Hotels = () => {
 
     const history = useHistory();
     const refOne = useRef(null);
-    const dispatch = useDispatch();
+    
     const [errormsg, setErrormsg] = useState('');
     const [submitData, SetSubmitData] = useState(null)
     const [valueDes, setValueDes] = useState("");
@@ -54,7 +66,7 @@ const Hotels = () => {
 
     /* # RoutingCall */
 
-    // console.log("i am A0", citylocation)
+    
     const handleRangeSelect = (range) => {
 
         setSelectedRange(range);
@@ -69,14 +81,13 @@ const Hotels = () => {
     function getSuggestions(value) {
         const inputValue = value.trim().toLowerCase();
         const inputLength = inputValue.length;
-        // console.log("selected values ...........................>",inputValue);
+       
         return inputLength === 0 ? [] : citylocation.filter(lang =>
             lang.Destination.toLowerCase().slice(0, inputLength) === inputValue
         );
     }
 
     const handleSelection = (suggestionValue) => {
-        console.log(suggestionValue, "suggestion value")
         setHotellocation(suggestionValue)
     }
 
@@ -90,7 +101,7 @@ const Hotels = () => {
         var checkin = moment(startDate, "DD.MM.YYYY");
         var checkout = moment(endDate, "DD.MM.YYYY");
 
-        var nights = checkout.diff(checkin, 'days');
+        var nights = checkout.diff(checkin,'days');
         if (nights !== 0) {
             setnight(nights)
         }
@@ -130,12 +141,12 @@ const Hotels = () => {
             localStorage.setItem('hotellocation', JSON.stringify(localstores));
             localStorage.setItem('destination', JSON.stringify(hotellocation));
             localStorage.setItem('roomGuest', JSON.stringify(roomGuest));
+            localStorage.setItem('NoOfRooms', JSON.stringify(rooms));
         }
     }
 
     
     useEffect(() => {
-        console.log("iam nerghu", submitData)
         if (submitData != null) {
             dispatch(loadHotelList(submitData));
             history.push("/hotel/hotellist")
@@ -162,7 +173,6 @@ const Hotels = () => {
     const handleRoom = async(value) => {
         setViewRoom(true)
         setRooms(value)
-        console.log("no of value",value)  
         let varr = [];
         for (var i = 0; i < value; i++) {
           varr.push({
@@ -192,44 +202,33 @@ const Hotels = () => {
         newFormValues[i]["ChildAge"][j] = value;
         setRoomGuest(newFormValues);
     }
-    console.log("setChild data:", "child count:", roomGuest)
+  
 
 
 
 
 
-    useEffect(() => {
-        /* #hotelcitylist payload */
-        const hotelCityList = {
-            "ClientId": "180109",
-            "UserName": "SKdigPa8",
-            "Password": "A$JSkEf4#4"
-        }
-        dispatch(loadHotelCityList(hotelCityList));
-    }, [dispatch])
+   
 
 
     return (
         <>
-            {(hotelcitylist.data) ? (
+            {/* {(hotelcitylist.data) ? ( */}
                 <>
                     <div className='hotelsearch'>
-                        <CustomNavbar />
+                        {/* <CustomNavbar /> */}
                         <div className="headerImage">
-                            <div className="container ">
-                                <h2 className='text-white text-center mt-3'>Book Hotels & Homestays</h2>
-                                <div className='searchcontainer mt-3 mx-auto'>
-                                    <h6 className="fw-bold headingcolor h5">Book Your Rooms With Best Deals</h6>
-                                    <div className=' d-inline-flex content content1 hotelcontent mb-3 mt-5'style={{height:"100px"}}>
+                            <div className="container">
+                                <h2 className='text-white text-center'>Book Hotels & Homestays</h2>
+                                <div className='searchcontainer mt-3'>
+                                    <h6 className="fw-bold headingcolor">Book Your Rooms With Best Deals</h6>
+                                    <div className=' d-inline-flex content mb-3 mt-5'>
                                         <div className='hotelsearchbox mt-2'>
-                                            <p className='bg-white w-auto'>Destination</p>
+                                            <p>Destination</p>
                                             <AutoSuggest
-
                                                 suggestions={suggestions}
-
                                                 onSuggestionsFetchRequested={({ value }) => {
-                                                    setValueDes(value);
-                                                    // console.log("I am selected in ...............................",value)
+                                                    setValueDes(value)
                                                     setSuggestions(getSuggestions(valueDes));
                                                 }}
                                                 onSuggestionSelected={(_, suggestionValue) => { handleSelection(suggestionValue) }}
@@ -242,14 +241,14 @@ const Hotels = () => {
 
                                                     onChange: (_, { newValue, method }) => {
                                                         setValueDes(newValue);
-                                                        //    console.log("newValue",newValue)
+                                                      
                                                     }
                                                 }}
                                                 highlightFirstSuggestion={true}
                                             />
 
                                         </div>
-                                        <div className='mt-2 dateinput'>
+                                        <div className='mt-2'>
                                             <MultiDatePickers
                                                 checkInDate={checkInDate}
                                                 checkOutDate={checkOutDate}
@@ -260,7 +259,7 @@ const Hotels = () => {
                                                 calanderstyle="hotel_calander"
                                             />
                                         </div>
-                                        <div className='guestoption mt-2 ms-3 me-5'>
+                                        <div className='guestoption mt-2 ms-3'>
                                             <p>Guests&nbsp;&nbsp;&amp;&nbsp;&nbsp;Rooms</p>
                                             <div className="roomSearchItem" style={{ position: 'absolute' }}>
                                                 <select class="bp_room_select valid " style={{ width: "100%" }} name="room" required="required" autocomplete="off" onChange={(e) => handleRoom(parseInt(e.target.value))} onClick={()=>setViewRoom(true)}>
@@ -336,7 +335,8 @@ const Hotels = () => {
                                     <div className='text-center'>
                                         {(hotellocation === '' || rooms === 0) ? <h6 className="text-danger ">{errormsg}</h6> : null}
                                     </div>
-                                    <div className='hotelbutton '>
+                                    <div className='hotelbutton'>
+
                                         <CustomButton customstyle="hotelbtnsearch" onClick={() => handleSubmit(checkInDate, checkOutDate)} value='SEARCH HOTELS'></CustomButton>
                                     </div>
                                 </div>
@@ -346,7 +346,7 @@ const Hotels = () => {
                     <Homepage />
                     <Footer />
                 </>
-            ) : <ErrorPage />}
+            {/* ) : <ErrorPage />} */}
         </>
     );
 };

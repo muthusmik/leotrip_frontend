@@ -8,13 +8,13 @@ import {
 
 
 const blockRoom = async (blockroom) => {
-  //  console.log("blockroom  payload",blockroom)
+  
   const headers = {
     "Content-Type": "application/json",
    
   };
   
-  //  console.log("iam in the blockroomservice");
+ 
  
   try {
     const blockRoomData = await axios.post(
@@ -22,14 +22,11 @@ const blockRoom = async (blockroom) => {
         blockroom,
       { headers: headers }
     );
-
-    
-    //  console.log([blockRoomData.data]);
-    // console.log("blockRoomData....hiji",blockRoomData.data,blockroom);
-    return [blockroom,blockRoomData.data.result];
+   
+    return [blockroom,blockRoomData.data.result.BlockRoomResult];
 
   } catch (error) {
-    // console.log(error);
+  
   }
   
 };

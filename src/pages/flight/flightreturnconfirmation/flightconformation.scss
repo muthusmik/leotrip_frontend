@@ -76,6 +76,16 @@
     
 }
 
+.flightbackground-theme {
+  height: 240px;
+  flex: 1;
+  top: 85px;
+  margin-top: 70px;
+  padding-top: 0.5px;
+  background-image: url('../../../asset/images/backgroundimage.png');
+
+}
+
 .FlightRoute{
   font-family: QuickSand, Avenir, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-weight: 600;

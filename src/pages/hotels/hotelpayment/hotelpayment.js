@@ -10,9 +10,17 @@ import Card from 'react-bootstrap/Card';
 const PaymentDetails = () => {
 
   /* # STORE */
-  const hotelBook = useSelector(state => state.HotelBook);
+  const BlockRoomData = useSelector(state => state.BlockRoom)
   const store = useStore()
 
+  const numberFormat = (value, cur) =>
+  new Intl.NumberFormat('en-IN', {
+      style: 'currency',
+      currency: cur,
+      maximumFractionDigits: 0
+  }).format(value);
+
+  
 
   return (
 
@@ -32,10 +40,10 @@ const PaymentDetails = () => {
             <Card.Body>
               <div className="row">
                 <div className="col-8">
-                  <h6>Total Basefare</h6>
+                  <h6>Room Charges</h6>
                 </div>
                 <div className="col-4">
-                  <h6>{hotelBook.data[0].HotelRoomsDetails[0].Price.CurrencyCode}.{hotelBook.data[0].HotelRoomsDetails[0].Price.PublishedPriceRoundedOff}</h6>
+                  <h6>{numberFormat(BlockRoomData.data[1].HotelRoomsDetails[0].Price.PublishedPriceRoundedOff,BlockRoomData.data[1].HotelRoomsDetails[0].Price.CurrencyCode)}</h6>
                 </div>
               </div>
               <div className="row">
@@ -43,7 +51,7 @@ const PaymentDetails = () => {
                   <h6>Discount</h6>
                 </div>
                 <div className="col-4">
-                  <h6 className="text-success">-{hotelBook.data[0].HotelRoomsDetails[0].Price.CurrencyCode}.{hotelBook.data[0].HotelRoomsDetails[0].Price.Discount}</h6>
+                  <h6 className="text-success">-{numberFormat(BlockRoomData.data[1].HotelRoomsDetails[0].Price.Discount,BlockRoomData.data[1].HotelRoomsDetails[0].Price.CurrencyCode)}</h6>
                 </div>
               </div>
               <div className="row">
@@ -51,24 +59,26 @@ const PaymentDetails = () => {
                   <h6>Other Charges</h6>
                 </div>
                 <div className="col-4">
-                  <h6>{hotelBook.data[0].HotelRoomsDetails[0].Price.CurrencyCode}.{hotelBook.data[0].HotelRoomsDetails[0].Price.OtherCharges}</h6>
+                  <h6>{numberFormat(BlockRoomData.data[1].HotelRoomsDetails[0].Price.OtherCharges,BlockRoomData.data[1].HotelRoomsDetails[0].Price.CurrencyCode)}</h6>
                 </div>
               </div>
               <div className="row">
                 <div className="col-8">
-                  <h6>Service Tax</h6>
+                  <h6>Taxes & Fees</h6>
                 </div>
                 <div className="col-4">
-                  <h6>{hotelBook.data[0].HotelRoomsDetails[0].Price.CurrencyCode}.{hotelBook.data[0].HotelRoomsDetails[0].Price.GST.TaxableAmount}</h6>
+                <h6>{numberFormat(BlockRoomData.data[1].HotelRoomsDetails[0].Price.Tax,BlockRoomData.data[1].HotelRoomsDetails[0].Price.CurrencyCode)}</h6>
                 </div>
               </div>
               <hr />
               <div className="row p-3" style={{backgroundColor:"#e5f5e1"}}>
                 <div className="col-8">
-                  <h6 className="fw-bold">Total Amount</h6>
+                  <h6 className="fw-bold">Price after discount</h6>
                 </div>
                 <div className="col-4">
-                  <h6 className="fw-bold" style={{color:"orangered"}}>{hotelBook.data[0].HotelRoomsDetails[0].Price.CurrencyCode}.{hotelBook.data[0].HotelRoomsDetails[0].Price.OfferedPriceRoundedOff}</h6>
+                  <h6 className="fw-bold" style={{color:"orangered"}}>
+                  {numberFormat(BlockRoomData.data[1].HotelRoomsDetails[0].Price.PublishedPriceRoundedOff,BlockRoomData.data[1].HotelRoomsDetails[0].Price.CurrencyCode)}
+                  </h6>
                 </div>
               </div>
             </Card.Body>

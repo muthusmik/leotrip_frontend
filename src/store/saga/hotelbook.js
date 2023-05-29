@@ -5,12 +5,16 @@ import { HOTEL_BOOK } from "../constants";
 import { HotelBook } from "../services/hotelbook";
 
 export function* handleHotelBook(action) {
+  console.log("action inside the hootel book saga ",action);
   try {
-    //console.log("iam in the Hotelbook saga",action);
+
     const searchData = yield call(HotelBook,action.hotelbook);
-    if (searchData && searchData.error) throw searchData.error;
+    console.log("busdatabusdatabusdata",searchData);
+    console.log("Busdata .errrrrrrrrrrrror", searchData?.error);
+    // if (searchData && searchData.error) throw searchData.error;
     yield put(setHotelBook(searchData));
   } catch (error) {
+    console.log("seterror inside the saga what wrong is ",error);
     yield put(setError(error));
   }
 }

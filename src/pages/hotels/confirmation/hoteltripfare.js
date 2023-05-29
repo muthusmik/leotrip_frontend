@@ -1,26 +1,52 @@
-import React, { useEffect } from "react";
-import { useHistory } from 'react-router-dom';
+import React, { useEffect, useState, useRef } from "react";
+
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAnglesRight } from '@fortawesome/free-solid-svg-icons';
-import { useSelector, useStore } from "react-redux";
+import { useSelector, useStore, useDispatch } from "react-redux";
 import { useLocation } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
+import HotelPayUForm from '../hotelpayment/hotelpayu';
 // import ContentLoader, { BulletList, Circle } from "react-content-loader";
 import './details.scss';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-export const HotelFareDetails = ({ selected }) => {
+export const HotelFareDetails = ({ hotelguestdetail, selected, onselectvalue }) => {
     const location = useLocation();
-    const roomData = location.state.state;
+    const roomData = location?.state?.state;
     /* # STORE */
-    // const hotelBlockRoom = useSelector(state => state.BlockRoom);
-    const store = useStore()
 
-    console.log(roomData, "Tripfare")
+    const store = useStore()
+    const hotelBook = useSelector(state => state);
+    console.log("aaab", roomData)
+
+    const isInitialMount = useRef(true);
+
+    const [onshow, setOnhow] = useState();
+    useEffect(() => {
+        const usertoken = JSON.parse(localStorage.getItem('token'))
+        console.log("bbb", selected)
+        if (isInitialMount.current) {
+            isInitialMount.current = false;
+        } else {
+            if ((selected == true) && (usertoken)) {
+                setOnhow(true)
+            }
+            else {
+                onselectvalue(false)
+                setOnhow(false)
+            }
+        }
+    }, [selected])
 
     // const guestStatus = useSelector(state => state.HotelGuestInfo)
+
+
+
 
     const numberFormat = (value, cur) =>
         new Intl.NumberFormat('en-IN', {
@@ -29,19 +55,38 @@ export const HotelFareDetails = ({ selected }) => {
             maximumFractionDigits: 0
         }).format(value);
 
+    const dispatch = useDispatch();
+
+
+    const BlockRoomData = useSelector(state => state.BlockRoom)
     const history = useHistory();
+    console.log("recorrect", BlockRoomData?.data[1])
+
+    const handlerediect = () => {
+        // toast.dismiss();
+        // toast("Your Preffered Room is currently unavailable")
+        alert("Your Preffered Room is currently unavailable")
+        history.push("/hotel/hotellist")
+    }
+
+    let totalprice = roomData?.Price?.RoomPrice + roomData?.Price?.Tax
     const handleSelect = () => {
 
-        history.push("/hotel/hotelpayment")
+
+
     }
     return (
         <Card>
             <Card.Header className="bg-white">
                 <div className="row">
-                    <div className="col-8">
+                    <div className="col-9">
                         <h4>Price Summary</h4>
-                        <h6 className="small"> Inclusive of GST</h6>
                     </div>
+                    {/* <div className="col-3">
+                        <h5 className="text-danger mb-0"> {numberFormat(roomData.Price.OfferedPrice, roomData.Price.CurrencyCode)}</h5>
+                        <small className="fw-bold"><del>{numberFormat(roomData.Price.PublishedPrice, roomData.Price.CurrencyCode)}</del></small>
+                        
+                    </div> */}
                 </div>
             </Card.Header>
             <Card.Body>
@@ -52,7 +97,7 @@ export const HotelFareDetails = ({ selected }) => {
                         </h6>
                     </div>
                     <div className="col-4 fw-bold" style={{ textAlign: "right" }}>
-                        {numberFormat(roomData.Price.PublishedPrice, roomData.Price.CurrencyCode)}
+                        {numberFormat(roomData.Price.RoomPrice, roomData.Price.CurrencyCode)}
                         {/* {(hotelBlockRoom.data[1].BlockRoomResult?.HotelRoomsDetails[0]?.DayRates).map((data) => (
                             <b>
                                 {hotelBlockRoom.data[1].BlockRoomResult.HotelRoomsDetails[0].Price.CurrencyCode}.{data.Amount}
@@ -60,28 +105,32 @@ export const HotelFareDetails = ({ selected }) => {
                         ))} */}
                     </div>
                 </div>
-                <div className="row">
-                    <div className="col-8">
-                        <h6>Other Charges</h6>
-                    </div>
-                    <div className="col-4 fw-bold" style={{ textAlign: "right" }}>
-                        {numberFormat(roomData.Price.OtherCharges, roomData.Price.CurrencyCode)}
-                        {/* <b>
+                {/* <div className="row"> */}
+                {/* <div className="col-8"> */}
+                {/* <h6>Other Charges</h6> */}
+                {/* </div> */}
+                {/* <div className="col-4 fw-bold" style={{ textAlign: "right" }}> */}
+                {/* {numberFormat(roomData.Price.OtherCharges, roomData.Price.CurrencyCode)} */}
+                {/* <b>
                             {hotelBlockRoom.data[1].BlockRoomResult.HotelRoomsDetails[0].Price.CurrencyCode}.{hotelBlockRoom.data[1].BlockRoomResult.HotelRoomsDetails[0].Price.OtherCharges}
                         </b> */}
-                    </div>
-                </div>
+                {/* </div> */}
+                {/* </div> */}
                 <div className="row">
+                {(roomData.Price.Tax != 0) ? (
+                    <>
                     <div className="col-8">
                         <h6>Taxes & Fees</h6>
                     </div>
                     <div className="col-4 fw-bold" style={{ textAlign: "right" }}>
-                        {numberFormat(roomData.Price.Tax, roomData.Price.CurrencyCode)}
+                        {numberFormat(roomData.Price.Tax+roomData?.Price?.AgentCommission, roomData.Price.CurrencyCode)}
 
                         <b>
                             {/* {hotelBlockRoom.data[1].BlockRoomResult.HotelRoomsDetails[0].Price.CurrencyCode}.{hotelBlockRoom.data[1].BlockRoomResult.HotelRoomsDetails[0].Price.GST.TaxableAmount} */}
                         </b>
                     </div>
+                    </>
+                    ) : null}
                 </div>
                 {/* {(hotelBlockRoom.data[1].BlockRoomResult.HotelRoomsDetails[0].Price.Discount>0)?(
                 <div className="row">
@@ -99,24 +148,58 @@ export const HotelFareDetails = ({ selected }) => {
                 <hr />
                 <div className="row">
                     <div className="col-8">
-                        <h6>Price after discount</h6>
+                        <h6> Total Price</h6>
                     </div>
                     <div className="col-4 fw-bold" style={{ textAlign: "right" }}>
-                        {numberFormat(roomData.Price.OfferedPrice, roomData.Price.CurrencyCode)}
+                        {numberFormat(roomData?.Price?.RoomPrice + roomData?.Price?.Tax+roomData?.Price?.AgentCommission
+, roomData.Price.CurrencyCode)}
                         {/* <b>
                             {hotelBlockRoom.data[1].BlockRoomResult.HotelRoomsDetails[0].Price.CurrencyCode}.{hotelBlockRoom.data[1].BlockRoomResult.HotelRoomsDetails[0].Price.OfferedPriceRoundedOff}
                         </b> */}
                     </div>
                 </div>
                 <br />
-                <div className=" d-grid gap-2">
+                {/* <div className=" d-grid gap-2">
                     {(selected == false) ? (
                         <>
                             <h6 className="small text-danger text-center">Please fill the Guest details and submit the form</h6>
                             <Button disabled onClick={handleSelect}>Pay &amp; confirm now</Button></>
                     ) : (<Button onClick={handleSelect}>Pay &amp; confirm now</Button>)}
-                </div>
-
+                </div> */}
+                {(onshow == false) ? (
+                    <>
+                        <h6 className="small text-danger text-center">Please fill the Guest details and submit the form</h6>
+                    </>
+                ) : null}
+                {onshow && (
+                    <>
+                        {(BlockRoomData?.data[1]?.AvailabilityType === "Confirm") ? (
+                            <div className=" d-grid gap-2">
+                                <>
+                                    <HotelPayUForm guestdetails={hotelguestdetail} />
+                                </>
+                            </div>
+                        ) : (<div className=" d-grid gap-2">
+                            <>
+                                <h6 className="small text-danger text-center">Please fill the Guest details and submit the form</h6>
+                                <Button onClick={handlerediect}>Pay &amp; confirm now</Button>
+                                <ToastContainer
+                                    position="top-center"
+                                    autoClose={5000}
+                                    hideProgressBar={false}
+                                    newestOnTop={false}
+                                    closeOnClick
+                                    rtl={false}
+                                    pauseOnFocusLoss
+                                    draggable
+                                    pauseOnHover
+                                    theme="dark"
+                                />
+                            </>
+                        </div>
+                        )}
+                    </>
+                )}
             </Card.Body>
         </Card>
     )

@@ -5,7 +5,7 @@ import {signup} from "../services/signup";
 
 export function* handleSignupLoad(action) {
   try {
-     console.log("iam in the saga(signup...)",action);
+     
     const signupdata = yield call(signup, action.signup);
     if (signupdata && signupdata.error) throw signupdata.error;
     yield put(setSignup(signupdata));

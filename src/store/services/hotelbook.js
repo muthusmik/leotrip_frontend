@@ -8,10 +8,11 @@ import {
 
 
 const HotelBook = async (hotelbook) => {
-  //  console.log("hotelbook  payload",hotelbook)
+  const usertoken = JSON.parse(localStorage.getItem('token'))
+  console.log("cccb", usertoken)
   const headers = {
     "Content-Type": "application/json",
-   
+    'Authorization':`Bearer ${usertoken}`
   };
   
   
@@ -21,14 +22,10 @@ const HotelBook = async (hotelbook) => {
         hotelbook,
       { headers: headers }
     );
-
-    
-    //  console.log([hotelbookData.data]);
-    // console.log("hotelbookData....hiji",hotelbookData.data.result.BookResult,hotelbook);
-    return [hotelbook,hotelbookData.data.result.BookResult];
+    return hotelbookData.data.BookResult;
 
   } catch (error) {
-    // console.log(error);
+    return error.response.data
   }
   
 };

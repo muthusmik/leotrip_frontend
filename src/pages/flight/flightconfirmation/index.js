@@ -13,9 +13,11 @@ import Card from 'react-bootstrap/Card';
 import warning from "../../../asset/images/warning.png"
 
 const PackageDetails = () => {
+    
     const [selectedvalue, onselectvalue] = useState(false);
 
-    const [validated, setValidated] = useState(false)
+    const [validated, setValidated] = useState(false);
+    const [resData, setResData] = useState(false)
     const handleValidate = (event) => {
         const form = event.currentTarget;
         if (form.checkValidity() === false) {
@@ -27,33 +29,40 @@ const PackageDetails = () => {
         if (form.checkValidity() === true) {
             onselectvalue(form.checkValidity());
             setValidated(false);
+            
         }
     };
     const [isValid,setIsValid] =useState(false)
     const handleValid = (val) => {
+        console.log("validata",val)
         setIsValid(val)
+    }
+    
+    const handleData = (val) => {
+        console.log("PostResdata",val)
+        setResData(val)
     }
     return (
         <>
             <div className='container flight-pakagedetail  pb-5'>
-                <Form noValidate validated={validated} onClick={handleValidate}>
-                    <div className="row listWrapper">
+             
+                    <div className="row flight-listWrapper">
                         <div className="col-8">
-                            <Form noValidate validated={validated} onClick={handleValidate}>
+                          
                                 <Flightdetails />
-                                <TravelerDetails onhandle={handleValid} />
-                                <Cancellation />
+                                <TravelerDetails onhandle={handleValid} handleData={handleData} />
+                                {/* <Cancellation/>
                                 <Insurance />
-                                <Transfer />
-                            </Form>
+                                <Transfer /> */}
+                         
 
                         </div>
                         <div className="col-4 flight-paydetail">
-                            <FareDetails selected={selectedvalue} validate={isValid} />
+                            <FareDetails selected={selectedvalue} validate={isValid} resData={resData} />
                             {/* <Promte /> */}
                         </div>
                     </div>
-                </Form>
+             
             </div>
         </>
     )
@@ -61,10 +70,7 @@ const PackageDetails = () => {
 
 const PackageInfo = () => {
     const DestinationData = JSON.parse(localStorage.getItem('destinationdata'));
-
-
-
-
+    
     const flightinfo = useSelector(state => state.FlightOnewayInfo);
 
     const HandleDestination = (value) => {
@@ -110,18 +116,17 @@ const FlightConfirmation = () => {
     }, []);
 
     const flightoneway = useSelector(state => state.FlightOneway);
-    console.log(flightoneway)
+
     const flightinfo = useSelector(state => state.FlightOnewayInfo);
-    console.log(flightinfo)
+
     return (
         <>
             {(flightoneway.data?.length > 0) && (flightinfo.data?.length > 0) ? (
                 <>
                     <div>
-
-                        <CustomNavbar />
-                        <div className='background-theme'>
-                            < PackageInfo />
+                        {/* <CustomNavbar /> */}
+                        <div className='flightbackground-theme'>
+                            <PackageInfo />
                         </div>
                         <PackageDetails />
 

@@ -7,7 +7,6 @@ import { Card, Row, Col } from 'react-bootstrap';
 import CustomButton from "../../../../component/button";
 import { useHistory } from "react-router-dom";
 import { set } from "date-fns";
-import warning from "../../../../asset/images/warning.png"
 
 const CarBookingList = () => {
 
@@ -15,7 +14,7 @@ const CarBookingList = () => {
     let history = useHistory();
     const handleClick = (data) => {
         // console.log(data,"selected value")
-        history.push('/car/carconfirmation', { state: { data: data } })
+        history.push('/carconfirmation', { state: { data: data } })
     };
     const carlistdata = useSelector(state => state.Car);
 
@@ -24,12 +23,7 @@ const CarBookingList = () => {
     //const [error,setError] = useState("");
     const [error, seterror] = useState()
 
-    const numberFormat = (value) =>
-        new Intl.NumberFormat('en-IN', {
-            style: 'currency',
-            currency: 'INR',
-            maximumFractionDigits: 0
-        }).format(value);
+
 
 
     const store = useStore()
@@ -39,9 +33,9 @@ const CarBookingList = () => {
     useEffect(() => {
         console.log("inside the effect", carlistdata)
         if (carlistdata.data.code) {
-            // seterror(carlist.data?.error_params[0].Error.Status === 'Fail' ? true : false)
+          // seterror(carlist.data?.error_params[0].Error.Status === 'Fail' ? true : false)
             setLoader(false);
-            console.log(carlist.data?.error_params?.[0]?.Error.Status, "400 Error response")
+            console.log(carlist.data?.error_params?.[0]?.Error.Status,"400 Error response")
         }
         else if (carlistdata.data && carlistdata.data.length > 0) {
             setCarlist(carlistdata)
@@ -54,11 +48,11 @@ const CarBookingList = () => {
 
     return (
         <>
-            <h6>showing <span className="fw-bold">{carlist.data[0]?.TaxiData.length} Cars for Airport Transfer</span></h6>
-            {(carlist.data?.length > 0) ? (carlist.data[0].TaxiData).map((data, index) => (
+            <h6>showing <span className="fw-bold">{carlist.data[0]?.TaxiData.length} Cars</span></h6>
+            {(carlist.data?.length >0) ? (carlist.data[0].TaxiData).map((data, index) => (
 
                 <div key={index} className="carbookinglist mb-3">
-
+                    
                     <Card >
                         <Card.Header className="shadow">
                             <Row>
@@ -71,7 +65,7 @@ const CarBookingList = () => {
                                     <h6>
                                         <FontAwesomeIcon icon={faSnowflake} className="text-secondary" />&nbsp;
                                         <span className="me-2">{(data.AirConditioner) ? <>Ac</> : <>Non Ac</>}</span>
-                                        <FontAwesomeIcon icon={faSuitcaseRolling} className="text-secondary ms-2" />
+                                        <FontAwesomeIcon icon={faSuitcaseRolling} className="text-secondary ms-2"/>
                                         <span>{data.LuggageCapacity}</span>
                                         <img src={Seater} alt='img' className="ms-2" style={{ width: "20px", height: "20px" }} />&nbsp;
                                         <span>{data.SeatingCapacity} passengers allowed</span>
@@ -83,36 +77,32 @@ const CarBookingList = () => {
                             <Row className="cab_content">
                                 <Col xs={9}>
                                     <ul>
-                                        <li key={index}><FontAwesomeIcon icon={faCircleCheck} className="text-primary" /><p>{data.Fare.TotalKmCharged} kms included. After that {numberFormat(data.Fare.OutStationExtraKmRate)}/km</p></li>
-                                        <li key={index}><FontAwesomeIcon icon={faCircleCheck} className="text-primary" /><p>Free cancellation until 1 hour before pickup</p></li>
-                                        <li key={index}><FontAwesomeIcon icon={faCircleCheck} className="text-primary" /><p>Reserve this cab at {numberFormat(data.Fare.AdvanceAmount)} only</p></li>
-                                        <li key={index}><FontAwesomeIcon icon={faCircleCheck} className="text-primary" /><p>Outstation driver allowance at {numberFormat(data.Fare.OutStationDriverAllowance)} only</p></li>
-                                        <li key={index}><FontAwesomeIcon icon={faCircleCheck} className="text-primary" /><p>waiting charges at {numberFormat(data.Fare.LocalExtraHrRate)}/Hrs</p></li>
-                                        {/* <li><FontAwesomeIcon icon={faGasPump} className="text-danger" /><p>Diesel Car</p></li> */}
+                                        <li key={index}><FontAwesomeIcon icon={faCircleCheck} className="text-primary"/><p>506 kms included. After that ₹14.5/km</p></li>
+                                        <li key={index}><FontAwesomeIcon icon={faCircleCheck} className="text-primary"/><p>Free cancellation until 1 hour before pickup</p></li>
+                                        <li key={index}><FontAwesomeIcon icon={faCircleCheck} className="text-primary"/><p>Reserve this cab at ₹1777 only</p></li>
+                                        <li><FontAwesomeIcon icon={faGasPump} className="text-danger"/><p>Diesel Car</p></li>
                                     </ul>
                                 </Col>
                                 <Col className="text-end">
-                                    <h5>{numberFormat(data.Fare.BaseFare)}</h5>
-                                    <CustomButton customstyle="btn btn-primary fw-bold w-50 " onClick={() => handleClick(data)} value='Select'></CustomButton>
+                                    {/* <div className="offer-tag mt-2 mb-0">
+                                            {data.Fare.TotalAmount}
+                                            <div className="circle"></div>
+                                        </div> */}
+                                    <div className="fare">
+                                        {/* <p className="mt-2 fw-bold text-muted">₹ {data.TotalAmount}</p> */}
+                                        <b>₹ {data.Fare.TotalAmount}</b>
+                                    </div>
+                                    <CustomButton customstyle="btn btn-primary fw-bold w-50 "  onClick={() => handleClick(data)} value='Select'></CustomButton>
                                 </Col>
                             </Row>
                         </Card.Body>
                     </Card>
 
                 </div>
-            )) : (carlist.data.error_params) ? (<div className='ms-4 text-center mt-4'>
-                <h3 className='fw-bold'>Something went wrong</h3>
-                <p><img src={warning} alt={warning} width="30%" height="30%" /></p>
-                <h5 className='fw-bold'>{carlist?.data?.error_params?.[0]?.Error.ErrorMessage}</h5>
-            </div>
-            ) : <Card className="hotelLoader  text-center pb-3 ">
-                <div class="preloaderBg" id="preloader" onload="preloader()">
-                    <div class="preloadercar"></div>
-                    <div class="preloader2"></div>
-                </div>
-                <h6 className='fw-bold'>Please Wait ...</h6>
-                <h6 className='fw-bold'>We are searching the best Cars for you</h6>
-            </Card>}
+            )) : <div className="w-100 h-100 rounded-3" style={{ backgroundColor: "#dfede3", paddingTop: "280px", paddingLeft: "400px", fontSize: "20px", color: "darkblue" }}>
+            <span className="spinner-border spinner-border-sm"></span>
+            &nbsp;Loading....
+        </div>}
         </>
     );
 

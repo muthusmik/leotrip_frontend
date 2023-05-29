@@ -18,7 +18,7 @@ const Flightdetails = () => {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
     const store = useStore()
-    console.log("trip-info", store.getState())
+   
 
 
 
@@ -27,8 +27,7 @@ const Flightdetails = () => {
     const flightinfo = useSelector(state => state.FlightOnewayInfo);
     const flightreturninfo = useSelector(state => state.FlightReturnInfo);
 
-    console.log("flightreturninfo", flightreturninfo)
-
+   
 
 
     /* # Destination */

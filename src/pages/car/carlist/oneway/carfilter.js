@@ -6,7 +6,7 @@ import { faIndianRupeeSign,faCircleCheck } from '@fortawesome/free-solid-svg-ico
 import Seater from '../../../../asset/images/bus/seat.png';
 import InputRange from "react-input-range";
 import 'react-input-range/lib/css/index.css';
-import CarFilterData from '../../../../json/Car/carfilter.json'
+
 
 const CarFilter = () => {
 

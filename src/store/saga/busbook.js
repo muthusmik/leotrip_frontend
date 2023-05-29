@@ -6,8 +6,9 @@ import { busBook } from "../services/busbook";
 
 export function* handleBusBookLoad(action) {
   try {
-    //console.log("iam in the saga(bus book)",action); 
+     
     const busdata = yield call(busBook, action.book);
+   
     if (busdata && busdata.error) throw busdata.error;
     yield put(setBusBook(busdata));
   } catch (error) {

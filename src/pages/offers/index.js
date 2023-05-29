@@ -40,7 +40,7 @@ const OfferContent = () => {
     return (
         <>
             <div className='container offercontent'>
-                <ul className="nav nav-pills offernav" role="tablist">
+                <ul className="nav nav-pills" role="tablist">
                     <li className="nav-item mx-2">
                         <a className="nav-link active" data-bs-toggle="pill" href="#alloffers">All Offers</a>
                     </li>
@@ -62,627 +62,627 @@ const OfferContent = () => {
                 <div className="tab-content cardoffercontent mb-5">
                     <div id="alloffers" className="container content-Frame tab-pane active pt-5">
                         <h4>Special Offers For You</h4>
-                        <div className='row offersdiv'>
+                        <div className='row'>
                             <div className='col-6'>
-                                <Card className='OFFERCARD'>
-                                    <div className='upper-region row'>
-                                        <div className='col-4'>
-                                            <img alt="offer img" src="https://gos3.ibcdn.com/nov-thumb-1666862910.jpg?im=Resize=(270,270)" style={{ width: "140px", height: "140px" }} />
-                                        </div>
-                                        <div className='col-8 p-2'>
-                                            <div className='text-region'>
-                                                <h5 className='text-muted fw-bold'>Flight</h5>
-                                                <h4>Get Up To Rs. 7500 OFF!</h4>
-                                                <h6>With ICIC Bank Credit Cards & EasyEMI</h6>
-                                            </div>
-                                        </div>
+                            <Card className='OFFERCARD'>
+                            <div className='upper-region row'>
+                                <div className='col-4'>
+                                    <img alt="offer img" src="https://gos3.ibcdn.com/nov-thumb-1666862910.jpg?im=Resize=(270,270)" style={{ width: "140px", height: "140px" }} />
+                                </div>
+                                <div className='col-8 p-2'>
+                                    <div className='text-region'>
+                                        <h5 className='text-muted fw-bold'>Flight</h5>
+                                        <h4>Get Up To Rs. 7500 OFF!</h4>
+                                        <h6>With ICIC Bank Credit Cards & EasyEMI</h6>
                                     </div>
-                                    <h5 className='p-2 text-primary fw-bold'>Copy&Book:HojoyZHAB@</h5>
-                                </Card>
+                                </div>
+                            </div>
+                            <h5 className='p-2 text-primary fw-bold'>Copy&Book:HojoyZHAB@</h5>
+                        </Card>
                             </div>
                             <div className='col-6'>
-                                <Card className='OFFERCARD'>
-                                    <div className='upper-region row'>
-                                        <div className='col-4'>
-                                            <img alt="offer img" src="https://gos3.ibcdn.com/nov-thumb-1666862910.jpg?im=Resize=(270,270)" style={{ width: "140px", height: "140px" }} />
-                                        </div>
-                                        <div className='col-8 p-2'>
-                                            <div className='text-region'>
-                                                <h5 className='text-muted fw-bold'>Flight</h5>
-                                                <h4>Get Up To Rs. 7500 OFF!</h4>
-                                                <h6>With ICIC Bank Credit Cards & EasyEMI</h6>
-                                            </div>
-                                        </div>
+                            <Card className='OFFERCARD'>
+                            <div className='upper-region row'>
+                                <div className='col-4'>
+                                    <img alt="offer img" src="https://gos3.ibcdn.com/nov-thumb-1666862910.jpg?im=Resize=(270,270)" style={{ width: "140px", height: "140px" }} />
+                                </div>
+                                <div className='col-8 p-2'>
+                                    <div className='text-region'>
+                                        <h5 className='text-muted fw-bold'>Flight</h5>
+                                        <h4>Get Up To Rs. 7500 OFF!</h4>
+                                        <h6>With ICIC Bank Credit Cards & EasyEMI</h6>
                                     </div>
-                                    <h5 className='p-2 text-primary fw-bold'>Copy&Book:HojoyZHAB@</h5>
-                                </Card>
+                                </div>
                             </div>
-                        </div>
-                        <div className='row mt-3 offersdiv'>
-                            <div className='col-6'>
-                                <Card className='OFFERCARD'>
-                                    <div className='upper-region row'>
-                                        <div className='col-4'>
-                                            <img alt="offer img" src="https://gos3.ibcdn.com/nov-thumb-1666862910.jpg?im=Resize=(270,270)" style={{ width: "140px", height: "140px" }} />
-                                        </div>
-                                        <div className='col-8 p-2'>
-                                            <div className='text-region'>
-                                                <h5 className='text-muted fw-bold'>Flight</h5>
-                                                <h4>Get Up To Rs. 7500 OFF!</h4>
-                                                <h6>With ICIC Bank Credit Cards & EasyEMI</h6>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <h5 className='p-2 text-primary fw-bold'>Copy&Book:HojoyZHAB@</h5>
-                                </Card>
-                            </div>
-                            <div className='col-6'>
-                                <Card className='OFFERCARD'>
-                                    <div className='upper-region row'>
-                                        <div className='col-4'>
-                                            <img alt="offer img" src="https://gos3.ibcdn.com/nov-thumb-1666862910.jpg?im=Resize=(270,270)" style={{ width: "140px", height: "140px" }} />
-                                        </div>
-                                        <div className='col-8 p-2'>
-                                            <div className='text-region'>
-                                                <h5 className='text-muted fw-bold'>Flight</h5>
-                                                <h4>Get Up To Rs. 7500 OFF!</h4>
-                                                <h6>With ICIC Bank Credit Cards & EasyEMI</h6>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <h5 className='p-2 text-primary fw-bold'>Copy&Book:HojoyZHAB@</h5>
-                                </Card>
+                            <h5 className='p-2 text-primary fw-bold'>Copy&Book:HojoyZHAB@</h5>
+                        </Card>
                             </div>
                         </div>
-                        <div className='row mt-3 offersdiv '>
+                        <div className='row mt-3'>
                             <div className='col-6'>
-                                <Card className='OFFERCARD'>
-                                    <div className='upper-region row'>
-                                        <div className='col-4'>
-                                            <img alt="offer img" src="https://gos3.ibcdn.com/nov-thumb-1666862910.jpg?im=Resize=(270,270)" style={{ width: "140px", height: "140px" }} />
-                                        </div>
-                                        <div className='col-8 p-2'>
-                                            <div className='text-region'>
-                                                <h5 className='text-muted fw-bold'>Flight</h5>
-                                                <h4>Get Up To Rs. 7500 OFF!</h4>
-                                                <h6>With ICIC Bank Credit Cards & EasyEMI</h6>
-                                            </div>
-                                        </div>
+                            <Card className='OFFERCARD'>
+                            <div className='upper-region row'>
+                                <div className='col-4'>
+                                    <img alt="offer img" src="https://gos3.ibcdn.com/nov-thumb-1666862910.jpg?im=Resize=(270,270)" style={{ width: "140px", height: "140px" }} />
+                                </div>
+                                <div className='col-8 p-2'>
+                                    <div className='text-region'>
+                                        <h5 className='text-muted fw-bold'>Flight</h5>
+                                        <h4>Get Up To Rs. 7500 OFF!</h4>
+                                        <h6>With ICIC Bank Credit Cards & EasyEMI</h6>
                                     </div>
-                                    <h5 className='p-2 text-primary fw-bold'>Copy&Book:HojoyZHAB@</h5>
-                                </Card>
+                                </div>
+                            </div>
+                            <h5 className='p-2 text-primary fw-bold'>Copy&Book:HojoyZHAB@</h5>
+                        </Card>
                             </div>
                             <div className='col-6'>
-                                <Card className='OFFERCARD'>
-                                    <div className='upper-region row'>
-                                        <div className='col-4'>
-                                            <img alt="offer img" src="https://gos3.ibcdn.com/nov-thumb-1666862910.jpg?im=Resize=(270,270)" style={{ width: "140px", height: "140px" }} />
-                                        </div>
-                                        <div className='col-8 p-2'>
-                                            <div className='text-region'>
-                                                <h5 className='text-muted fw-bold'>Flight</h5>
-                                                <h4>Get Up To Rs. 7500 OFF!</h4>
-                                                <h6>With ICIC Bank Credit Cards & EasyEMI</h6>
-                                            </div>
-                                        </div>
+                            <Card className='OFFERCARD'>
+                            <div className='upper-region row'>
+                                <div className='col-4'>
+                                    <img alt="offer img" src="https://gos3.ibcdn.com/nov-thumb-1666862910.jpg?im=Resize=(270,270)" style={{ width: "140px", height: "140px" }} />
+                                </div>
+                                <div className='col-8 p-2'>
+                                    <div className='text-region'>
+                                        <h5 className='text-muted fw-bold'>Flight</h5>
+                                        <h4>Get Up To Rs. 7500 OFF!</h4>
+                                        <h6>With ICIC Bank Credit Cards & EasyEMI</h6>
                                     </div>
-                                    <h5 className='p-2 text-primary fw-bold'>Copy&Book:HojoyZHAB@</h5>
-                                </Card>
+                                </div>
+                            </div>
+                            <h5 className='p-2 text-primary fw-bold'>Copy&Book:HojoyZHAB@</h5>
+                        </Card>
+                            </div>
+                        </div>
+                        <div className='row mt-3'>
+                            <div className='col-6'>
+                            <Card className='OFFERCARD'>
+                            <div className='upper-region row'>
+                                <div className='col-4'>
+                                    <img alt="offer img" src="https://gos3.ibcdn.com/nov-thumb-1666862910.jpg?im=Resize=(270,270)" style={{ width: "140px", height: "140px" }} />
+                                </div>
+                                <div className='col-8 p-2'>
+                                    <div className='text-region'>
+                                        <h5 className='text-muted fw-bold'>Flight</h5>
+                                        <h4>Get Up To Rs. 7500 OFF!</h4>
+                                        <h6>With ICIC Bank Credit Cards & EasyEMI</h6>
+                                    </div>
+                                </div>
+                            </div>
+                            <h5 className='p-2 text-primary fw-bold'>Copy&Book:HojoyZHAB@</h5>
+                        </Card>
+                            </div>
+                            <div className='col-6'>
+                            <Card className='OFFERCARD'>
+                            <div className='upper-region row'>
+                                <div className='col-4'>
+                                    <img alt="offer img" src="https://gos3.ibcdn.com/nov-thumb-1666862910.jpg?im=Resize=(270,270)" style={{ width: "140px", height: "140px" }} />
+                                </div>
+                                <div className='col-8 p-2'>
+                                    <div className='text-region'>
+                                        <h5 className='text-muted fw-bold'>Flight</h5>
+                                        <h4>Get Up To Rs. 7500 OFF!</h4>
+                                        <h6>With ICIC Bank Credit Cards & EasyEMI</h6>
+                                    </div>
+                                </div>
+                            </div>
+                            <h5 className='p-2 text-primary fw-bold'>Copy&Book:HojoyZHAB@</h5>
+                        </Card>
                             </div>
                         </div>
                     </div>
-                    <div id="flight" className="container content-Frame tab-pane fade pt-5 ">
+                    <div id="flight" className="container content-Frame tab-pane fade pt-5">
                         <h4>Flight Offer For You</h4>
-                        <div className='row mt-3 offersdiv'>
+                        <div className='row mt-3'>
                             <div className='col-6'>
-                                <Card className='OFFERCARD'>
-                                    <div className='upper-region row'>
-                                        <div className='col-4'>
-                                            <img alt="offer img" src="https://gos3.ibcdn.com/nov-thumb-1666862910.jpg?im=Resize=(270,270)" style={{ width: "140px", height: "140px" }} />
-                                        </div>
-                                        <div className='col-8 p-2'>
-                                            <div className='text-region'>
-                                                <h5 className='text-muted fw-bold'>Flight</h5>
-                                                <h4>Get Up To Rs. 7500 OFF!</h4>
-                                                <h6>With ICIC Bank Credit Cards & EasyEMI</h6>
-                                            </div>
-                                        </div>
+                            <Card className='OFFERCARD'>
+                            <div className='upper-region row'>
+                                <div className='col-4'>
+                                    <img alt="offer img" src="https://gos3.ibcdn.com/nov-thumb-1666862910.jpg?im=Resize=(270,270)" style={{ width: "140px", height: "140px" }} />
+                                </div>
+                                <div className='col-8 p-2'>
+                                    <div className='text-region'>
+                                        <h5 className='text-muted fw-bold'>Flight</h5>
+                                        <h4>Get Up To Rs. 7500 OFF!</h4>
+                                        <h6>With ICIC Bank Credit Cards & EasyEMI</h6>
                                     </div>
-                                    <h5 className='p-2 text-primary fw-bold'>Copy&Book:HojoyZHAB@</h5>
-                                </Card>
+                                </div>
+                            </div>
+                            <h5 className='p-2 text-primary fw-bold'>Copy&Book:HojoyZHAB@</h5>
+                        </Card>
                             </div>
                             <div className='col-6'>
-                                <Card className='OFFERCARD'>
-                                    <div className='upper-region row'>
-                                        <div className='col-4'>
-                                            <img alt="offer img" src="https://gos3.ibcdn.com/nov-thumb-1666862910.jpg?im=Resize=(270,270)" style={{ width: "140px", height: "140px" }} />
-                                        </div>
-                                        <div className='col-8 p-2'>
-                                            <div className='text-region'>
-                                                <h5 className='text-muted fw-bold'>Flight</h5>
-                                                <h4>Get Up To Rs. 500 OFF!</h4>
-                                                <h6>With  Bank Credit Cards </h6>
-                                            </div>
-                                        </div>
+                            <Card className='OFFERCARD'>
+                            <div className='upper-region row'>
+                                <div className='col-4'>
+                                    <img alt="offer img" src="https://gos3.ibcdn.com/nov-thumb-1666862910.jpg?im=Resize=(270,270)" style={{ width: "140px", height: "140px" }} />
+                                </div>
+                                <div className='col-8 p-2'>
+                                    <div className='text-region'>
+                                        <h5 className='text-muted fw-bold'>Flight</h5>
+                                        <h4>Get Up To Rs. 500 OFF!</h4>
+                                        <h6>With  Bank Credit Cards </h6>
                                     </div>
-                                    <h5 className='p-2 text-primary fw-bold'>Copy&Book:HojoyZHAB@</h5>
-                                </Card>
+                                </div>
                             </div>
-                        </div>
-                        <div className='row mt-3 offersdiv'>
-                            <div className='col-6'>
-                                <Card className='OFFERCARD'>
-                                    <div className='upper-region row'>
-                                        <div className='col-4'>
-                                            <img alt="offer img" src="https://gos3.ibcdn.com/nov-thumb-1666862910.jpg?im=Resize=(270,270)" style={{ width: "140px", height: "140px" }} />
-                                        </div>
-                                        <div className='col-8 p-2'>
-                                            <div className='text-region'>
-                                                <h5 className='text-muted fw-bold'>Flight</h5>
-                                                <h4>Get Up To Rs. 1500 OFF!</h4>
-                                                <h6>With HDFC Bank Credit Cards & EasyEMI</h6>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <h5 className='p-2 text-primary fw-bold'>Copy&Book:HojoyZHAB@</h5>
-                                </Card>
-                            </div>
-                            <div className='col-6'>
-                                <Card className='OFFERCARD'>
-                                    <div className='upper-region row'>
-                                        <div className='col-4'>
-                                            <img alt="offer img" src="https://gos3.ibcdn.com/nov-thumb-1666862910.jpg?im=Resize=(270,270)" style={{ width: "140px", height: "140px" }} />
-                                        </div>
-                                        <div className='col-8 p-2'>
-                                            <div className='text-region'>
-                                                <h5 className='text-muted fw-bold'>Flight</h5>
-                                                <h4>Get Up To Rs. 750 OFF!</h4>
-                                                <h6>With ICIC Bank Debit Cards</h6>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <h5 className='p-2 text-primary fw-bold'>Copy&Book:HojoyZHAB@</h5>
-                                </Card>
+                            <h5 className='p-2 text-primary fw-bold'>Copy&Book:HojoyZHAB@</h5>
+                        </Card>
                             </div>
                         </div>
-                        <div className='row mt-3 offersdiv'>
+                        <div className='row mt-3'>
                             <div className='col-6'>
-                                <Card className='OFFERCARD'>
-                                    <div className='upper-region row'>
-                                        <div className='col-4'>
-                                            <img alt="offer img" src="https://gos3.ibcdn.com/nov-thumb-1666862910.jpg?im=Resize=(270,270)" style={{ width: "140px", height: "140px" }} />
-                                        </div>
-                                        <div className='col-8 p-2'>
-                                            <div className='text-region'>
-                                                <h5 className='text-muted fw-bold'>Flight</h5>
-                                                <h4>Get Up To Rs. 7500 OFF!</h4>
-                                                <h6>With ICIC Bank Credit Cards & EasyEMI</h6>
-                                            </div>
-                                        </div>
+                            <Card className='OFFERCARD'>
+                            <div className='upper-region row'>
+                                <div className='col-4'>
+                                    <img alt="offer img" src="https://gos3.ibcdn.com/nov-thumb-1666862910.jpg?im=Resize=(270,270)" style={{ width: "140px", height: "140px" }} />
+                                </div>
+                                <div className='col-8 p-2'>
+                                    <div className='text-region'>
+                                        <h5 className='text-muted fw-bold'>Flight</h5>
+                                        <h4>Get Up To Rs. 1500 OFF!</h4>
+                                        <h6>With HDFC Bank Credit Cards & EasyEMI</h6>
                                     </div>
-                                    <h5 className='p-2 text-primary fw-bold'>Copy&Book:HojoyZHAB@</h5>
-                                </Card>
+                                </div>
+                            </div>
+                            <h5 className='p-2 text-primary fw-bold'>Copy&Book:HojoyZHAB@</h5>
+                        </Card>
                             </div>
                             <div className='col-6'>
-                                <Card className='OFFERCARD'>
-                                    <div className='upper-region row'>
-                                        <div className='col-4'>
-                                            <img alt="offer img" src="https://gos3.ibcdn.com/nov-thumb-1666862910.jpg?im=Resize=(270,270)" style={{ width: "140px", height: "140px" }} />
-                                        </div>
-                                        <div className='col-8 p-2'>
-                                            <div className='text-region'>
-                                                <h5 className='text-muted fw-bold'>Flight</h5>
-                                                <h4>Get Up To Rs. 7500 OFF!</h4>
-                                                <h6>With ICIC Bank Credit Cards & EasyEMI</h6>
-                                            </div>
-                                        </div>
+                            <Card className='OFFERCARD'>
+                            <div className='upper-region row'>
+                                <div className='col-4'>
+                                    <img alt="offer img" src="https://gos3.ibcdn.com/nov-thumb-1666862910.jpg?im=Resize=(270,270)" style={{ width: "140px", height: "140px" }} />
+                                </div>
+                                <div className='col-8 p-2'>
+                                    <div className='text-region'>
+                                        <h5 className='text-muted fw-bold'>Flight</h5>
+                                        <h4>Get Up To Rs. 750 OFF!</h4>
+                                        <h6>With ICIC Bank Debit Cards</h6>
                                     </div>
-                                    <h5 className='p-2 text-primary fw-bold'>Copy&Book:HojoyZHAB@</h5>
-                                </Card>
+                                </div>
+                            </div>
+                            <h5 className='p-2 text-primary fw-bold'>Copy&Book:HojoyZHAB@</h5>
+                        </Card>
+                            </div>
+                        </div>
+                        <div className='row mt-3'>
+                            <div className='col-6'>
+                            <Card className='OFFERCARD'>
+                            <div className='upper-region row'>
+                                <div className='col-4'>
+                                    <img alt="offer img" src="https://gos3.ibcdn.com/nov-thumb-1666862910.jpg?im=Resize=(270,270)" style={{ width: "140px", height: "140px" }} />
+                                </div>
+                                <div className='col-8 p-2'>
+                                    <div className='text-region'>
+                                        <h5 className='text-muted fw-bold'>Flight</h5>
+                                        <h4>Get Up To Rs. 7500 OFF!</h4>
+                                        <h6>With ICIC Bank Credit Cards & EasyEMI</h6>
+                                    </div>
+                                </div>
+                            </div>
+                            <h5 className='p-2 text-primary fw-bold'>Copy&Book:HojoyZHAB@</h5>
+                        </Card>
+                            </div>
+                            <div className='col-6'>
+                            <Card className='OFFERCARD'>
+                            <div className='upper-region row'>
+                                <div className='col-4'>
+                                    <img alt="offer img" src="https://gos3.ibcdn.com/nov-thumb-1666862910.jpg?im=Resize=(270,270)" style={{ width: "140px", height: "140px" }} />
+                                </div>
+                                <div className='col-8 p-2'>
+                                    <div className='text-region'>
+                                        <h5 className='text-muted fw-bold'>Flight</h5>
+                                        <h4>Get Up To Rs. 7500 OFF!</h4>
+                                        <h6>With ICIC Bank Credit Cards & EasyEMI</h6>
+                                    </div>
+                                </div>
+                            </div>
+                            <h5 className='p-2 text-primary fw-bold'>Copy&Book:HojoyZHAB@</h5>
+                        </Card>
                             </div>
                         </div>
                     </div>
                     <div id="hotel" className="container content-Frame tab-pane fade pt-5">
                         <h4>Hotel Offer For You</h4>
-                        <div className='row mt-3 offersdiv'>
+                        <div className='row mt-3'>
                             <div className='col-6'>
-                                <Card className='OFFERCARD'>
-                                    <div className='upper-region row'>
-                                        <div className='col-4'>
-                                            <img alt="offer img" src="https://gos3.ibcdn.com/nov-thumb-1666862910.jpg?im=Resize=(270,270)" style={{ width: "140px", height: "140px" }} />
-                                        </div>
-                                        <div className='col-8 '>
-                                            <div className='text-region'>
-                                                <h5 className='text-muted fw-bold'>Hotel</h5>
-                                                <h4>Get Flat 10% OFF* on Domestic Hotels</h4>
-                                                <h6>With ICIC Bank Credit Cards & EasyEMI</h6>
-                                            </div>
-                                        </div>
+                            <Card className='OFFERCARD'>
+                            <div className='upper-region row'>
+                                <div className='col-4'>
+                                    <img alt="offer img" src="https://gos3.ibcdn.com/nov-thumb-1666862910.jpg?im=Resize=(270,270)" style={{ width: "140px", height: "140px" }} />
+                                </div>
+                                <div className='col-8 '>
+                                    <div className='text-region'>
+                                        <h5 className='text-muted fw-bold'>Hotel</h5>
+                                        <h4>Get Flat 10% OFF* on Domestic Hotels</h4>
+                                        <h6>With ICIC Bank Credit Cards & EasyEMI</h6>
                                     </div>
-                                    <h5 className='p-2 text-primary fw-bold'>Copy&Book:HojoyZHAB@</h5>
-                                </Card>
+                                </div>
+                            </div>
+                            <h5 className='p-2 text-primary fw-bold'>Copy&Book:HojoyZHAB@</h5>
+                        </Card>
                             </div>
                             <div className='col-6'>
-                                <Card className='OFFERCARD'>
-                                    <div className='upper-region row'>
-                                        <div className='col-4'>
-                                            <img alt="offer img" src="https://gos3.ibcdn.com/nov-thumb-1666862910.jpg?im=Resize=(270,270)" style={{ width: "140px", height: "140px" }} />
-                                        </div>
-                                        <div className='col-8 p-2'>
-                                            <div className='text-region'>
-                                                <h5 className='text-muted fw-bold'>Hotel</h5>
-                                                <h4>Get Flat 10% OFF* on Domestic Hotels</h4>
-                                                <h6>With ICIC Bank Credit Cards & EasyEMI</h6>
-                                            </div>
-                                        </div>
+                            <Card className='OFFERCARD'>
+                            <div className='upper-region row'>
+                                <div className='col-4'>
+                                    <img alt="offer img" src="https://gos3.ibcdn.com/nov-thumb-1666862910.jpg?im=Resize=(270,270)" style={{ width: "140px", height: "140px" }} />
+                                </div>
+                                <div className='col-8 p-2'>
+                                    <div className='text-region'>
+                                        <h5 className='text-muted fw-bold'>Hotel</h5>
+                                        <h4>Get Flat 10% OFF* on Domestic Hotels</h4>
+                                        <h6>With ICIC Bank Credit Cards & EasyEMI</h6>
                                     </div>
-                                    <h5 className='p-2 text-primary fw-bold'>Copy&Book:HojoyZHAB@</h5>
-                                </Card>
+                                </div>
                             </div>
-                        </div>
-                        <div className='row mt-3 offersdiv'>
-                            <div className='col-6'>
-                                <Card className='OFFERCARD'>
-                                    <div className='upper-region row'>
-                                        <div className='col-4'>
-                                            <img alt="offer img" src="https://gos3.ibcdn.com/nov-thumb-1666862910.jpg?im=Resize=(270,270)" style={{ width: "140px", height: "140px" }} />
-                                        </div>
-                                        <div className='col-8 p-2'>
-                                            <div className='text-region'>
-                                                <h5 className='text-muted fw-bold'>Hotel</h5>
-                                                <h4>Get Flat 10% OFF* on Domestic Hotels</h4>
-                                                <h6>With ICIC Bank Credit Cards & EasyEMI</h6>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <h5 className='p-2 text-primary fw-bold'>Copy&Book:HojoyZHAB@</h5>
-                                </Card>
-                            </div>
-                            <div className='col-6'>
-                                <Card className='OFFERCARD'>
-                                    <div className='upper-region row'>
-                                        <div className='col-4'>
-                                            <img alt="offer img" src="https://gos3.ibcdn.com/nov-thumb-1666862910.jpg?im=Resize=(270,270)" style={{ width: "140px", height: "140px" }} />
-                                        </div>
-                                        <div className='col-8 p-2'>
-                                            <div className='text-region'>
-                                                <h5 className='text-muted fw-bold'>Hotel</h5>
-                                                <h4>Get Flat 10% OFF* on Domestic Hotels</h4>
-                                                <h6>With ICIC Bank Credit Cards & EasyEMI</h6>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <h5 className='p-2 text-primary fw-bold'>Copy&Book:HojoyZHAB@</h5>
-                                </Card>
+                            <h5 className='p-2 text-primary fw-bold'>Copy&Book:HojoyZHAB@</h5>
+                        </Card>
                             </div>
                         </div>
-                        <div className='row mt-3 offersdiv'>
+                        <div className='row mt-3'>
                             <div className='col-6'>
-                                <Card className='OFFERCARD'>
-                                    <div className='upper-region row'>
-                                        <div className='col-4'>
-                                            <img alt="offer img" src="https://gos3.ibcdn.com/nov-thumb-1666862910.jpg?im=Resize=(270,270)" style={{ width: "140px", height: "140px" }} />
-                                        </div>
-                                        <div className='col-8 p-2'>
-                                            <div className='text-region'>
-                                                <h5 className='text-muted fw-bold'>Hotel</h5>
-                                                <h4>Get Flat 10% OFF* on Domestic Hotels</h4>
-                                                <h6>With ICIC Bank Credit Cards & EasyEMI</h6>
-                                            </div>
-                                        </div>
+                            <Card className='OFFERCARD'>
+                            <div className='upper-region row'>
+                                <div className='col-4'>
+                                    <img alt="offer img" src="https://gos3.ibcdn.com/nov-thumb-1666862910.jpg?im=Resize=(270,270)" style={{ width: "140px", height: "140px" }} />
+                                </div>
+                                <div className='col-8 p-2'>
+                                    <div className='text-region'>
+                                        <h5 className='text-muted fw-bold'>Hotel</h5>
+                                        <h4>Get Flat 10% OFF* on Domestic Hotels</h4>
+                                        <h6>With ICIC Bank Credit Cards & EasyEMI</h6>
                                     </div>
-                                    <h5 className='p-2 text-primary fw-bold'>Copy&Book:HojoyZHAB@</h5>
-                                </Card>
+                                </div>
+                            </div>
+                            <h5 className='p-2 text-primary fw-bold'>Copy&Book:HojoyZHAB@</h5>
+                        </Card>
                             </div>
                             <div className='col-6'>
-                                <Card className='OFFERCARD'>
-                                    <div className='upper-region row'>
-                                        <div className='col-4'>
-                                            <img alt="offer img" src="https://gos3.ibcdn.com/nov-thumb-1666862910.jpg?im=Resize=(270,270)" style={{ width: "140px", height: "140px" }} />
-                                        </div>
-                                        <div className='col-8 p-2'>
-                                            <div className='text-region'>
-                                                <h5 className='text-muted fw-bold'>Hotel</h5>
-                                                <h4>Get Flat 10% OFF* on Domestic Hotels</h4>
-                                                <h6>With ICIC Bank Credit Cards & EasyEMI</h6>
-                                            </div>
-                                        </div>
+                            <Card className='OFFERCARD'>
+                            <div className='upper-region row'>
+                                <div className='col-4'>
+                                    <img alt="offer img" src="https://gos3.ibcdn.com/nov-thumb-1666862910.jpg?im=Resize=(270,270)" style={{ width: "140px", height: "140px" }} />
+                                </div>
+                                <div className='col-8 p-2'>
+                                    <div className='text-region'>
+                                        <h5 className='text-muted fw-bold'>Hotel</h5>
+                                        <h4>Get Flat 10% OFF* on Domestic Hotels</h4>
+                                        <h6>With ICIC Bank Credit Cards & EasyEMI</h6>
                                     </div>
-                                    <h5 className='p-2 text-primary fw-bold'>Copy&Book:HojoyZHAB@</h5>
-                                </Card>
+                                </div>
                             </div>
-                        </div> <div className='row mt-3 offersdiv'>
+                            <h5 className='p-2 text-primary fw-bold'>Copy&Book:HojoyZHAB@</h5>
+                        </Card>
+                            </div>
+                        </div>
+                        <div className='row mt-3'>
                             <div className='col-6'>
-                                <Card className='OFFERCARD'>
-                                    <div className='upper-region row'>
-                                        <div className='col-4'>
-                                            <img alt="offer img" src="https://gos3.ibcdn.com/nov-thumb-1666862910.jpg?im=Resize=(270,270)" style={{ width: "140px", height: "140px" }} />
-                                        </div>
-                                        <div className='col-8 p-2'>
-                                            <div className='text-region'>
-                                                <h5 className='text-muted fw-bold'>Hotel</h5>
-                                                <h4>Get Flat 10% OFF* on Domestic Hotels</h4>
-                                                <h6>With ICIC Bank Credit Cards & EasyEMI</h6>
-                                            </div>
-                                        </div>
+                            <Card className='OFFERCARD'>
+                            <div className='upper-region row'>
+                                <div className='col-4'>
+                                    <img alt="offer img" src="https://gos3.ibcdn.com/nov-thumb-1666862910.jpg?im=Resize=(270,270)" style={{ width: "140px", height: "140px" }} />
+                                </div>
+                                <div className='col-8 p-2'>
+                                    <div className='text-region'>
+                                        <h5 className='text-muted fw-bold'>Hotel</h5>
+                                        <h4>Get Flat 10% OFF* on Domestic Hotels</h4>
+                                        <h6>With ICIC Bank Credit Cards & EasyEMI</h6>
                                     </div>
-                                    <h5 className='p-2 text-primary fw-bold'>Copy&Book:HojoyZHAB@</h5>
-                                </Card>
+                                </div>
+                            </div>
+                            <h5 className='p-2 text-primary fw-bold'>Copy&Book:HojoyZHAB@</h5>
+                        </Card>
                             </div>
                             <div className='col-6'>
-                                <Card className='OFFERCARD'>
-                                    <div className='upper-region row'>
-                                        <div className='col-4'>
-                                            <img alt="offer img" src="https://gos3.ibcdn.com/nov-thumb-1666862910.jpg?im=Resize=(270,270)" style={{ width: "140px", height: "140px" }} />
-                                        </div>
-                                        <div className='col-8 p-2'>
-                                            <div className='text-region'>
-                                                <h5 className='text-muted fw-bold'>Hotel</h5>
-                                                <h4>Get Up To Rs. 7500 OFF!</h4>
-                                                <h6>With ICIC Bank Credit Cards & EasyEMI</h6>
-                                            </div>
-                                        </div>
+                            <Card className='OFFERCARD'>
+                            <div className='upper-region row'>
+                                <div className='col-4'>
+                                    <img alt="offer img" src="https://gos3.ibcdn.com/nov-thumb-1666862910.jpg?im=Resize=(270,270)" style={{ width: "140px", height: "140px" }} />
+                                </div>
+                                <div className='col-8 p-2'>
+                                    <div className='text-region'>
+                                        <h5 className='text-muted fw-bold'>Hotel</h5>
+                                        <h4>Get Flat 10% OFF* on Domestic Hotels</h4>
+                                        <h6>With ICIC Bank Credit Cards & EasyEMI</h6>
                                     </div>
-                                    <h5 className='p-2 text-primary fw-bold'>Copy&Book:HojoyZHAB@</h5>
-                                </Card>
+                                </div>
+                            </div>
+                            <h5 className='p-2 text-primary fw-bold'>Copy&Book:HojoyZHAB@</h5>
+                        </Card>
+                            </div>
+                        </div> <div className='row mt-3'>
+                            <div className='col-6'>
+                            <Card className='OFFERCARD'>
+                            <div className='upper-region row'>
+                                <div className='col-4'>
+                                    <img alt="offer img" src="https://gos3.ibcdn.com/nov-thumb-1666862910.jpg?im=Resize=(270,270)" style={{ width: "140px", height: "140px" }} />
+                                </div>
+                                <div className='col-8 p-2'>
+                                    <div className='text-region'>
+                                        <h5 className='text-muted fw-bold'>Hotel</h5>
+                                        <h4>Get Flat 10% OFF* on Domestic Hotels</h4>
+                                        <h6>With ICIC Bank Credit Cards & EasyEMI</h6>
+                                    </div>
+                                </div>
+                            </div>
+                            <h5 className='p-2 text-primary fw-bold'>Copy&Book:HojoyZHAB@</h5>
+                        </Card>
+                            </div>
+                            <div className='col-6'>
+                            <Card className='OFFERCARD'>
+                            <div className='upper-region row'>
+                                <div className='col-4'>
+                                    <img alt="offer img" src="https://gos3.ibcdn.com/nov-thumb-1666862910.jpg?im=Resize=(270,270)" style={{ width: "140px", height: "140px" }} />
+                                </div>
+                                <div className='col-8 p-2'>
+                                    <div className='text-region'>
+                                        <h5 className='text-muted fw-bold'>Hotel</h5>
+                                        <h4>Get Up To Rs. 7500 OFF!</h4>
+                                        <h6>With ICIC Bank Credit Cards & EasyEMI</h6>
+                                    </div>
+                                </div>
+                            </div>
+                            <h5 className='p-2 text-primary fw-bold'>Copy&Book:HojoyZHAB@</h5>
+                        </Card>
                             </div>
                         </div>
                     </div>
                     <div id="car" className="container content-Frame tab-pane fade pt-5">
                         <h4>Car Offer For You</h4>
-                        <div className='row mt-3 offersdiv'>
+                        <div className='row mt-3'>
                             <div className='col-6'>
-                                <Card className='OFFERCARD'>
-                                    <div className='upper-region row'>
-                                        <div className='col-4'>
-                                            <img alt="offer img" src="https://gos3.ibcdn.com/nov-thumb-1666862910.jpg?im=Resize=(270,270)" style={{ width: "140px", height: "140px" }} />
-                                        </div>
-                                        <div className='col-8 p-2'>
-                                            <div className='text-region'>
-                                                <h5 className='text-muted fw-bold'>Car</h5>
-                                                <h4>Up to 30% Less Prices + Extra Discount!</h4>
-                                                <h6>With ICIC Bank Credit Cards & EasyEMI</h6>
-                                            </div>
-                                        </div>
+                            <Card className='OFFERCARD'>
+                            <div className='upper-region row'>
+                                <div className='col-4'>
+                                    <img alt="offer img" src="https://gos3.ibcdn.com/nov-thumb-1666862910.jpg?im=Resize=(270,270)" style={{ width: "140px", height: "140px" }} />
+                                </div>
+                                <div className='col-8 p-2'>
+                                    <div className='text-region'>
+                                        <h5 className='text-muted fw-bold'>Car</h5>
+                                        <h4>Up to 30% Less Prices + Extra Discount!</h4>
+                                        <h6>With ICIC Bank Credit Cards & EasyEMI</h6>
                                     </div>
-                                    <h5 className='p-2 text-primary fw-bold'>Copy&Book:HojoyZHAB@</h5>
-                                </Card>
+                                </div>
+                            </div>
+                            <h5 className='p-2 text-primary fw-bold'>Copy&Book:HojoyZHAB@</h5>
+                        </Card>
                             </div>
                             <div className='col-6'>
-                                <Card className='OFFERCARD'>
-                                    <div className='upper-region row'>
-                                        <div className='col-4'>
-                                            <img alt="offer img" src="https://gos3.ibcdn.com/nov-thumb-1666862910.jpg?im=Resize=(270,270)" style={{ width: "140px", height: "140px" }} />
-                                        </div>
-                                        <div className='col-8'>
-                                            <div className='text-region'>
-                                                <h5 className='text-muted fw-bold'>Car</h5>
-                                                <h4>Up to 30% Less Prices + Extra Discount!</h4>
-                                                <h6>With ICIC Bank Credit Cards & EasyEMI</h6>
-                                            </div>
-                                        </div>
+                            <Card className='OFFERCARD'>
+                            <div className='upper-region row'>
+                                <div className='col-4'>
+                                    <img alt="offer img" src="https://gos3.ibcdn.com/nov-thumb-1666862910.jpg?im=Resize=(270,270)" style={{ width: "140px", height: "140px" }} />
+                                </div>
+                                <div className='col-8'>
+                                    <div className='text-region'>
+                                        <h5 className='text-muted fw-bold'>Car</h5>
+                                        <h4>Up to 30% Less Prices + Extra Discount!</h4>
+                                        <h6>With ICIC Bank Credit Cards & EasyEMI</h6>
                                     </div>
-                                    <h5 className='p-2 text-primary fw-bold'>Copy&Book:HojoyZHAB@</h5>
-                                </Card>
+                                </div>
                             </div>
-                        </div>
-                        <div className='row mt-3 offersdiv'>
-                            <div className='col-6'>
-                                <Card className='OFFERCARD'>
-                                    <div className='upper-region row'>
-                                        <div className='col-4'>
-                                            <img alt="offer img" src="https://gos3.ibcdn.com/nov-thumb-1666862910.jpg?im=Resize=(270,270)" style={{ width: "140px", height: "140px" }} />
-                                        </div>
-                                        <div className='col-8 p-2'>
-                                            <div className='text-region'>
-                                                <h5 className='text-muted fw-bold'>Car</h5>
-                                                <h4>Up to 30% Less Prices + Extra Discount!!</h4>
-                                                <h6>With ICIC Bank Credit Cards & EasyEMI</h6>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <h5 className='p-2 text-primary fw-bold'>Copy&Book:HojoyZHAB@</h5>
-                                </Card>
-                            </div>
-                            <div className='col-6'>
-                                <Card className='OFFERCARD'>
-                                    <div className='upper-region row'>
-                                        <div className='col-4'>
-                                            <img alt="offer img" src="https://gos3.ibcdn.com/nov-thumb-1666862910.jpg?im=Resize=(270,270)" style={{ width: "140px", height: "140px" }} />
-                                        </div>
-                                        <div className='col-8 p-2'>
-                                            <div className='text-region'>
-                                                <h5 className='text-muted fw-bold'>Car</h5>
-                                                <h4>Up to 30% Less Prices + Extra Discount!</h4>
-                                                <h6>With ICIC Bank Credit Cards & EasyEMI</h6>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <h5 className='p-2 text-primary fw-bold'>Copy&Book:HojoyZHAB@</h5>
-                                </Card>
+                            <h5 className='p-2 text-primary fw-bold'>Copy&Book:HojoyZHAB@</h5>
+                        </Card>
                             </div>
                         </div>
-                        <div className='row mt-3 offersdiv'>
+                        <div className='row mt-3'>
                             <div className='col-6'>
-                                <Card className='OFFERCARD'>
-                                    <div className='upper-region row'>
-                                        <div className='col-4'>
-                                            <img alt="offer img" src="https://gos3.ibcdn.com/nov-thumb-1666862910.jpg?im=Resize=(270,270)" style={{ width: "140px", height: "140px" }} />
-                                        </div>
-                                        <div className='col-8 p-2'>
-                                            <div className='text-region'>
-                                                <h5 className='text-muted fw-bold'>Car</h5>
-                                                <h4>Up to 30% Less Prices + Extra Discount!</h4>
-                                                <h6>With ICIC Bank Credit Cards & EasyEMI</h6>
-                                            </div>
-                                        </div>
+                            <Card className='OFFERCARD'>
+                            <div className='upper-region row'>
+                                <div className='col-4'>
+                                    <img alt="offer img" src="https://gos3.ibcdn.com/nov-thumb-1666862910.jpg?im=Resize=(270,270)" style={{ width: "140px", height: "140px" }} />
+                                </div>
+                                <div className='col-8 p-2'>
+                                    <div className='text-region'>
+                                        <h5 className='text-muted fw-bold'>Car</h5>
+                                        <h4>Up to 30% Less Prices + Extra Discount!!</h4>
+                                        <h6>With ICIC Bank Credit Cards & EasyEMI</h6>
                                     </div>
-                                    <h5 className='p-2 text-primary fw-bold'>Copy&Book:HojoyZHAB@</h5>
-                                </Card>
+                                </div>
+                            </div>
+                            <h5 className='p-2 text-primary fw-bold'>Copy&Book:HojoyZHAB@</h5>
+                        </Card>
                             </div>
                             <div className='col-6'>
-                                <Card className='OFFERCARD'>
-                                    <div className='upper-region row'>
-                                        <div className='col-4'>
-                                            <img alt="offer img" src="https://gos3.ibcdn.com/nov-thumb-1666862910.jpg?im=Resize=(270,270)" style={{ width: "140px", height: "140px" }} />
-                                        </div>
-                                        <div className='col-8 p-2'>
-                                            <div className='text-region'>
-                                                <h5 className='text-muted fw-bold'>Car</h5>
-                                                <h4>Up to 30% Less Prices + Extra Discount!</h4>
-                                                <h6>With ICIC Bank Credit Cards & EasyEMI</h6>
-                                            </div>
-                                        </div>
+                            <Card className='OFFERCARD'>
+                            <div className='upper-region row'>
+                                <div className='col-4'>
+                                    <img alt="offer img" src="https://gos3.ibcdn.com/nov-thumb-1666862910.jpg?im=Resize=(270,270)" style={{ width: "140px", height: "140px" }} />
+                                </div>
+                                <div className='col-8 p-2'>
+                                    <div className='text-region'>
+                                        <h5 className='text-muted fw-bold'>Car</h5>
+                                        <h4>Up to 30% Less Prices + Extra Discount!</h4>
+                                        <h6>With ICIC Bank Credit Cards & EasyEMI</h6>
                                     </div>
-                                    <h5 className='p-2 text-primary fw-bold'>Copy&Book:HojoyZHAB@</h5>
-                                </Card>
+                                </div>
+                            </div>
+                            <h5 className='p-2 text-primary fw-bold'>Copy&Book:HojoyZHAB@</h5>
+                        </Card>
                             </div>
                         </div>
-                        <div className='row mt-3 offersdiv'>
+                        <div className='row mt-3'>
                             <div className='col-6'>
-                                <Card className='OFFERCARD'>
-                                    <div className='upper-region row'>
-                                        <div className='col-4'>
-                                            <img alt="offer img" src="https://gos3.ibcdn.com/nov-thumb-1666862910.jpg?im=Resize=(270,270)" style={{ width: "140px", height: "140px" }} />
-                                        </div>
-                                        <div className='col-8 p-2'>
-                                            <div className='text-region'>
-                                                <h5 className='text-muted fw-bold'>Car</h5>
-                                                <h4>Up to 30% Less Prices + Extra Discount!</h4>
-                                                <h6>With ICIC Bank Credit Cards & EasyEMI</h6>
-                                            </div>
-                                        </div>
+                            <Card className='OFFERCARD'>
+                            <div className='upper-region row'>
+                                <div className='col-4'>
+                                    <img alt="offer img" src="https://gos3.ibcdn.com/nov-thumb-1666862910.jpg?im=Resize=(270,270)" style={{ width: "140px", height: "140px" }} />
+                                </div>
+                                <div className='col-8 p-2'>
+                                    <div className='text-region'>
+                                        <h5 className='text-muted fw-bold'>Car</h5>
+                                        <h4>Up to 30% Less Prices + Extra Discount!</h4>
+                                        <h6>With ICIC Bank Credit Cards & EasyEMI</h6>
                                     </div>
-                                    <h5 className='p-2 text-primary fw-bold'>Copy&Book:HojoyZHAB@</h5>
-                                </Card>
+                                </div>
+                            </div>
+                            <h5 className='p-2 text-primary fw-bold'>Copy&Book:HojoyZHAB@</h5>
+                        </Card>
                             </div>
                             <div className='col-6'>
-                                <Card className='OFFERCARD'>
-                                    <div className='upper-region row'>
-                                        <div className='col-4'>
-                                            <img alt="offer img" src="https://gos3.ibcdn.com/nov-thumb-1666862910.jpg?im=Resize=(270,270)" style={{ width: "140px", height: "140px" }} />
-                                        </div>
-                                        <div className='col-8 p-2'>
-                                            <div className='text-region'>
-                                                <h5 className='text-muted fw-bold'>Car</h5>
-                                                <h4>Get Up To Rs. 7500 OFF!</h4>
-                                                <h6>With ICIC Bank Credit Cards & EasyEMI</h6>
-                                            </div>
-                                        </div>
+                            <Card className='OFFERCARD'>
+                            <div className='upper-region row'>
+                                <div className='col-4'>
+                                    <img alt="offer img" src="https://gos3.ibcdn.com/nov-thumb-1666862910.jpg?im=Resize=(270,270)" style={{ width: "140px", height: "140px" }} />
+                                </div>
+                                <div className='col-8 p-2'>
+                                    <div className='text-region'>
+                                        <h5 className='text-muted fw-bold'>Car</h5>
+                                        <h4>Up to 30% Less Prices + Extra Discount!</h4>
+                                        <h6>With ICIC Bank Credit Cards & EasyEMI</h6>
                                     </div>
-                                    <h5 className='p-2 text-primary fw-bold'>Copy&Book:HojoyZHAB@</h5>
-                                </Card>
+                                </div>
+                            </div>
+                            <h5 className='p-2 text-primary fw-bold'>Copy&Book:HojoyZHAB@</h5>
+                        </Card>
+                            </div>
+                        </div>
+                        <div className='row mt-3'>
+                            <div className='col-6'>
+                            <Card className='OFFERCARD'>
+                            <div className='upper-region row'>
+                                <div className='col-4'>
+                                    <img alt="offer img" src="https://gos3.ibcdn.com/nov-thumb-1666862910.jpg?im=Resize=(270,270)" style={{ width: "140px", height: "140px" }} />
+                                </div>
+                                <div className='col-8 p-2'>
+                                    <div className='text-region'>
+                                        <h5 className='text-muted fw-bold'>Car</h5>
+                                        <h4>Up to 30% Less Prices + Extra Discount!</h4>
+                                        <h6>With ICIC Bank Credit Cards & EasyEMI</h6>
+                                    </div>
+                                </div>
+                            </div>
+                            <h5 className='p-2 text-primary fw-bold'>Copy&Book:HojoyZHAB@</h5>
+                        </Card>
+                            </div>
+                            <div className='col-6'>
+                            <Card className='OFFERCARD'>
+                            <div className='upper-region row'>
+                                <div className='col-4'>
+                                    <img alt="offer img" src="https://gos3.ibcdn.com/nov-thumb-1666862910.jpg?im=Resize=(270,270)" style={{ width: "140px", height: "140px" }} />
+                                </div>
+                                <div className='col-8 p-2'>
+                                    <div className='text-region'>
+                                        <h5 className='text-muted fw-bold'>Car</h5>
+                                        <h4>Get Up To Rs. 7500 OFF!</h4>
+                                        <h6>With ICIC Bank Credit Cards & EasyEMI</h6>
+                                    </div>
+                                </div>
+                            </div>
+                            <h5 className='p-2 text-primary fw-bold'>Copy&Book:HojoyZHAB@</h5>
+                        </Card>
                             </div>
                         </div>
                     </div>
                     <div id="bus" className="container content-Frame tab-pane fade pt-5">
                         <h4>Bus Offer For You</h4>
-                        <div className='row mt-3 offersdiv'>
+                        <div className='row mt-3'>
                             <div className='col-6'>
-                                <Card className='OFFERCARD'>
-                                    <div className='upper-region row'>
-                                        <div className='col-4'>
-                                            <img alt="offer img" src="https://gos3.ibcdn.com/nov-thumb-1666862910.jpg?im=Resize=(270,270)" style={{ width: "140px", height: "140px" }} />
-                                        </div>
-                                        <div className='col-8 p-2'>
-                                            <div className='text-region'>
-                                                <h5 className='text-muted fw-bold'>Bus</h5>
-                                                <h4>Get Up To Rs. 500 OFF!</h4>
-                                                <h6>With ICIC Bank Credit Cards & EasyEMI</h6>
-                                            </div>
-                                        </div>
+                            <Card className='OFFERCARD'>
+                            <div className='upper-region row'>
+                                <div className='col-4'>
+                                    <img alt="offer img" src="https://gos3.ibcdn.com/nov-thumb-1666862910.jpg?im=Resize=(270,270)" style={{ width: "140px", height: "140px" }} />
+                                </div>
+                                <div className='col-8 p-2'>
+                                    <div className='text-region'>
+                                        <h5 className='text-muted fw-bold'>Bus</h5>
+                                        <h4>Get Up To Rs. 500 OFF!</h4>
+                                        <h6>With ICIC Bank Credit Cards & EasyEMI</h6>
                                     </div>
-                                    <h5 className='p-2 text-primary fw-bold'>Copy&Book:HojoyZHAB@</h5>
-                                </Card>
+                                </div>
+                            </div>
+                            <h5 className='p-2 text-primary fw-bold'>Copy&Book:HojoyZHAB@</h5>
+                        </Card>
                             </div>
                             <div className='col-6'>
-                                <Card className='OFFERCARD'>
-                                    <div className='upper-region row'>
-                                        <div className='col-4'>
-                                            <img alt="offer img" src="https://gos3.ibcdn.com/nov-thumb-1666862910.jpg?im=Resize=(270,270)" style={{ width: "140px", height: "140px" }} />
-                                        </div>
-                                        <div className='col-8 p-2'>
-                                            <div className='text-region'>
-                                                <h5 className='text-muted fw-bold'>Bus</h5>
-                                                <h4>Get Up To Rs. 750 OFF!</h4>
-                                                <h6>With ICIC Bank Credit Cards & EasyEMI</h6>
-                                            </div>
-                                        </div>
+                            <Card className='OFFERCARD'>
+                            <div className='upper-region row'>
+                                <div className='col-4'>
+                                    <img alt="offer img" src="https://gos3.ibcdn.com/nov-thumb-1666862910.jpg?im=Resize=(270,270)" style={{ width: "140px", height: "140px" }} />
+                                </div>
+                                <div className='col-8 p-2'>
+                                    <div className='text-region'>
+                                        <h5 className='text-muted fw-bold'>Bus</h5>
+                                        <h4>Get Up To Rs. 750 OFF!</h4>
+                                        <h6>With ICIC Bank Credit Cards & EasyEMI</h6>
                                     </div>
-                                    <h5 className='p-2 text-primary fw-bold'>Copy&Book:HojoyZHAB@</h5>
-                                </Card>
+                                </div>
                             </div>
-                        </div>
-                        <div className='row mt-3 offersdiv'>
-                            <div className='col-6'>
-                                <Card className='OFFERCARD'>
-                                    <div className='upper-region row'>
-                                        <div className='col-4'>
-                                            <img alt="offer img" src="https://gos3.ibcdn.com/nov-thumb-1666862910.jpg?im=Resize=(270,270)" style={{ width: "140px", height: "140px" }} />
-                                        </div>
-                                        <div className='col-8 p-2'>
-                                            <div className='text-region'>
-                                                <h5 className='text-muted fw-bold'>Bus</h5>
-                                                <h4>Get Up To Rs. 100 OFF!</h4>
-                                                <h6>With ICIC Bank Credit Cards & EasyEMI</h6>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <h5 className='p-2 text-primary fw-bold'>Copy&Book:HojoyZHAB@</h5>
-                                </Card>
-                            </div>
-                            <div className='col-6'>
-                                <Card className='OFFERCARD'>
-                                    <div className='upper-region row'>
-                                        <div className='col-4'>
-                                            <img alt="offer img" src="https://gos3.ibcdn.com/nov-thumb-1666862910.jpg?im=Resize=(270,270)" style={{ width: "140px", height: "140px" }} />
-                                        </div>
-                                        <div className='col-8 p-2'>
-                                            <div className='text-region'>
-                                                <h5 className='text-muted fw-bold'>Bus</h5>
-                                                <h4>Get Up To Rs. 500 OFF!</h4>
-                                                <h6>With ICIC Bank Credit Cards & EasyEMI</h6>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <h5 className='p-2 text-primary fw-bold'>Copy&Book:HojoyZHAB@</h5>
-                                </Card>
+                            <h5 className='p-2 text-primary fw-bold'>Copy&Book:HojoyZHAB@</h5>
+                        </Card>
                             </div>
                         </div>
-                        <div className='row mt-3 offersdiv'>
+                        <div className='row mt-3'>
                             <div className='col-6'>
-                                <Card className='OFFERCARD'>
-                                    <div className='upper-region row'>
-                                        <div className='col-4'>
-                                            <img alt="offer img" src="https://gos3.ibcdn.com/nov-thumb-1666862910.jpg?im=Resize=(270,270)" style={{ width: "140px", height: "140px" }} />
-                                        </div>
-                                        <div className='col-8 p-2'>
-                                            <div className='text-region'>
-                                                <h5 className='text-muted fw-bold'>Bus</h5>
-                                                <h4>Get Up To Rs. 700 OFF!</h4>
-                                                <h6>With ICIC Bank Credit Cards & EasyEMI</h6>
-                                            </div>
-                                        </div>
+                            <Card className='OFFERCARD'>
+                            <div className='upper-region row'>
+                                <div className='col-4'>
+                                    <img alt="offer img" src="https://gos3.ibcdn.com/nov-thumb-1666862910.jpg?im=Resize=(270,270)" style={{ width: "140px", height: "140px" }} />
+                                </div>
+                                <div className='col-8 p-2'>
+                                    <div className='text-region'>
+                                        <h5 className='text-muted fw-bold'>Bus</h5>
+                                        <h4>Get Up To Rs. 100 OFF!</h4>
+                                        <h6>With ICIC Bank Credit Cards & EasyEMI</h6>
                                     </div>
-                                    <h5 className='p-2 text-primary fw-bold'>Copy&Book:HojoyZHAB@</h5>
-                                </Card>
+                                </div>
+                            </div>
+                            <h5 className='p-2 text-primary fw-bold'>Copy&Book:HojoyZHAB@</h5>
+                        </Card>
                             </div>
                             <div className='col-6'>
-                                <Card className='OFFERCARD'>
-                                    <div className='upper-region row'>
-                                        <div className='col-4'>
-                                            <img alt="offer img" src="https://gos3.ibcdn.com/nov-thumb-1666862910.jpg?im=Resize=(270,270)" style={{ width: "140px", height: "140px" }} />
-                                        </div>
-                                        <div className='col-8 p-2'>
-                                            <div className='text-region'>
-                                                <h5 className='text-muted fw-bold'>Bus</h5>
-                                                <h4>Get Up To Rs. 200 OFF!</h4>
-                                                <h6>With ICIC Bank Credit Cards & EasyEMI</h6>
-                                            </div>
-                                        </div>
+                            <Card className='OFFERCARD'>
+                            <div className='upper-region row'>
+                                <div className='col-4'>
+                                    <img alt="offer img" src="https://gos3.ibcdn.com/nov-thumb-1666862910.jpg?im=Resize=(270,270)" style={{ width: "140px", height: "140px" }} />
+                                </div>
+                                <div className='col-8 p-2'>
+                                    <div className='text-region'>
+                                        <h5 className='text-muted fw-bold'>Bus</h5>
+                                        <h4>Get Up To Rs. 500 OFF!</h4>
+                                        <h6>With ICIC Bank Credit Cards & EasyEMI</h6>
                                     </div>
-                                    <h5 className='p-2 text-primary fw-bold'>Copy&Book:HojoyZHAB@</h5>
-                                </Card>
+                                </div>
+                            </div>
+                            <h5 className='p-2 text-primary fw-bold'>Copy&Book:HojoyZHAB@</h5>
+                        </Card>
+                            </div>
+                        </div>
+                        <div className='row mt-3'>
+                            <div className='col-6'>
+                            <Card className='OFFERCARD'>
+                            <div className='upper-region row'>
+                                <div className='col-4'>
+                                    <img alt="offer img" src="https://gos3.ibcdn.com/nov-thumb-1666862910.jpg?im=Resize=(270,270)" style={{ width: "140px", height: "140px" }} />
+                                </div>
+                                <div className='col-8 p-2'>
+                                    <div className='text-region'>
+                                        <h5 className='text-muted fw-bold'>Bus</h5>
+                                        <h4>Get Up To Rs. 700 OFF!</h4>
+                                        <h6>With ICIC Bank Credit Cards & EasyEMI</h6>
+                                    </div>
+                                </div>
+                            </div>
+                            <h5 className='p-2 text-primary fw-bold'>Copy&Book:HojoyZHAB@</h5>
+                        </Card>
+                            </div>
+                            <div className='col-6'>
+                            <Card className='OFFERCARD'>
+                            <div className='upper-region row'>
+                                <div className='col-4'>
+                                    <img alt="offer img" src="https://gos3.ibcdn.com/nov-thumb-1666862910.jpg?im=Resize=(270,270)" style={{ width: "140px", height: "140px" }} />
+                                </div>
+                                <div className='col-8 p-2'>
+                                    <div className='text-region'>
+                                        <h5 className='text-muted fw-bold'>Bus</h5>
+                                        <h4>Get Up To Rs. 200 OFF!</h4>
+                                        <h6>With ICIC Bank Credit Cards & EasyEMI</h6>
+                                    </div>
+                                </div>
+                            </div>
+                            <h5 className='p-2 text-primary fw-bold'>Copy&Book:HojoyZHAB@</h5>
+                        </Card>
                             </div>
                         </div>
                     </div>
@@ -697,12 +697,12 @@ const Offers = () => {
 
     return (
         <>
-            <CustomNavbar />
+            {/* <CustomNavbar /> */}
             <div className='HojoyOffer-themes'>
                 <SiteBanners />
                 <OfferContent />
             </div>
-            <Footer />
+            <Footer/>
         </>
     )
 

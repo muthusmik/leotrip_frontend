@@ -7,7 +7,7 @@ const initialState = {
 };
 
 const reducer = (state = initialState, action) => {
-  //console.log("iam in HOTEL Payload reducer.........rf",action)   
+
   switch (action.type) {
     case HOTELGUESTINFO:
       return action;

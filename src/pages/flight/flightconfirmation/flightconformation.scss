@@ -3,6 +3,17 @@
     color: black;
 }
 
+  .flightbackground-theme {
+    height: 240px;
+    flex: 1;
+    top: 85px;
+    margin-top: 70px;
+    padding-top: 0.5px;
+    background-image: url('../../../asset/images/backgroundimage.png');
+
+}
+
+
 .details{
     background-color: #eeeded;  
 }
@@ -141,6 +152,28 @@
       background-color: rgba(165, 229, 171, 0.2);
     }
   }
+
+  .flight_passportdate {
+    font-family: Quicksand, Avenir, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    color: rgb(106, 104, 104);
+    width: 100%;
+    font-weight: 700;
+    border:1px solid;
+     padding: 7px;
+    font-size: 15px;
+    cursor: pointer;
+    outline: none;
+    border-radius: 6px;
+  
+  }
+
+  .flight_passportcalander {
+    width: 650px;
+    right: 80px;
+    top: -40px;
+    
+  
+}
 
 
 

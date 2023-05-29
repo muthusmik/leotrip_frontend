@@ -6,7 +6,7 @@ import { flightonewayinfo } from "../services/flightonewayinfo";
 
 export function* handleflightonewayinfo(action) {
   try {
-    // console.log("iam in the saga(flightonewayinfo)",action);
+   
     const flightonewayinfodata = yield call(flightonewayinfo, action.flight);
     if (flightonewayinfodata && flightonewayinfodata.error) throw flightonewayinfodata.error;
     yield put(setFlightOnewayInfo(flightonewayinfodata));

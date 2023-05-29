@@ -1,31 +1,36 @@
-import React, { useState ,useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import CustomNavbar from '../../../component/navbar/Navbar';
 import '../carlist/carlist.scss';
-import CarFareDetails from './cartripfaree';
+import CarFareDetails from './cartripfare';
 import Promote from './promote';
 import Inclusion from './inclusion';
 import Cardetails from './carDetails';
 import TravelerDetails from './travelerdetails';
 import DriverDetails from './cartripconfirmationdetail';
-import {Form} from 'react-bootstrap';
+import { Form } from 'react-bootstrap';
+import { carGustAdd } from '../../../store/services/car';
 import Footer from '../../../component/footer/footer';
 import moment from 'moment';
+import { ToastContainer, toast } from 'react-toastify';
+import Login from '../../authentication/login';
+import localStorage from 'redux-persist/es/storage';
 
 const PackageDetails = () => {
 
     React.useEffect(() => {
-        window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
+        window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
     }, []);
 
-    const [ locat,setLocat] = React.useState('')
-    const handleLocation=(event)=>{
-        setLocat(event.target.value);  
-    }
-    
-
-    const[ traveler,SetTraveler]= React.useState('')
-    const[number,setNumber] = React.useState('')
-    const[mail,setMail] = React.useState('')
+    const [location, setLocation] = React.useState('')
+  
+    const [validate, setValidate] = React.useState(false)
+    const [title, setTitle] = React.useState("Mr")
+    const [traveler, SetTraveler] = React.useState('')
+    const [number, setNumber] = React.useState('')
+    const [mail, setMail] = React.useState('')
+    const [enterTime, setEnterTime] = React.useState('')
+    const [dropTime, setDropTime] = React.useState('')
+    const [passanger, setPassanger] = React.useState('')
     const handleName = (event) => {
         SetTraveler(event.target.value)
     }
@@ -37,47 +42,108 @@ const PackageDetails = () => {
         setMail(event.target.value)
     }
 
-    // console.log("...............traveler details............",traveler)
+    const handleEnterTime = (event) => {
+        setEnterTime(event.target.value)
+    }
 
-    const [validated,setValidated] = useState(false)
-    const handleValidate = (event) => {
-        const form = event.currentTarget;
-        if (form.checkValidity() === false) {
-        onselectvalue(form.checkValidity());
+    const handleDropTime = (event) => {
+        setDropTime(event.target.value)
+    }
+    const handleLocation = (event) => {
+        setLocation(event.target.value);
+    }
+
+    const handleTitle = (event) => {
+        setTitle(event.target.value);
+    }
+
+    const [modalShow, setModalShow] = React.useState(false);
+    const [validated, setValidated] = useState(false)
+    const handleValidate = async (event) => {
+        const usertoken = JSON.parse(localStorage.getItem('token'))
+        console.log("uuuu", usertoken)
           event.preventDefault();
-          event.stopPropagation();
-          setValidated(true);
+        if (!usertoken) {
+            console.log("here")
+            // toast.dismiss();
+        
+            // toast("continue Login for your Booking")
+            setModalShow(true)
         }
-        if(form.checkValidity() === true)
-        {
-        onselectvalue(form.checkValidity());
-            setValidated(false);
+        else {
+            const form = event.currentTarget;
+            if (form.checkValidity() === false) {
+                setValidated(true);
+                onselectvalue(form.checkValidity());
+              
+                event.preventDefault();
+                event.stopPropagation();
+                
+            }
+            if (form.checkValidity() === true) {
+                setValidated(false);
+              
+                let passanger = {name:traveler,number:number,email:mail,enterTime:enterTime,dropTime:dropTime,location:location}
+                  let Postobj =   {
+                    "name":traveler,
+                    "title":title,
+                    "email":mail,
+                    "mobileNumber":number
+                }
+                let postData = {userGuestDetails:[Postobj]}
+                console.log("postData",postData)
+    
+             const res = await carGustAdd(postData)
+                    
+                    console.log("response", res);
+                    if(res?.data?.result){
+                        console.log("Passenger",passanger)
+                        setPassanger(passanger)
+                        onselectvalue(form.checkValidity());
+                       
+                    } 
+             
+            }
         }
-      };
-    
-      const [selectedvalue, onselectvalue] = useState(false);
-    
+    };
 
-    
+    const [selectedvalue, onselectvalue] = useState(false);
+
+
+
+
     return (
         <>
             <div className='container car-pakagedetail pb-5'>
-            <Form noValidate validated={validated} onClick={handleValidate}>
-                <div className="row listWrapper">
-                    <div className="col-8">
-                        <Cardetails />
-                        <DriverDetails handleLocation={handleLocation}/>
-                        <Inclusion />
-                        <TravelerDetails handleName={handleName} handleNumber={handleNumber} handleEmail={handleEmail}/>
-                    </div>
-                    <div className="col-4 car-paydetail">
-                        <CarFareDetails selected={selectedvalue}/>
-                        <Promote />
+                <div >
+                    <div className="row listWrapper">
+                        <div className="col-8">
+                            <Cardetails />
+                            {/* <DriverDetails /> */}
+                            {/* <Inclusion /> */}
+                            <TravelerDetails validated={validated} 
+                             handleName={handleName} 
+                             handleNumber={handleNumber} 
+                             handleEmail={handleEmail} 
+                             handleTitle={handleTitle}
+                             handleLocation={handleLocation} 
+                             handleEnterTime={handleEnterTime} 
+                             handleDropTime={handleDropTime} 
+                             handleValidate={handleValidate}/>
+                        </div>
+                        <div className="col-4 car-paydetail">
+                            <CarFareDetails selected={selectedvalue} passanger={passanger} />
+                            {/* <Promote /> */}
+                        </div>
                     </div>
                 </div>
-                </Form>
 
             </div>
+            <Login
+                show={modalShow}
+                ModalSetter={setModalShow}
+                onHide={() => setModalShow(false)}
+            />
         </>
     )
 }
@@ -85,12 +151,11 @@ const PackageDetails = () => {
 const PackageInfo = () => {
     useEffect(() => {
         const Destination = JSON.parse(localStorage.getItem('carsearch'));
-        
-        console.log('Destination........', Destination[4].triptype);
+
     }, [])
     const Destination = JSON.parse(localStorage.getItem('carsearch'));
     const triptype = JSON.parse(localStorage.getItem('triptypename'));
-    console.log("------Destination------",Destination)
+
     return (
         <>
             <div className="container text-white carpackageinfo">
@@ -103,7 +168,7 @@ const PackageInfo = () => {
                         </h5>
                     </div>
                     <div class="col-3">
-                        <span class="infoText">Hurry! Limited cars left</span>
+                        {/* <span class="infoText">Hurry! Limited cars left</span> */}
                     </div>
                 </div>
             </div>
@@ -117,17 +182,17 @@ const CarConfirmation = () => {
 
     return (
         <>
-        <div>
-            <CustomNavbar />
-            <div className='background-theme'>
-                < PackageInfo />
+            <div>
+                {/* <CustomNavbar /> */}
+                <div className='background-theme'>
+                    < PackageInfo />
+                </div>
+                <PackageDetails />
             </div>
-            <PackageDetails />
-        </div>
-        <div className='bottom-Content'>
-          <Footer/>
-        </div>
-    </>
+            <div className='bottom-Content'>
+                <Footer />
+            </div>
+        </>
     )
 }
 

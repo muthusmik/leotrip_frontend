@@ -16,21 +16,18 @@ import { useLocation } from "react-router-dom";
 
 const BusModifySearch = () => {
     const location = useLocation()
-    // console.log(location, "i am about modifiysearch")
-    const [source, setSource] = React.useState(location.state.state.source_city)
-    const [destination, setDestination] = React.useState(location.state.state.destination_city)
-    const [date, setDate] = React.useState(location.state.state.depart_date)
+    const [source, setSource] = React.useState(location?.state?.state?.source_city)
+    const [destination, setDestination] = React.useState(location?.state?.state?.destination_city)
+    const [date, setDate] = React.useState(location?.state?.state?.depart_date)
 
-    
+
 
     useEffect(() => {
         const Destination = JSON.parse(localStorage.getItem('bussearch'));
-        console.log('Destination source', Destination[0].from);
-        console.log('Destination ',Destination[1].to);
-        handleSelection( Destination[0].from)
-        handleSelectiondestination( Destination[1].to)
+        handleSelection(Destination[0]?.from)
+        handleSelectiondestination(Destination[1]?.to)
     }, [])
-const Destination = JSON.parse(localStorage.getItem('bussearch'));
+    const Destination = JSON.parse(localStorage.getItem('bussearch'));
     const [city, setCity] = useState()
     React.useEffect(() => {
         window.scrollTo(0, 0);
@@ -46,6 +43,9 @@ const Destination = JSON.parse(localStorage.getItem('bussearch'));
         }
         else if (destination_city == '') {
             setErrormsg('Please Enter the Valid Location !');
+        }
+        else if (source_city.localeCompare(destination_city) === 0) {
+            setErrormsg('Source and Destination cannot be same');
         }
         else {
             setErrormsg('')
@@ -100,9 +100,6 @@ const Destination = JSON.parse(localStorage.getItem('bussearch'));
 
     const [value, setValue] = useState(Destination[0]?.from.suggestion.CityName);
     const [valueDes, setValueDes] = useState(Destination[1]?.to.suggestion.CityName);
-    console.log("i am A1",value);
-    // console.log("i am A2",valueDes);
-    // console.log("i am A4",city)
     const [suggestions, setSuggestions] = useState([]);
     function getSuggestions(value) {
         const inputValue = value.trim().toLowerCase();
@@ -111,10 +108,8 @@ const Destination = JSON.parse(localStorage.getItem('bussearch'));
             lang.CityName.toLowerCase().slice(0, inputLength) === inputValue
         );
     }
-    //  console.log("i am A3",suggestions);
     const [from, setFrom] = useState("")
     const handleSelection = (suggestionValue) => {
-        console.log(".......", suggestionValue)
         setFrom(suggestionValue);
         setSource_city(suggestionValue.suggestion.CityName)
         setSource_city_Id(suggestionValue.suggestion.CityId)
@@ -131,7 +126,7 @@ const Destination = JSON.parse(localStorage.getItem('bussearch'));
     return (
         <div className='modifysearch_header'>
             <div className='container modifybussearch'>
-                <div className='d-inline-flex modifycontent my-4'>
+                <div className='d-inline-flex content mt-3'>
                     <div className='bussearchbox border-bottom border-2 mt-2'>
                         <p>FROM</p>
                         <div>
@@ -149,7 +144,6 @@ const Destination = JSON.parse(localStorage.getItem('bussearch'));
                                     value: value,
                                     onChange: (_, { newValue, method }) => {
                                         setValue(newValue);
-                                        //    console.log("newValue",method)
                                     }
                                 }}
                                 highlightFirstSuggestion={true}
@@ -175,7 +169,6 @@ const Destination = JSON.parse(localStorage.getItem('bussearch'));
                                 value: valueDes,
                                 onChange: (_, { newValue, method }) => {
                                     setValueDes(newValue);
-                                    //    console.log("newValue",method)
                                 }
                             }}
                             highlightFirstSuggestion={true}
@@ -194,9 +187,12 @@ const Destination = JSON.parse(localStorage.getItem('bussearch'));
                             />
                         </div>
                     </div>
-                    <div className='busbutton ms-4 my-3'>
-                        <Button onClick={() => handleSubmit(date)}>Modify Search</Button>
+                    <div className='busbutton ms-4 my-1'>
+                        <Button className="btn btn-md mb-2" onClick={() => handleSubmit(date)}>Modify Search</Button>
                     </div>
+                </div>
+                <div className="text-center" style={{marginTop:"-4px"}}>
+                    {(source_city === '' || destination_city === '' || source_city.localeCompare(destination_city) === 0) ? <h6 className="font-weight-bold text-danger">{errormsg}</h6> : null}
                 </div>
             </div>
         </div>

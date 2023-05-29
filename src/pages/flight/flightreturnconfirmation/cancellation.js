@@ -3,6 +3,9 @@ import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import Accordion from 'react-bootstrap/Accordion';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Badge } from 'react-bootstrap';
+
+
+
 const Cancellation = () => {
     return (
         <>

@@ -5,7 +5,7 @@ import { airportcitylist } from "../services/airportcitylist";
 
 export function* handleAirportLoad(action) {
   try {
-    // console.log("iam in the saga(hotelcitylist)",action);
+    
     const airportdata = yield call(airportcitylist, action.airport);
     if (airportdata && airportdata.error) throw airportdata.error;
     yield put(setAirportCityList(airportdata));

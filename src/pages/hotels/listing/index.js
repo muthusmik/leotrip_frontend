@@ -6,7 +6,6 @@ import HotelFilter from "./hotelFilter";
 import Footer from "../../../component/footer/footer"
 import HotelBookingList from "./hotelbookinglist";
 import { useSelector } from "react-redux";
-import ErrorPage from "../../404page";
 import { List } from "rsuite";
 import { setError } from "../../../store/actions/bus";
 
@@ -16,7 +15,7 @@ const HotelListContent = () => {
 
     /* #store */
     const FilterData = useSelector(state => state.HotelSearch)
-    // console.log("i am happy", FilterData)
+
 
 
     /* Store List of data */
@@ -31,16 +30,16 @@ const HotelListContent = () => {
         if (FilterData.data?.length > 1) {
             setFilterItems(FilterData.data[1]);
             //setErrorMsg("")
-            // console.log("4k api")
+
         }
         else if (FilterData.statusCode === 400) {
             setErrorMsg("Something went wrong")
-            // console.log("4k error....", errorMsg)
+
         }
     }, [FilterData.data[1]])
 
 
-    // console.log("iam jeeva", errorMsg)
+
 
     /*  #filtering Statevalue */
     const [filtering, setFiltering] = useState({
@@ -69,7 +68,7 @@ const HotelListContent = () => {
                 setMinprice(2000)
                 setMaxprice(4000)
                 break;
-            case 6:
+            case 5:
                 setMinprice(4000)
                 setMaxprice(6000)
                 break;
@@ -82,7 +81,7 @@ const HotelListContent = () => {
                 setMaxprice(100000)
             default:
                 setMinprice(0)
-                setMaxprice(2000)
+                setMaxprice(0)
                 break;
         }
         if (filtering.star)
@@ -103,7 +102,7 @@ const HotelListContent = () => {
                 setFiltering({ star: true, price: false });
         }
         else if (selected === 6) {
-            console.log("dinesh", selected)
+
             setFiltering({ star: false, price: false });
             setFilterItems(FilterData.data[1]);
         }
@@ -112,9 +111,9 @@ const HotelListContent = () => {
     }
 
     useEffect(() => {
-        console.log("i am here", filteritems)
 
-    }, [filteritems])
+
+    }, [filteritems, filtering])
 
     useEffect(() => {
         filteringprocess()
@@ -124,37 +123,37 @@ const HotelListContent = () => {
         setFilterItems([]);
         if (filtering.price && filtering.star) {
             setErrorMsg(false);
-           
-            const priceDataFilter = FilterData.data[1].filter((e) => e.Price.OfferedPriceRoundedOff > minprice && e.Price.PublishedPriceRoundedOff < maxprice);
+
+            const priceDataFilter = FilterData.data[1].filter((e) => e.Price.PublishedPriceRoundedOff > minprice && e.Price.PublishedPriceRoundedOff < maxprice);
             const mfilter = priceDataFilter.filter((a) => a.StarRating === selected);
-            console.log("jiiii both", mfilter)
+
             if (mfilter.length !== 0) {
-                
+
                 setFilterItems(mfilter);
             }
-            else{
+            else {
                 setErrorMsg(true);
             }
         }
         else if (filtering.price) {
             setErrorMsg(false);
-            const priceDataFilter = FilterData.data[1].filter((e) => e.Price.OfferedPriceRoundedOff > minprice && e.Price.PublishedPriceRoundedOff < maxprice);
-            console.log("jiiii look me", priceDataFilter)
+            const priceDataFilter = FilterData.data[1].filter((e) => e.Price.PublishedPriceRoundedOff > minprice && e.Price.PublishedPriceRoundedOff < maxprice);
+
             if (priceDataFilter.length !== 0) {
                 setFilterItems(priceDataFilter);
             }
-            else{
+            else {
                 setErrorMsg(true);
             }
         }
         else if (filtering.star) {
             setErrorMsg(false);
             const mfilter = FilterData.data[1].filter((a) => a.StarRating === selected);
-            console.log("jiiiii....", mfilter)
+
             if (mfilter.length !== 0) {
                 setFilterItems(mfilter);
             }
-            else{
+            else {
                 setErrorMsg(true);
             }
         }
@@ -164,8 +163,7 @@ const HotelListContent = () => {
         }
     }
 
-    console.log("SSSK", FilterData)
-    console.log("Mkk", filteritems)
+
 
     return (
         <>
@@ -187,12 +185,21 @@ const HotelListContent = () => {
 const HotelList = () => {
     React.useEffect(() => {
         window.scrollTo(0, 0);
+        window.addEventListener("pageshow", function (event) {
+            var historyTraversal = event.persisted ||
+                (typeof window.performance != "undefined" &&
+                    window.performance.navigation.type === 2);
+            if (historyTraversal) {
+                // Handle page restore.
+                window.location.reload();
+            }
+        });
     }, []);
 
     return (
         <>
             <div className="hotelsearch mb-5">
-                <CustomNavbar />
+                {/* <CustomNavbar /> */}
                 <HotelModifySearch />
                 <HotelListContent />
             </div>

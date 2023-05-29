@@ -6,7 +6,7 @@ import { busSeatLayout } from "../services/buslayout";
 
 export function* handleBusLayoutLoad(action) {
   try {
-   // console.log("iam in the saga(bus layout)",action); 
+ 
     const busdata = yield call(busSeatLayout, action.bus);
     if (busdata && busdata.error) throw busdata.error;
     yield put(setBusLayout(busdata));

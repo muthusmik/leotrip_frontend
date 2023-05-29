@@ -7,7 +7,7 @@ const initialState = {
 };
 
 const reducer = (state = initialState, action) => {
-  //  console.log("iam in bus layout reducer",action)
+ 
   switch (action.type) {
     case BUSLAYOUT.LOAD:
       return {

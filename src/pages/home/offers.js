@@ -20,47 +20,14 @@ const Offers = () => {
     const [SliderReferencebus, setSliderReferencebus] = useState(null)
     const [SliderReferencecar, setSliderReferencecar] = useState(null)
 
-   const sliderSettings = {
-        
+
+    const sliderSettings = {
         dots: false,
         slidesToShow: 3,
         slidesToScroll: 1,
         infinite: true,
-        lazyLoad: true, 
-        responsive: [
-            {
-              breakpoint: 1024,
-              settings: {
-                slidesToShow: 3,
-                slidesToScroll: 3,
-                infinite: true,
-                dots: true
-              }
-            },
-            {
-                breakpoint: 820,
-                settings: {
-                  slidesToShow: 2,
-                  slidesToScroll: 2,
-                  initialSlide: 2
-                }
-              },
-            {
-              breakpoint: 600,
-              settings: {
-                slidesToShow: 2,
-                slidesToScroll: 2,
-                initialSlide: 2
-              }
-            },
-            {
-              breakpoint: 450,
-              settings: {
-                slidesToShow: 1,
-                slidesToScroll: 1
-              }
-            }
-          ]
+        lazyLoad: true,
+
     }
 
     return (
@@ -68,12 +35,12 @@ const Offers = () => {
             <Card className="container hojoyoffers-Label cardrad">
                 <Card.Header className="bg-white ">
 
-                    <Row className="text-end">
+                    <Row className="mt-2 text-end">
                         <Col xs={7}>
-                            <p className="fw-bold">Offers For You</p>
+                            <h5 className="fw-bold">Offers For You</h5>
                         </Col>
-                        <Col className="mt-2">
-                            <Button variant="light" className="text-primary fw-bold p-0" >See All Offers <FontAwesomeIcon icon={faAngleRight} /></Button>
+                        <Col>
+                            <Button variant="light" className="text-primary fw-bold" >See All Offers <FontAwesomeIcon icon={faAngleRight} /></Button>
                         </Col>
                     </Row>
                 </Card.Header>
@@ -87,7 +54,7 @@ const Offers = () => {
                                             <FontAwesomeIcon icon={faArrowLeftLong} />
                                         </Button>
                                     </Col>
-                                    <Col xs={11} className="HojoyBankoffersmedia">
+                                    <Col xs={11}>
                                         <div className="HojoyBankoffers mt-3">
                                             <Slider ref={setSliderReference} {...sliderSettings}>
                                                 {BankOfferDetails.map((card, index) => (
@@ -97,13 +64,14 @@ const Offers = () => {
                                                                 <img src={card.Banner} alt="img1" className="bannerimage" width={130} height={130}></img>
                                                             </Col>
                                                             <Col className="flex-3">
+
                                                                 <h4 className="text-muted fw-bold mt-2 pb-3">{card.Description}</h4>
                                                                 <h4 className="fw-bold">{card.offer}</h4>
                                                                 <h6 className="text-danger fw-bold">{card.valid}</h6>
                                                             </Col>
                                                         </Row>
-                                                        <Row className="mt-5">
-                                                            <Button variant="light" className="text-primary fw-bold cardbtn" >View More Details <FontAwesomeIcon icon={faAngleRight} /></Button>
+                                                        <Row className="mt-3">
+                                                            {/* <Button variant="light" className="text-primary fw-bold" >View More Details <FontAwesomeIcon icon={faAngleRight} /></Button> */}
                                                         </Row>
                                                     </Card>
                                                 ))}
@@ -141,8 +109,8 @@ const Offers = () => {
                                                                 <h6 className="text-danger fw-bold">{card.valid}</h6>
                                                             </Col>
                                                         </Row>
-                                                        <Row className="mt-5">
-                                                            <Button variant="light" className="text-primary fw-bold" >View More Details <FontAwesomeIcon icon={faAngleRight} /></Button>
+                                                        <Row className="mt-3">
+                                                            {/* <Button variant="light" className="text-primary fw-bold" >View More Details <FontAwesomeIcon icon={faAngleRight} /></Button> */}
                                                         </Row>
                                                     </Card>
                                                 ))}
@@ -180,8 +148,8 @@ const Offers = () => {
                                                                 <h6 className="text-danger fw-bold">{card.valid}</h6>
                                                             </Col>
                                                         </Row>
-                                                        <Row className="mt-5">
-                                                            <Button variant="light" className="text-primary fw-bold" >View More Details <FontAwesomeIcon icon={faAngleRight} /></Button>
+                                                        <Row className="mt-3">
+                                                            {/* <Button variant="light" className="text-primary fw-bold" >View More Details <FontAwesomeIcon icon={faAngleRight} /></Button> */}
                                                         </Row>
                                                     </Card>
                                                 ))}
@@ -219,8 +187,8 @@ const Offers = () => {
                                                                 <h6 className="text-danger fw-bold">{card.valid}</h6>
                                                             </Col>
                                                         </Row>
-                                                        <Row className="mt-5">
-                                                            <Button variant="light" className="text-primary fw-bold" >View More Details <FontAwesomeIcon icon={faAngleRight} /></Button>
+                                                        <Row className="mt-3">
+                                                            {/* <Button variant="light" className="text-primary fw-bold" >View More Details <FontAwesomeIcon icon={faAngleRight} /></Button> */}
                                                         </Row>
                                                     </Card>
                                                 ))}
@@ -258,8 +226,8 @@ const Offers = () => {
                                                                 <h6 className="text-danger fw-bold">{card.valid}</h6>
                                                             </Col>
                                                         </Row>
-                                                        <Row className="mt-5">
-                                                            <Button variant="light" className="text-primary fw-bold" >View More Details <FontAwesomeIcon icon={faAngleRight} /></Button>
+                                                        <Row className="mt-3">
+                                                            {/* <Button variant="light" className="text-primary fw-bold" >View More Details <FontAwesomeIcon icon={faAngleRight} /></Button> */}
                                                         </Row>
                                                     </Card>
                                                 ))}

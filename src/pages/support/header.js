@@ -2,12 +2,12 @@ import React from "react";
 import { Row, Col } from "react-bootstrap";
 import logo from "../../asset/images/logo.png"
 import { useHistory } from "react-router-dom";
-
+import './support.scss';
 const Header = () => {
     const history = useHistory()
     return (
         <Row className="container mx-auto">
-            <Col xs={6}>
+            <Col xs={5}>
                 <img src={logo} alt="logo" width="155px" height="100px" onClick={()=>history.push('/flight')} />
             </Col>
             <Col className="my-auto">
@@ -17,7 +17,7 @@ const Header = () => {
                     </Col>
                     <Col>
                         <h6 >Contact:</h6>
-                        <h6 > (91)-98491 44844 /(91)-93939 60999</h6>
+                        <h6 > (91)-89777 81 999 /(91)-89777 82 999</h6>
                     </Col>
                 </Row>
             </Col>
@@ -28,7 +28,7 @@ const Header = () => {
                     </Col>
                     <Col>
                         <h6>Email</h6>
-                        <h6> hojoycomforts@gmail.com </h6>
+                        <h6> abcinkahotels@gmail.com</h6>
                     </Col>
                 </Row>
             </Col>

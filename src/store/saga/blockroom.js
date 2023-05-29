@@ -6,7 +6,7 @@ import { blockRoom } from "../services/blockroom";
 
 export function* handleBlockRoom(action) {
   try {
-    // console.log("iam in the blockRoom saga",action);
+
     const searchData = yield call(blockRoom, action.blockroom);
     if (searchData && searchData.error) throw searchData.error;
     yield put(setBlockRoom(searchData));

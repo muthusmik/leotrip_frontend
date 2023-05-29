@@ -1,11 +1,18 @@
 .modifysearch_header {
     background-image: url(../../../asset/images/backgroundimage.png);
-    height: 140px;
+    height: 170px;
     width: 100%;
-    margin-top: 60px;
+    margin-top: 80px;
     padding-top: 15px;
 }
 
+.bus-result{
+    background-color: #1b0e5e;
+    border-radius: 8px;
+    color: white;
+    width:22%;
+    padding: 5px;
+}
 
 
 .modifybussearch {
@@ -13,10 +20,9 @@
     font-family: QuickSand, Avenir, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     border-radius: 8px;
     background-color: rgb(255, 255, 255);
-    margin-top: 30px;
-    // top: 30px;
-    // height: 110px;
-
+    top: 20px;
+    height: 110px;
+    position: relative;
     h5 {
         font-weight: 700;
         color: #1b0e5e;
@@ -50,14 +56,6 @@
     font-family: QuickSand, Avenir, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 
 }
-
-.listWrapper {
-
-    display: flex;
-    min-height: 1024px;
-
-}
-
 
 .buslistfilter {
     flex: 1;
@@ -129,16 +127,53 @@
         }
     }
 
-    li:hover {
-        background-color: orange;
+    // li:hover {
+    //     background-color: orange;
+    //     color: white;
+    //     transform: scale(1, 1.2);
+
+    //     img {
+    //         background-color: white;
+    //     }
+    // }
+
+}
+
+
+.bus_on_departure{
+    li.active{
+        // background-color: #4CAF50;
+        background-color: #555;
         color: white;
-        transform: scale(1, 1.2);
-
-        img {
-            background-color: white;
         }
-    }
+        
+         li:hover:not(.active) {
+            background-color:rgb(213, 210, 205);
+        color: rgb(34, 32, 32);
+        }
+        
+         li:hover {
+        background-color: #555;
+        color: white;
+        }
+}
 
+.bus_on_arrival{
+    li.active{
+        // background-color: #4CAF50;
+        background-color: #555;
+        color: white;
+        }
+        
+         li:hover:not(.active) {
+            background-color:rgb(213, 210, 205);
+        color: rgb(34, 32, 32);
+        }
+        
+         li:hover {
+        background-color: #555;
+        color: white;
+        }
 }
 
 
@@ -215,8 +250,6 @@
         justify-content: space-between;
         padding: 0% !important;
         position: relative;
-        // text-align: justify;
-        //  place-content: center flex-start;
     }
 
 }
@@ -225,8 +258,6 @@
     flex-direction: row;
     box-sizing: border-box;
     display: flex;
-    // place-content: center flex-start;
-    // align-items: center;
 }
 
 .bus-dep {
@@ -481,6 +512,13 @@
 
 }
 
+.bus-listWrapper {
+
+    display: flex !important;
+    min-height: 1024px;
+    margin-top: 30px !important;
+}
+
 
 .bus-paydetail {
     top: 110px;
@@ -490,7 +528,6 @@
 }
 
 .accordion-button {
-    background-color: rgb(255, 255, 255) !important;
     height: 65px;
 }
 
@@ -501,6 +538,7 @@
 .accordion-button:not(.collapsed) {
     color: #070707;
 }
+
 
 
 
@@ -1191,30 +1229,29 @@
 
 	.showfarediv{display:none;}
 
-@media only screen and (min-width:"300px") and (max-width:"420px") {
-    .modifycontent{
-        padding-left: 35px;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        margin-left: 20px;
-    }
-    .buslistcontent {
-        width: 80% !important;
-        font-family: QuickSand, Avenir, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-        margin-top: 300px !important;
-    }
-   .icon{
-    display: none !important;
-   }
-   .buslistfilter {
-    flex: 1;
-    top: 110px;
-    position: unset;
-    height: max-content;
-    border-radius: 8px;
-    background: rgb(255, 255, 255);
 
-}
-
-}
+    .lds-dual-ring {
+        display: inline-block;
+        width: 80px;
+        height: 80px;
+      }
+      .lds-dual-ring:after {
+        content: " ";
+        display: block;
+        width: 64px;
+        height: 64px;
+        margin: 8px;
+        border-radius: 50%;
+        border: 6px solid #e11212;
+        border-color: #d41313 transparent #e01313 transparent;
+        animation: lds-dual-ring 1.2s linear infinite;
+      }
+      @keyframes lds-dual-ring {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+      

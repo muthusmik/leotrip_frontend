@@ -30,7 +30,7 @@ export default function RestrictedSearch  ({searchType,googlePlaceHolder,country
       };
 
       React.useEffect (() => {
-        console.log(address,"hello")
+        // console.log(address,"hello")
       },[address])
 
     
@@ -46,7 +46,7 @@ export default function RestrictedSearch  ({searchType,googlePlaceHolder,country
                 {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
                     
                     <div>
-                        {console.log(getInputProps,"hi")}
+                        {/* {console.log(getInputProps,"hi")} */}
                         <input {...getInputProps({ placeholder: googlePlaceHolder })}/>
                         <div>
                             {loading ? <div>...loading</div> : null}

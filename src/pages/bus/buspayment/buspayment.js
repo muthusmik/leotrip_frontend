@@ -9,8 +9,18 @@ const PaymentDetails = () => {
 
   const location = useLocation();
   const busdata = location.state;
-  console.log("setBusData..... index page", busdata)
-  // console.log(Price.BasePrice, "Price")
+
+  const numberFormat = (value, cur) =>
+    new Intl.NumberFormat('en-IN', {
+      style: 'currency',
+      currency: cur,
+      maximumFractionDigits: 0
+    }).format(value);
+
+  const busprice = JSON.parse(localStorage.getItem('busprice'))
+
+  console.log("bus.....", busprice)
+
   return (
     <Accordion defaultActiveKey="1">
 
@@ -29,51 +39,43 @@ const PaymentDetails = () => {
             <Card.Body>
               <div className="row">
                 <div className="col-8">
-                  <h6>Total Basefare</h6>
+                  <h6>Basefare</h6>
                 </div>
                 <div className="col-4">
-                  <h6>₹{busdata.price}</h6>
+                  <h6>{numberFormat(busprice[0]?.busbaseprice, "INR")}</h6>
                 </div>
               </div>
-              {(busdata.state.Price.Discount > 0) ? (
+              {(busprice[2].discount != 0) ? (
                 <div className="row  p-2 my-2">
                   <div className="col-8">
                     <h6>Discount</h6>
                   </div>
                   <div className="col-4">
-                    <h6>₹{busdata.state.Price.Discount}</h6>
+                    <h6>{numberFormat(busprice[2]?.discount, "INR")}</h6>
                   </div>
                 </div>
               ) : null}
-              {(busdata.state.Price.OtherCharges > 0) ? (
+              {(busprice[1].tax != 0) ? (
                 <div className="row  p-2 my-2">
                   <div className="col-8">
-                    <h6>Other Charges</h6>
+                    <h6>Taxes &amp; fees</h6>
                   </div>
                   <div className="col-4">
-                    <h6>₹{busdata.state.Price.OtherCharges}</h6>
+                    <h6>{numberFormat(busprice[1]?.tax, "INR")}</h6>
                   </div>
                 </div>
               ) : null}
-              <div className="row">
-                <div className="col-8">
-                  <h6>Taxes &amp; fees</h6>
-                </div>
-                <div className="col-4">
-                  <h6>₹{0}</h6>
-                </div>
-              </div>
+
               <hr />
               <div className="row">
                 <div className="col-8">
-                  <h6>Total Amount</h6>
+                  <h6>Amount</h6>
                 </div>
-                <div className="col-4">
-                  <b className="text-danger">
-                    <h6 className="fw-bold">₹{busdata.price}</h6>
-                  </b>
-                </div>
-                </div>
+                  <div className="col-4">
+                    {/* <del className="fw-bold">{numberFormat(busprice[3]?.PublishedFare, "INR")}</del><br /> */}
+                    <h6 className="fw-bold text-danger">{numberFormat(busprice[3]?.PublishedFare, "INR")}</h6>
+                  </div>
+              </div>
             </Card.Body>
           </Card>
         </Accordion.Body>

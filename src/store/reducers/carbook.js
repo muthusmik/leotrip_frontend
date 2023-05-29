@@ -7,7 +7,7 @@ const initialState = {
 };
 
 const reducer = (state = initialState, action) => {
-   //console.log("iam in CAR book reducer",action)
+  
   switch (action.type) {
     case CARBOOK.LOAD:
       return {

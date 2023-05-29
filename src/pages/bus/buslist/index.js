@@ -17,7 +17,10 @@ const BusListContent = () => {
     const buslist = useSelector(state => state.Bus);
     const [filterdata, setfilterdata] = useState()
     const [errorMsg, setErrorMsg] = useState(false)
-
+    const [busfilterselect, setBusFilterSelect] = useState({
+        "ftype": '',
+        "name": ''
+    });
 
 
     useEffect(() => {
@@ -31,8 +34,12 @@ const BusListContent = () => {
 
     }, [buslist]);
 
-    console.log("sorry....", filterdata)
 
+    useEffect(() => {
+        console.log("bus select filter", busfilterselect);
+        if (busfilterselect.name !== "" || busfilterselect.ftype !== "")
+            filterDataCheck();
+    }, [busfilterselect]);
 
     const ClearAll = (data) => {
         setfilterdata([])
@@ -41,24 +48,68 @@ const BusListContent = () => {
         }
     }
 
+    const filterDataCheck = () => {
+        let filteredData = "";
+        if (busfilterselect.name !== "all" && busfilterselect.ftype !== "all") {
+            console.log("ggg", busfilterselect)
+            if (busfilterselect.name != "" && busfilterselect.ftype != "") {
+                filteredData = buslist?.data?.result[1]?.busdetails.filter((a) => (((a.BusType).toUpperCase()).localeCompare(busfilterselect.ftype.toUpperCase()) === 0) && ((a.TravelName).toUpperCase()).localeCompare(busfilterselect.name.toUpperCase()) === 0);
+                if (filteredData?.length > 0) {
+                    setErrorMsg(false);
+                    setfilterdata(filteredData)
+                }
+                else {
+                    setErrorMsg(true);
+                    setfilterdata([])
+                }
+            }
+            else {
+                filteredData = buslist?.data?.result[1]?.busdetails.filter((a) => (((a.BusType).toUpperCase()).localeCompare(busfilterselect.ftype.toUpperCase()) === 0 || ((a.TravelName).toUpperCase()).localeCompare(busfilterselect.name.toUpperCase()) === 0));
+                if (filteredData?.length > 0) {
+                    setErrorMsg(false);
+                    setfilterdata(filteredData)
+                }
+                else {
+                    setErrorMsg(true);
+                    setfilterdata([])
+                }
+            }
 
-    const busType = (val) => {
-        if (val !== "all") {
-            const filteredData = buslist?.data?.result[1]?.busdetails.filter((a) => (((a.BusType).toUpperCase()).localeCompare(val.toUpperCase()) === 0));
-            setfilterdata(filteredData)
+        }
+        else if (busfilterselect.name != "all") {
+            filteredData = buslist?.data?.result[1]?.busdetails.filter((a) => (((a.TravelName).toUpperCase()).localeCompare(busfilterselect.name.toUpperCase()) === 0));
+            if (filteredData?.length > 0) {
+                setErrorMsg(false);
+                setfilterdata(filteredData)
+            }
+            else {
+                setErrorMsg(true);
+                setfilterdata([])
+            }
+        }
+        else if (busfilterselect.ftype != "all") {
+            filteredData = buslist?.data?.result[1]?.busdetails.filter((a) => (((a.BusType).toUpperCase()).localeCompare(busfilterselect.ftype.toUpperCase()) === 0));
+            if (filteredData?.length > 0) {
+                setErrorMsg(false);
+                setfilterdata(filteredData)
+            }
+            else {
+                setErrorMsg(true);
+                setfilterdata([])
+            }
         }
         else {
             setfilterdata(buslist?.data?.result[1]?.busdetails)
         }
     }
+
+    const busType = (val) => {
+        setBusFilterSelect(prevState => ({ ...prevState, ftype: val }));
+        // filterDataCheck(val);
+    }
     const BusName = (val) => {
-        if (val !== "all") {
-            const filteredData = buslist?.data?.result[1]?.busdetails.filter((a) => (((a.TravelName).toUpperCase()).localeCompare(val.toUpperCase()) === 0));
-            setfilterdata(filteredData)
-        }
-        else {
-            setfilterdata(buslist?.data?.result[1]?.busdetails)
-        }
+        setBusFilterSelect(prevState => ({ ...prevState, name: val }));
+        // filterDataCheck(val);
 
     }
 
@@ -98,16 +149,15 @@ const BusListContent = () => {
         }
     }
 
-   
+
 
 
     /*  # Arrival Time */
 
     const ArrivalValue = (Arrivalval) => {
-        console.log("arrr.....", Arrivalval.length)
+
         if (Arrivalval.length > 0) {
             if (Arrivalval[0] == 23 || Arrivalval[1] == 5) {
-                console.log("asuuu....", Arrivalval)
                 const BusArrTimefilter = (buslist?.data?.result[1]?.busdetails).filter((a) => (moment(a.ArrivalTime).format("HH")) >= Arrivalval[0] || (moment(a.ArrivalTime).format("HH")) < Arrivalval[1])
                 if (BusArrTimefilter.length !== 0) {
                     setErrorMsg(false);
@@ -118,9 +168,8 @@ const BusListContent = () => {
                     setfilterdata([])
                 }
             } else {
-                
+
                 const BusArrTimefilter = (buslist?.data?.result[1]?.busdetails).filter((a) => (moment(a.ArrivalTime).format("HH")) >= Arrivalval[0] && (moment(a.ArrivalTime).format("HH")) < Arrivalval[1])
-                console.log("atal....", BusArrTimefilter)
                 if (BusArrTimefilter.length !== 0) {
                     setErrorMsg(false);
                     setfilterdata(BusArrTimefilter)
@@ -141,7 +190,7 @@ const BusListContent = () => {
             <div className='buslistcontent container my-5 '>
                 <div className='listWrapper'>
                     <div className='buslistfilter'>
-                        <BusFilter busoperator={BusName} handleDepTime={DepTime} handleRetTime={ArrivalValue} handleBusType={busType} handleClear={ClearAll}/>
+                        <BusFilter busoperator={BusName} handleDepTime={DepTime} handleRetTime={ArrivalValue} handleBusType={busType} handleClear={ClearAll} />
                     </div>
                     <div className='buslistresult  ms-4'>
                         <BusBookingList filteredValue={filterdata} handleError={errorMsg} />
@@ -154,11 +203,11 @@ const BusListContent = () => {
 
 
 const BusList = () => {
-    
+
     return (
 
         <>
-            <CustomNavbar />
+            {/* <CustomNavbar /> */}
             <BusModifySearch />
             <BusListContent />
             <Footer />

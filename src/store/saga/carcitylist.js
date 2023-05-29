@@ -5,9 +5,8 @@ import { Carcitylist } from "../services/carcitylist";
 
 export function* handleCarCityLoad(action) {
   try {
-     console.log("iam in the saga(carcitylist)......",action);
+   
     const carcitydata = yield call(Carcitylist, action.carcitylist);
-    console.log("i am citylistdata......kkkk",carcitydata)
     if (carcitydata && carcitydata.error) throw carcitydata.error;
     yield put(setCarCityList(carcitydata));
   } catch (error) {

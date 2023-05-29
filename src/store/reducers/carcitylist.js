@@ -7,7 +7,7 @@ const initialState = {
 };
 
 const reducer = (state = initialState, action) => {
-    console.log("iam incarcitylist...........vuuv reducer",action.type)
+  
   switch (action.type) {
     case CARCITYLIST.LOAD_CARCITYLIST:
       return {

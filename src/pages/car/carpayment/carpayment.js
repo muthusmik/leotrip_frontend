@@ -13,11 +13,9 @@ const PaymentDetails = () =>{
   
   const location = useLocation();
 
-  // console.log(location, "i am about paymentdata")
   
    const [pricefare,setPricefare] = React.useState(location.state.state.carfare)
 
-  //  console.log(pricefare,"iam fit")
     
   return(
   

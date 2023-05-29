@@ -5,9 +5,11 @@ import Button from 'react-bootstrap/Button';
 import { Card } from 'react-bootstrap';
 import 'react-day-picker/dist/style.css';
 import moment from 'moment';
+import { faPlus,faChevronDown } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 
-export default function CustomDatePickers({ onDayClick, Searchstyle, selected, calanderstyle, value, previous }) {
+export default function CustomDatePickers({ onDayClick, Searchstyle, selected, calanderstyle, value, previous,current }) {
 
   const [open, setOpen] = useState(false);
 
@@ -21,11 +23,12 @@ export default function CustomDatePickers({ onDayClick, Searchstyle, selected, c
   };
 
   function isPastDate(date) {
-    return differenceInCalendarDays(date, new Date()) < 0;
+    return current?differenceInCalendarDays(date, new Date()) <= 0:differenceInCalendarDays(date, new Date()) < 0;
   }
 
   function isPrevious(date) {
-    return differenceInCalendarDays(date, previous) < 1;
+   
+    return current?differenceInCalendarDays(date, previous) <= 1:differenceInCalendarDays(date, previous) < 1 ;
   }
   
 
@@ -61,10 +64,10 @@ export default function CustomDatePickers({ onDayClick, Searchstyle, selected, c
 
     <div className='headerSearchItem'>
       <div onClick={handleClick} className={Searchstyle}>
-        {`${value.toString()}`}
+        {`${value.toString()}`}&nbsp;&nbsp;<FontAwesomeIcon icon={faChevronDown}   style={{color: "#3772d7",}}  />
       </div>
       {open && (
-        <Card className={calanderstyle} style={{ position: 'absolute', zIndex: '1'}} ref={refOne}>
+        <Card className={calanderstyle} style={{ position: 'absolute', zIndex: '1' }} ref={refOne}>
           <Card.Body >
             <DayPicker
               fromDate={new Date()}
@@ -72,7 +75,7 @@ export default function CustomDatePickers({ onDayClick, Searchstyle, selected, c
               required
               selected={selected}
               onDayClick={onDayClick}
-              numberOfMonths={1}
+              numberOfMonths={2}
               pagedNavigation
               components={{ Row: OnlyFutureRow }}
               disabled={(previous) ? isPrevious : isPastDate}
@@ -82,6 +85,7 @@ export default function CustomDatePickers({ onDayClick, Searchstyle, selected, c
             <Button variant="outline-primary mx-3" onClick={() => setOpen(false)}>Done</Button>
           </Card.Footer>
         </Card>
+
       )}
     </div>
 

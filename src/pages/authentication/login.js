@@ -72,6 +72,7 @@ const Login = (props) => {
     }
 
     const configureCaptcha = async () => {
+        // console.log("inside captcha");
         return await new firebase.auth.RecaptchaVerifier('recaptcha-container', {
             'size': 'invisible',
             'callback': (response) => {
@@ -80,6 +81,7 @@ const Login = (props) => {
             },
             defaultCountry: "IN"
         });
+        //console.log("captcha done")
     }
 
     const onSignInSubmit = async (e) => {
@@ -97,9 +99,14 @@ const Login = (props) => {
                 }
                 else {
                     setErrormsg("");
+
                     window.recaptchaVerifier = await configureCaptcha()
+                    // console.log("after captcha")
                     const phoneNumber = "+91" + mobileno
                     setMobileval(phoneNumber)
+
+                    //const appVerifier = window.recaptchaVerifier;
+                    // console.log("appverifier",appVerifier)
                     firebase.auth().signInWithPhoneNumber(phoneNumber, window.recaptchaVerifier)
                         .then((confirmationResult) => {
                             window.confirmationResult = confirmationResult;
@@ -115,6 +122,24 @@ const Login = (props) => {
                         });
                 }
             }
+            // else if ((/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/).test(mobileno)) {
+            //     console.log("It is an email id");
+            //     if (!mobileno) {
+            //         setErrormsg("Please enter email id");
+            //     }
+            //     else {
+            //         if (!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/).test(mobileno)) {
+            //             setErrormsg("Please enter valid email id");
+            //         }
+            //         else {
+            //             setErrormsg("");
+            //             setShowPage(false);
+            //             e.preventDefault()
+            //             setPasswordPage(true)
+            //         }
+            //     }
+
+            // }
             else {
                 setErrormsg("Please enter valid mobile number!");
             }
@@ -138,8 +163,13 @@ const Login = (props) => {
                 setErrormsg("Please enter 6 digit OTP");
                 console.log("lenth")
             }
+            // else if (/^\d{6}$/.test(otp)) {
+            //     console.log("patten0000")
+            //     setErrormsg("Please enter valid 6 digit OTP!");
+            // }
             else {
                 setErrormsg("");
+
                 const code = otp
                 console.log("props ........", props)
                 window.confirmationResult.confirm(code).then((result) => {
@@ -173,29 +203,67 @@ const Login = (props) => {
             console.log("Tk")
             setErrormsg("Please enter valid 6 digit OTP!");
         }
+
     }
 
     const onSubmitPassword = (e) => {
-       
+        // console.log("sss")
         if (password !== undefined) {
             console.log("jk")
             if (password.length === 0) {
                 setErrormsg("Please enter your password");
             }
+            // else if (otp.length < 6) {
+            //     setPasswordErrorMsg("Please enter 6 digit OTP");
+            //     console.log("lenth")
+            // }
+            // else if (/^\d{6}$/.test(otp)) {
+            //     console.log("patten0000")
+            //     setPasswordErrorMsg("Please enter valid 6 digit OTP!");
+            // }
             else {
                 setErrormsg("");
                 e.preventDefault()
                 const code = password
                 console.log(code)
+                // window.confirmationResult.confirm(code).then((result) => {
+                //     const user = JSON.stringify(result.user);
+                //     const usertoken = JSON.parse(user)
+                //     setVtoken(usertoken.stsTokenManager.accessToken)
+                //     setShow(false)
+                //     setViewVerify(false)
+                //     setShowPage(true)
+                //     props.ModalSetter(false)
+                //     setView(true)
+
+
+
+                //     console.log("All details", accname, mobileval, usertoken.stsTokenManager.accessToken)
+                //     const signup = {
+                //         "mobileNumber": mobileval,
+                //         "firebaseToken": usertoken.stsTokenManager.accessToken
+                //     }
+                //     dispatch(loadSignup(signup));
+                // }).catch((error) => {
+                //     if (error.code === "auth/code-expired") {
+                //         setErrormsg("OTP expired");
+                //     }
+                //     else {
+                //         setErrormsg("Invalid OTP");
+                //     }
+                //     console.log("non", error)
+                // });
             }
         }
         else {
+            // console.log("Tk")
             setErrormsg("Please enter valid 6 digit OTP!");
         }
 
     }
 
     const resendconfigureCaptcha = () => {
+        // console.log("iam in")
         window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('resend-recaptcha', {
             'size': 'invisible',
             'callback': (response) => {
@@ -230,6 +298,10 @@ const Login = (props) => {
     const Signupdetails = useSelector(state => state.Signup);
     const [signupres, setSignupres] = useState();
 
+    // if (Signupdetails?.data?.status == "200") {
+    //     console.log("ttt", Signupdetails.data?.data?.result?.token)
+    //     localStorage.setItem('token', JSON.stringify(Signupdetails.data.data?.result?.token));
+    // }
 
     const usertoken = JSON.parse(localStorage.getItem('token'))
     useEffect(() => {
@@ -248,6 +320,7 @@ const Login = (props) => {
         }
         else {
             setView(false)
+            // history.push("/home/profilepage")
         }
     }
 
@@ -326,6 +399,34 @@ const Login = (props) => {
                                     </div >
                                 </Card>
                             </div>)}
+
+                            {/* for Signup */}
+                            {/* {showPage && (<div className='col-md-6 loginposition'>
+                                <Card className='loginPage border border-light'>
+                                    <div className='d-flex justify-content-end m-3 mb-0 '>
+                                        <button type="button" class="btn-close btn-close-danger  bg-danger d-block" aria-label="Close" onClick={(e) => handleloginClose(e)}></button>
+                                    </div>
+                                    < div className='h-50 w-100 my-auto p-3' >
+                                        <h4 className='fw-bold'>Login/Signup</h4>
+                                        <Form>
+                                            <div id="recaptcha-container"></div>
+                                            <Form.Group className="mb-3 fw-bold" onChange={handleChangeNumber} >
+                                                <Form.Label className='mt-2'>Email Id/Mobile Number</Form.Label>
+                                                <Form.Control
+                                                    type="text"
+                                                    placeholder="Email Id/Mobile Number"
+                                                // pattern="[0-9]{10}"
+                                                />
+                                            </Form.Group>
+                                            <h6 className="font-weight-bold text-danger mt-2">{errormsg}</h6>
+
+                                            <div className="d-grid gap-2">
+                                                <Button onClick={(e) => onSignInSubmit(e)} >Continue</Button>
+                                            </div>
+                                        </Form>
+                                    </div >
+                                </Card>
+                            </div>)} */}
                             {viewVerify && (<div className='col-md-6 loginposition'>
                                 <Card className='loginPage border border-light'>
                                     <div className='d-flex justify-content-end m-3 mb-0 '>
@@ -401,6 +502,26 @@ const Login = (props) => {
                                                     </Form.Group>
                                                 </Form.Group>
                                                 <h6 className="font-weight-bold text-danger mt-2">{errormsg}</h6>
+                                                {/* <div className="countdown-text d-flex">
+                                                    {seconds > 0 || minutes > 0 ? (
+                                                        <p>
+                                                            Time Remaining: {minutes < 10 ? `0${minutes}` : minutes}:
+                                                            {seconds < 10 ? `0${seconds}` : seconds}
+                                                        </p>
+                                                    ) : (
+                                                        <p className='me-5'>Didn't recieve code?</p>
+                                                    )}
+
+                                                    <span className='ms-5'
+                                                        disabled={seconds > 0 || minutes > 0}
+                                                        style={{
+                                                            cursor: "pointer", color: seconds > 0 || minutes > 0 ? "#DFE3E8" : "#FF5630"
+                                                        }}
+                                                        onClick={(e) => resendOTP(e)}
+                                                    >
+                                                        Resend OTP
+                                                    </span>
+                                                </div> */}
                                                 <div className="d-grid gap-2">
                                                     <Button variant="primary" onClick={(e) => onSubmitPassword(e)}>Continue</Button>
                                                 </div>
@@ -414,7 +535,7 @@ const Login = (props) => {
                     </Modal.Body>
                 </Modal>
             )}
-            {(Signupdetails?.data?.data?.result) ? (
+            {(Signupdetails.data?.data?.result) ? (
                 <Modal show={view} centered >
                     <div style={{ backgroundColor: "#D0F0C0", borderRadius: "10px" }}>
                         <div className='d-flex justify-content-end m-1 mb-0 '>

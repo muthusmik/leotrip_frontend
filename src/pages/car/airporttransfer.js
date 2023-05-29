@@ -49,17 +49,7 @@ const AirportTransfer = () => {
                 "TripType": "2"
             }
             dispatch(loadCarList(carlist));
-            let localstores = [];
-            localstores.push({ "from": from });
-            localstores.push({ "to": to });
-            localstores.push({ "pickup": pickup });
-            localstores.push({ "pickuptime": time });
-            localstores.push({ "triptype": "2" });
-            localstores.push({ "drop": pickup });
-            localstores.push({ "droptime": time });
-            localStorage.setItem('carsearch', JSON.stringify(localstores));
-            localStorage.setItem('triptypename', JSON.stringify("airporttransfer"));
-            history.push("/car/carlist-airporttransfer" /* ,{state: {fromaddress,toaddress,selectedDay,time}} */)
+            history.push("/carlist-airporttransfer" /* ,{state: {fromaddress,toaddress,selectedDay,time}} */)
         }
     }
 
@@ -79,11 +69,8 @@ const AirportTransfer = () => {
     /*  #swapping */
 
     const switchText = (from, to) => {
-        console.log("swapping",to.suggestion.airport_city_name);
-        handleSelection(to)
-        handleSelectiondestination(from)
-        setValueDes(from.suggestion.caoncitlst_city_name)
-        setValueSrc(to.suggestion.caoncitlst_city_name);
+        setFromaddress(to)
+        setToaddress(from)
 
     }
 
@@ -159,15 +146,12 @@ const AirportTransfer = () => {
     }
     console.log("i am A3", suggestions);
 
-    const [from,setFrom]=useState("")
     const handleSelection = (suggestionValue) => {
-        setFrom(suggestionValue);
         setFromaddress(suggestionValue.suggestion.caoncitlst_city_name)
         setFromaddress_city_Id(suggestionValue.suggestion.caoncitlst_id)
     }
-    const [to,setTo]=useState("")
+
     const handleSelectiondestination = (suggestionValue) => {
-        setTo(suggestionValue);
         setToaddress(suggestionValue.suggestion.caoncitlst_city_name)
         setToaddress_city_Id(suggestionValue.suggestion.caoncitlst_id)
     }
@@ -182,9 +166,9 @@ const AirportTransfer = () => {
         <div>
             {(fromaddress === '' || toaddress === '') ? <h6 className="font-weight-bold text-danger mt-2">{errormsg}</h6> : null}
 
-            <div className='d-inline-flex content mt-5 my-4 airportcontent'>
+            <div className='d-inline-flex content mt-5 my-4'>
                 <div>
-                    <div className='carsearchbox border-bottom border-2 mt-2 carsearchbox1'>
+                    <div className='carsearchbox border-bottom border-2 mt-2'>
 
                         <p>From</p>
                         {/* <LocalSearch
@@ -222,11 +206,11 @@ const AirportTransfer = () => {
                         </div>
                     </div>
                 </div>
-                <div className='icon d-flex justify-content-center my-4 caricon '>
-                    <FontAwesomeIcon icon={faArrowRightArrowLeft} onClick={() => switchText(from, to)} style={{ fontSize: "20px", color: "green" }} />
+                <div className='icon d-flex justify-content-center my-4'>
+                    <FontAwesomeIcon icon={faArrowRightArrowLeft} onClick={() => switchText(fromaddress, toaddress)} style={{ fontSize: "20px", color: "green" }} />
                 </div>
-                <div className='carsearchbox border-bottom border-2 mt-2 carsearchbox1'>
-                    <p className="w-auto ">To</p>
+                <div className='carsearchbox border-bottom border-2 mt-2'>
+                    <p>To</p>
                     {/* <LocalSearch
                             value={toaddress}
                             onChange={(e) => ToAddress(e)}
@@ -263,8 +247,8 @@ const AirportTransfer = () => {
                         />
                     </div>
                 </div>
-                <div className='row mt-2 me-5'>
-                    <div className='col-6 dateselections dateselections1'>
+                <div className='row mt-2'>
+                    <div className='col-6 dateselections'>
                         <p>Pickup Date</p>
                         <CustomDatePickers
                             maxDate={moment().format("PP")}
@@ -276,7 +260,7 @@ const AirportTransfer = () => {
                             calanderstyle="car_calander"
                         />
                     </div>
-                    {/* <div className='col-5 dateselections'>
+                    <div className='col-5 dateselections'>
                         <p>Pickup Time</p>
                         <div classname="rc-time-picker-panel" ref={refOne}>
                             <TimePicker
@@ -287,7 +271,7 @@ const AirportTransfer = () => {
                                 showSecond={false}
                             />
                         </div>
-                    </div> */}
+                    </div>
                 </div>
             </div>
             <div className='carbutton'>

@@ -58,37 +58,3 @@
     justify-content: space-between;
     width: 371px
 }
-@media only screen and (min-width:"360px") and (max-width:"399px") {
-    .offernav{
-        display:flex;
-        flex-direction:column;
-        border: 1px solid gray;
-        border-radius: 10px;
-    }
-    .offersdiv{
-        display: flex;
-        flex-direction: column;
-    }
-    .OFFERCARD{
-        display: flex;
-        flex-direction: column;
-        width: 320px;
-        align-items: start;
-        margin: 5px;
-    }
-    .upper-region{
-     flex-direction: column;
-    }
-    .text-region{
-        margin-left:0px;
-        display: flex;
-        flex-direction: column;
-        -webkit-box-pack: justify;
-        justify-content: space-between;
-        width: 260px
-    }
-    .content-Frame{
-
-        width: 100% !important;
-    }
-}

@@ -2,7 +2,7 @@ import React from "react";
 import './car.scss';
 import CustomNavbar from '../../component/navbar/Navbar'
 import OneWay from "./oneway";
-import AirportTransfer from "./airporttransfer";
+import Local from "./local";
 import RoundTrip from "./roundtrip";
 import Footer from "../../component/footer/footer";
 import Homepage from '../home/home';
@@ -34,8 +34,8 @@ export const Carcontainer = () => {
                     <label className="check-label" htmlFor="round-trip">Round trip</label>
                 </div>
                 <div className="form-check form-check-inline"  >
-                    <input className="check-input" type="radio" name="cartriptype" id="airporttransfer" value="airporttransfer" onClick={onhandle} />
-                    <label className="check-label" htmlFor="airporttransfer">Airport Transfer</label>
+                    <input className="check-input" type="radio" name="cartriptype" id="local" value="local" onClick={onhandle} />
+                    <label className="check-label" htmlFor="local">Local</label>
                 </div>
                 <div>
                     {RenderContent(value)}
@@ -51,8 +51,8 @@ export const RenderContent = (tab) => {
             return (<OneWay />);
         case 'roundtrip':
             return (<RoundTrip />);
-        case 'airporttransfer':
-            return (<AirportTransfer />);
+        case 'local':
+            return (<Local />);
         default:
             return null;
     }
@@ -82,7 +82,7 @@ const Car = () => {
     return (
         <>
             <div className='carsearch' >
-                <CustomNavbar />
+                {/* <CustomNavbar /> */}
                 <div className="headerImage">
                     <div className="container">
                         <h2 className="text-white">Book Online Cab</h2>

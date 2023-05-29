@@ -8,15 +8,19 @@ import { useSelector, useStore } from "react-redux";
 import Parser from 'html-react-parser';
 import moment from "moment";
 import { useLocation } from 'react-router-dom';
+import ErrorImage from "../../../asset/images/hotel/noimage.jpg"
+
 const Hoteldetails = () => {
+    
     const location = useLocation();
     const hotelData = useSelector(state => state.HotelInfo);
-    const roomData = location.state.state;
-    console.log("hotelData....", hotelData.data[0].HotelDetails)
+    const roomData = location?.state?.state;
+  
+
     /* # STORE */
     const hotelSearchData = useSelector(state => state.HotelSearch);
-    console.log(roomData, "hotelBlockRoom...hello.")
-    console.log(hotelSearchData, "hello Hotel")
+   
+
     return (
         <Card>
             <div class="cardetails">
@@ -25,21 +29,25 @@ const Hoteldetails = () => {
                         <div className="container">
                             <div className='row'>
                                 <div className='col-5 '>
-                                    <img src={hotelData.data[0].HotelDetails.Images[0]} height="160px" width="300" alt="hotel" onError={event => {
-                                        event.target.src = "http://photos.hotelbeds.com/giata/original/36/365958/365958a_hb_r_001.jpg"
+                                    <img src={hotelData?.data[0]?.HotelDetails?.Images[0]} height="160px" width="300" alt="hotel" onError={event => {
+                                        // event.target.src = "http://photos.hotelbeds.com/giata/original/36/365958/365958a_hb_r_001.jpg"
+                                        event.target.src ="http://localhost:3000/images/noimage.jpg"
                                         event.onerror = null
                                     }}  />
                                     
                                 </div>
                                 <div className='col-6'>
-                                    <h5>{hotelData.data[0].HotelDetails.HotelName}</h5>
+                                    <h4>{hotelData?.data[0]?.HotelDetails.HotelName}</h4>
                                     
-                                    <p className="hoteladdress text-muted mb-0"><img src={locaterImg} alt="location" width="20" /> {hotelData.data[0].HotelDetails.Address}</p>
+                                    <p className="hoteladdress text-muted mb-0">
+                                        <img src={locaterImg} alt="location" width="20" /> 
+                                        <span  className='ms-2'  style={{fontSize:"15px"}}>{hotelData?.data[0]?.HotelDetails.Address}</span>
+                                    </p>
                                     {/* <p className="hoteladdress text-muted mt-0 mb-0">{hotelBlockRoom.data[1].BlockRoomResult.AddressLine2}</p> */}
-                                    <p className="hoteladdress text-muted mt-0">
-                                         {[...Array(hotelData.data[0].HotelDetails.StarRating)].map((star) => {
+                                    <p className="hoteladdress text-muted mt-2">
+                                         {[...Array(hotelData?.data[0]?.HotelDetails.StarRating)].map((star) => {
                                                 return (
-                                                    <span className="fs-5 mb-5 text-warning"><img src={stars} alt="star" width="18px" /></span>
+                                                    <span className="fs-5 mb-5 text-warning"><img src={stars} alt="star" width="22px" height="22px"/></span>
                                                 );
                                             })}
                                     </p>
@@ -48,16 +56,16 @@ const Hoteldetails = () => {
                             <div className='container rounded my-3 row GuestCount py-3'>
                                 <div className='col-3'>
                                     <h6 className="hoteladdress text-muted">Check In</h6>
-                                    <h6 className='hoteladdress'>{hotelSearchData.data[0].CheckInDate}</h6>
+                                    <h6 className='hoteladdress'>{hotelSearchData?.data[0]?.CheckInDate}</h6>
                                 </div>
                                 <div className='col-3'>
                                     <h6 className="hoteladdress text-muted">Check Out</h6>
-                                    <h6 className='hoteladdress'>{moment(hotelSearchData.data[0].CheckInDate, "DD/MM/YYYY").add(hotelSearchData.data[0].NoOfNights, 'days').format('DD/MM/YYYY')}</h6>
+                                    <h6 className='hoteladdress'>{moment(hotelSearchData?.data[0]?.CheckInDate, "DD/MM/YYYY").add(hotelSearchData?.data[0]?.NoOfNights, 'days').format('DD/MM/YYYY')}</h6>
                                 </div>
                                 <div className='col-3'>
                                     <h6 className="hoteladdress text-muted mb-0">Guests</h6>
-                                    <h6 className='mt-0 ms-2  mb-0'>{hotelSearchData.data[0].NoOfRooms}&nbsp;Room</h6>
-                                    {(hotelSearchData.data[0].RoomGuests).map((data) => (
+                                    <h6 className='mt-0 ms-2  mb-0'>{hotelSearchData?.data[0]?.NoOfRooms}&nbsp;Room</h6>
+                                    {(hotelSearchData.data[0].RoomGuests && hotelSearchData.data[0].RoomGuests).map((data) => (
                                         <>
                                             <h6 className='mt-0 ms-2'>{data.NoOfAdults}&nbsp;Adults&nbsp;{data.NoOfChild}&nbsp;Child</h6>
                                         </>
@@ -68,7 +76,7 @@ const Hoteldetails = () => {
                                     {/* {(hotelBlockRoom.data[1].BlockRoomResult.HotelRoomsDetails)&&(hotelBlockRoom.data[1].BlockRoomResult.HotelRoomsDetails).map((data) => ( */}
 
                                     <>
-                                        <h6>{roomData.RoomTypeName}</h6>
+                                        <h6>{roomData?.RoomTypeName}</h6>
                                     </>
 
                                     {/* ))} */}

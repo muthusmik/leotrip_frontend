@@ -13,7 +13,6 @@ import { set } from 'date-fns';
 import moment from "moment";
 
 // const FlightDateList = () => {
-
 //     return (
 //         <>
 //             <h5 className='pricelabel'>Fare Trends</h5>
@@ -29,7 +28,9 @@ import moment from "moment";
 const FlightListContent = () => {
 
     const FlightFilterData = useSelector(state => state.FlightSearch);
-    console.log("filtering.dk..", FlightFilterData)
+
+
+
 
 
 
@@ -39,6 +40,7 @@ const FlightListContent = () => {
     const [errorMsg, setErrorMsg] = useState("")
 
     useEffect(() => {
+        
         if (FlightFilterData?.data?.flightDetails) {
             setFlightfilter(FlightFilterData.data.flightDetails)
         }
@@ -46,7 +48,7 @@ const FlightListContent = () => {
             setFlightfilter("")
         }
 
-    },[FlightFilterData.data.flightDetails]);
+    }, [FlightFilterData.data.flightDetails]);
 
 
     /*  #filtering Statevalue */
@@ -96,6 +98,7 @@ const FlightListContent = () => {
     }
 
     const refund = (refund) => {
+        console.log("gasas",refund)
         if (refund !== "0") {
             if (refund === "1") {
                 const filterFlightrefund = (FlightFilterData?.data.flightDetails).filter((a) => ((a.FareDataMultiple[0].IsRefundable) === true));
@@ -244,6 +247,12 @@ const FlightListContent = () => {
 
 
 
+
+
+
+
+
+
     useEffect(() => {
         setFlightfilter([])
         FlightFliterprocess()
@@ -262,7 +271,7 @@ const FlightListContent = () => {
     const FlightFliterprocess = () => {
         setFlightfilter([])
         if (filtering.price && filtering.flight) {
-            const priceDataFilter = (FlightFilterData?.data?.flightDetails).filter((a) => (a.OfferedFare < pricevalue.max) && (a.OfferedFare > pricevalue.min))
+            const priceDataFilter = (FlightFilterData?.data?.flightDetails).filter((a) => (a.FareDataMultiple[0].Fare.PublishedFare < pricevalue.max) && (a.FareDataMultiple[0].Fare.PublishedFare > pricevalue.min))
             const mfilter = priceDataFilter.filter((a) => (((a.Segments[0][0].Airline.AirlineName).toUpperCase()).localeCompare(flightname.toUpperCase()) === 0));
             if (mfilter.length !== 0) {
                 setErrorMsg(false);
@@ -274,7 +283,7 @@ const FlightListContent = () => {
             }
         }
         else if (filtering.price) {
-            const filteredPrice = (FlightFilterData?.data?.flightDetails).filter((a) => (a.OfferedFare < pricevalue.max) && (a.OfferedFare > pricevalue.min))
+            const filteredPrice = (FlightFilterData?.data?.flightDetails).filter((a) => (a.FareDataMultiple[0].Fare.PublishedFare < pricevalue.max) && (a.FareDataMultiple[0].Fare.PublishedFare > pricevalue.min))
             if (filteredPrice.length !== 0) {
                 setErrorMsg(false);
                 setFlightfilter(filteredPrice)
@@ -302,17 +311,20 @@ const FlightListContent = () => {
         }
     }
 
-    console.log("iam paper", flightfilter)
+    
 
 
 
 
     return (
         <>
-            <div className='flightlistcontent container mt-4'>
+            <div className='flightlistcontent container mt-4 mb-5'>
                 <div className='listWrapper'>
+                {console.log("Sam",priceRange)}
                     <div className='flightlistfilter'>
+                        
                         <FlightFilter onhandle={Flightname} handlePrice={priceRange} handleClear={ClearAll} handlerefund={refund} handlestop={stops} handleDepTime={DepTime} handleRetTime={ArrivalTime} />
+
                     </div>
                     <div className='flightlistresult  ms-4'>
                         {/* <FlightDateList/> */}
@@ -337,7 +349,7 @@ const FlightlistOneway = () => {
 
     return (
         <>
-            <CustomNavbar />
+            {/* <CustomNavbar /> */}
             <FlightModifySearch />
             <FlightListContent />
         </>

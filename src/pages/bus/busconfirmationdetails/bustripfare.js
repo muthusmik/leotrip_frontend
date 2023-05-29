@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Card from 'react-bootstrap/Card';
@@ -10,151 +10,116 @@ import Accordion from 'react-bootstrap/Accordion';
 import { useHistory } from "react-router-dom";
 import { loadBusBook } from '../../../store/actions/busbook';
 import { useLocation } from 'react-router-dom';
+import BusPayUForm from '../buspayment/buspayu';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-
-export const FareDetails = ({ selected }) => {
+export const FareDetails = ({ selected, busbookData, gustRes }) => {
 
   const location = useLocation();
   const busdata = location.state;
-  console.log("setBusData..... index page", busdata)
-
+  const [payLoader, setPayLoader] = useState(false);
+  const [busbaseFare, setBusbaseFare] = useState()
+  const [taxamount, setTaxamount] = useState()
+  const [discountprice, setDiscountprice] = useState()
+  const [publishprice, setPublishprice] = useState()
+  const [offeredprice, setOfferedprice] = useState()
   const dispatch = useDispatch();
+
+  const BlockBusData = useSelector(state => state.busblock)
+
+  console.log("busvalues....", busdata.seatdetails)
+  useEffect(() => {
+    busPriceDetails()
+  }, [])
+
+  const busPriceDetails = () => {
+    var pricedata = busdata.seatdetails.length
+    let BusBaseprice = 0;
+    let Taxprice = 0;
+    let Othercharge = Taxprice;
+    let discount = 0
+    let PublishedFare = 0
+    let OfferedFare = 0
+    for (var i = 0; i < pricedata; i++) {
+      BusBaseprice = busdata.seatdetails[i]?.Price.BasePrice + BusBaseprice
+
+      Taxprice = busdata.seatdetails[i]?.Price.Tax + Taxprice
+      Othercharge = busdata.seatdetails[i]?.Price.OtherCharges + Othercharge
+
+      discount = busdata.seatdetails[i]?.Price.Discount + discount
+
+      PublishedFare = busdata.seatdetails[i]?.Price.PublishedPrice + PublishedFare
+
+      OfferedFare = busdata.seatdetails[i]?.Price.OfferedPriceRoundedOff + OfferedFare
+    }
+    let allPrices = { BusBaseprice, Taxprice, Othercharge, discount, PublishedFare }
+    console.log("aaaprice", allPrices)
+
+    setBusbaseFare(BusBaseprice)
+    setTaxamount(Othercharge)
+    setDiscountprice(discount)
+    setPublishprice(Math.round(PublishedFare))
+    setOfferedprice(Math.round(PublishedFare))
+    let localstores = [];
+    localstores.push({ "busbaseprice": BusBaseprice });
+    localstores.push({ "tax": Othercharge });
+    localstores.push({ "discount": discount });
+    localstores.push({ "PublishedFare": PublishedFare });
+    localstores.push({ "OfferedFare": PublishedFare });
+    localStorage.setItem('busprice', JSON.stringify(localstores));
+  }
+
+
+
 
   function handleScroll() {
     window.scroll({
       top: 1000,
       left: 0,
-      behavior: 'smooth',
+      behavior:'smooth',
     });
   }
 
+  const handlerediect = () => {
+    // toast.dismiss();
+    // toast("Your Preffered Room is currently unavailable")
+    alert(BlockBusData?.data?.Error?.ErrorMessage)
+    // history.push("/bus/buslist")
+    history.push("/bus")
+    // history.push("/bus/buspayment")
+  }
+
+  const [onshow, setOnhow] = useState();
+  useEffect(() => {
+    const usertoken = JSON.parse(localStorage.getItem('token'))
+    console.log("bbb", usertoken)
+    if ((selected == true) && (usertoken) && (BlockBusData?.data?.Result)) {
+      setOnhow(true)
+      setPayLoader(false)
+    }
+    else if ((selected == true) && (usertoken) && (BlockBusData?.data?.Error)) {
+      setOnhow(true)
+      setPayLoader(false)
+    }
+    else if ((selected == true) && (usertoken)) {
+      setPayLoader(true)
+    }
+    else {
+      setOnhow(false)
+    }
+  }, [selected, BlockBusData])
+
+  /* currency */
+  const numberFormat = (value, cur) =>
+    new Intl.NumberFormat('en-IN', {
+      style: 'currency',
+      currency: cur,
+      maximumFractionDigits: 0
+    }).format(value);
+
   let history = useHistory();
 
-  const handleSubmit = (ResultIndex) => {
-
-    const busbook = {
-      "Password": "A$JSkEf4#4",
-      "ResultIndex": ResultIndex,
-      "TraceId": buslist.data.result[0].TraceId,
-      "BoardingPointId": 1,
-      "DroppingPointId": 1,
-      "RefID": "1",
-      "Passenger": [
-        {
-          "LeadPassenger": true,
-          "PassengerId": 0,
-          "Title": "Mr",
-          "FirstName": "Amit",
-          "LastName": "Singh",
-          "Email": "amit@srdvtechnologies.com",
-          "Phoneno": "9643737502",
-          "Gender": "1",
-          "IdType": null,
-          "IdNumber": null,
-          "Address": "Modinagar",
-          "Age": "22",
-          "Seat": {
-            "ColumnNo": "001",
-            "Height": 1,
-            "IsLadiesSeat": false,
-            "IsMalesSeat": false,
-            "IsUpper": false,
-            "RowNo": "000",
-            "SeatFare": 400,
-            "SeatIndex": 2,
-            "SeatName": "2",
-            "SeatStatus": true,
-            "SeatType": 1,
-            "Width": 1,
-            "Price": {
-              "CurrencyCode": "INR",
-              "BasePrice": 400,
-              "Tax": 0,
-              "OtherCharges": 0,
-              "Discount": 0,
-              "PublishedPrice": 400,
-              "PublishedPriceRoundedOff": 400,
-              "OfferedPrice": 380,
-              "OfferedPriceRoundedOff": 380,
-              "AgentCommission": 20,
-              "AgentMarkUp": 0,
-              "TDS": 8,
-              "GST": {
-                "CGSTAmount": 0,
-                "CGSTRate": 0,
-                "CessAmount": 0,
-                "CessRate": 0,
-                "IGSTAmount": 0,
-                "IGSTRate": 18,
-                "SGSTAmount": 0,
-                "SGSTRate": 0,
-                "TaxableAmount": 0
-              }
-            }
-          }
-        },
-        {
-          "LeadPassenger": false,
-          "PassengerId": 0,
-          "Title": "Mr",
-          "FirstName": "ramesh",
-          "LastName": "Tomar",
-          "Email": "ramesh@srdvtechnologies.com",
-          "Phoneno": "1234567890",
-          "Gender": "1",
-          "IdType": null,
-          "IdNumber": null,
-          "Address": "Modinagar",
-          "Age": "28",
-          "Seat": {
-            "ColumnNo": "002",
-            "Height": 1,
-            "IsLadiesSeat": false,
-            "IsMalesSeat": false,
-            "IsUpper": false,
-            "RowNo": "000",
-            "SeatFare": 400,
-            "SeatIndex": 3,
-            "SeatName": "3",
-            "SeatStatus": true,
-            "SeatType": 1,
-            "Width": 1,
-            "Price": {
-              "CurrencyCode": "INR",
-              "BasePrice": 400,
-              "Tax": 0,
-              "OtherCharges": 0,
-              "Discount": 0,
-              "PublishedPrice": 400,
-              "PublishedPriceRoundedOff": 400,
-              "OfferedPrice": 380,
-              "OfferedPriceRoundedOff": 380,
-              "AgentCommission": 20,
-              "AgentMarkUp": 0,
-              "TDS": 8,
-              "GST": {
-                "CGSTAmount": 0,
-                "CGSTRate": 0,
-                "CessAmount": 0,
-                "CessRate": 0,
-                "IGSTAmount": 0,
-                "IGSTRate": 18,
-                "SGSTAmount": 0,
-                "SGSTRate": 0,
-                "TaxableAmount": 0
-              }
-            }
-          }
-        }
-      ]
-    }
-    dispatch(loadBusBook(busbook));
-    history.push('/bus/buspayment',location.state)
-  };
-
-  const buslist = useSelector(state => state.Bus);
-
-  // console.log("trip-list", buslist.data.result[1].busdetails[0].Price)
   return (
     <>
       <Card>
@@ -162,67 +127,100 @@ export const FareDetails = ({ selected }) => {
           <div className="row">
             <div className="col-8">
               <h4>Price Summary</h4>
-              <h6 className="small"> Inclusive of GST</h6>
+              {/* <h6 className="small"> Inclusive of GST</h6> */}
             </div>
           </div>
         </Card.Header>
         <Card.Body>
           <div className="row">
             <div className="col-8">
-              <h6>Total Basefare</h6>
+              <h6>Basefare</h6>
             </div>
             <div className="col-4">
-              <h6>₹{busdata.price}</h6>
+              <h6>{numberFormat(busbaseFare, "INR")}</h6>
             </div>
           </div>
-          {(busdata.state.Price.Discount > 0) ? (
-            <div className="row  p-2 my-2">
+          {(discountprice != 0) ? (
+            <div className="row  text-success">
               <div className="col-8">
                 <h6>Discount</h6>
               </div>
               <div className="col-4">
-                <h6>₹{busdata.state.Price.Discount}</h6>
+                <h6>{numberFormat(discountprice, "INR")}</h6>
               </div>
             </div>
           ) : null}
-          {(busdata.state.Price.OtherCharges > 0) ? (
-            <div className="row  p-2 my-2">
+          {(taxamount != 0) ? (
+            <div className="row">
               <div className="col-8">
-                <h6>Other Charges</h6>
+                <h6>Taxes &amp; fees</h6>
               </div>
               <div className="col-4">
-                <h6>₹{busdata.state.Price.OtherCharges}</h6>
+                <h6>{numberFormat(taxamount, "INR")}</h6>
               </div>
             </div>
           ) : null}
-          <div className="row">
-            <div className="col-8">
-              <h6>Taxes &amp; fees</h6>
-            </div>
-            <div className="col-4">
-              <h6>₹{0}</h6>
-            </div>
-          </div>
           <hr />
           <div className="row">
             <div className="col-8">
               <h6>Total Amount</h6>
             </div>
             <div className="col-4">
-              <b className="text-danger">
-                <h6 className="fw-bold">₹{busdata.price}</h6>
-              </b>
+              {/* <del className="fw-bold">{numberFormat(publishprice, "INR")}</del><br /> */}
+              <h6 className="fw-bold text-danger">{numberFormat(publishprice, "INR")}</h6>
             </div>
             <br />
-            <div className=" d-grid gap-2 mt-2">
-
+            {/* <div className=" d-grid gap-2 mt-2">
               {(selected == false) ? (
                 <>
                   <h6 className="small text-danger text-center">Please fill the Traveler details</h6>
                   <Button variant="primary" disabled style={{ border: "orangered" }}>Pay  &amp; confirm now</Button>
                 </>
               ) : (<Button variant="primary" onClick={() => handleSubmit(buslist.data.result[1].busdetails[0].ResultIndex)} style={{ border: "orangered" }}>Pay  &amp; confirm now</Button>)}
-            </div>
+            </div> */}
+            {(onshow == false && !payLoader) ? (
+              <>
+                <h6 className="small text-danger text-center">Please fill the Guest details and submit the form</h6>
+
+              </>
+            ) :
+              (onshow == true && !payLoader) ? null :
+                <div className='mt-2 text-center'>
+                  <div class="snippet" data-title="dot-falling">
+                    <div className="lds-dual-ring"></div>
+                    <div class="stage text-success fw-bold">
+                      Loading...
+                    </div>
+                  </div>
+                </div>}
+            {onshow && (
+              <>
+                {(BlockBusData?.data?.Result?.ResponseStatus === 1) ? (
+                  <div className=" d-grid gap-2">
+                    <>
+                      <BusPayUForm busbookData={busbookData} gustRes={gustRes} busdata={busdata} PriceAmount={publishprice} />
+                    </>
+                  </div>
+                ) : (<div className=" d-grid gap-2">
+                  <>
+                    <Button onClick={handlerediect}>Pay &amp; confirm now</Button>
+                    <ToastContainer
+                      position="top-center"
+                      autoClose={5000}
+                      hideProgressBar={false}
+                      newestOnTop={false}
+                      closeOnClick
+                      rtl={false}
+                      pauseOnFocusLoss
+                      draggable
+                      pauseOnHover
+                      theme="dark"
+                    />
+                  </>
+                </div>
+                )}
+              </>
+            )}
 
           </div>
         </Card.Body>

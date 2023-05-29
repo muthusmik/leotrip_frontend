@@ -249,7 +249,6 @@
 
         height: 250px;
         width: 250px;
-
         img {
             height: 250px !important;
             width: 250px !important;
@@ -348,7 +347,30 @@
         height: 347px;
         width: 100%;
         border-radius: 8px;
+        
     }
+}
+
+.carousel-modelsize{
+       height: 370px;
+        width: 100%;
+        border-radius: 8px;
+}
+
+.carousel-modelimage {
+    img {
+        height: 365px;
+        width: 100%;
+        border-radius: 8px;
+    }
+}
+
+.hotel-result{
+    background-color: #1b0e5e;
+    border-radius: 8px;
+    color: white;
+    width:22%;
+    padding: 5px;
 }
 
 .preview-image {
@@ -659,7 +681,7 @@
 
 .hotel-pakagedetail {
 
-    margin-top: -120px;
+    margin-top: -90px;
 
 
 }
@@ -934,7 +956,7 @@ a {
     align-items: center;
     -webkit-box-pack: center;
     justify-content: center;
-    margin-top: 10px;
+    // margin-top: 5px;
 
 }
 
@@ -952,9 +974,9 @@ a {
     margin: -100px 10px 10px 100px;
     text-decoration: none;
     -webkit-transition: color 0.2s;
-}
-
-.offeredprice::before {
+  }
+  
+  .offeredprice::before {
     background: #fff;
     border-radius: 10px;
     box-shadow: inset 0 1px rgba(0, 0, 0, 0.25);
@@ -964,9 +986,9 @@ a {
     position: absolute;
     width: 6px;
     top: 10px;
-}
-
-.offeredprice::after {
+  }
+  
+  .offeredprice::after {
     background: #fff;
     border-bottom: 13px solid transparent;
     border-left: 10px solid crimson;
@@ -975,190 +997,8 @@ a {
     position: absolute;
     right: 0;
     top: 0;
-}
+  }
 
-.noData {
+  .noData{
     height: 430px;
-}
-
-@media only screen and (min-width:"900px") and (max-width:"1024px") {
-    .noData {
-        height: 430px;
-        margin-left: 0px !important;
-    }
-}
-
-@media only screen and (min-width:"300px") and (max-width:"420px") {
-
-    .modifyhotelsearch_header {
-        background-image: url(../../../asset/images/backgroundimage.png);
-        height: 160px;
-        width: 100%;
-        margin-top: 60px;
-        padding-top: 30px;
-
-    }
-
-    .modifyhotelsearch_form {
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .hotellistcontent {
-        margin-top: 200px !important;
-    }
-
-    .hotellistWrapper {
-        display: flex;
-        flex-direction: column;
-        min-height: 1024px;
-    }
-
-    .hotellistfilter {
-        flex: 1;
-        top: 110px;
-        position: unset;
-        height: max-content;
-        border-radius: 8px;
-        background: rgb(255, 255, 255);
-    }
-
-    .modifyhotelsearch {
-        width: 82% !important;
-        font-family: QuickSand, Avenir, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-        border-radius: 8px;
-        background-color: rgb(255, 255, 255);
-        padding-left: 0px;
-    }
-
-    .modifyhotelsearchbox {
-        width: 280px;
-        border: 2.5px solid #dfdfdf;
-        border-radius: 8px;
-        height: 50px;
-        background: rgb(255, 255, 255);
-        cursor: pointer;
-        position: relative;
-        margin-bottom: 20px;
-        margin-left: 10px;
-
-        p {
-            background-color: #fff;
-            margin-top: -15px;
-            margin-bottom: 0%;
-            width: 38px;
-            margin-left: 22px;
-            font-family: Quicksand, Avenir, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-            font-size: 14px;
-            display: inline-flex;
-            font-weight: 700;
-            color: rgb(107, 103, 103);
-            position: absolute;
-            text-align: center;
-
-        }
-
-        input {
-            width: 100%;
-            height: 45px;
-            border: none;
-            background: rgb(255, 255, 255);
-            font-family: Roboto, Quicksand, Avenir, -apple-system, "Segoe UI", "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-            color: rgb(4, 4, 4);
-            border: none;
-            outline: none;
-            border-radius: 8px;
-            outline: 0px;
-            font-size: 16px;
-            // line-height: 28px;
-            padding: 19px 35px;
-            font-weight: 700;
-        }
-
-        input::placeholder {
-            color: rgb(36, 35, 35);
-            opacity: 1;
-        }
-    }
-
-    .badge {
-        display: none;
-    }
-
-    .modiguestoption_rooms {
-        width: 280px;
-        height: 50px;
-        border: 2.5px solid #dfdfdf;
-        border-radius: 8px;
-        margin-top: 20px !important;
-
-        p {
-            background-color: #fff;
-            margin-top: -14px;
-            margin-bottom: 0%;
-            // width: 38px;
-            margin-left: 22px;
-            font-family: Quicksand, Avenir, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-            font-size: 14px;
-            display: inline-flex;
-            font-weight: 700;
-            color: rgb(119, 119, 119);
-            position: absolute;
-            z-index: 3;
-        }
-    }
-
-    .modifydaterange {
-        height: 50px;
-        width: 200px;
-        margin-left: 0px;
-        border-radius: 8px;
-        // padding:" 0px 20px",
-        border: 2.5px solid #dfdfdf;
-        cursor: pointer;
-        color: #242222;
-        font-size: 15px;
-        padding-bottom: 5px;
-
-
-        p {
-            background-color: #fff;
-            margin-top: -14px;
-            margin-bottom: 0%;
-            margin-left: 22px;
-            font-family: Quicksand, Avenir, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-            font-size: 14px;
-            display: inline-flex;
-            font-weight: 700;
-            color: rgb(119, 119, 119);
-            position: absolute;
-        }
-    }
-    .modifydaterange {
-        height: 50px;
-        width: 200px;
-        margin-left: 0px !important;
-        border-radius: 8px;
-        // padding:" 0px 20px",
-        border: 2.5px solid #dfdfdf;
-        cursor: pointer;
-        color: #242222;
-        font-size: 12px;
-        padding-bottom: 5px;
-    
-    
-        p {
-            background-color: #fff;
-            margin-top: -14px;
-            margin-bottom: 0%;
-            margin-left: 0px;
-            font-family: Quicksand, Avenir, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-            font-size: 12px;
-            display: inline-flex;
-            font-weight: 700;
-            color: rgb(119, 119, 119);
-            position: absolute;
-        }
-    }
-}
+  }

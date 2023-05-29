@@ -30,16 +30,10 @@ export default function MultiDatePickers({ onSelect, Searchstyle, required, sele
 
   const style2 = {
     fontSize: "16px",
+    fontWeight: "500",
     color: "rgb(119, 119, 119)",
     fontFamily: "Quicksand, Avenir, -apple-system, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, Liberation Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol,Noto Color Emoji",
-    backgroundColor:"white"
   }
- const style3 ={
-  color:" #7f7a7a",
-  fontFamily: "Quicksand, Avenir, -apple-system, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, Liberation Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol,Noto Color Emoji",
-
- }
-  
 
   const refOne = useRef(null);
 
@@ -72,32 +66,32 @@ export default function MultiDatePickers({ onSelect, Searchstyle, required, sele
 
 
   return (
-    <div className='headerSearchItem mt-4'>
+    <div className='headerSearchItem'>
       <div onClick={handleClick} className={Searchstyle}>
-        <div className='row d-inline-flex content'>
-          <div className=' flight-daterange'>
-            <p className='mb-0 text-left' style={style2}><FontAwesomeIcon icon={faCalendarDays} className=" text-muted me-1 mt-1 bg-white" />Departure</p>
-            <div className='my-3 text-center  ms-0' style={style3}>{`${departure}`}</div>
+        <div className='row d-inline-flex flight-content'>
+          <div className='col daterange'>
+            <p className='mb-0 text-left' style={style2}>Departure</p>
+            <div className='my-2 text-center ms-1'>{`${departure}`}</div>
           </div>
-          <div className='flight-daterange'>
-            <p className='mb-0 text-left' style={style2}><FontAwesomeIcon icon={faCalendarDays} className="text-left text-muted me-1 mt-1 bg-white" />Return</p>
-            <div className='my-3 text-center ms-1'  style={style3}>{`${returndate}`}</div>
+          <div className='col daterange  mx-3'>
+            <p className='mb-0 text-left' style={style2}>Return</p>
+            <div className='my-2 text-center ms-1'>{`${returndate}`}</div>
           </div>
         </div>
       </div>
       {
         open && (
           <Card className={calanderstyle} style={{ position: 'absolute', zIndex: '6' }} ref={refOne}>
-            <Card.Body>
+            <Card.Body >
               <DayPicker
                 fromDate={new Date()}
                 mode="range"
                 required={required}
                 selected={selected}
                 onSelect={onSelect}
-                numberOfMonths={1}
+                numberOfMonths={2}
                 pagedNavigation
-                // components={{ Row: OnlyFutureRow }}
+                components={{ Row: OnlyFutureRow }}
                 disabled={isPastDate}
               />
             </Card.Body>

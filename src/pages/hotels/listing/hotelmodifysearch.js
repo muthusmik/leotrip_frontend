@@ -12,7 +12,7 @@ import AutoSuggest from "react-autosuggest";
 const HotelModifySearch = () => {
     useEffect(() => {
         const Destination = JSON.parse(localStorage.getItem('hotellocation'));
-        console.log("destination......",Destination)
+       
         handleSelection(JSON.parse(localStorage.getItem('destination')))
     }, [])
 
@@ -22,7 +22,6 @@ const HotelModifySearch = () => {
     const [hotellocation, setHotellocation] = useState(JSON.parse(localStorage.getItem('destination')));
     const Destination = JSON.parse(localStorage.getItem('hotellocation'));
     const GuestDetails = JSON.parse(localStorage.getItem('roomGuest'));
-    console.log("guestDetails",GuestDetails);
     const range = localStorage.getItem("selected");
     // date state
     const [selectedRange, setSelectedRange] = useState(range);
@@ -48,10 +47,9 @@ const HotelModifySearch = () => {
 
 
 
-    console.log("i am A0", citylocation)
-
+   
     const handleRangeSelect = (range) => {
-        console.log("............", range);
+       
         setSelectedRange(range);
         if (range?.from) {
             setCheckInDate(format(range.from, 'MMM dd, yyyy'));
@@ -65,14 +63,14 @@ const HotelModifySearch = () => {
     function getSuggestions(value) {
         const inputValue = value.trim().toLowerCase();
         const inputLength = inputValue.length;
-        // console.log("selected values ...........................>",inputValue);
+     
         return inputLength === 0 ? [] : citylocation.filter(lang =>
             lang.Destination.toLowerCase().slice(0, inputLength) === inputValue
         );
     }
 
     const handleSelection = (suggestionValue) => {
-        console.log(suggestionValue, "suggestion value")
+  
         setHotellocation(suggestionValue)
     }
 
@@ -90,7 +88,7 @@ const HotelModifySearch = () => {
         if (nights !== 0) {
             setnight(nights)
         }
-        // console.log("iam icecream",night)
+    
 
         if (hotellocation === "") {
             setErrormsg('Please Enter the  Location !');
@@ -130,7 +128,7 @@ const HotelModifySearch = () => {
 
 
     useEffect(() => {
-        console.log("iam nerghu", submitData)
+     
         if (submitData != null) {
             dispatch(loadHotelList(submitData));
             history.push("/hotel/hotellist")
@@ -146,8 +144,7 @@ const HotelModifySearch = () => {
 
     const handleRoom = async(value) => {
         setViewRoom(true)
-        setRooms(value)
-        console.log("no of value",value)  
+        setRooms(value) 
         let varr = [];
         for (var i = 0; i < value; i++) {
           varr.push({
@@ -177,14 +174,14 @@ const HotelModifySearch = () => {
         newFormValues[i]["ChildAge"][j] = value;
         setRoomGuest(newFormValues);
     }
-    console.log("setChild data:", "child count:", roomGuest)
+
 
 
     return (
         <>
             <div className='modifyhotelsearch_header'>
                 <div className='container modifyhotelsearch'>
-                    <div className='modifyhotelsearch_form d-inline-flex mb-4 mt-4'>
+                    <div className=' d-inline-flex mb-4 mt-4'>
                         <div className='modifyhotelsearchbox mt-2'>
                             <p>destination</p>
                             <AutoSuggest
@@ -193,7 +190,7 @@ const HotelModifySearch = () => {
 
                                 onSuggestionsFetchRequested={({ value }) => {
                                     setValueDes(value);
-                                    // console.log("I am selected in ...............................",value)
+                                  
                                     setSuggestions(getSuggestions(valueDes));
                                 }}
                                 onSuggestionSelected={(_, suggestionValue) => { handleSelection(suggestionValue) }}
@@ -205,7 +202,7 @@ const HotelModifySearch = () => {
 
                                     onChange: (_, { newValue, method }) => {
                                         setValueDes(newValue);
-                                        //    console.log("newValue",newValue)
+                                       
                                     }
                                 }}
                                 highlightFirstSuggestion={true}
@@ -223,7 +220,7 @@ const HotelModifySearch = () => {
                                 calanderstyle="modifyhotel_calander"
                             />
                         </div>
-                        <div className='modiguestoption_rooms mt-2 ms-3'>
+                        <div className='modiguestoption mt-2 ms-3'>
                             <p>Guests&nbsp;&nbsp;&amp;&nbsp;&nbsp;Rooms</p>
                             <div className="roomSearchItem" style={{ position: 'absolute' }}>
                                 <select class="modibp_room_select valid " style={{ width: "100%" }} name="room" required="required" autocomplete="off" onChange={(e) => handleRoom(parseInt(e.target.value))} onClick={()=>{setViewRoom(true)}}>
@@ -295,7 +292,7 @@ const HotelModifySearch = () => {
                             </div>
                         </div>
                         <div className='modifyhotelbutton ms-3'>
-                            <Button onClick={() => handleSubmit(checkInDate, checkOutDate)}>Update Search</Button>
+                            <Button className='btn sm'  onClick={() => handleSubmit(checkInDate, checkOutDate)}>Update Search</Button>
                         </div>
                     </div>
                 </div>

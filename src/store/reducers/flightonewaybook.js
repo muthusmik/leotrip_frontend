@@ -7,7 +7,7 @@ const initialState = {
 };
 
 const reducer = (state = initialState, action) => {
-    // console.log("iam in flightbooking reducer",action)
+  
   switch (action.type) {
     case FLIGHTONEWAYBOOK.LOAD:
       return {

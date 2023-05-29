@@ -5,23 +5,23 @@ import {
 
 
 const carBook = async (carbook) => {
-  //  console.log("car service payload",carbook)
+  const usertoken = JSON.parse(localStorage.getItem('token'))
+        console.log("cccb", usertoken)
   const headers = {
     "Content-Type": "application/json",
-   
+    'Authorization':`Bearer ${usertoken}`
   };
   
-  // console.log("i am in the service");
+
   try {
     const carBookdata = await axios.post(
         carBookUrl,
       carbook,
       { headers: headers }
     );
-    //  console.log("car data baba",carBookdata.data.Result);
     return carBookdata.data.Result;
   } catch (error) {
-    // console.log(error);
+    return error.response.data
   }
 };
 

@@ -11,9 +11,8 @@ const reducer = (state = initialState, action) => {
   switch (action.type) {
     case BUSINFO.LOAD:
       return {
+        ...state,
         loading: true,
-        data: [],
-
       };
     case BUSINFO.LOAD_SUCCESS:
       return {

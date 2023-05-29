@@ -7,7 +7,7 @@ const initialState = {
 };
 
 const reducer = (state = initialState, action) => {
-  //  console.log("iam in block Room reducer",action)
+ 
   switch (action.type) {
     case BLOCK_ROOM.LOAD_BLOCKROOM:
       return {
@@ -17,13 +17,13 @@ const reducer = (state = initialState, action) => {
     case BLOCK_ROOM.BLOCKROOM_SUCCESS:
       return {
         loading: false,
-        data: action.blockroom,
+        data:action.blockroom,
         error: "",
       };
     case BLOCK_ROOM.BLOCKROOM_FAIL:
       return {
         loading: false,
-        data: [],
+        data:[],
         error: action.error,
       };
     default:

@@ -14,7 +14,6 @@ const Flightbookinglist = ({onhandle}) => {
     const[view,setView]= useState('');
     const handleClick = (index) => {
         setView(index)
-        console.log(index)
         if (show === true) {
             setShow(false);
         } else {

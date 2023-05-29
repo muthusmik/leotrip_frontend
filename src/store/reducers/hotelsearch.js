@@ -7,7 +7,7 @@ const initialState = {
 };
 
 const reducer = (state = initialState, action) => {
-  // console.log("iam in HOTEL reducer",action)
+  
   switch (action.type) {
     case HOTEL_SEARCH.HOTEL_LOAD:
       return {

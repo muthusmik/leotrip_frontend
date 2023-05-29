@@ -7,7 +7,6 @@ const initialState = {
 };
 
 const reducer = (state = initialState, action) => {
-  //  console.log("iam in airlinecitylist reducer",action.type)
   switch (action.type) {
     case AIRLINE.LOAD_AIRLINE:
       return {

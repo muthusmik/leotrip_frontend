@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import Card from 'react-bootstrap/Card';
 import Accordion from 'react-bootstrap/Accordion';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -28,6 +28,8 @@ import { useLocation } from "react-router-dom";
 import html2canvas from 'html2canvas';
 import { jsPDF } from "jspdf";
 import "jspdf/dist/polyfills.es.js";
+import { carBookUrl, carBookingDetailsUrl } from '../../../constants';
+import axios from 'axios';
 
 
 const TripDetails = () => {
@@ -35,17 +37,50 @@ const TripDetails = () => {
 
     const location = useLocation();
 
-    //   console.log(location, "i am about paymentdata")
+   
 
     const [pricefare, setPricefare] = React.useState(location.state.state.carfare)
+    const [carData,setCarData]=useState(); 
+    const carbook = useSelector(state => state.CarBook)
 
-    const carbook = useSelector(state => state.Car);
     const store = useStore()
 
-    // console.log("hi iam here", carbook)
-
-
+    useEffect(() => {
+        if(carbook){
+            carBook()
+        }
+    }, [carbook])
+    const Destination = JSON.parse(localStorage.getItem('carsearch'));
+    const dropTime = JSON.parse(localStorage.getItem('dropTime'));
     
+    const valuedata={
+        "BookingID":carbook.Result.BookingID,
+        "PickUpDate":Destination[2]?.pickup,
+        "OperatorID":carbook.Result.OperatorID,
+        "SegmentID":carbook.Result.SegmentID,
+        "Status":carbook.Result.Status,
+        "PickUpTime":"",
+        "DropUpTime":""
+    }
+    console.log("valuedatavaluedata in cab details ",valuedata);
+    const carBook = async (valuedata) => {
+        const usertoken = JSON.parse(localStorage.getItem('token'))
+              console.log("cccb", usertoken)
+        const headers = {
+          "Content-Type": "application/json",
+          'Authorization':`Bearer ${usertoken}`
+        };
+        try {
+          const carBookdata = await axios.post(
+            carBookingDetailsUrl,
+              valuedata,
+            { headers: headers }
+          );
+          setCarData(carBookdata.data.Result)
+        } catch (error) {
+          return error.response.data
+        }
+      }
 
     return (
         <Card>
@@ -111,7 +146,7 @@ const PaymentMethod = () => {
 
     const carbookdetails= useSelector(state =>state.CarBook)
 
-    // console.log("car conformation",carbookdetails)
+    
 
     const location = useLocation();
 
@@ -119,7 +154,7 @@ const PaymentMethod = () => {
 
     const carbook = useSelector(state => state.Car);
 
-    // console.log("iam good",pricefare)
+    
 
     
     const [validated, setValidated] = useState(false);
@@ -590,7 +625,7 @@ const PaymentDetails = () => {
     return (
         <>
             <TripDetails />
-            <PaymentMethod />
+            {/* <PaymentMethod /> */}
         </>
     )
 }
