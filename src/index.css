@@ -1,10 +1,8 @@
-@import "https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap";
-@import "https://fonts.googleapis.com/icon?family=Material+Icons";
-
 body {
   margin: 0;
-  background-color: #eff3f8!important;
-  font-family: Quicksand, Avenir, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -13,7 +11,32 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-@font-face {
-  font-family: 'Poppins';
-  src: local('Poppins'), url(./asset/fonts/Poppins/Poppins-SemiBold.ttf) format('truetype');
+
+/* Toast */
+.Toastify .custom-toast {
+  width: unset;
+  min-width: 248px;
+  top: 22px;
+  border-radius: 10px
+}
+
+.Toastify .Toastify__close-button {
+  align-self: center;
+}
+
+.Toastify .Toastify__progress-bar--success {
+  @apply bg-int-green-alert
+}
+
+.Toastify .Toastify__progress-bar {
+  height: 3px;
+}
+
+.custom-toast .Toastify__toast {
+  border-radius: 11px;
+  min-height: unset;
+}
+
+.custom-toast .custom-body-toast {
+  @apply text-int-grey-90 text-button mr-2 p-0
 }
