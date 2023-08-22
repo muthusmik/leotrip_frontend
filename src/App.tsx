@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import './App.css';
 import { useRoutes } from 'react-router-dom';
 import routes from './routes';
-import ScrollToTop from './utils/ScrollToTop';
+import ScrollToTop from './components/utils/ScrollToTop';
 
 function App() {
   let element = useRoutes(routes);

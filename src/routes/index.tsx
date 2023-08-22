@@ -21,7 +21,7 @@ const routes: RouteObject[] = [
     element: <BusModule />, // Your bus module component
   },
   {
-    path: '/flight',
+    path: '/flights',
     element: <FlightModule />, // Your flight module component
   },
   {

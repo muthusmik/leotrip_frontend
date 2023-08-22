@@ -1,10 +1,11 @@
 {
   "compilerOptions": {
-    "target": "es6",
+    "target": "es5",
     "lib": [
       "dom",
       "dom.iterable",
-      "esnext"
+      "esnext",
+      "es6"
     ],
     "allowJs": true,
     "skipLibCheck": true,
@@ -18,13 +19,9 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "preserve"
+    "jsx": "react-jsx",
+    "baseUrl": "src"
   },
-  "types": [
-    "react",
-    "react-dom",
-    "react-router-dom"
-  ],
   "include": [
     "src"
   ]
