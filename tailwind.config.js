@@ -60,7 +60,7 @@ module.exports = {
       colors: {
         "primary": '#52A0D2',
         bluebtn: '#5562D2',
-        sandalbtn: '#EC8E03',
+        "int-yellow": '#EC8E03',
         sandalbtnborder: '#636262',
         Genderbut: '#329DE1',
         'int-green-alert': '#97D382',
