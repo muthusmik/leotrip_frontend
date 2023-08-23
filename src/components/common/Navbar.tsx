@@ -45,7 +45,7 @@ function Navbar() {
                             <Link
                                 key={link.to}
                                 to={link.to}
-                                className={`flex p-1 rounded-[2px] flex-col m-2 items-center text-int-black w-[70px] hover:bg-int-background hover:border-b-4  ${location.pathname === link.to
+                                className={`flex p-[1px] rounded-[2px] flex-col m-2 items-center text-int-black w-[70px] hover:bg-int-background hover:border-b-4  ${location.pathname === link.to
                                     ? 'border-b-4 border-int-yellow  hover:border-int-yellow'
                                     : 'hover:border-int-gray-20'
                                     }`}

@@ -69,3 +69,14 @@ code {
 .custom-toast .custom-body-toast {
   @apply text-int-grey-90 text-button mr-2 p-0
 }
+
+.carousel-container {
+  flew-wrap: nowrap;
+  
+}
+.carousel-item {
+  min-width: 100%;
+  width: 100%;
+  transition: 1s cubic-bezier(0.39, 0.575, 0.565, 1);
+}
+

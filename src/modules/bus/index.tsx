@@ -1,12 +1,17 @@
+
+import { HomeFooter } from 'components/common/Homepagrfooter';
 import Navbar from 'components/common/Navbar';
+import Carousel from 'components/common/slider';
 import React from 'react';
 
 function BusModule() {
     return (
         <div>
             <Navbar />
-            <h2>Bus Module</h2>
-            <p>This is the bus module page.</p>
+            <Carousel>
+                gowtham
+            </Carousel>            
+           <HomeFooter/>
         </div>
     );
 }
