@@ -1,8 +1,9 @@
 
-import { HomeFooter } from 'components/common/Homepagrfooter';
+import { HomeFooter } from 'components/common/Homepagefooter';
 import Navbar from 'components/common/Navbar';
-import Carousel from 'components/common/slider';
+import Carousel from 'components/common/Carousel';
 import React from 'react';
+import { AboutUs } from 'components/common/About/AboutUs';
 
 function BusModule() {
     return (
@@ -10,7 +11,8 @@ function BusModule() {
             <Navbar />
             <Carousel>
                 gowtham
-            </Carousel>            
+            </Carousel>
+            <AboutUs />         
            <HomeFooter/>
         </div>
     );
