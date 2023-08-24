@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { isSameDay, startOfMonth, getDay, addDays } from 'date-fns';
+import { isSameDay, startOfMonth, getDay, addDays, isAfter, isBefore } from 'date-fns';
 import Holidays from 'date-holidays';
 import useOutsideAlerter from 'hooks/useOutside';
 import { ReactComponent as ChevronRight } from '../../assets/icons/chevron-double-right.svg';
@@ -8,15 +8,20 @@ import { ReactComponent as ChevronLeft } from '../../assets/icons/chevron-double
 
 interface CustomDatePickerProps {
     onSelect: (date: Date) => void;
+    minDate: Date;
+    maxDate: Date;
+    placeholder: string;
 }
 
-const CustomDatePicker: React.FC<CustomDatePickerProps> = ({ onSelect }) => {
+const CustomDatePicker: React.FC<CustomDatePickerProps> = ({ onSelect, minDate, maxDate, placeholder }) => {
 
     const hd = new Holidays();
     hd.init('US');
 
     const [selectedDate, setSelectedDate] = useState<Date | null>(null);
     const [currentDate, setCurrentDate] = useState<Date>(new Date());
+    const [isHidePrevious, setIsHidePrevious] = useState(true);
+    const [isHideNext, setIsHideNext] = useState(false);
 
     const [isDatePickerVisible, setDatePickerVisible] = useState<boolean>(false);
 
@@ -24,16 +29,33 @@ const CustomDatePicker: React.FC<CustomDatePickerProps> = ({ onSelect }) => {
 
 
     const monthStart = startOfMonth(currentDate);
-    const dayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-
-
+    const dayNames = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
     const handlePrevMonth = () => {
-        setCurrentDate(prevDate => new Date(prevDate.getFullYear(), prevDate.getMonth() - 1));
+        const prevMonth = new Date(currentDate.getFullYear(), currentDate.getMonth() - 1);
+
+        if (!minDate || prevMonth.getFullYear() > minDate.getFullYear() ||
+            (prevMonth.getFullYear() === minDate.getFullYear() && prevMonth.getMonth() >= minDate.getMonth())) {
+            setCurrentDate(prevMonth);
+            if (isHideNext) setIsHideNext(false)
+        } else {
+            setIsHidePrevious(true)
+        }
     };
 
     const handleNextMonth = () => {
-        setCurrentDate(prevDate => new Date(prevDate.getFullYear(), prevDate.getMonth() + 1));
+        const nextMonth = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1);
+
+        if (!maxDate || nextMonth.getFullYear() < maxDate.getFullYear() ||
+            (nextMonth.getFullYear() === maxDate.getFullYear() && nextMonth.getMonth() <= maxDate.getMonth())) {
+            setCurrentDate(nextMonth);
+            if (isHidePrevious) setIsHidePrevious(false)
+        } else {
+            setIsHideNext(true);
+        }
     };
+
+
+
 
     const renderDaysByWeek = () => {
         const daysByWeek: Array<JSX.Element[]> = [];
@@ -53,19 +75,25 @@ const CustomDatePicker: React.FC<CustomDatePickerProps> = ({ onSelect }) => {
             const isToday = isSameDay(date, new Date());
             const isSelected = selectedDate && isSameDay(date, selectedDate);
             const isHighlighted = isHoliday(date);
+            const isNotInRange = isDisable(date);
 
             currentWeek.push(
                 <td
                     key={day}
-                    className={`text-center py-2 pointer-cursor `}
+                    className={`text-center py-2 pointer-cursor align-top `}
                     onClick={() => handleDateClick(date)}
                 >
-                    <div className={` text-sm pointer-cursor hover:bg-[#F5EBEB] hover:text-black hover:rounded-[150px] ${isToday ? 'rounded-[150px] bg-[#F5EBEB]' : ''} ${isSelected ? ' text-white rounded-[10px] bg-[#BD3319]' : ''} ${isHighlighted ? isSelected ? 'text-white' : 'text-[#f72111]' : ''
-                        }`}>{day}<br />
+                    <div className={`mb-0 py-3 text-[14px] pointer-cursor
+                                    hover:bg-[#F5EBEB] hover:text-black hover:rounded-[300px]
+                                    ${isToday ? 'rounded-[150px] bg-[#F5EBEB]' : ''}
+                                    ${isSelected ? 'text-white rounded-[300px] bg-[#BD3319]' : ''}
+                                    ${isHighlighted ? (isSelected ? 'text-white' : 'text-[#f72111]') : ''}
+                                    ${isNotInRange ? 'opacity-50 pointer-events-none' : ''}`}
+                    >{day}<br />
                     </div>
 
                     {isHighlighted &&
-                        <div className={`text-[10px] text-int-grey-30`}>
+                        <div className={`mt-0 text-[10px] text-int-grey-30 text-top leading-0`}>
                             {isHighlighted.length > 0 ? (
                                 isHighlighted.length > 5 ? `${isHighlighted.substring(0, 5)}...` : isHighlighted
                             ) : ''}
@@ -81,16 +109,21 @@ const CustomDatePicker: React.FC<CustomDatePickerProps> = ({ onSelect }) => {
         }
 
         return daysByWeek.map((week, index) => (
-            <>
-                <tr key={index} className={`leading-10 ${index === daysByWeek.length - 1 ? '' : 'border-b-2 border-int-gray'} `} style={{ "padding": "10px" }}>{week}</tr>
-            </>
+            <React.Fragment key={index}>
+                <tr key={index} className={`h-14 ${index === daysByWeek.length - 1 ? '' : 'border-b-2 border-int-gray'} `}>{week}</tr>
+            </React.Fragment>
         ));
     };
 
     const handleDateClick = (date: Date) => {
-        setSelectedDate(date);
-        onSelect(date);
-        setDatePickerVisible(false);
+        const currentDate = new Date();
+        currentDate.setDate(currentDate.getDate() - 1);
+        console.log(new Date())
+        if ((!minDate || isAfter(date, currentDate)) && (!maxDate || isBefore(date, maxDate))) {
+            setSelectedDate(date);
+            onSelect(date);
+            setDatePickerVisible(false);
+        }
     };
 
     const isHoliday = (date: Date) => {
@@ -107,6 +140,11 @@ const CustomDatePicker: React.FC<CustomDatePickerProps> = ({ onSelect }) => {
         return false;
     };
 
+    const isDisable = (date: Date) => {
+        const currentDate = new Date();
+        currentDate.setDate(currentDate.getDate() - 1);
+        return date < currentDate || date > maxDate;
+    }
 
 
     const handleInputClick = () => {
@@ -115,33 +153,38 @@ const CustomDatePicker: React.FC<CustomDatePickerProps> = ({ onSelect }) => {
     const wrapperRef = useRef(null);
 
     useOutsideAlerter({ ref: wrapperRef, callback: () => setDatePickerVisible(false) });
+
+
+
     return (
 
-        <div className="custom-datepicker">
+        <div className="custom-datepicker cursor-pointer">
             <input
                 type="text"
                 value={selectedDate ? selectedDate.toLocaleDateString('en-GB') : ''}
                 onClick={handleInputClick}
                 readOnly // Make the input box read-only to prevent direct editing
+                className='h-10 rounded-[10px]'
+                placeholder={placeholder}
             />
             {isDatePickerVisible && (
-                <div ref={wrapperRef} className='fixed mt-2 mx-5 bg-white rounded-2xl shadow-lg p-2'>
-                    <div className="flex mx-5 mt-1 bg-white items-center text-center justify-between">
-                        <ChevronLeft onClick={handlePrevMonth} className='w-5' />
-                        {currentDate.toLocaleDateString('default', { month: 'short', year: 'numeric' })}
-                        <ChevronRight onClick={handleNextMonth} className='w-5' />
+                <div ref={wrapperRef} className='fixed mt-2 mx-5 bg-white rounded-2xl shadow-lg p-2 '>
+                    <div className="flex mx-5 mt-1 bg-white items-center text-center justify-between" style={{ userSelect: 'none' }}>
+                        <div>{!isHidePrevious && <ChevronLeft onClick={handlePrevMonth} className='w-5' />}</div>
+                        <div>{currentDate.toLocaleDateString('default', { month: 'short', year: 'numeric' })}</div>
+                        <div> {!isHideNext && <ChevronRight onClick={handleNextMonth} className='w-5' />}</div>
                     </div>
-                    <table className="days-table mx-5 ">
-                        <thead>
-                            <tr>
+                    <table className="days-table mx-5" style={{ userSelect: 'none' }}>
+                        <thead className='user-select-none'>
+                            <tr className='user-select-none'>
                                 {dayNames.map(dayName => (
-                                    <th key={dayName} className="p-2 text-int-dark-blue">
+                                    <th key={dayName} className="text-int-dark-blue w-[50px]">
                                         {dayName}
                                     </th>
                                 ))}
                             </tr>
                         </thead>
-                        <tbody >
+                        <tbody className='user-select-none' >
                             {renderDaysByWeek()}
                         </tbody>
                     </table>
