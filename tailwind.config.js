@@ -14,15 +14,22 @@ module.exports = {
       md: '768px',
       // => @media (min-width: 768px) { ... }
 
+      mdlg: '912px', // New breakpoint between md and lg
+      // => @media (min-width: 912px) { ... }
+
       lg: '1024px',
       // => @media (min-width: 1024px) { ... }
 
       xl: '1310px',
       // => @media (min-width: 1310px) { ... }
 
+      lgxl: '1280px', // New breakpoint between lg and xl
+      // => @media (min-width: 1280px) { ... }
+
       '2xl': '1536px',
       // => @media (min-width: 1536px) { ... }
     },
+
     extend: {
       keyframes: {
         fadeOut: {
