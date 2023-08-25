@@ -4,15 +4,22 @@ import Navbar from 'components/common/Navbar';
 import Carousel from 'components/common/Carousel';
 import React from 'react';
 import { AboutUs } from 'components/common/About/AboutUs';
+import { OfferSlider } from 'components/common/OfferSlider';
+import { Dailydeals } from 'components/common/DailyDeals';
 
 function BusModule() {
     return (
         <div>
             <Navbar />
             <Carousel>
-                gowtham
+                <div className="border-2 h-20 w-40 m-52">
+                    jlhdgvj
+                </div>
             </Carousel>
-            <AboutUs />         
+            <OfferSlider />
+            <Dailydeals />
+            <AboutUs />  
+            <div className='mt-5'></div>       
            <HomeFooter/>
         </div>
     );
