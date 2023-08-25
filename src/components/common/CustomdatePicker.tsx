@@ -118,7 +118,7 @@ const CustomDatePicker: React.FC<CustomDatePickerProps> = ({ onSelect, minDate, 
     const handleDateClick = (date: Date) => {
         const currentDate = new Date();
         currentDate.setDate(currentDate.getDate() - 1);
-        console.log(new Date())
+
         if ((!minDate || isAfter(date, currentDate)) && (!maxDate || isBefore(date, maxDate))) {
             setSelectedDate(date);
             onSelect(date);

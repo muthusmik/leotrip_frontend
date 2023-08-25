@@ -12,8 +12,8 @@ function BusModule() {
             <Carousel>
                 gowtham
             </Carousel>
-            <AboutUs />         
-           <HomeFooter/>
+            <AboutUs />
+            <HomeFooter />
         </div>
     );
 }
