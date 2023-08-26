@@ -6,6 +6,7 @@ import React from 'react';
 import { AboutUs } from 'components/common/About/AboutUs';
 import { OfferSlider } from 'components/common/OfferSlider';
 import { Dailydeals } from 'components/common/DailyDeals';
+import APPAdd from 'components/common/AppAdd';
 
 function BusModule() {
     return (
@@ -19,7 +20,7 @@ function BusModule() {
             <OfferSlider />
             <Dailydeals />
             <AboutUs />  
-            <div className='mt-5'></div>       
+            <APPAdd />      
            <HomeFooter/>
         </div>
     );

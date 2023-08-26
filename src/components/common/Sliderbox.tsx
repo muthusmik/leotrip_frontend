@@ -4,7 +4,7 @@ export function Box ({ offer }: any) {
     return (
         <div className="h-[175px] border my-[3%] mx-[2%] rounded-2xl shadow-xl">
             <div className="flex font-poppinsRegular w-[340px]">
-                <img src={offer.image} alt={offer.title} className="h-32 w-32" />
+                <img src={offer.image} alt= {offer.title} className="h-32 w-32" />
                 <div className="mt-4 w-full">
                     <span className="font-PoppinsSemiBold text-[22px]">{offer.title}<br /></span>
                     <span className="text-sm">{offer.description}</span>
