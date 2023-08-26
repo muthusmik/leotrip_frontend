@@ -42,14 +42,14 @@ export function Googlesignin({ children, ...props }: any) {
 }
 
 
-export function PrimaryButton({ children, outlined, rounded, shadow, ...props }: any) {
+export function PrimaryButton({ children, outlined, rounded, shadow, onClick, ...props }: any) {
     return (
         <>
-            <button
+            <button onClick={onClick}
                 className={`flex
              ${outlined ? " bg-transparent rounded-md  border-white border-2 "
-                        : rounded ? " bg-sandalbtn rounded-full"
-                            : " bg-sandalbtn rounded-md "}
+                        : rounded ? " bg-int-sandal rounded-full"
+                            : " bg-int-sandal rounded-md "}
              ${shadow && " border-sandalbtnborder border-2 border-opacity-40"}
              items-center text-white px-5 py-2 font-poppinsRegular`}>
                 {children}

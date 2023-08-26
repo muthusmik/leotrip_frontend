@@ -3,7 +3,6 @@ import Navbar from 'components/common/Navbar';
 import Carousel from 'components/common/slider';
 import React from 'react';
 import BusSearchComponent from './BusSearchComponent';
-// import * as Yup from 'yup';
 
 function BusModule() {
 
