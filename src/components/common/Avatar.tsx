@@ -5,7 +5,7 @@ import TripIcon from "../../assets/icons/rolling-pascal.svg";
 import LogoutIcon from "../../assets/icons/logout-pascal.svg";
 import useOutsideAlerter from "hooks/useOutside";
 import ModalFullHeight from "styles/ModalFullHeight";
-import { SignInContainer } from "components/Auth/SignInContainer";
+import SignInContainer from "components/Auth/SignInContainer";
 
 
 
@@ -49,7 +49,7 @@ export function Avatar() {
     return (
         <div ref={wrapperRef} className=" relative mx-2 ml-[5%]">
             {!auth ? (
-                <div className="border-int-dark-blue border-2 rounded-[10px] p-1 flex" onClick={() => setAuth(true)}>
+                <div className="border-int-dark-blue border-2 rounded-[10px] p-1 flex" onClick={() => setIsOpenAuthModal(true)}>
                     <img src={AvatarIcon} alt={''} />
                     <span className="font-poppinsRegular text-lg text-int-dark-blue mx-2 text-center">Login/Register</span>
                 </div>
@@ -78,13 +78,14 @@ export function Avatar() {
                     ))}
                 </div>
             )}
-            {/* <ModalFullHeight
+            <ModalFullHeight
                 active={isOpenAuthModal}
                 closeModal={() => setIsOpenAuthModal(false)}
-                width="w-[620px]"
-                isSubModal={true}>
+                width="w-[820px]"
+                isSubModal={true}
+                transparent={true}>
                 <SignInContainer setAuth={setAuth} close={setIsOpenAuthModal} />
-            </ModalFullHeight> */}
+            </ModalFullHeight>
         </div>
     );
 }
