@@ -11,6 +11,7 @@ interface ModalProps {
     zindex?: any;
     minHeight?: string;
     isSubModal?: boolean;
+    transparent?: boolean;
 }
 
 export default function ModalFullHeight({
@@ -21,6 +22,7 @@ export default function ModalFullHeight({
     zindex,
     minHeight,
     isSubModal = false,
+    transparent = false,
 }: ModalProps) {
     const container = useRef(null);
     useOutsideAlerter({ ref: container, callback: () => closeModal() });
@@ -47,11 +49,11 @@ export default function ModalFullHeight({
             {active && (
                 <div
                     style={style}
-                    className={`flex ${minHeight ? "items-start pt-20 pb-20 absolute" : "items-center fixed"}  border-int-dark-blue border-5  justify-center top-0 left-0 right-0 bottom-0 bg-black bg-opacity-60 backdrop-blur-xs`}
+                    className={`flex ${minHeight ? "items-start pt-20 pb-20 absolute" : "items-center fixed"} ${transparent ? " " : " border-int-dark-blue border-5"} justify-center top-0 left-0 right-0 bottom-0 bg-black bg-opacity-60 backdrop-blur-xs`}
                 >
                     <div
                         ref={container}
-                        className={`bg-white ${width}  shadow shadow-int-mid-blue h1 `}
+                        className={`${transparent ? "bg-transparent" : "bg-white"} ${width} ${transparent ? " " : " shadow shadow-int-mid-blue "} h1 `}
                     >
                         {cloneElement(children, { close: closeModal })}
                     </div>
