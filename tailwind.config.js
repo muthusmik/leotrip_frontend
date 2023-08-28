@@ -71,7 +71,8 @@ module.exports = {
       fontFamily: {
         poppinsBold: ['Poppins-Bold'],
         poppinsRegular: ['Poppins-Regular'],
-        PoppinsSemiBold: ['Poppins-SemiBold']
+        PoppinsSemiBold: ['Poppins-SemiBold'],
+        poppinsBlack: ['poppins-Black'],
       },
 
       colors: {
@@ -98,6 +99,7 @@ module.exports = {
         'int-dark': '#333333',
         'int-background': '#FAFAFA',
         'int-red': '#EB5757',
+        'int-brown': '#EC8E03',
       },
       fontSize: {
         button: [
