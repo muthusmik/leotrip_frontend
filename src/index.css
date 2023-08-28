@@ -79,3 +79,18 @@ code {
   width: 100%;
   transition: 1s cubic-bezier(0.39, 0.575, 0.565, 1);
 }
+
+.linerar{
+  background-image: linear-gradient(to top left, white, white,#cee5f5,#78b7df,#52A0D2);
+}
+
+/* OfferSlider.css */
+
+.slide-container {
+  display: flex;
+  width: 100%; /* Make the container full width */
+  transition: transform 0.5s ease-in-out;
+}
+
+
+

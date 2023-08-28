@@ -76,6 +76,7 @@ module.exports = {
       },
 
       colors: {
+        'int-sandal': '#FBB040',
         "primary": '#52A0D2',
         bluebtn: '#5562D2',
         "int-yellow": '#F5B540',

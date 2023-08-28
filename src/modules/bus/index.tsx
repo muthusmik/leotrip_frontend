@@ -13,7 +13,9 @@ function BusModule() {
         <div>
             <Navbar />
             <Carousel>
-                gowtham
+                <div className="border-2 h-20 w-40 m-52">
+                    jlhdgvj
+                </div>
             </Carousel>
             <OfferSlider />
             <Dailydeals />
