@@ -26,10 +26,10 @@ export function Generateotp({ children, ...props }: any) {
     );
 }
 
-export function Googlesignin({ children, ...props }: any) {
+export function Googlesignin({ children, onClick, ...props }: any) {
     return (
         <>
-            <button className='flex uppercase bg-bluebtn rounded-md items-center pl-2 text-white pr-5 py-2 font-poppinsRegular w-full text-center justify-center'>
+            <button className='flex uppercase bg-bluebtn rounded-md items-center pl-2 text-white pr-5 py-2 font-poppinsRegular w-full text-center justify-center' onClick={() => onClick()}>
                 <div className='bg-white rounded-l-md'>
                     <img src={google} className='p-1' />
                 </div>
@@ -40,7 +40,7 @@ export function Googlesignin({ children, ...props }: any) {
         </>
     );
 }
-export function PrimaryButton({ children, outlined, rounded, shadow, blue, block, ...props }: any) {
+export function PrimaryButton({ children, outlined, rounded, shadow, blue, block, onClick, ...props }: any) {
     return (
         <>
             <button
@@ -53,6 +53,7 @@ export function PrimaryButton({ children, outlined, rounded, shadow, blue, block
                     ${block ? "w-full" : ""}
                     ${blue ? "bg-bluebtn" : "bg-int-sandal"}
                     text-center text-white px-5 py-2 font-poppinsRegular uppercase`}
+                onClick={onClick}
             >
 
                 {children}

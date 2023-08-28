@@ -13,15 +13,12 @@ function BusModule() {
         <div>
             <Navbar />
             <Carousel>
-                <div className="border-2 h-20 w-40 m-52">
-                    jlhdgvj
-                </div>
             </Carousel>
             <OfferSlider />
             <Dailydeals />
-            <AboutUs />  
-            <APPAdd />      
-           <HomeFooter/>
+            <AboutUs />
+            <APPAdd />
+            <HomeFooter />
         </div>
     );
 }

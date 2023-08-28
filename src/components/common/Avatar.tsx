@@ -6,12 +6,18 @@ import LogoutIcon from "../../assets/icons/logout-pascal.svg";
 import useOutsideAlerter from "hooks/useOutside";
 import ModalFullHeight from "styles/ModalFullHeight";
 import SignInContainer from "components/Auth/SignInContainer";
+import { AuthLogin } from "components/Auth/AuthLogin";
+import { AuthSignUp } from "components/Auth/AuthSignUp";
 
 
 
 export function Avatar() {
     const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(false);
-    const [isOpenAuthModal, setIsOpenAuthModal] = useState<boolean>(false)
+    const [isOpenAuthModal, setIsOpenAuthModal] = useState<boolean>(false);
+    const [isOpenLoginModal, setIsOpenLoginModal] = useState<boolean>(false);
+    const [isOpenSignUpModal, setIsOpenSignUpModal] = useState<boolean>(false)
+
+
     const [auth, setAuth] = useState(false);
     const wrapperRef = useRef(null);
     useOutsideAlerter({ ref: wrapperRef, callback: () => setIsDropdownOpen(false) })
@@ -45,6 +51,22 @@ export function Avatar() {
             onClick: () => { handleActionClick("Logout") }
         }
     ];
+    const handleProceed = () => {
+        setIsOpenAuthModal(false);
+
+        setIsOpenLoginModal(true);
+    }
+    const handleSignUp = () => {
+        setIsOpenAuthModal(false);
+
+        setIsOpenSignUpModal(true);
+    }
+    const handleLoginBack = () => {
+        setIsOpenLoginModal(false);
+        setIsOpenSignUpModal(false);
+        setIsOpenAuthModal(true);
+    }
+
 
     return (
         <div ref={wrapperRef} className=" relative mx-2 ml-[5%]">
@@ -81,10 +103,26 @@ export function Avatar() {
             <ModalFullHeight
                 active={isOpenAuthModal}
                 closeModal={() => setIsOpenAuthModal(false)}
-                width="w-[820px]"
+                width="w-[920px]"
                 isSubModal={true}
                 transparent={true}>
-                <SignInContainer setAuth={setAuth} close={setIsOpenAuthModal} />
+                <SignInContainer close={() => setIsOpenAuthModal(false)} proceed={handleProceed} signUp={handleSignUp} />
+            </ModalFullHeight>
+            <ModalFullHeight
+                active={isOpenLoginModal}
+                closeModal={() => setIsOpenLoginModal(false)}
+                width="w-[470px]"
+                isSubModal={true}
+            >
+                <AuthLogin Back={handleLoginBack} />
+            </ModalFullHeight>
+            <ModalFullHeight
+                active={isOpenSignUpModal}
+                closeModal={() => setIsOpenSignUpModal(false)}
+                width="w-[470px]"
+                isSubModal={true}
+            >
+                <AuthSignUp Back={handleLoginBack} />
             </ModalFullHeight>
         </div>
     );
