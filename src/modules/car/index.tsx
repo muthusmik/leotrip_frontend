@@ -1,12 +1,17 @@
 import Navbar from 'components/common/Navbar';
 import React from 'react';
+import Carousel from 'components/common/slider';
+import { HomeFooter } from 'components/common/Homepagrfooter';
+import HotelSearchComponent from 'modules/hotel/HotelSearchComponent';
 
 function CarModule() {
     return (
         <div>
             <Navbar />
-            <h2>Car Module</h2>
-            <p>This is the Car module page.</p>
+            <Carousel>
+                <HotelSearchComponent />
+            </Carousel>
+            <HomeFooter />
         </div>
     );
 }

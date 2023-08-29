@@ -132,7 +132,7 @@ type AutoSuggestionProps = {
 
 const AutoSuggestionList = forwardRef<any, AutoSuggestionProps>(
     ({ label, data, value, setValue, placeholder, img }, ref) => {
-
+        const [query, setQuery] = useState('')
         const [suggestions, setSuggestions] = useState([]);
         const [suggestionIndex, setSuggestionIndex] = useState(0);
         const [suggestionsActive, setSuggestionsActive] = useState(false);
@@ -147,7 +147,8 @@ const AutoSuggestionList = forwardRef<any, AutoSuggestionProps>(
 
         const handleChange = (e: { target: { value: string; }; }) => {
             const query = e.target.value.toLowerCase();
-            setValue(query);
+            // setValue(query);
+            setQuery(query)
             if (query.length > 1) {
                 const filterSuggestions = data.filter(
                     (suggestion: string) =>
@@ -163,6 +164,7 @@ const AutoSuggestionList = forwardRef<any, AutoSuggestionProps>(
         const handleClick = (e: any) => {
             setSuggestions([]);
             setValue(e.target.innerText);
+            setQuery(e.target.innerText);
             setSuggestionsActive(false);
         };
 
@@ -191,7 +193,7 @@ const AutoSuggestionList = forwardRef<any, AutoSuggestionProps>(
 
         const Suggestions = () => {
             return (
-                <ul className="suggestions bg-slate-600">
+                <ul className="suggestions bg-slate-600 z-50">
                     {suggestions.map((suggestion, index) => {
                         return (
                             <li
@@ -214,16 +216,16 @@ const AutoSuggestionList = forwardRef<any, AutoSuggestionProps>(
                     {label === "Location" ? <h2 className="font-poppinsRegular font-semibold relative bottom-3 bg-white text-center w-[90px]">{label}</h2> : <h2 className="font-poppinsRegular font-semibold relative bottom-3 bg-white text-center">{label}</h2>}
                     <img src={img} alt="error" className="w-[90px] h-[43px] relative bottom-3" />
                 </div>
-                <div className="w-[85%] flex flex-col justify-center px-4 border-l-2 border-black">
+                <div className="w-[85%] flex flex-col justify-center px-4 border-l-2 border-black z-50">
                     <div className="flex items-center">
                         <input
                             type="text"
                             placeholder={placeholder}
-                            value={value}
+                            value={query}
                             className="outline-none font-poppinsRegular h-full ps-1 w-full border-2 border-white"
                             onChange={handleChange}
                             onKeyDown={handleKeyDown}
-                            ref={inputRef} 
+                            ref={inputRef}
                         />
                     </div>
                     {suggestionsActive && (

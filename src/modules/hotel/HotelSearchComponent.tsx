@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import AutoSuggestionList from "components/AutoSuggestionList";
 import locationSvg from '../../assets/icons/locationSymbol.svg';
 import toBusSvg from '../../assets/icons/tobus.svg';
 import dateSvg from '../../assets/icons/datesvg.svg';
 import CustomDatePicker from "components/common/CustomdatePicker";
 import { PrimaryButton } from "styles/Button";
+import RoomGuestCountComponent from "./RoomGuestCountComponent";
 
 const autoCompleteData = [
     "Asparagus",
@@ -34,11 +35,27 @@ const HotelSearchComponent = () => {
     const [fromValue, setFromValue] = useState("");
     const [roomGuestDropdown, showRoomGuestDropdown] = useState(false);
     const [roomGuestCount, setRoomGuestCount] = useState({
-        roomCount: 5,
-        adultCount: 8,
-        childCount: 5,
-        infantCount: 5
+        roomCount: 1,
+        adultCount: 1,
+        childCount: 0
     })
+
+    const fromInputRef = useRef<any>(null);
+    const checkInRef = useRef<any>(null);
+
+    useEffect(() => {
+        if (fromValue && checkInRef.current) {
+            checkInRef.current.focus();
+        }
+    }, [fromValue]);
+
+    const handleFromValueChange = (newValue: any) => {
+        setFromValue(newValue);
+        if (newValue && checkInRef.current) {
+            checkInRef.current.focus();
+        }
+    };
+
     const handleRoomGuestCount = () => {
         console.log("ASSSDSDSDs..............", roomGuestCount)
         if (roomGuestDropdown) {
@@ -63,9 +80,11 @@ const HotelSearchComponent = () => {
                     label={"Location"}
                     value={fromValue}
                     placeholder={"Where you want to stay"}
-                    setValue={setFromValue}
+                    // setValue={setFromValue}
+                    setValue={handleFromValueChange} // Call the new handler
                     data={autoCompleteData}
                     img={locationSvg}
+                    ref={fromInputRef}
                 />
                 <div className="bg-white rounded-[10px] border-2 w-[24%] border-black flex flex-row h-[70px] px-2">
                     <div className="w-[20%]">
@@ -74,7 +93,7 @@ const HotelSearchComponent = () => {
                     </div>
                     <div className="w-[74%] flex flex-col justify-center px-2 border-l-2 border-black">
                         <div className="flex items-center">
-                            <CustomDatePicker onSelect={(e) => console.log(e)} />
+                            <CustomDatePicker onSelect={(e) => console.log(e)} ref={checkInRef} />
                         </div>
                     </div>
                 </div>
@@ -89,50 +108,24 @@ const HotelSearchComponent = () => {
                         </div>
                     </div>
                 </div>
-                <div className="bg-white rounded-[10px] border-2 border-black w-[20%] h-[70px] flex flex-col justify-center items-center">
+                <div className="bg-white rounded-[10px] border-2 border-black  hover:bg-slate-100 w-[20%] h-[70px] flex flex-col justify-center items-center">
                     <h2 className="font-poppinsRegular font-semibold relative bottom-3 bg-white text-center w-[80%] right-2">
                         Guests &amp; Rooms
                     </h2>
-                    <div className="relative bottom-3 px-2">
-                        <p className="font-poppinsRegular text-[16px] cursor-pointer" onClick={() => handleRoomGuestCount()}>
+                    <div className="px-2 h-full">
+                        <p className="flex text-center font-poppinsRegular text-[16px] cursor-pointer rounded-[5px]" onClick={() => handleRoomGuestCount()}>
                             Rooms: {roomGuestCount.roomCount}, Adults: {roomGuestCount.adultCount}
                             {roomGuestCount.childCount > 0 ? `, Child: ${roomGuestCount.childCount}` : null}
-                            {roomGuestCount.infantCount > 0 ? `, Infant(s): ${roomGuestCount.infantCount}` : null}
                         </p>
                     </div>
                 </div>
                 {roomGuestDropdown &&
-                    <div className="absolute top-[8rem] right-0 bg-white border-4 rounded-[10px] w-[20%]">
-                        <h2 className="text-center font-poppinsRegular text-2xl">Rooms</h2>
-                        <div className="flex flex-row px-4">
-                            <p className="font-bold font-poppinsRegular">Room Count: </p>
-                            <p></p>
-                            <p>{roomGuestCount.roomCount}</p>
-                            <p>Count</p>
-                        </div>
-                        <h2 className="text-center font-poppinsRegular text-2xl">Guests</h2>
-                        <div className="flex flex-row px-4">
-                            <p className="font-bold font-poppinsRegular">Adult Count: </p>
-                            <p></p>
-                            <p>{roomGuestCount.adultCount}</p>
-                            <p>Count</p>
-                        </div>
-                        <div className="flex flex-row px-4">
-                            <p className="font-bold font-poppinsRegular">Child Count: </p>
-                            <p></p>
-                            <p>{roomGuestCount.childCount}</p>
-                            <p>Count</p>
-                        </div>
-                        <div className="flex flex-row px-4">
-                            <p className="font-bold font-poppinsRegular">Infant Count: </p>
-                            <p></p>
-                            <p>{roomGuestCount.infantCount}</p>
-                            <p>Count</p>
-                        </div>
-                        <PrimaryButton rounded onClick={() => handleRoomGuestDropdown()}>
-                            <p className="w-[100px] font-poppinsRegular">Apply</p>
-                        </PrimaryButton>
-                    </div>}
+                    <RoomGuestCountComponent
+                        roomGuestCount={roomGuestCount}
+                        setRoomGuestCount={setRoomGuestCount}
+                        showRoomGuestDropdown={showRoomGuestDropdown}
+                    />
+                }
             </div>
             <div className="absolute top-[8.7rem] right-[38%]">
                 <PrimaryButton rounded onClick={() => handleSearchHotel()}>

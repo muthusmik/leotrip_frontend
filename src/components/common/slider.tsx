@@ -34,7 +34,7 @@ export function Carousel({ children, ...props }: any) {
 
   const [isReversed, setIsReversed] = useState(false)
   const CarouselInfiniteScroll = () => {
-    console.log(currentIndex, date.length);
+    // console.log(currentIndex, date.length);
     if (currentIndex === date.length - 2) {
       setIsReversed(true);
     } else if (currentIndex === 1) {

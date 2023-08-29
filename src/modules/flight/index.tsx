@@ -1,12 +1,17 @@
 import Navbar from 'components/common/Navbar';
 import React from 'react';
+import Carousel from 'components/common/slider';
+import { HomeFooter } from 'components/common/Homepagrfooter';
+import HotelSearchComponent from 'modules/hotel/HotelSearchComponent';
 
 function FlightModule() {
     return (
         <div>
             <Navbar />
-            <h2>Flight Module</h2>
-            <p>This is the flight module page.</p>
+            <Carousel>
+                <HotelSearchComponent />
+            </Carousel>
+            <HomeFooter />
         </div>
     );
 }

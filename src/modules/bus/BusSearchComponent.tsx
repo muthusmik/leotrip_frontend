@@ -35,6 +35,7 @@ const BusSearchComponent = () => {
     const [toValue, setToValue] = useState("");
     const fromInputRef = useRef<any>(null);
     const toInputRef = useRef<any>(null);
+    const dateOfJourney = useRef<any>(null);
     const handleSearchBus = () => {
         console.log("WERWEEFWWEFWEfew................", fromValue, toValue)
     }
@@ -43,14 +44,28 @@ const BusSearchComponent = () => {
             toInputRef.current.focus();
         }
     }, [fromValue]);
+
+    useEffect(() => {
+        if (toValue && dateOfJourney.current) {
+            dateOfJourney.current.focus();
+        }
+    }, [toValue]);
+
     const handleFromValueChange = (newValue: any) => {
         setFromValue(newValue);
-
-        // Move focus to the "To" input when a value is provided in "From"
         if (newValue && toInputRef.current) {
             toInputRef.current.focus();
         }
     };
+    const handleToValueChange = (newValue: any) => {
+        setToValue(newValue);
+        if (newValue && dateOfJourney.current) {
+            dateOfJourney.current.focus();
+            console.log("New value.............", dateOfJourney.current);
+
+        }
+    };
+
     return (
         <>
             <div className='flex flex-row w-full items-center justify-between gap-6 bg-white px-10 h-[160px] rounded-[20px]'>
@@ -67,7 +82,7 @@ const BusSearchComponent = () => {
                 <AutoSuggestionList
                     label={"To"}
                     value={toValue}
-                    setValue={setToValue}
+                    setValue={handleToValueChange}
                     placeholder={"Enter To city"}
                     data={autoCompleteData}
                     img={toBusSvg}
@@ -81,7 +96,7 @@ const BusSearchComponent = () => {
                         </div>
                         <div className="w-[80%] flex flex-col justify-center px-4 border-l-2 border-black ">
                             <div className="flex items-center">
-                                <CustomDatePicker onSelect={(e) => console.log(e)} />
+                                <CustomDatePicker onSelect={(e) => console.log(e)} ref={dateOfJourney} />
                             </div>
                         </div>
                     </div>
