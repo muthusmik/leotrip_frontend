@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import AutoSuggestionList from "components/AutoSuggestionList";
 import locationSvg from '../../assets/icons/locationSymbol.svg';
-import toBusSvg from '../../assets/icons/tobus.svg';
 import dateSvg from '../../assets/icons/datesvg.svg';
 import CustomDatePicker from "components/common/CustomdatePicker";
 import { PrimaryButton } from "styles/Button";
@@ -93,7 +92,7 @@ const HotelSearchComponent = () => {
                     </div>
                     <div className="w-[74%] flex flex-col justify-center px-2 border-l-2 border-black">
                         <div className="flex items-center">
-                            <CustomDatePicker onSelect={(e) => console.log(e)} ref={checkInRef} />
+                            <CustomDatePicker onSelect={(e) => console.log(e)} ref={checkInRef} minDate={new Date()} maxDate={new Date()} placeholder={"Select Check-In Date"} />
                         </div>
                     </div>
                 </div>
@@ -104,7 +103,7 @@ const HotelSearchComponent = () => {
                     </div>
                     <div className="w-[74%] flex flex-col justify-center px-2 border-l-2 border-black">
                         <div className="flex items-center">
-                            <CustomDatePicker onSelect={(e) => console.log(e)} />
+                            <CustomDatePicker onSelect={(e) => console.log(e)} minDate={new Date()} maxDate={new Date()} placeholder={"Select Check-Out Date"} />
                         </div>
                     </div>
                 </div>
@@ -127,7 +126,7 @@ const HotelSearchComponent = () => {
                     />
                 }
             </div>
-            <div className="absolute top-[8.7rem] right-[38%]">
+            <div className="absolute top-[8.3rem] right-[38%]">
                 <PrimaryButton rounded onClick={() => handleSearchHotel()}>
                     <p className="w-[200px] font-poppinsRegular">Search Hotel</p>
                 </PrimaryButton>

@@ -96,13 +96,13 @@ const BusSearchComponent = () => {
                         </div>
                         <div className="w-[80%] flex flex-col justify-center px-4 border-l-2 border-black ">
                             <div className="flex items-center">
-                                <CustomDatePicker onSelect={(e) => console.log(e)} ref={dateOfJourney} />
+                                <CustomDatePicker onSelect={(e) => console.log(e)} ref={dateOfJourney} minDate={new Date()} maxDate={new Date()} placeholder={"Select your Date"} />
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div className="absolute top-[8.7rem] right-[38%]">
+            <div className="absolute top-[8.3rem] right-[38%]">
                 <PrimaryButton rounded onClick={() => handleSearchBus()}>
                     <p className="w-[200px] font-poppinsRegular">Search Bus</p>
                 </PrimaryButton>

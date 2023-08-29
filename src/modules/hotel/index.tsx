@@ -1,7 +1,11 @@
-import Navbar from 'components/common/Navbar';
 import React from 'react';
+import Navbar from 'components/common/Navbar';
 import Carousel from 'components/common/slider';
-import { HomeFooter } from 'components/common/Homepagrfooter';
+import { HomeFooter } from 'components/common/Homepagefooter';
+import { AboutUs } from 'components/common/About/AboutUs';
+import { OfferSlider } from 'components/common/OfferSlider';
+import { Dailydeals } from 'components/common/DailyDeals';
+import APPAdd from 'components/common/AppAdd';
 import HotelSearchComponent from './HotelSearchComponent';
 
 function HotelModule() {
@@ -11,6 +15,10 @@ function HotelModule() {
             <Carousel>
                 <HotelSearchComponent />
             </Carousel>
+            <OfferSlider />
+            <Dailydeals />
+            <AboutUs />
+            <APPAdd />
             <HomeFooter />
         </div>
     );

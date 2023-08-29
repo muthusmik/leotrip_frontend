@@ -14,11 +14,17 @@ module.exports = {
       md: '768px',
       // => @media (min-width: 768px) { ... }
 
+      mdlg: '912px', // New breakpoint between md and lg
+      // => @media (min-width: 912px) { ... }
+
       lg: '1024px',
       // => @media (min-width: 1024px) { ... }
 
       xl: '1310px',
       // => @media (min-width: 1310px) { ... }
+
+      lgxl: '1280px', // New breakpoint between lg and xl
+      // => @media (min-width: 1280px) { ... }
 
       '2xl': '1536px',
       // => @media (min-width: 1536px) { ... }
@@ -33,10 +39,20 @@ module.exports = {
           '0%': { opacity: 0 },
           '100%': { opacity: 1 },
         },
+        slideInTop: {
+          '0%': { transform: 'translateY(-100%)', opacity: 0 },
+          '100%': { transform: 'translateY(0)', opacity: 1 },
+      },
+      slideOutTop: {
+          '0%': { transform: 'translateY(0)', opacity: 1 },
+          '100%': { transform: 'translateY(-100%)', opacity: 0 },
+      },
       },
       animation: {
         'fade-out': 'fadeOut 1s ease-in-out',
         'fade-in': 'fadeIn 1s ease-in-out',
+        'slide-in-top': 'slideInTop 0.5s ease-out',
+        'slide-out-top': 'slideOutTop 0.5s ease-out',
       },
       boxShadow: {
         card: '0px 20px 44px #C9D3D7, 0px 1px 2px rgba(0, 0, 0, 0.15)',
@@ -54,7 +70,8 @@ module.exports = {
       fontFamily: {
         poppinsBold: ['Poppins-Bold'],
         poppinsRegular: ['Poppins-Regular'],
-        PoppinsSemiBold: ['Poppins-SemiBold']
+        PoppinsSemiBold: ['Poppins-SemiBold'],
+        poppinsBlack: ['poppins-Black'],
       },
 
       colors: {
@@ -63,7 +80,7 @@ module.exports = {
         "int-yellow": '#F5B540',
         sandalbtnborder: '#636262',
         Genderbut: '#329DE1',
-        'int-sandal': '#FBB040',
+        'int-sandal':'#FBB040',
         'int-green-alert': '#97D382',
         'int-black': '#000000',
         'int-light-blue': '#ECEFF0',
@@ -81,6 +98,7 @@ module.exports = {
         'int-dark': '#333333',
         'int-background': '#FAFAFA',
         'int-red': '#EB5757',
+        'int-brown': '#EC8E03',
       },
       fontSize: {
         button: [
