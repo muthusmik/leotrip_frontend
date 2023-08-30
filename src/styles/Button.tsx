@@ -40,11 +40,11 @@ export function Googlesignin({ children, ...props }: any) {
         </>
     );
 }
-export function PrimaryButton({ children, outlined, rounded, shadow, blue, block, ...props }: any) {
+export function PrimaryButton({ children, outlined, rounded, shadow, blue, block, onClick, ...props }: any) {
     return (
         <>
             <button
-
+                onClick={onClick}
                 className={`flex my-2 items-center justify-center
                     ${outlined ? "bg-transparent rounded-md border-white border-2"
                         : rounded ? "bg-int-sandal rounded-full"
