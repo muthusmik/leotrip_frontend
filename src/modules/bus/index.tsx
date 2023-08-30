@@ -1,7 +1,7 @@
 import React from 'react';
 import { HomeFooter } from 'components/common/Homepagefooter';
 import Navbar from 'components/common/Navbar';
-import Carousel from 'components/common/slider';
+import Carousel from 'components/common/Carousel';
 import BusSearchComponent from './BusSearchComponent';
 import { AboutUs } from 'components/common/About/AboutUs';
 import { OfferSlider } from 'components/common/OfferSlider';
