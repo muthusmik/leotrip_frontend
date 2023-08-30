@@ -72,9 +72,10 @@ const HotelSearchComponent = () => {
     const handleRoomGuestDropdown = () => {
         showRoomGuestDropdown(false)
     }
+
     return (
         <>
-            <div className='flex flex-row w-full items-center justify-between gap-4 bg-white px-10 h-[160px] rounded-[20px]'>
+            <div className='flex flex-row w-full items-center justify-between gap-4 bg-white px-10 h-[160px] rounded-[20px] shadow-lg'>
                 <AutoSuggestionList
                     label={"Location"}
                     value={fromValue}

@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState,useRef } from 'react';
 import { PrimaryButton } from 'styles/Button';
 import Minus from "../../assets/icons/minus.svg";
 import Plus from "../../assets/icons/plus.svg";
+import useOutsideAlerter from 'hooks/useOutside';
 
 type RoomGuestCountComponentProps = {
     roomGuestCount: any,
@@ -14,6 +15,11 @@ const RoomGuestCountComponent = ({ roomGuestCount, setRoomGuestCount, showRoomGu
     const [currentAdultCount, setCurrentAdultCount] = useState(roomGuestCount.adultCount);
     const [currentChildCount, setCurrentChildCount] = useState(roomGuestCount.childCount);
     const [childAges, setChildAges] = useState<Array<number>>([0]);
+
+
+    const wrapperRef = useRef(null);
+    useOutsideAlerter({ ref: wrapperRef, callback: () => showRoomGuestDropdown(false) });
+
 
     const handleRoomCount = (type: string) => {
         if (type === "DEC") {
@@ -140,7 +146,7 @@ const RoomGuestCountComponent = ({ roomGuestCount, setRoomGuestCount, showRoomGu
     const countTag = 'w-[30px] h-full text-center flex items-center justify-center font-poppinsRegular'
 
     return (
-        <div className="absolute top-[8rem] right-[-80px] bg-white border-4 rounded-[10px] w-[36%] z-10">
+        <div ref={wrapperRef} className="absolute top-[8rem] right-[-80px] bg-white border-4 rounded-[10px] w-[36%] z-10">
             <div className={mainContainerStyle}>
                 <h2 className="text-center font-poppinsRegular text-2xl">Rooms<span className='text-sm'> (Max 8)</span></h2>
                 <div className={subContainerStyle}>

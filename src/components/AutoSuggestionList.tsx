@@ -211,7 +211,7 @@ const AutoSuggestionList = forwardRef<any, AutoSuggestionProps>(
         };
 
         return (
-            <div className="flex flex-row rounded-[10px] w-[40%] h-[70px] px-2 border-black bg-white border-2">
+            <div className="flex flex-row rounded-[10px] max-w-[40%] h-[70px] px-2 border-black bg-white border-2">
                 <div className="w-[15%] h-full">
                     {label === "Location" ? <h2 className="font-poppinsRegular font-semibold relative bottom-3 bg-white text-center w-[90px]">{label}</h2> : <h2 className="font-poppinsRegular font-semibold relative bottom-3 bg-white text-center">{label}</h2>}
                     <img src={img} alt="error" className="w-[90px] h-[43px] relative bottom-3" />
