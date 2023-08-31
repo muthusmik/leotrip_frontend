@@ -31,7 +31,15 @@ const autoCompleteData = [
 
 const HotelSearchComponent = () => {
 
+    const today = new Date();
+    const maxDate = new Date();
+    maxDate.setMonth(today.getMonth() + 6);
+    const dateOfRetrun = new Date();
+    dateOfRetrun.setDate(today.getDate() + 1);
+
     const [fromValue, setFromValue] = useState("");
+    const [checkInDate, setCheckInDate] = useState();
+    const [checkOutDate, setCheckOutDate] = useState(dateOfRetrun);
     const [roomGuestDropdown, showRoomGuestDropdown] = useState(false);
     const [roomGuestCount, setRoomGuestCount] = useState({
         roomCount: 1,
@@ -41,6 +49,7 @@ const HotelSearchComponent = () => {
 
     const fromInputRef = useRef<any>(null);
     const checkInRef = useRef<any>(null);
+    const checkOutRef = useRef<any>(null);
 
     useEffect(() => {
         if (fromValue && checkInRef.current) {
@@ -48,11 +57,29 @@ const HotelSearchComponent = () => {
         }
     }, [fromValue]);
 
+    useEffect(() => {
+        if (checkInDate && checkOutRef.current) {
+            checkOutRef.current.focus();
+        }
+    }, [checkInDate]);
+
     const handleFromValueChange = (newValue: any) => {
         setFromValue(newValue);
         if (newValue && checkInRef.current) {
             checkInRef.current.focus();
         }
+    };
+
+    const handleCheckInDate = (newValue: any) => {
+        setCheckInDate(newValue);
+        if (newValue && checkOutRef.current) {
+            checkOutRef.current.focus();
+        }
+    };
+
+    const handleCheckOutDate = (newValue: any) => {
+        setCheckOutDate(newValue);
+        showRoomGuestDropdown(true);
     };
 
     const handleRoomGuestCount = () => {
@@ -93,7 +120,7 @@ const HotelSearchComponent = () => {
                     </div>
                     <div className="w-[74%] flex flex-col justify-center px-2 border-l-2 border-black">
                         <div className="flex items-center">
-                            <CustomDatePicker onSelect={(e) => console.log(e)} ref={checkInRef} minDate={new Date()} maxDate={new Date()} placeholder={"Select Check-In Date"} />
+                            <CustomDatePicker onSelect={(e) => handleCheckInDate(e)} ref={checkInRef} minDate={today} maxDate={maxDate} placeholder={"Select Check-In Date"} />
                         </div>
                     </div>
                 </div>
@@ -104,7 +131,7 @@ const HotelSearchComponent = () => {
                     </div>
                     <div className="w-[74%] flex flex-col justify-center px-2 border-l-2 border-black">
                         <div className="flex items-center">
-                            <CustomDatePicker onSelect={(e) => console.log(e)} minDate={new Date()} maxDate={new Date()} placeholder={"Select Check-Out Date"} />
+                            <CustomDatePicker onSelect={(e) => handleCheckOutDate(e)} ref={checkOutRef} minDate={dateOfRetrun} maxDate={maxDate} placeholder={"Select Check-Out Date"} />
                         </div>
                     </div>
                 </div>
@@ -127,7 +154,7 @@ const HotelSearchComponent = () => {
                     />
                 }
             </div>
-            <div className="absolute top-[8.3rem] right-[38%]">
+            <div className="absolute top-[8.3rem] right-[40%]">
                 <PrimaryButton rounded onClick={() => handleSearchHotel()}>
                     <p className="w-[200px] font-poppinsRegular">Search Hotel</p>
                 </PrimaryButton>

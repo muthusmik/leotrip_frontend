@@ -8,7 +8,8 @@ import dateSvg from '../../../assets/icons/datesvg.svg';
 import CustomDatePicker from "components/common/CustomdatePicker";
 import { PrimaryButton } from "styles/Button";
 import RadioGroup from "components/common/RadioGroup";
-import TravellerCountComponent from "modules/flight/TravellerCount";
+import CustomSelect from "./CarSelectTripType";
+import moment from "moment";
 
 const autoCompleteData = [
     "Asparagus",
@@ -40,30 +41,41 @@ const options = [
     { value: 'hourlyRental', label: 'Hourly Rental' },
 ];
 
+const selectTripType = [
+    { value: 'fromAirport', label: 'From Airport' },
+    { value: 'toAirport', label: 'To Airport' },
+]
+
 const CarSearchComponent = () => {
 
     const today = new Date();
     const maxDate = new Date();
     maxDate.setMonth(today.getMonth() + 6);
 
+    const dateOfRetrun = new Date();
+    dateOfRetrun.setDate(today.getDate() + 1);
+
     const [fromValue, setFromValue] = useState("");
     const [toValue, setToValue] = useState("");
     const [selectedOption, setSelectedOption] = useState<string>('oneWay');
-    const [showTravellerDropdown, setShowTravellerDropdown] = useState(false);
     const [tripType, setTripType] = useState<string>("fromAirport");
-    const [travellerData, setTravellerData] = useState({
-        adultCount: 9,
-        childCount: 6,
-        infantCount: 6,
-        class: "economy"
-    })
+    const [date, setDate] = useState(today);
+    const [returnDate, setReturnDate] = useState(dateOfRetrun);
+
     const fromInputRef = useRef<any>(null);
     const toInputRef = useRef<any>(null);
     const dateOfJourney = useRef<any>(null);
+    const returnDateOfJourney = useRef<any>(null);
+    const selectRef = useRef<any>(null);
 
     const handleSearchCar = () => {
-        console.log("WERWEEFWWEFWEfew................", fromValue, toValue, travellerData)
+        console.log("WERWEEFWWEFWEfew................", fromValue, toValue, moment(date).format("DD/MM/YYYY"), returnDate)
     }
+    useEffect(() => {
+        if (tripType && fromInputRef.current) {
+            fromInputRef.current.focus();
+        }
+    }, [tripType]);
 
     useEffect(() => {
         if (fromValue && toInputRef.current) {
@@ -77,6 +89,12 @@ const CarSearchComponent = () => {
         }
     }, [toValue]);
 
+    useEffect(() => {
+        if (toValue && returnDateOfJourney.current) {
+            returnDateOfJourney.current.focus();
+        }
+    }, [date]);
+
     const handleFromValueChange = (newValue: any) => {
         setFromValue(newValue);
         if (newValue && toInputRef.current) {
@@ -88,21 +106,26 @@ const CarSearchComponent = () => {
         setToValue(newValue);
         if (newValue && dateOfJourney.current) {
             dateOfJourney.current.focus();
-            console.log("New value.............", dateOfJourney.current.value);
+        }
+    };
+
+    const handleDateOfJourney = (newValue: any) => {
+        setDate(newValue);
+        if (newValue && returnDateOfJourney.current) {
+            returnDateOfJourney.current.focus();
         }
     };
 
     const handleOptionChange = (value: string) => {
         setSelectedOption(value);
+        if (value !== "airportTransfer")
+            setTripType('')
+        else
+            setTripType("fromAirport")
     };
 
-    const handleTravellerCount = () => {
-        if (showTravellerDropdown) {
-            setShowTravellerDropdown(false)
-        }
-        else {
-            setShowTravellerDropdown(true)
-        }
+    const handleSelectValue = (value: string) => {
+        setTripType(value)
     }
 
     return (
@@ -117,14 +140,15 @@ const CarSearchComponent = () => {
                             <div className="w-[5%]">
                                 <h2 className="font-poppinsRegular font-semibold relative bottom-3 bg-white text-center w-[140px]">Select Trip Type</h2>
                             </div>
-                            <div className="w-[100%] flex flex-col justify-center px-4 ">
+                            <div className="w-[100%] flex flex-col justify-center px-2">
                                 <div className="flex items-center">
-                                    <select name="" id="" className="w-full" onChange={(e) => setTripType(e.target.value)}>
+                                    <select name="" id="" className="w-full h-full outline-none" onChange={(e) => handleSelectValue(e.target.value)} ref={selectRef}>
                                         <option value="" disabled>Select Type</option>
                                         <option value="fromAirport">From Airport</option>
                                         <option value="toAirport">To Airport</option>
                                     </select>
                                 </div>
+                                {/* <CustomSelect options={selectTripType} onSelect={handleSelectValue} ref={selectRef} /> */}
                             </div>
                         </div>
                     </div>}
@@ -134,7 +158,7 @@ const CarSearchComponent = () => {
                     placeholder={"Pickup Location"}
                     setValue={handleFromValueChange}
                     data={autoCompleteData}
-                    img={selectedOption === 'airportTransfer' ? fromFlightSvg : getInCarSvg}
+                    img={selectedOption === 'airportTransfer' && tripType === "fromAirport" ? fromFlightSvg : getInCarSvg}
                     ref={fromInputRef}
                 />
                 <AutoSuggestionList
@@ -143,7 +167,7 @@ const CarSearchComponent = () => {
                     setValue={handleToValueChange}
                     placeholder={"Drop Location"}
                     data={autoCompleteData}
-                    img={getOutCarSvg}
+                    img={tripType === "toAirport" ? toFlightSvg : getOutCarSvg}
                     ref={toInputRef}
                 />
                 <div className="bg-white rounded-[10px] border-2 border-black h-[70px] min-w-[20%] max-w-[40%]">
@@ -154,7 +178,7 @@ const CarSearchComponent = () => {
                         </div>
                         <div className="w-[80%] flex flex-col justify-center px-4 border-l-2 border-black ">
                             <div className="flex items-center">
-                                <CustomDatePicker onSelect={(e) => console.log(e)} ref={dateOfJourney} minDate={today} maxDate={maxDate} placeholder={"Pickup Date and Time"} />
+                                <CustomDatePicker onSelect={(e) => handleDateOfJourney(e)} ref={dateOfJourney} minDate={today} maxDate={maxDate} placeholder={"Pickup Date and Time"} />
                             </div>
                         </div>
                     </div>
@@ -168,32 +192,14 @@ const CarSearchComponent = () => {
                             </div>
                             <div className="w-[80%] flex flex-col justify-center px-4 border-l-2 border-black ">
                                 <div className="flex items-center">
-                                    <CustomDatePicker onSelect={(e) => console.log(e)} ref={dateOfJourney} minDate={today} maxDate={maxDate} placeholder={"Select Return Date"} />
+                                    <CustomDatePicker onSelect={(e) => setReturnDate(e)} ref={returnDateOfJourney} minDate={today} maxDate={maxDate} placeholder={"Select Return Date"} />
                                 </div>
                             </div>
                         </div>
                     </div>
                 }
-                {/* <div className="bg-white rounded-[10px] border-2 border-black  hover:bg-slate-100 w-[20%] h-[70px] flex flex-col justify-center items-center">
-                    <h2 className="font-poppinsRegular font-semibold relative bottom-3 bg-white text-center w-[80%] right-2">
-                        Travellers &amp; Class
-                    </h2>
-                    <div className="px-2 h-full">
-                        <p className="flex text-center font-poppinsRegular text-[16px] cursor-pointer rounded-[5px]" onClick={() => handleTravellerCount()} >
-                            Travellers: {travellerData.adultCount + travellerData.childCount + travellerData.infantCount}<br />
-                            Class: {travellerData.class}
-                        </p>
-                    </div>
-                    {showTravellerDropdown &&
-                        <TravellerCountComponent
-                            travellerData={travellerData}
-                            setTravellerData={setTravellerData}
-                            setShowTravellerDropdown={setShowTravellerDropdown}
-                        />
-                    }
-                </div> */}
             </div>
-            <div className="absolute top-[10rem] right-[38%]">
+            <div className="absolute top-[9.7rem] right-[40%]">
                 <PrimaryButton rounded onClick={() => handleSearchCar()}>
                     <p className="w-[200px] font-poppinsRegular">Search Car</p>
                 </PrimaryButton>

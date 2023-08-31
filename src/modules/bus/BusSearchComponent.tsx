@@ -102,7 +102,7 @@ const BusSearchComponent = () => {
                     </div>
                 </div>
             </div>
-            <div className="absolute top-[8.3rem] right-[38%]">
+            <div className="absolute top-[8.3rem] right-[40%]">
                 <PrimaryButton rounded onClick={() => handleSearchBus()}>
                     <p className="w-[200px] font-poppinsRegular">Search Bus</p>
                 </PrimaryButton>

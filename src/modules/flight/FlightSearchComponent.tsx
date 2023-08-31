@@ -41,24 +41,29 @@ const FlightSearchComponent = () => {
     const today = new Date();
     const maxDate = new Date();
     maxDate.setMonth(today.getMonth() + 6);
+    const dateOfRetrun = new Date();
+    dateOfRetrun.setDate(today.getDate() + 1);
 
     const [fromValue, setFromValue] = useState("");
     const [toValue, setToValue] = useState("");
+    const [date, setDate] = useState(today);
+    const [returnDate, setReturnDate] = useState(dateOfRetrun);
     const [selectedOption, setSelectedOption] = useState<string>('oneWay');
     const [showTravellerDropdown, setShowTravellerDropdown] = useState(false);
 
     const [travellerData, setTravellerData] = useState({
-        adultCount: 9,
-        childCount: 6,
-        infantCount: 6,
+        adultCount: 1,
+        childCount: 0,
+        infantCount: 0,
         class: "economy"
     })
     const fromInputRef = useRef<any>(null);
     const toInputRef = useRef<any>(null);
     const dateOfJourney = useRef<any>(null);
+    const returnDateOfJourney = useRef<any>(null);
 
     const handleSearchFlight = () => {
-        console.log("WERWEEFWWEFWEfew................", fromValue, toValue, travellerData)
+        console.log("WERWEEFWWEFWEfew................", fromValue, toValue, travellerData, returnDate)
     }
 
     useEffect(() => {
@@ -73,6 +78,14 @@ const FlightSearchComponent = () => {
         }
     }, [toValue]);
 
+    useEffect(() => {
+        if (selectedOption === "roundTrip") {
+            if (date && returnDateOfJourney.current) {
+                returnDateOfJourney.current.focus();
+            }
+        }
+    }, [date]);
+
     const handleFromValueChange = (newValue: any) => {
         setFromValue(newValue);
         if (newValue && toInputRef.current) {
@@ -86,6 +99,21 @@ const FlightSearchComponent = () => {
             dateOfJourney.current.focus();
             console.log("New value.............", dateOfJourney.current.value);
         }
+    };
+
+    const handleDateOfJourney = (newValue: any) => {
+        setDate(newValue);
+        if (newValue && returnDateOfJourney.current) {
+            returnDateOfJourney.current.focus();
+        }
+        else if (selectedOption !== "roundTrip") {
+            setShowTravellerDropdown(true)
+        }
+    };
+
+    const handleReturnDateOfJourney = (newValue: any) => {
+        setReturnDate(newValue);
+        setShowTravellerDropdown(true)
     };
 
     const handleOptionChange = (value: string) => {
@@ -134,7 +162,7 @@ const FlightSearchComponent = () => {
                         </div>
                         <div className="w-[80%] flex flex-col justify-center px-4 border-l-2 border-black ">
                             <div className="flex items-center">
-                                <CustomDatePicker onSelect={(e) => console.log(e)} ref={dateOfJourney} minDate={today} maxDate={maxDate} placeholder={"Select Date"} />
+                                <CustomDatePicker onSelect={(e) => handleDateOfJourney(e)} ref={dateOfJourney} minDate={today} maxDate={maxDate} placeholder={"Select Date"} />
                             </div>
                         </div>
                     </div>
@@ -148,7 +176,7 @@ const FlightSearchComponent = () => {
                             </div>
                             <div className="w-[80%] flex flex-col justify-center px-4 border-l-2 border-black ">
                                 <div className="flex items-center">
-                                    <CustomDatePicker onSelect={(e) => console.log(e)} ref={dateOfJourney} minDate={today} maxDate={maxDate} placeholder={"Select Return Date"} />
+                                    <CustomDatePicker onSelect={(e) => handleReturnDateOfJourney(e)} ref={returnDateOfJourney} minDate={today} maxDate={maxDate} placeholder={"Select Return Date"} />
                                 </div>
                             </div>
                         </div>
@@ -175,7 +203,7 @@ const FlightSearchComponent = () => {
                     }
                 </div>
             </div>
-            <div className="absolute top-[10rem] right-[38%]">
+            <div className="absolute top-[9.7rem] right-[40%]">
                 <PrimaryButton rounded onClick={() => handleSearchFlight()}>
                     <p className="w-[200px] font-poppinsRegular">Search Flight</p>
                 </PrimaryButton>
