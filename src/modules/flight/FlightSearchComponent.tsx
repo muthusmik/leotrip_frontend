@@ -63,7 +63,7 @@ const FlightSearchComponent = () => {
     const returnDateOfJourney = useRef<any>(null);
 
     const handleSearchFlight = () => {
-        console.log("WERWEEFWWEFWEfew................", fromValue, toValue, travellerData, returnDate)
+        console.log("handleSearchFlight................", fromValue, toValue, travellerData, returnDate)
     }
 
     useEffect(() => {
