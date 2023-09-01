@@ -40,6 +40,7 @@ export function Googlesignin({ children, onClick, ...props }: any) {
         </>
     );
 }
+
 export function PrimaryButton({ children, outlined, rounded, shadow, blue, block, onClick, loading, ...props }: any) {
     return (
         <button
@@ -63,6 +64,7 @@ export function PrimaryButton({ children, outlined, rounded, shadow, blue, block
                 children
             )}
         </button>
+
     );
 }
 

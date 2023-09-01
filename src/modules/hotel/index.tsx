@@ -1,12 +1,25 @@
-import Navbar from 'components/common/Navbar';
 import React from 'react';
+import Navbar from 'components/common/Navbar';
+import Carousel from 'components/common/Carousel';
+import { HomeFooter } from 'components/common/Homepagefooter';
+import { AboutUs } from 'components/common/About/AboutUs';
+import { OfferSlider } from 'components/common/OfferSlider';
+import { Dailydeals } from 'components/common/DailyDeals';
+import APPAdd from 'components/common/AppAdd';
+import HotelSearchComponent from './HotelSearchComponent';
 
 function HotelModule() {
     return (
         <div>
             <Navbar />
-            <h2>Hotel Module</h2>
-            <p>This is the hotel module page.</p>
+            <Carousel>
+                <HotelSearchComponent />
+            </Carousel>
+            <OfferSlider />
+            <Dailydeals />
+            <AboutUs />
+            <APPAdd />
+            <HomeFooter />
         </div>
     );
 }

@@ -55,12 +55,12 @@ export function Carousel({ children, ...props }: any) {
 
   return (
     <>
-      <div className='carousel-container flex overflow-hidden' >
+      <div className='carousel-container flex overflow-hidden justify-center' >
         {date.map((item) => {
           return (
             <>
               <img src={item.image} className='carousel-item flex items-center justify-center opacity-50 z-0' style={{ transform: `translate(-${currentIndex * 100}%)` }} key={item.id} />
-              <div className='z-10 absolute'>{children}</div>
+              <div className='z-10 absolute w-[86%] flex self-center'>{children}</div>
             </>)
         })
         }

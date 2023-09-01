@@ -1,22 +1,28 @@
 import CustomDatePicker from 'components/common/CustomdatePicker';
 import Navbar from 'components/common/Navbar';
 import React from 'react';
+import Carousel from 'components/common/Carousel';
+import { HomeFooter } from 'components/common/Homepagefooter';
+import FlightSearchComponent from './FlightSearchComponent';
+import { OfferSlider } from 'components/common/OfferSlider';
+import APPAdd from 'components/common/AppAdd';
+import { Dailydeals } from 'components/common/DailyDeals';
+import { AboutUs } from 'components/common/About/AboutUs';
 
 function FlightModule() {
 
     return (
         <div>
             <Navbar />
-            <h2>Flight Module</h2>
-            <CustomDatePicker onSelect={(date) => {
-                console.log('Selected date:', date);
-                // Perform any actions you want when a date is selected
-            }}
-                minDate={new Date()} // Set your minDate value
-                maxDate={new Date()} // Set your maxDate value
-                placeholder="Select a date" // Customize the placeholder tex
-            />
-            <p>This is the flight module page.</p>
+
+            <Carousel>
+                <FlightSearchComponent />
+            </Carousel>
+            <OfferSlider />
+            <Dailydeals />
+            <AboutUs />
+            <APPAdd />
+            <HomeFooter />
 
         </div>
     );

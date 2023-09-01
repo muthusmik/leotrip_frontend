@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, forwardRef, useImperativeHandle } from 'react';
 import { isSameDay, startOfMonth, getDay, addDays, isAfter, isBefore } from 'date-fns';
 import Holidays from 'date-holidays';
 import useOutsideAlerter from 'hooks/useOutside';
@@ -13,15 +13,21 @@ interface CustomDatePickerProps {
     placeholder: string;
 }
 
-const CustomDatePicker: React.FC<CustomDatePickerProps> = ({ onSelect, minDate, maxDate, placeholder }) => {
+const CustomDatePicker = forwardRef<any, CustomDatePickerProps>(
+    ({ onSelect, minDate, maxDate, placeholder }, ref) => {
 
-    const hd = new Holidays();
-    hd.init('US');
-
-    const [selectedDate, setSelectedDate] = useState<Date | null>(null);
-    const [currentDate, setCurrentDate] = useState<Date>(new Date());
-    const [isHidePrevious, setIsHidePrevious] = useState(true);
-    const [isHideNext, setIsHideNext] = useState(false);
+        const hd = new Holidays();
+        hd.init('US');
+        const inputRef = useRef<HTMLInputElement | null>(null);
+        useImperativeHandle(ref, () => ({
+            focus: () => {
+                inputRef.current?.focus();
+            }
+        }));
+        const [selectedDate, setSelectedDate] = useState<Date | null>(null);
+        const [currentDate, setCurrentDate] = useState<Date>(new Date());
+        const [isHidePrevious, setIsHidePrevious] = useState(true);
+        const [isHideNext, setIsHideNext] = useState(false);
 
     const [isDatePickerVisible, setDatePickerVisible] = useState<boolean>(false);
 
@@ -161,36 +167,37 @@ const CustomDatePicker: React.FC<CustomDatePickerProps> = ({ onSelect, minDate, 
         <div className="custom-datepicker cursor-pointer">
             <input
                 type="text"
+                    placeholder={placeholder}
                 value={selectedDate ? selectedDate.toLocaleDateString('en-GB') : ''}
                 onClick={handleInputClick}
+                    ref={inputRef}
                 readOnly // Make the input box read-only to prevent direct editing
-                className='h-10 rounded-[10px]'
-                placeholder={placeholder}
-            />
-            {isDatePickerVisible && (
-                <div ref={wrapperRef} className='fixed mt-2 mx-5 bg-white rounded-2xl shadow-lg p-2 '>
-                    <div className="flex mx-5 mt-1 bg-white items-center text-center justify-between" style={{ userSelect: 'none' }}>
-                        <div>{!isHidePrevious && <ChevronLeft onClick={handlePrevMonth} className='w-5' />}</div>
-                        <div>{currentDate.toLocaleDateString('default', { month: 'short', year: 'numeric' })}</div>
-                        <div> {!isHideNext && <ChevronRight onClick={handleNextMonth} className='w-5' />}</div>
-                    </div>
-                    <table className="days-table mx-5" style={{ userSelect: 'none' }}>
-                        <thead className='user-select-none'>
-                            <tr className='user-select-none'>
-                                {dayNames.map(dayName => (
-                                    <th key={dayName} className="text-int-dark-blue w-[50px]">
-                                        {dayName}
-                                    </th>
-                                ))}
-                            </tr>
-                        </thead>
-                        <tbody className='user-select-none' >
-                            {renderDaysByWeek()}
-                        </tbody>
-                    </table>
-                </div>)}
-        </div>
-    );
-};
+                    className='h-10 rounded-[10px] font-poppinsRegular'
+                />
+                {isDatePickerVisible && (
+                    <div ref={wrapperRef} className='fixed mt-2 mx-5 bg-white rounded-2xl shadow-lg p-2'>
+                        <div className="flex mx-5 mt-1 bg-white items-center text-center justify-between" style={{ userSelect: 'none' }}>
+                            <div>{!isHidePrevious && <ChevronLeft onClick={handlePrevMonth} className='w-5' />}</div>
+                            <div>{currentDate.toLocaleDateString('default', { month: 'short', year: 'numeric' })}</div>
+                            <div> {!isHideNext && <ChevronRight onClick={handleNextMonth} className='w-5' />}</div>
+                        </div>
+                        <table className="days-table mx-5" style={{ userSelect: 'none' }}>
+                            <thead className='user-select-none'>
+                                <tr className='user-select-none'>
+                                    {dayNames.map(dayName => (
+                                        <th key={dayName} className="text-int-dark-blue w-[50px]">
+                                            {dayName}
+                                        </th>
+                                    ))}
+                                </tr>
+                            </thead>
+                            <tbody className='user-select-none' >
+                                {renderDaysByWeek()}
+                            </tbody>
+                        </table>
+                    </div>)}
+            </div>
+        );
+    });
 
 export default CustomDatePicker;
