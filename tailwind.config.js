@@ -48,12 +48,22 @@ module.exports = {
           '0%': { transform: 'translateY(0)', opacity: 1 },
           '100%': { transform: 'translateY(-100%)', opacity: 0 },
       },
+      shimmer: {
+        '0%': { transform: 'translateX(-100%)' },
+        '100%': { transform: 'translateX(100%)' },
+      },
+      spin: {
+        '0%': { transform: 'rotate(0deg)' },
+        '100%': { transform: 'rotate(360deg)' },
+      },
       },
       animation: {
         'fade-out': 'fadeOut 1s ease-in-out',
         'fade-in': 'fadeIn 1s ease-in-out',
         'slide-in-top': 'slideInTop 0.5s ease-out',
         'slide-out-top': 'slideOutTop 0.5s ease-out',
+        'shimmer': 'shimmer 1s infinite',
+        'spin': 'spin 1s linear infinite',
       },
       boxShadow: {
         card: '0px 20px 44px #C9D3D7, 0px 1px 2px rgba(0, 0, 0, 0.15)',
@@ -61,6 +71,8 @@ module.exports = {
         table: '0px 2px 3px -1px rgba(0, 0, 0, 0.14)',
         'media-player-control': '0px 11px 24px -1px rgba(0, 0, 0, 0.25)',
         patientInfo: '0px 6px 14px rgba(0, 0, 0, 0.05), 0px 0.5px 0px #ECEFF0',
+        dark: '0 4px 6px -1px rgba(0, 0, 0, 0.8), 0 2px 4px -1px rgba(0, 0, 0, 0.6)',
+        'top-dark': '0 -4px 6px -1px rgba(1, 1, 1, 0.5), 0 -2px 4px -1px rgba(0, 0, 0, 0.6)',
       },
       dropShadow: {
         'diashow-img': '0px 14px 94px rgba(0, 0, 0, 0.25)',

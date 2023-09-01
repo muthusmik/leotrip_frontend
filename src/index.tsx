@@ -7,6 +7,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import ErrorBoundary from './components/common/ErrorBoundaries';
 import ToastWrapper from './provider/toastWrapper';
+import { AuthProvider } from 'components/Auth/AuthContext';
 
 // to prevent re fetching if change focus, we dont need to do that i think
 const queryClient = new QueryClient({
@@ -23,7 +24,9 @@ ReactDOM.render(
       <ToastWrapper>
         <React.StrictMode>
           <QueryClientProvider client={queryClient}>
-            <App />
+            <AuthProvider>
+              <App />
+            </AuthProvider>
           </QueryClientProvider>
         </React.StrictMode>
       </ToastWrapper>
