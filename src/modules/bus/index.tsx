@@ -17,9 +17,9 @@ function BusModule() {
             </Carousel>
             <OfferSlider />
             <Dailydeals />
-            <AboutUs />  
-            <APPAdd />      
-           <HomeFooter/>
+            <AboutUs />
+            <APPAdd />
+            <HomeFooter />
         </div>
     );
 }

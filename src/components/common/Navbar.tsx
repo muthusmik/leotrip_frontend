@@ -15,18 +15,18 @@ import { Avatar } from './Avatar';
 
 
 
-type AnyFunction = (...args: any[]) => any;
+// type AnyFunction = (...args: any[]) => any;
 
-function debounce<F extends AnyFunction>(func: F, delay: number): (...args: Parameters<F>) => void {
-    let timeoutId: ReturnType<typeof setTimeout>;
+// // function debounce<F extends AnyFunction>(func: F, delay: number): (...args: Parameters<F>) => void {
+// //     let timeoutId: ReturnType<typeof setTimeout>;
 
-    return function (...args: Parameters<F>): void {
-        clearTimeout(timeoutId);
-        timeoutId = setTimeout(() => {
-            func.apply(null, args);
-        }, delay);
-    };
-}
+// //     return function (...args: Parameters<F>): void {
+// //         clearTimeout(timeoutId);
+// //         timeoutId = setTimeout(() => {
+// //             func.apply(null, args);
+// //         }, delay);
+// //     };
+// // }
 
 function Navbar() {
     const location = useLocation();

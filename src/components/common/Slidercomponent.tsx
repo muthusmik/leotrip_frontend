@@ -3,7 +3,7 @@ import Arrowright from '../../assets/icons/Arrowright.svg';
 import Arrowleft from '../../assets/icons/Arrowleft.svg';
 
 
-export default function Slidercomponent ({offers,Box}:any) {
+export default function Slidercomponent({ offers, Box }: any) {
 
     const boxesPerPage = 1;
     const numberOfBoxes = Math.ceil(offers.length / boxesPerPage);
@@ -41,7 +41,7 @@ export default function Slidercomponent ({offers,Box}:any) {
 
     const sliderWidth = containerWidth * boxesPerPage;
 
-    return(
+    return (
         <>
             <div className="flex justify-center">
                 {isPrevious &&

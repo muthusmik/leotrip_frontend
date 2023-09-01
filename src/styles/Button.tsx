@@ -26,10 +26,10 @@ export function Generateotp({ children, ...props }: any) {
     );
 }
 
-export function Googlesignin({ children, ...props }: any) {
+export function Googlesignin({ children, onClick, ...props }: any) {
     return (
         <>
-            <button className='flex uppercase bg-bluebtn rounded-md items-center pl-2 text-white pr-5 py-2 font-poppinsRegular w-full text-center justify-center'>
+            <button className='flex uppercase bg-bluebtn rounded-md items-center pl-2 text-white pr-5 py-2 font-poppinsRegular w-full text-center justify-center' onClick={() => onClick()}>
                 <div className='bg-white rounded-l-md'>
                     <img src={google} className='p-1' />
                 </div>
@@ -40,27 +40,33 @@ export function Googlesignin({ children, ...props }: any) {
         </>
     );
 }
-export function PrimaryButton({ children, outlined, rounded, shadow, blue, block, onClick, ...props }: any) {
-    return (
-        <>
-            <button
-                onClick={onClick}
-                className={`flex my-2 items-center justify-center
-                    ${outlined ? "bg-transparent rounded-md border-white border-2"
-                        : rounded ? "bg-int-sandal rounded-full"
-                            : "rounded-md"}
-                    ${shadow ? "border-int-sandal border-2 border-opacity-40" : ""}
-                    ${block ? "w-full" : ""}
-                    ${blue ? "bg-bluebtn" : "bg-int-sandal"}
-                    text-center text-white px-5 py-2 font-poppinsRegular uppercase`}
-            >
 
-                {children}
-            </button>
-        </>
+export function PrimaryButton({ children, outlined, rounded, shadow, blue, block, onClick, loading, ...props }: any) {
+    return (
+        <button
+            className={`flex my-2 items-center justify-center
+                ${outlined ? "bg-transparent rounded-md border-white border-2"
+                    : rounded ? "bg-int-sandal rounded-full"
+                        : "rounded-md"}
+                ${shadow ? "border-int-sandal border-2 border-opacity-40" : ""}
+                ${block ? "w-full" : ""}
+                ${blue ? "bg-bluebtn" : "bg-int-sandal"}
+                text-center text-white px-5 py-2 font-poppinsRegular uppercase`}
+            onClick={onClick}
+            disabled={loading}
+        >
+            {loading ? (
+                <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291a7.962 7.962 0 003.17 0H6z"></path>
+                </svg>
+            ) : (
+                children
+            )}
+        </button>
+
     );
 }
-
 
 const ToggleSliderButton = () => {
     const [isToggled, setIsToggled] = useState(false);
