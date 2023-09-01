@@ -1,4 +1,4 @@
-import React, { useEffect, useState,useRef } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { PrimaryButton } from 'styles/Button';
 import Minus from "../../assets/icons/minus.svg";
 import Plus from "../../assets/icons/plus.svg";
@@ -95,7 +95,7 @@ const RoomGuestCountComponent = ({ roomGuestCount, setRoomGuestCount, showRoomGu
         for (let i = 0; i < currentChildCount; i++) {
             inputs.push(
                 <div className='flex items-center justify-center w-[48%] mb-2'>
-                    <p className='w-[30%] text-sm'>{`Child ${i + 1} age`}</p>
+                    <p className='w-[30%] text-sm font-bold text-center'>{`Child ${i + 1} age`}</p>
                     <div className='flex items-center justify-center border-2 border-slate-400 rounded-lg w-[60%] p-2'>
                         <input
                             key={i}
@@ -141,14 +141,16 @@ const RoomGuestCountComponent = ({ roomGuestCount, setRoomGuestCount, showRoomGu
     const mainContainerStyle = 'flex flex-row items-center justify-between px-8 py-2 w-full'
     const subContainerStyle = "flex flex-row items-center justify-center border-2 border-slate-400 rounded-lg w-[100px] h-[40px]"
     const imgContainerStyle = 'w-[40%] h-full flex items-center justify-center self-center cursor-pointer'
-    const imgStyle = 'w-[72%] h-[80%]'
+    const imgStyle = 'w-[70%] h-[72%]'
     const countContainerStyle = 'border-l-2 border-r-2 h-full border-slate-400 items-center justify-center'
     const countTag = 'w-[30px] h-full text-center flex items-center justify-center font-poppinsRegular'
 
     return (
         <div ref={wrapperRef} className="absolute top-[8rem] right-[-80px] bg-white border-4 rounded-[10px] w-[36%] z-10">
+            <p className='text-center font-bold text-2xl font-poppinsRegular my-4'>Rooms and Guests</p>
+            <hr />
             <div className={mainContainerStyle}>
-                <h2 className="text-center font-poppinsRegular text-2xl">Rooms<span className='text-sm'> (Max 8)</span></h2>
+                <h2 className="text-center font-poppinsRegular text-lg">Rooms<span className='text-sm'> (Max 8)</span></h2>
                 <div className={subContainerStyle}>
                     <div className={imgContainerStyle} onClick={() => handleRoomCount("DEC")}>
                         <img src={Minus} alt='error in minus svg' className={imgStyle} />
@@ -162,9 +164,9 @@ const RoomGuestCountComponent = ({ roomGuestCount, setRoomGuestCount, showRoomGu
                 </div>
             </div>
             <hr className='pb-2' />
-            <h2 className="text-center font-poppinsRegular text-2xl">Guests</h2>
+            <h2 className="text-center font-poppinsRegular text-xl">Guests</h2>
             <div className={mainContainerStyle}>
-                <h2 className="text-center font-poppinsRegular text-xl">Adults</h2>
+                <h2 className="text-center font-poppinsRegular text-lg">Adults</h2>
                 <div className={subContainerStyle}>
                     <div className={imgContainerStyle} onClick={() => handleAdultCount("DEC")}>
                         <img src={Minus} alt='error in minus svg' className={imgStyle} />
@@ -177,8 +179,9 @@ const RoomGuestCountComponent = ({ roomGuestCount, setRoomGuestCount, showRoomGu
                     </div>
                 </div>
             </div>
+            <hr />
             <div className={mainContainerStyle}>
-                <h2 className="text-center font-poppinsRegular text-xl">Children<span className='text-sm'> (0-17 yrs)</span></h2>
+                <h2 className="text-center font-poppinsRegular text-lg">Children<span className='text-sm'> (0-17 yrs)</span></h2>
                 <div className={subContainerStyle}>
                     <div className={imgContainerStyle} onClick={() => handleChildCount("DEC")}>
                         <img src={Minus} alt='error in minus svg' className={imgStyle} />
@@ -202,7 +205,7 @@ const RoomGuestCountComponent = ({ roomGuestCount, setRoomGuestCount, showRoomGu
             </div>
             <hr />
             {isChildAgeValid() ?
-                <div className='flex justify-center my-2'>
+                <div className='flex justify-center my-1'>
                     <PrimaryButton rounded onClick={() => handleApply()}>
                         <p className="w-[100px] font-poppinsRegular">Apply</p>
                     </PrimaryButton>

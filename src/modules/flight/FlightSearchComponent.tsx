@@ -120,18 +120,9 @@ const FlightSearchComponent = () => {
         setSelectedOption(value);
     };
 
-    const handleTravellerCount = () => {
-        if (showTravellerDropdown) {
-            setShowTravellerDropdown(false)
-        }
-        else {
-            setShowTravellerDropdown(true)
-        }
-    }
-
     return (
-        <div className=" w-full items-center justify-between gap-6 bg-white px-2 rounded-[20px] shadow-lg">
-            <div className="px-4 mt-4">
+        <div className="w-full items-center justify-between gap-6 bg-white px-2 rounded-[20px] shadow-lg">
+            <div className="px-4 mt-4 flex">
                 <RadioGroup options={options} selected={selectedOption} onChange={handleOptionChange} />
             </div>
             <div className='flex flex-row w-full items-center justify-between gap-2 px-4 h-[140px]'>
@@ -154,28 +145,28 @@ const FlightSearchComponent = () => {
                     img={toFlightSvg}
                     ref={toInputRef}
                 />
-                <div className="bg-white rounded-[10px] border-2 border-black w-[20%] h-[70px]">
+                <div className="bg-white rounded-[10px] border-2 border-black w-[20%] h-[70px]  hover:bg-slate-100">
                     <div className="flex flex-row rounded-[16px] h-full px-2 w-full">
                         <div className="w-[20%]">
-                            <h2 className="font-poppinsRegular font-semibold relative bottom-3 bg-white text-center w-full">Date</h2>
+                            <p className="font-poppinsRegular relative bottom-3 bg-white text-center w-[5.4rem]">Departure</p>
                             <img src={dateSvg} alt="error" className="w-[90px] h-[43px] relative bottom-3" />
                         </div>
-                        <div className="w-[80%] flex flex-col justify-center px-4 border-l-2 border-black ">
-                            <div className="flex items-center">
+                        <div className="w-[80%] flex flex-col justify-center ps-4 border-l-2 border-black ">
+                            <div className="flex items-center w-full h-full">
                                 <CustomDatePicker onSelect={(e) => handleDateOfJourney(e)} ref={dateOfJourney} minDate={today} maxDate={maxDate} placeholder={"Select Date"} />
                             </div>
                         </div>
                     </div>
                 </div>
                 {selectedOption === "roundTrip" &&
-                    <div className="bg-white rounded-[10px] border-2 border-black w-[20%] h-[70px]">
+                    <div className="bg-white rounded-[10px] border-2 border-black w-[20%] h-[70px]  hover:bg-slate-100">
                         <div className="flex flex-row rounded-[16px] h-full px-2 w-full">
                             <div className="w-[20%]">
-                                <h2 className="font-poppinsRegular font-semibold relative bottom-3 bg-white text-center w-full">Date</h2>
+                                <p className="font-poppinsRegular relative bottom-3 bg-white text-center w-[3.5rem]">Return</p>
                                 <img src={dateSvg} alt="error" className="w-[90px] h-[43px] relative bottom-3" />
                             </div>
-                            <div className="w-[80%] flex flex-col justify-center px-4 border-l-2 border-black ">
-                                <div className="flex items-center">
+                            <div className="w-[80%] flex flex-col justify-center ps-4 border-l-2 border-black ">
+                                <div className="flex items-center w-full h-full">
                                     <CustomDatePicker onSelect={(e) => handleReturnDateOfJourney(e)} ref={returnDateOfJourney} minDate={today} maxDate={maxDate} placeholder={"Select Return Date"} />
                                 </div>
                             </div>
@@ -183,16 +174,31 @@ const FlightSearchComponent = () => {
                     </div>
                 }
                 <div className="bg-white rounded-[10px] border-2 border-black  hover:bg-slate-100 w-[20%] h-[70px] flex flex-col justify-center items-center">
-                    <h2 className="font-poppinsRegular font-semibold relative bottom-3 bg-white text-center w-[80%] right-2">
+                    <p className="font-poppinsRegular relative bottom-3 bg-white text-center w-[9rem] right-[1.5rem]">
                         Travellers &amp; Class
-                    </h2>
-                    <div className="px-2 h-full">
-                        <p className="flex text-center font-poppinsRegular text-[16px] cursor-pointer rounded-[5px]" onClick={() => handleTravellerCount()} >
-                            Travellers: {travellerData.adultCount + travellerData.childCount + travellerData.infantCount}<br />
-                            {/* {travellerData.childCount > 0 ? `, Child: ${travellerData.childCount}` : null}
+                    </p>
+                    <div className="flex flex-row justify-center w-full h-full relative bottom-3">
+                        <button className="flex flex-row w-full h-full" onClick={() => setShowTravellerDropdown(true)} disabled={showTravellerDropdown}>
+                            <p className="flex text-center font-poppinsRegular w-[90%] h-full text-[16px] rounded-[5px] px-1">
+                                Travellers: {travellerData.adultCount + travellerData.childCount + travellerData.infantCount}<br />
+                                {/* {travellerData.childCount > 0 ? `, Child: ${travellerData.childCount}` : null}
                             {travellerData.infantCount > 0 ? `, Infant: ${travellerData.infantCount}` : null} */}
-                            Class: {travellerData.class}
-                        </p>
+                                Class: {travellerData.class}
+                            </p>
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                className="h-full w-8 text-gray-700"
+                                viewBox="0 0 20 20"
+                                fill="currentColor"
+                                aria-hidden="true"
+                            >
+                                <path
+                                    fillRule="evenodd"
+                                    d="M6.293 7.293a1 1 0 011.414 0L10 9.586l2.293-2.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z"
+                                    clipRule="evenodd"
+                                />
+                            </svg>
+                        </button>
                     </div>
                     {showTravellerDropdown &&
                         <TravellerCountComponent
@@ -203,7 +209,7 @@ const FlightSearchComponent = () => {
                     }
                 </div>
             </div>
-            <div className="absolute top-[9.7rem] right-[40%]">
+            <div className="absolute top-[10.8rem] right-[40%]">
                 <PrimaryButton rounded onClick={() => handleSearchFlight()}>
                     <p className="w-[200px] font-poppinsRegular">Search Flight</p>
                 </PrimaryButton>

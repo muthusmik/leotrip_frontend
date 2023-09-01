@@ -93,12 +93,14 @@ const TravellerCountComponent = ({ travellerData, setTravellerData, setShowTrave
     const mainContainerStyle = 'flex flex-row items-center justify-between px-8 py-2 w-full'
     const subContainerStyle = "flex flex-row items-center justify-center border-2 border-slate-400 rounded-lg w-[100px] h-[40px]"
     const imgContainerStyle = 'w-[40%] h-full flex items-center justify-center self-center cursor-pointer'
-    const imgStyle = 'w-[72%] h-[80%]'
+    const imgStyle = 'w-[70%] h-[72%]'
     const countContainerStyle = 'border-l-2 border-r-2 h-full border-slate-400 items-center justify-center'
     const countTag = 'w-[30px] h-full text-center flex items-center justify-center font-poppinsRegular'
 
     return (
-        <div ref={wrapperRef} className="absolute top-[8rem] right-[-80px] bg-white border-4 rounded-[10px] w-[36%] z-10">
+        <div ref={wrapperRef} className="absolute top-[11rem] right-[-80px] bg-white border-4 rounded-[10px] w-[36%] z-10">
+            <p className='text-center font-bold text-2xl font-poppinsRegular my-4'>Travellers and Class</p>
+            <hr />
             <div className={mainContainerStyle}>
                 <h2 className="text-center font-poppinsRegular text-xl">Adults<span className='text-sm'> (12y +)</span></h2>
                 <div className={subContainerStyle}>
@@ -113,6 +115,7 @@ const TravellerCountComponent = ({ travellerData, setTravellerData, setShowTrave
                     </div>
                 </div>
             </div>
+            <hr />
             <div className={mainContainerStyle}>
                 <h2 className="text-center font-poppinsRegular text-xl">Children<span className='text-sm'> (2y - 12y)</span></h2>
                 <div className={subContainerStyle}>
@@ -127,6 +130,7 @@ const TravellerCountComponent = ({ travellerData, setTravellerData, setShowTrave
                     </div>
                 </div>
             </div>
+            <hr />
             <div className={mainContainerStyle}>
                 <h2 className="text-center font-poppinsRegular text-xl">Infant<span className='text-sm'> (below 2y)</span></h2>
                 <div className={subContainerStyle}>
@@ -141,14 +145,15 @@ const TravellerCountComponent = ({ travellerData, setTravellerData, setShowTrave
                     </div>
                 </div>
             </div>
-            <div className="flex items-center justify-between py-2">
-                <h2 className="text-center font-poppinsRegular text-xl w-[20%] ps-8">Class</h2>
-                <div className='w-[60%]'>
+            <hr />
+            <div className="flex items-center justify-between py-2 bg-white rounded-xl my-2 mx-4 border">
+                <h2 className="text-center font-poppinsRegular text-xl w-[20%]">Class</h2>
+                <div className='w-[68%]'>
                     <RadioGroup options={options} selected={selectedOption} onChange={handleOptionChange} />
                 </div>
             </div>
             <hr />
-            <div className='flex justify-center my-2'>
+            <div className='flex justify-center my-1'>
                 <PrimaryButton rounded onClick={() => handleApply()}>
                     <p className="w-[100px] font-poppinsRegular">Apply</p>
                 </PrimaryButton>

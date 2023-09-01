@@ -1,5 +1,6 @@
 import Navbar from 'components/common/Navbar';
 import React from 'react';
+import SearchBackground from 'components/common/SearchBackground';
 import Carousel from 'components/common/Carousel';
 import { HomeFooter } from 'components/common/Homepagefooter';
 import FlightSearchComponent from './FlightSearchComponent';
@@ -12,9 +13,10 @@ function FlightModule() {
     return (
         <div>
             <Navbar />
-            <Carousel>
+            <SearchBackground>
                 <FlightSearchComponent />
-            </Carousel>
+            </SearchBackground>
+            <Carousel />
             <OfferSlider />
             <Dailydeals />
             <AboutUs />

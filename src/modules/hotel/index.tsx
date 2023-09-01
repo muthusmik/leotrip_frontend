@@ -1,5 +1,6 @@
 import React from 'react';
 import Navbar from 'components/common/Navbar';
+import SearchBackground from 'components/common/SearchBackground';
 import Carousel from 'components/common/Carousel';
 import { HomeFooter } from 'components/common/Homepagefooter';
 import { AboutUs } from 'components/common/About/AboutUs';
@@ -12,9 +13,10 @@ function HotelModule() {
     return (
         <div>
             <Navbar />
-            <Carousel>
+            <SearchBackground>
                 <HotelSearchComponent />
-            </Carousel>
+            </SearchBackground>
+            <Carousel />
             <OfferSlider />
             <Dailydeals />
             <AboutUs />

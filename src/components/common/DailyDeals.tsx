@@ -70,7 +70,7 @@ const offers = [
             </div>
             <div className="flex mt-7 ml-10">
                 <div className="h-10 w-10 bg-white border border-r-0">
-                    <img src={Mapicon}/>
+                    <img src={Mapicon} alt='error'/>
                 </div>
                 <div className="h-10 w-40 bg-gray-100 rounded-r-full border pt-1 pl-2">Deal Near {"chennai"}</div>
             </div>

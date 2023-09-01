@@ -18,12 +18,7 @@ const CustomDatePicker = forwardRef<any, CustomDatePickerProps>(
 
         const hd = new Holidays();
         hd.init('US');
-        const inputRef = useRef<HTMLInputElement | null>(null);
-        useImperativeHandle(ref, () => ({
-            focus: () => {
-                inputRef.current?.focus();
-            }
-        }));
+
         const [selectedDate, setSelectedDate] = useState<Date | null>(null);
         const [currentDate, setCurrentDate] = useState<Date>(new Date());
         const [isHidePrevious, setIsHidePrevious] = useState(true);
@@ -36,6 +31,15 @@ const CustomDatePicker = forwardRef<any, CustomDatePickerProps>(
 
         const monthStart = startOfMonth(currentDate);
         const dayNames = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
+
+        const inputRef = useRef<HTMLInputElement | null>(null);
+        useImperativeHandle(ref, () => ({
+            focus: () => {
+                inputRef.current?.focus();
+                setDatePickerVisible(true)
+            }
+        }));
+
         const handlePrevMonth = () => {
             const prevMonth = new Date(currentDate.getFullYear(), currentDate.getMonth() - 1);
 
@@ -169,10 +173,10 @@ const CustomDatePicker = forwardRef<any, CustomDatePickerProps>(
                     onClick={handleInputClick}
                     ref={inputRef}
                     readOnly // Make the input box read-only to prevent direct editing
-                    className='h-10 rounded-[10px] font-poppinsRegular w-full'
+                    className='h-10 rounded-[10px] font-poppinsRegular w-full text-lg bg-transparent'
                 />
                 {isDatePickerVisible && (
-                    <div ref={wrapperRef} className='fixed mt-2 mx-5 bg-white rounded-2xl shadow-lg p-2'>
+                    <div ref={wrapperRef} className='fixed mt-2 mx-5 bg-white rounded-2xl shadow-lg p-2 z-40'>
                         <div className="flex mx-5 mt-1 bg-white items-center text-center justify-between" style={{ userSelect: 'none' }}>
                             <div>{!isHidePrevious && <ChevronLeft onClick={handlePrevMonth} className='w-5' />}</div>
                             <div>{currentDate.toLocaleDateString('default', { month: 'short', year: 'numeric' })}</div>

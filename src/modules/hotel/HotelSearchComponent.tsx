@@ -82,16 +82,6 @@ const HotelSearchComponent = () => {
         showRoomGuestDropdown(true);
     };
 
-    const handleRoomGuestCount = () => {
-        console.log("ASSSDSDSDs..............", roomGuestCount)
-        if (roomGuestDropdown) {
-            showRoomGuestDropdown(false)
-        }
-        else {
-            showRoomGuestDropdown(true)
-        }
-    }
-
     const handleSearchHotel = () => {
 
     }
@@ -113,37 +103,52 @@ const HotelSearchComponent = () => {
                     img={locationSvg}
                     ref={fromInputRef}
                 />
-                <div className="bg-white rounded-[10px] border-2 w-[24%] border-black flex flex-row h-[70px] px-2">
+                <div className="bg-white rounded-[10px] border-2 w-[24%] border-black hover:bg-slate-100 flex flex-row h-[70px] px-2">
                     <div className="w-[20%]">
-                        <h2 className="font-poppinsRegular font-semibold relative bottom-3 bg-white text-center w-[100px]">Check-In</h2>
+                        <p className="font-poppinsRegular relative bottom-3 bg-white text-center w-[100px]">Check-In</p>
                         <img src={dateSvg} alt="error" className="w-full h-[43px] relative bottom-3" />
                     </div>
-                    <div className="w-[74%] flex flex-col justify-center px-2 border-l-2 border-black">
-                        <div className="flex items-center">
+                    <div className="w-[80%] flex flex-col justify-center ps-2 border-l-2 border-black">
+                        <div className="flex items-center w-full h-full">
                             <CustomDatePicker onSelect={(e) => handleCheckInDate(e)} ref={checkInRef} minDate={today} maxDate={maxDate} placeholder={"Select Check-In Date"} />
                         </div>
                     </div>
                 </div>
-                <div className="bg-white rounded-[10px] border-2 w-[24%] border-black flex flex-row h-[70px] px-2">
+                <div className="bg-white rounded-[10px] border-2 w-[24%] border-black  hover:bg-slate-100 flex flex-row h-[70px] px-2">
                     <div className="w-[20%]">
-                        <h2 className="font-poppinsRegular font-semibold relative bottom-3 bg-white text-center w-[100px]">Check-Out</h2>
+                        <p className="font-poppinsRegular relative bottom-3 bg-white text-center w-[100px]">Check-Out</p>
                         <img src={dateSvg} alt="error" className="w-full h-[43px] relative bottom-3" />
                     </div>
-                    <div className="w-[74%] flex flex-col justify-center px-2 border-l-2 border-black">
-                        <div className="flex items-center">
+                    <div className="w-[80%] flex flex-col justify-center ps-2 border-l-2 border-black">
+                        <div className="flex items-center w-full h-full">
                             <CustomDatePicker onSelect={(e) => handleCheckOutDate(e)} ref={checkOutRef} minDate={dateOfRetrun} maxDate={maxDate} placeholder={"Select Check-Out Date"} />
                         </div>
                     </div>
                 </div>
                 <div className="bg-white rounded-[10px] border-2 border-black  hover:bg-slate-100 w-[20%] h-[70px] flex flex-col justify-center items-center">
-                    <h2 className="font-poppinsRegular font-semibold relative bottom-3 bg-white text-center w-[80%] right-2">
+                    <p className="font-poppinsRegular relative bottom-3 bg-white text-center w-[66%] right-6">
                         Guests &amp; Rooms
-                    </h2>
-                    <div className="px-2 h-full">
-                        <p className="flex text-center font-poppinsRegular text-[16px] cursor-pointer rounded-[5px]" onClick={() => handleRoomGuestCount()}>
-                            Rooms: {roomGuestCount.roomCount}, Adults: {roomGuestCount.adultCount}
-                            {roomGuestCount.childCount > 0 ? `, Child: ${roomGuestCount.childCount}` : null}
-                        </p>
+                    </p>
+                    <div className="flex justify-center w-full h-full relative bottom-2">
+                        <button className="flex flex-row w-full h-full justify-center" onClick={() => showRoomGuestDropdown(true)} disabled={roomGuestDropdown}>
+                            <p className="flex text-center w-[90%] font-poppinsRegular text-lg justify-center items-center h-full rounded-[5px] px-1">
+                                Rooms: {roomGuestCount.roomCount}, Adults: {roomGuestCount.adultCount}
+                                {roomGuestCount.childCount > 0 ? `, Child: ${roomGuestCount.childCount}` : null}
+                            </p>
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                className="h-full w-8 text-gray-700"
+                                viewBox="0 0 20 20"
+                                fill="currentColor"
+                                aria-hidden="true"
+                            >
+                                <path
+                                    fillRule="evenodd"
+                                    d="M6.293 7.293a1 1 0 011.414 0L10 9.586l2.293-2.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z"
+                                    clipRule="evenodd"
+                                />
+                            </svg>
+                        </button>
                     </div>
                 </div>
                 {roomGuestDropdown &&

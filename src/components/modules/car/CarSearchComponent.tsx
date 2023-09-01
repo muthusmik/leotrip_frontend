@@ -129,8 +129,8 @@ const CarSearchComponent = () => {
     }
 
     return (
-        <div className=" w-full items-center justify-between gap-6 bg-white px-2 rounded-[20px] shadow-lg">
-            <div className="px-4 mt-4">
+        <div className="w-full items-center justify-between gap-6 bg-white px-2 rounded-[20px] shadow-lg">
+            <div className="px-4 mt-4 flex">
                 <RadioGroup options={options} selected={selectedOption} onChange={handleOptionChange} />
             </div>
             <div className='flex flex-row w-full items-center justify-between gap-2 px-4 h-[140px]'>
@@ -138,13 +138,12 @@ const CarSearchComponent = () => {
                     <div className="bg-white rounded-[10px] border-2 border-black h-[70px] min-w-[20%] max-w-[26%]">
                         <div className="flex flex-row rounded-[16px] h-[70px] px-2 w-full">
                             <div className="w-[5%]">
-                                <h2 className="font-poppinsRegular font-semibold relative bottom-3 bg-white text-center w-[140px]">Select Trip Type</h2>
+                                <p className="font-poppinsRegular relative bottom-3 bg-white text-center w-[140px]">Select Trip Type</p>
                             </div>
                             <div className="w-[100%] flex flex-col justify-center px-2">
                                 <div className="flex items-center">
-                                    <select name="" id="" className="w-full h-full outline-none" onChange={(e) => handleSelectValue(e.target.value)} ref={selectRef}>
-                                        <option value="" disabled>Select Type</option>
-                                        <option value="fromAirport">From Airport</option>
+                                    <select name="" id="" className="w-full h-full outline-none font-poppinsRegular text-lg cursor-pointer" onChange={(e) => handleSelectValue(e.target.value)} ref={selectRef}>
+                                        <option value="fromAirport" defaultValue={tripType}>From Airport</option>
                                         <option value="toAirport">To Airport</option>
                                     </select>
                                 </div>
@@ -155,7 +154,7 @@ const CarSearchComponent = () => {
                 <AutoSuggestionList
                     label={"From"}
                     value={fromValue}
-                    placeholder={"Pickup Location"}
+                    placeholder={selectedOption === 'airportTransfer' && tripType === "fromAirport" ? "Airport Name" : "Pickup Location"}
                     setValue={handleFromValueChange}
                     data={autoCompleteData}
                     img={selectedOption === 'airportTransfer' && tripType === "fromAirport" ? fromFlightSvg : getInCarSvg}
@@ -165,18 +164,18 @@ const CarSearchComponent = () => {
                     label={"To"}
                     value={toValue}
                     setValue={handleToValueChange}
-                    placeholder={"Drop Location"}
+                    placeholder={selectedOption === 'airportTransfer' && tripType === "toAirport" ? "Airport Name" : "Drop Location"}
                     data={autoCompleteData}
                     img={tripType === "toAirport" ? toFlightSvg : getOutCarSvg}
                     ref={toInputRef}
                 />
-                <div className="bg-white rounded-[10px] border-2 border-black h-[70px] min-w-[20%] max-w-[40%]">
+                <div className="bg-white rounded-[10px] border-2 border-black h-[70px] min-w-[20%] max-w-[40%] hover:bg-slate-100">
                     <div className="flex flex-row rounded-[16px] h-full px-2 w-full">
                         <div className="w-[20%]">
-                            <h2 className="font-poppinsRegular font-semibold relative bottom-3 bg-white text-center w-full">Date</h2>
+                            <p className="font-poppinsRegular relative bottom-3 bg-white text-center w-full">Date</p>
                             <img src={dateSvg} alt="error" className="w-[90px] h-[43px] relative bottom-3" />
                         </div>
-                        <div className="w-[80%] flex flex-col justify-center px-4 border-l-2 border-black ">
+                        <div className="w-[80%] flex flex-col justify-center ps-4 border-l-2 border-black ">
                             <div className="flex items-center">
                                 <CustomDatePicker onSelect={(e) => handleDateOfJourney(e)} ref={dateOfJourney} minDate={today} maxDate={maxDate} placeholder={"Pickup Date and Time"} />
                             </div>
@@ -184,10 +183,10 @@ const CarSearchComponent = () => {
                     </div>
                 </div>
                 {selectedOption === "roundTrip" &&
-                    <div className="bg-white rounded-[10px] border-2 border-black h-[70px] min-w-[20%] max-w-[40%]">
-                        <div className="flex flex-row rounded-[16px] h-full px-2 w-full">
+                    <div className="bg-white rounded-[10px] border-2 border-black h-[70px] min-w-[20%] max-w-[40%] hover:bg-slate-100">
+                        <div className="flex flex-row rounded-[16px] h-full ps-2 w-full">
                             <div className="w-[20%]">
-                                <h2 className="font-poppinsRegular font-semibold relative bottom-3 bg-white text-center w-full">Date</h2>
+                                <p className="font-poppinsRegular relative bottom-3 bg-white text-center w-full">Date</p>
                                 <img src={dateSvg} alt="error" className="w-[90px] h-[43px] relative bottom-3" />
                             </div>
                             <div className="w-[80%] flex flex-col justify-center px-4 border-l-2 border-black ">
@@ -199,7 +198,7 @@ const CarSearchComponent = () => {
                     </div>
                 }
             </div>
-            <div className="absolute top-[9.7rem] right-[40%]">
+            <div className="absolute top-[10.8rem] right-[40%]">
                 <PrimaryButton rounded onClick={() => handleSearchCar()}>
                     <p className="w-[200px] font-poppinsRegular">Search Car</p>
                 </PrimaryButton>

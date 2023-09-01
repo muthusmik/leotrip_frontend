@@ -30,7 +30,7 @@ const CustomSelect = forwardRef<any, CustomSelectProps>(
         return (
             <Listbox value={selectedOption} onChange={handleSelect}>
                 <div className="absolute w-[16%]">
-                    <Listbox.Button ref={buttonRef} className="w-full h-full flex justify-between items-center">
+                    <Listbox.Button ref={buttonRef} className="w-full h-full flex justify-between items-center text-xl">
                         {selectedOption ? selectedOption.label : 'From Airport'}
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -54,7 +54,7 @@ const CustomSelect = forwardRef<any, CustomSelectProps>(
                             )}
                         </svg>
                     </Listbox.Button>
-                    <Listbox.Options className="absolute w-full py-1 mt-2 bg-slate-600 text-white shadow-lg">
+                    <Listbox.Options className="absolute w-full mt-2 bg-slate-600 text-white shadow-lg">
                         {options.map((option) => (
                             <Listbox.Option key={option.value} value={option}>
                                 {({ active, selected }) => (

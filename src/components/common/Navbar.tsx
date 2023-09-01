@@ -33,7 +33,7 @@ function Navbar() {
     const [isScrolled, setIsScrolled] = useState(false);
 
     const handleScroll = () => {
-        console.log(window.scrollY)
+        // console.log(window.scrollY)
         if (window.scrollY > 200) {
             setIsScrolled(true);
         } else if (window.scrollY > 190 && window.scrollY < 200) {
@@ -63,7 +63,7 @@ function Navbar() {
 
     return (
         <>
-            <nav className={`navbar bg-white py-1 md:py-1 lg:py-2 shadow-bottom sticky top-0 ${isScrolled ? 'h-16' : 'h-20'} transition-all duration-300 z-10 `}>
+            <nav className={`navbar bg-white py-1 md:py-1 lg:py-2 shadow-bottom sticky top-0 ${isScrolled ? 'h-16' : 'h-20'} transition-all duration-300 z-50 `}>
                 <div className={`container  border-int-dark-blue border-5 flex justify-between items-center ${isScrolled ? 'h-12' : 'h-16'} transition-all duration-300 `}>
                     <div className="flex ml-3 items-center space-x-6 md:space-x-16 md:ml-0 lg:ml-[5%] w-full">
                         <Link to="/" className='w-[10%]'>
@@ -74,7 +74,7 @@ function Navbar() {
                                 <Link
                                     key={link.to}
                                     to={link.to}
-                                    className={`flex p-[1px] rounded-[2px] flex-col m-2 items-center text-int-black w-[70px] hover:bg-int-background hover:border-b-4 ${location.pathname === link.to
+                                    className={`flex rounded-[2px] flex-col m-2 items-center text-int-black w-[70px] h-fit hover:bg-int-background hover:border-b-4 ${location.pathname === link.to
                                         ? 'border-b-4 border-int-yellow hover:border-int-yellow'
                                         : 'hover:border-int-gray-20'
                                         }`}

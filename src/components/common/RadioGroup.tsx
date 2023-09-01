@@ -16,7 +16,7 @@ const RadioGroup: React.FC<RadioGroupProps> = ({ options, selected, onChange }) 
     return (
         <div className="mt-2">
             {options.map((option) => (
-                <label key={option.value} className="inline-flex items-center mx-2 cursor-pointer">
+                <label key={option.value} className={`inline-flex items-center mx-2 py-1 px-2 cursor-pointer rounded-[0.5rem] ${selected === option.value ? 'bg-orange-300' : ''}`}>
                     <input
                         type="radio"
                         value={option.value}

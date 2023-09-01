@@ -31,7 +31,7 @@ export function Googlesignin({ children, ...props }: any) {
         <>
             <button className='flex uppercase bg-bluebtn rounded-md items-center pl-2 text-white pr-5 py-2 font-poppinsRegular w-full text-center justify-center'>
                 <div className='bg-white rounded-l-md'>
-                    <img src={google} className='p-1' />
+                    <img src={google} className='p-1' alt='error' />
                 </div>
                 <div className='ml-3'>
                     <div className='text-center'>{children || "Sign in with Google"}</div>
