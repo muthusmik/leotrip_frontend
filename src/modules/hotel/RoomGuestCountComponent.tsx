@@ -16,7 +16,6 @@ const RoomGuestCountComponent = ({ roomGuestCount, setRoomGuestCount, showRoomGu
     const [currentChildCount, setCurrentChildCount] = useState(roomGuestCount.childCount);
     const [childAges, setChildAges] = useState<Array<number>>([0]);
 
-
     const wrapperRef = useRef(null);
     useOutsideAlerter({ ref: wrapperRef, callback: () => showRoomGuestDropdown(false) });
 
@@ -141,11 +140,13 @@ const RoomGuestCountComponent = ({ roomGuestCount, setRoomGuestCount, showRoomGu
     const mainContainerStyle = 'flex flex-row items-center justify-between px-8 py-2 w-full'
     const subContainerStyle = "flex flex-row items-center justify-center border-2 border-slate-400 rounded-lg w-[100px] h-[40px]"
     const imgContainerStyle = 'w-[40%] h-full flex items-center justify-center self-center cursor-pointer'
+
     const imgStyle = 'w-[70%] h-[72%]'
     const countContainerStyle = 'border-l-2 border-r-2 h-full border-slate-400 items-center justify-center'
     const countTag = 'w-[30px] h-full text-center flex items-center justify-center font-poppinsRegular'
 
     return (
+
         <div ref={wrapperRef} className="absolute top-[8rem] right-[-80px] bg-white border-4 rounded-[10px] w-[36%] z-10">
             <p className='text-center font-bold text-2xl font-poppinsRegular my-4'>Rooms and Guests</p>
             <hr />

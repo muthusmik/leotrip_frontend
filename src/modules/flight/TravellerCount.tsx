@@ -10,6 +10,7 @@ type RoomGuestCountComponentProps = {
     setTravellerData: (travellerData: any) => void,
     setShowTravellerDropdown: (showTravellerDropdown: boolean) => void
 }
+    
 const options = [
     { value: 'economy', label: 'Economy' },
     { value: 'premiumEconomy', label: "Premium Economy" },
@@ -20,6 +21,7 @@ const TravellerCountComponent = ({ travellerData, setTravellerData, setShowTrave
     const [currentAdultCount, setCurrentAdultCount] = useState(travellerData.adultCount);
     const [currentChildCount, setCurrentChildCount] = useState(travellerData.childCount);
     const [currentInfantCount, setCurrentInfantCount] = useState(travellerData.infantCount);
+
     const [selectedOption, setSelectedOption] = useState<string>(travellerData.class);
 
     const handleAdultCount = (type: string) => {

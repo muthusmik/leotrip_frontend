@@ -1,3 +1,4 @@
+
 import React, { useState, useRef, forwardRef, useImperativeHandle } from "react";
 import useOutsideAlerter from "hooks/useOutside";
 
@@ -27,7 +28,6 @@ const AutoSuggestionList = forwardRef<any, AutoSuggestionProps>(
 
         const wrapperRef = useRef(null);
         useOutsideAlerter({ ref: wrapperRef, callback: () => setSuggestionsActive(false) });
-
         const handleChange = (e: { target: { value: string; }; }) => {
             const query = e.target.value.toLowerCase();
             // setValue(query);
