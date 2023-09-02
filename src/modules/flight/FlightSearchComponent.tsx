@@ -97,7 +97,6 @@ const FlightSearchComponent = () => {
         setToValue(newValue);
         if (newValue && dateOfJourney.current) {
             dateOfJourney.current.focus();
-            console.log("New value.............", dateOfJourney.current.value);
         }
     };
 

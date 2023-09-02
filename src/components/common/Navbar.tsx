@@ -15,25 +15,25 @@ import { Avatar } from './Avatar';
 
 
 
-type AnyFunction = (...args: any[]) => any;
+// type AnyFunction = (...args: any[]) => any;
 
-function debounce<F extends AnyFunction>(func: F, delay: number): (...args: Parameters<F>) => void {
-    let timeoutId: ReturnType<typeof setTimeout>;
+// // function debounce<F extends AnyFunction>(func: F, delay: number): (...args: Parameters<F>) => void {
+// //     let timeoutId: ReturnType<typeof setTimeout>;
 
-    return function (...args: Parameters<F>): void {
-        clearTimeout(timeoutId);
-        timeoutId = setTimeout(() => {
-            func.apply(null, args);
-        }, delay);
-    };
-}
+// //     return function (...args: Parameters<F>): void {
+// //         clearTimeout(timeoutId);
+// //         timeoutId = setTimeout(() => {
+// //             func.apply(null, args);
+// //         }, delay);
+// //     };
+// // }
 
 function Navbar() {
     const location = useLocation();
     const [isScrolled, setIsScrolled] = useState(false);
 
     const handleScroll = () => {
-        // console.log(window.scrollY)
+        console.log(window.scrollY)
         if (window.scrollY > 200) {
             setIsScrolled(true);
         } else if (window.scrollY > 190 && window.scrollY < 200) {
@@ -74,7 +74,7 @@ function Navbar() {
                                 <Link
                                     key={link.to}
                                     to={link.to}
-                                    className={`flex rounded-[2px] flex-col m-2 items-center text-int-black w-[70px] h-fit hover:bg-int-background hover:border-b-4 ${location.pathname === link.to
+                                    className={`flex p-[1px] rounded-[2px] flex-col m-2 items-center text-int-black w-[70px] hover:bg-int-background hover:border-b-4 ${location.pathname === link.to
                                         ? 'border-b-4 border-int-yellow hover:border-int-yellow'
                                         : 'hover:border-int-gray-20'
                                         }`}

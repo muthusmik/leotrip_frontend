@@ -53,7 +53,7 @@ export default function ModalFullHeight({
                 >
                     <div
                         ref={container}
-                        className={`${transparent ? "bg-transparent" : "bg-white"} ${width} ${transparent ? " " : " shadow shadow-int-mid-blue "} h1 `}
+                        className={` rounded-lg ${transparent ? "bg-transparent" : "bg-white"} ${width} ${transparent ? " " : " shadow shadow-int-mid-blue "} h1 `}
                     >
                         {cloneElement(children, { close: closeModal })}
                     </div>

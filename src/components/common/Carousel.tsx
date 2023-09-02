@@ -3,10 +3,6 @@ import flight from '../../assets/images/flight_2.jpg';
 import hotel from '../../assets/images/lake_scandinavia_blue_sky_pier_during_sunset_4k_5k_hd_travel.jpg';
 import bus from '../../assets/images/marine_algae_underwater_and_huts_and_coconut_trees_under_blue_cloudy_sky_4k_hd_beach.jpg';
 import car from '../../assets/images/sunset_silhouette_4k_3.jpg';
-// import flight from '../../assets/images/flight.svg';
-// import hotel from '../../assets/images/hotel.svg';
-// import bus from '../../assets/images/bus.svg';
-// import car from '../../assets/images/car.svg';
 import '../../index.css';
 
 export function Carousel({ children, ...props }: any) {
