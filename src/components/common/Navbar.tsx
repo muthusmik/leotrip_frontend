@@ -63,7 +63,7 @@ function Navbar() {
 
     return (
         <>
-            <nav className={`navbar bg-white py-1 md:py-1 lg:py-2 shadow-bottom sticky top-0 ${isScrolled ? 'h-16' : 'h-20'} transition-all duration-300 z-10 `}>
+            <nav className={`navbar bg-white py-1 md:py-1 lg:py-2 shadow-bottom sticky top-0 ${isScrolled ? 'h-16' : 'h-20'} transition-all duration-300 z-50 `}>
                 <div className={`container  border-int-dark-blue border-5 flex justify-between items-center ${isScrolled ? 'h-12' : 'h-16'} transition-all duration-300 `}>
                     <div className="flex ml-3 items-center space-x-6 md:space-x-16 md:ml-0 lg:ml-[5%] w-full">
                         <Link to="/" className='w-[10%]'>

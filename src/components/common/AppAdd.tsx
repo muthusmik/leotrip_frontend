@@ -14,21 +14,21 @@ export default function APPAdd({ value, onChange, onButtonClick }: any) {
                 <div className='text-white text-3xl font-PoppinsSemiBold mt-5 ml-10'>ENJOY THE APP!</div>
                 <div className="h-[210px] w-[320px] bg-white ml-10 rounded-xl mt-10 p-5">
                     <div className='flex'>
-                        <img src={tick} />
+                        <img src={tick} alt='error' />
                         <p>Quick access</p>
                     </div>
                     <div className='flex mt-2 mb-4'>
-                        <img src={tick} />
+                        <img src={tick} alt='error'/>
                         <p>Enjoy Other Stuffs</p>
                     </div>
                     <div className='grid grid-rows-1 grid-flow-col gap-4'>
                         <div className='border-r-2 border-dotted border-black font-poppinsRegular'>
-                            <div className='flex'><p className='text-xl font-poppinsBold pr-2'>4.1</p><img src={starone} /></div>
+                            <div className='flex'><p className='text-xl font-poppinsBold pr-2'>4.1</p><img src={starone} alt='error'/></div>
                             <p>50M+ downloads</p>
                             <p>Play Store</p>
                         </div>
                         <div className='font-poppinsRegular'>
-                            <div className='flex'><p className='text-xl font-poppinsBold pr-2'>4.5</p><img src={starone} /></div>
+                            <div className='flex'><p className='text-xl font-poppinsBold pr-2'>4.5</p><img src={starone} alt='error'/></div>
                             <p>50M+ downloads</p>
                             <p>Play Store</p>
                         </div>

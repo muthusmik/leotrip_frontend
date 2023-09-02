@@ -7,14 +7,16 @@ import { AboutUs } from 'components/common/About/AboutUs';
 import { OfferSlider } from 'components/common/OfferSlider';
 import { Dailydeals } from 'components/common/DailyDeals';
 import APPAdd from 'components/common/AppAdd';
+import SearchBackground from 'components/common/SearchBackground';
 
 function BusModule() {
     return (
         <div>
             <Navbar />
-            <Carousel>
+            <SearchBackground>
                 <BusSearchComponent />
-            </Carousel>
+            </SearchBackground>
+            <Carousel />
             <OfferSlider />
             <Dailydeals />
             <AboutUs />

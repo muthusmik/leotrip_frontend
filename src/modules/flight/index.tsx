@@ -1,6 +1,6 @@
-import CustomDatePicker from 'components/common/CustomdatePicker';
 import Navbar from 'components/common/Navbar';
 import React from 'react';
+import SearchBackground from 'components/common/SearchBackground';
 import Carousel from 'components/common/Carousel';
 import { HomeFooter } from 'components/common/Homepagefooter';
 import FlightSearchComponent from './FlightSearchComponent';
@@ -10,20 +10,18 @@ import { Dailydeals } from 'components/common/DailyDeals';
 import { AboutUs } from 'components/common/About/AboutUs';
 
 function FlightModule() {
-
     return (
         <div>
             <Navbar />
-
-            <Carousel>
+            <SearchBackground>
                 <FlightSearchComponent />
-            </Carousel>
+            </SearchBackground>
+            <Carousel />
             <OfferSlider />
             <Dailydeals />
             <AboutUs />
             <APPAdd />
             <HomeFooter />
-
         </div>
     );
 }

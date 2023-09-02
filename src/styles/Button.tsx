@@ -31,7 +31,7 @@ export function Googlesignin({ children, onClick, ...props }: any) {
         <>
             <button className='flex uppercase bg-bluebtn rounded-md items-center pl-2 text-white pr-5 py-2 font-poppinsRegular w-full text-center justify-center' onClick={() => onClick()}>
                 <div className='bg-white rounded-l-md'>
-                    <img src={google} className='p-1' />
+                    <img src={google} className='p-1' alt='error' />
                 </div>
                 <div className='ml-3'>
                     <div className='text-center'>{children || "Sign in with Google"}</div>
@@ -43,16 +43,16 @@ export function Googlesignin({ children, onClick, ...props }: any) {
 
 export function PrimaryButton({ children, outlined, rounded, shadow, blue, block, onClick, loading, ...props }: any) {
     return (
-        <button
-            className={`flex my-2 items-center justify-center
-                ${outlined ? "bg-transparent rounded-md border-white border-2"
-                    : rounded ? "bg-int-sandal rounded-full"
-                        : "rounded-md"}
-                ${shadow ? "border-int-sandal border-2 border-opacity-40" : ""}
-                ${block ? "w-full" : ""}
-                ${blue ? "bg-bluebtn" : "bg-int-sandal"}
-                text-center text-white px-5 py-2 font-poppinsRegular uppercase`}
-            onClick={onClick}
+            <button
+                onClick={onClick}
+                className={`flex my-2 items-center justify-center
+                    ${outlined ? "bg-transparent rounded-md border-white border-2"
+                        : rounded ? "bg-int-sandal rounded-full"
+                            : "rounded-md"}
+                    ${shadow ? "border-int-sandal border-2 border-opacity-40" : ""}
+                    ${block ? "w-full" : ""}
+                    ${blue ? "bg-bluebtn" : "bg-int-sandal"}
+                    text-center text-white px-5 py-2 font-poppinsRegular uppercase`}
             disabled={loading}
         >
             {loading ? (

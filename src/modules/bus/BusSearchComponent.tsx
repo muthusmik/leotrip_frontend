@@ -31,13 +31,18 @@ const autoCompleteData = [
 
 const BusSearchComponent = () => {
 
+    const today = new Date();
+    const maxDate = new Date();
+    maxDate.setMonth(today.getMonth() + 6);
+
     const [fromValue, setFromValue] = useState("");
     const [toValue, setToValue] = useState("");
+    const [date, setDate] = useState(today)
     const fromInputRef = useRef<any>(null);
     const toInputRef = useRef<any>(null);
     const dateOfJourney = useRef<any>(null);
     const handleSearchBus = () => {
-        console.log("WERWEEFWWEFWEfew................", fromValue, toValue)
+        console.log("WERWEEFWWEFWEfew................", fromValue, toValue, date)
     }
     useEffect(() => {
         if (fromValue && toInputRef.current) {
@@ -66,9 +71,13 @@ const BusSearchComponent = () => {
         }
     };
 
+    const handleDateValue = (newValue: any) => {
+        setDate(newValue);
+    }
+
     return (
         <>
-            <div className='flex flex-row w-full items-center justify-between gap-6 bg-white px-10 h-[160px] rounded-[20px]'>
+            <div className='flex flex-row w-full items-center justify-between gap-6 bg-white px-10 h-[160px] rounded-[20px] shadow-lg'>
                 <AutoSuggestionList
                     label={"From"}
                     value={fromValue}
@@ -88,21 +97,21 @@ const BusSearchComponent = () => {
                     img={toBusSvg}
                     ref={toInputRef}
                 />
-                <div className="bg-white rounded-[10px] border-2 border-black ">
+                <div className="rounded-[10px] border-2 bg-white border-black hover:bg-slate-100">
                     <div className="flex flex-row rounded-[16px] h-[70px] px-2">
                         <div className="w-[20%]">
-                            <h2 className="font-poppinsRegular font-semibold relative bottom-3 bg-white text-center w-full">Date</h2>
+                            <p className="font-poppinsRegular relative bottom-3 bg-white text-center w-full">Date</p>
                             <img src={dateSvg} alt="error" className="w-[90px] h-[43px] relative bottom-3" />
                         </div>
-                        <div className="w-[80%] flex flex-col justify-center px-4 border-l-2 border-black ">
+                        <div className="w-[80%] flex flex-col justify-center ps-4 border-l-2 border-black ">
                             <div className="flex items-center">
-                                <CustomDatePicker onSelect={(e) => console.log(e)} ref={dateOfJourney} minDate={new Date()} maxDate={new Date()} placeholder={"Select your Date"} />
+                                <CustomDatePicker onSelect={(e) => handleDateValue(e)} ref={dateOfJourney} minDate={today} maxDate={maxDate} placeholder={"Select your Date"} />
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div className="absolute top-[8.3rem] right-[38%]">
+            <div className="absolute top-[8.3rem] right-[40%]">
                 <PrimaryButton rounded onClick={() => handleSearchBus()}>
                     <p className="w-[200px] font-poppinsRegular">Search Bus</p>
                 </PrimaryButton>

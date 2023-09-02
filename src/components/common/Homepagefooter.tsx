@@ -35,7 +35,7 @@ export function HomeFooter() {
                 </div>
             </div>
             <div className='bg-primary h-10 w-full text-center py-2 text-white'>
-                Ⓒ 2023 Leo Trip (POP) Pvt Ltd. All rights reserved.
+                ? 2023 Leo Trip (POP) Pvt Ltd. All rights reserved.
             </div>
         </>
     );
