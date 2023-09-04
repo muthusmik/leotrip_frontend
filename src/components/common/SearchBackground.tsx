@@ -15,7 +15,7 @@ export function SearchBackground({ children, ...props }: any) {
         <>
             <div className='carousel-container flex overflow-hidden justify-center'>
                 <img src={flight} className='carousel-item z-0 w-full h-[20rem] object-cover grayscale' style={{ imageOrientation: "revert-layer" }} />
-                <div className='z-10 absolute w-[86%] flex self-center justify-center'>{children}</div>
+                <div className='z-10 absolute w-[94%] flex self-center justify-center'>{children}</div>
             </div>
             <div className='h-14 bg-gradient-to-t from-[#b2c1f4ee] to-[#e0e1e2]'></div>
 

@@ -5,6 +5,7 @@ import getOutCarSvg from '../../../assets/icons/getOutCar.svg';
 import fromFlightSvg from '../../../assets/icons/fromflight.svg';
 import toFlightSvg from '../../../assets/icons/Toflight.svg';
 import dateSvg from '../../../assets/icons/datesvg.svg';
+import timeSvg from '../../../assets/icons/timeIcon.svg';
 import CustomDatePicker from "components/common/CustomdatePicker";
 import { PrimaryButton } from "styles/Button";
 import RadioGroup from "components/common/RadioGroup";
@@ -61,15 +62,19 @@ const CarSearchComponent = () => {
     const [tripType, setTripType] = useState<string>("fromAirport");
     const [date, setDate] = useState(today);
     const [returnDate, setReturnDate] = useState(dateOfRetrun);
+    const [pickupTime, setPickupTime] = useState("");
+    const [dropTime, setDropTime] = useState("");
 
     const fromInputRef = useRef<any>(null);
     const toInputRef = useRef<any>(null);
     const dateOfJourney = useRef<any>(null);
     const returnDateOfJourney = useRef<any>(null);
     const selectRef = useRef<any>(null);
+    const pickUpTimeRef = useRef<any>(null);
+    const dropTimeRef = useRef<any>(null);
 
     const handleSearchCar = () => {
-        console.log("WERWEEFWWEFWEfew................", fromValue, toValue, moment(date).format("DD/MM/YYYY"), returnDate)
+        console.log("WERWEEFWWEFWEfew................", fromValue, toValue, moment(date).format("DD/MM/YYYY"), returnDate, pickupTime, dropTime)
     }
     useEffect(() => {
         if (tripType && fromInputRef.current) {
@@ -90,10 +95,16 @@ const CarSearchComponent = () => {
     }, [toValue]);
 
     useEffect(() => {
-        if (toValue && returnDateOfJourney.current) {
+        if (date && returnDateOfJourney.current) {
             returnDateOfJourney.current.focus();
         }
     }, [date]);
+
+        // useEffect(() => {
+        //     if (pickupTime && dropTimeRef.current) {
+        //         dropTimeRef.current.focus();
+        //     }
+        // }, [pickupTime]);
 
     const handleFromValueChange = (newValue: any) => {
         setFromValue(newValue);
@@ -169,29 +180,57 @@ const CarSearchComponent = () => {
                     img={tripType === "toAirport" ? toFlightSvg : getOutCarSvg}
                     ref={toInputRef}
                 />
-                <div className="bg-white rounded-[10px] border-2 border-black h-[70px] min-w-[20%] max-w-[40%] hover:bg-slate-100">
+                <div className="bg-white rounded-[10px] border-2 border-black h-[70px] min-w-[14%] max-w-[20%] hover:bg-slate-100">
                     <div className="flex flex-row rounded-[16px] h-full px-2 w-full">
                         <div className="w-[20%]">
-                            <p className="font-poppinsRegular relative bottom-3 bg-white text-center w-full">Date</p>
+                            <p className="font-poppinsRegular relative bottom-3 bg-white text-center w-[5.4rem]">Departure</p>
                             <img src={dateSvg} alt="error" className="w-[90px] h-[43px] relative bottom-3" />
                         </div>
                         <div className="w-[80%] flex flex-col justify-center ps-4 border-l-2 border-black ">
                             <div className="flex items-center">
-                                <CustomDatePicker onSelect={(e) => handleDateOfJourney(e)} ref={dateOfJourney} minDate={today} maxDate={maxDate} placeholder={"Pickup Date and Time"} />
+                                <CustomDatePicker onSelect={(e) => handleDateOfJourney(e)} ref={dateOfJourney} minDate={today} maxDate={maxDate} placeholder={"Select Pickup Date"} />
                             </div>
                         </div>
                     </div>
                 </div>
                 {selectedOption === "roundTrip" &&
-                    <div className="bg-white rounded-[10px] border-2 border-black h-[70px] min-w-[20%] max-w-[40%] hover:bg-slate-100">
+                    <div className="bg-white rounded-[10px] border-2 border-black h-[70px] min-w-[14%] max-w-[20%] hover:bg-slate-100">
                         <div className="flex flex-row rounded-[16px] h-full ps-2 w-full">
                             <div className="w-[20%]">
-                                <p className="font-poppinsRegular relative bottom-3 bg-white text-center w-full">Date</p>
+                                <p className="font-poppinsRegular relative bottom-3 bg-white text-center w-[3.6rem]">Return</p>
                                 <img src={dateSvg} alt="error" className="w-[90px] h-[43px] relative bottom-3" />
                             </div>
                             <div className="w-[80%] flex flex-col justify-center px-4 border-l-2 border-black ">
                                 <div className="flex items-center">
                                     <CustomDatePicker onSelect={(e) => setReturnDate(e)} ref={returnDateOfJourney} minDate={today} maxDate={maxDate} placeholder={"Select Return Date"} />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+                <div className="bg-white rounded-[10px] border-2 border-black h-[70px] min-w-[14%] max-w-[20%] hover:bg-slate-100">
+                    <div className="flex flex-row rounded-[16px] h-full px-2 w-full">
+                        <div className="w-[20%]">
+                            <p className="font-poppinsRegular relative bottom-3 bg-white text-center w-[6.5rem]">Pickup-Time</p>
+                            <img src={dateSvg} alt="error" className="w-[90px] h-[43px] relative bottom-3" />
+                        </div>
+                        <div className="w-[80%] flex flex-col justify-center ps-4 border-l-2 border-black ">
+                            <div className="flex items-center">
+                                <input type="time" className="w-full h-full outline-none bg-transparent" ref={pickUpTimeRef} onChange={(e) => setPickupTime(e.target.value)} />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {selectedOption === "roundTrip" &&
+                    <div className="bg-white rounded-[10px] border-2 border-black h-[70px] min-w-[14%] max-w-[20%] hover:bg-slate-100">
+                        <div className="flex flex-row rounded-[16px] h-full px-2 w-full">
+                            <div className="w-[20%]">
+                                <p className="font-poppinsRegular relative bottom-3 bg-white text-center w-[6.5rem]">Drop Time</p>
+                                <img src={dateSvg} alt="error" className="w-[90px] h-[43px] relative bottom-3" />
+                            </div>
+                            <div className="w-[80%] flex flex-col justify-center ps-4 border-l-2 border-black ">
+                                <div className="flex items-center">
+                                    <input type="time" className="w-full h-full outline-none bg-transparent" ref={dropTimeRef} onChange={(e) => setDropTime(e.target.value)} />
                                 </div>
                             </div>
                         </div>
@@ -204,6 +243,7 @@ const CarSearchComponent = () => {
                 </PrimaryButton>
             </div>
         </div>
+
     )
 }
 

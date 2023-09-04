@@ -76,6 +76,7 @@
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@types/fingerprintjs2": "^2.0.0",
+    "@types/react-time-picker": "^6.0.0",
     "@types/uuid": "^9.0.2",
     "@typescript-eslint/eslint-plugin": "^6.5.0",
     "@typescript-eslint/parser": "^6.5.0",

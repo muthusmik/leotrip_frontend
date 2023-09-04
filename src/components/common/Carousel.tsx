@@ -60,7 +60,7 @@ export function Carousel({ children, ...props }: any) {
           return (
             <>
               <img src={item.image} className='carousel-item z-0 w-full h-[34rem] object-cover' style={{ transform: `translate(-${currentIndex * 100}%)`, imageOrientation: "revert-layer" }} key={item.id} />
-              <div className='z-10 absolute w-[86%] flex self-center justify-center ms-[6rem]'>{children}</div>
+              <div className='z-10 absolute w-[92%] flex self-center justify-center ms-[6rem]'>{children}</div>
             </>)
         })
         }
