@@ -129,8 +129,7 @@ const FlightSearchComponent = () => {
                     label={"From"}
                     value={fromValue}
                     placeholder={"Enter From city"}
-                    // setValue={setFromValue}
-                    setValue={handleFromValueChange}
+                    setValue={handleFromValueChange}// setValue={setFromValue}
                     data={autoCompleteData}
                     img={fromFlightSvg}
                     ref={fromInputRef}
