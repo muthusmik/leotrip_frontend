@@ -18,11 +18,11 @@ const CustomDatePicker = forwardRef<any, CustomDatePickerProps>(
 
         const hd = new Holidays();
         hd.init('US');
-
         const [selectedDate, setSelectedDate] = useState<Date | null>(null);
         const [currentDate, setCurrentDate] = useState<Date>(new Date());
         const [isHidePrevious, setIsHidePrevious] = useState(true);
         const [isHideNext, setIsHideNext] = useState(false);
+
 
         const [isDatePickerVisible, setDatePickerVisible] = useState<boolean>(false);
 

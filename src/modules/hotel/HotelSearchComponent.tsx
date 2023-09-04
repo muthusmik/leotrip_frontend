@@ -122,10 +122,12 @@ const HotelSearchComponent = () => {
                     <div className="w-[80%] flex flex-col justify-center ps-2 border-l-2 border-black">
                         <div className="flex items-center w-full h-full">
                             <CustomDatePicker onSelect={(e) => handleCheckOutDate(e)} ref={checkOutRef} minDate={dateOfRetrun} maxDate={maxDate} placeholder={"Select Check-Out Date"} />
+
                         </div>
                     </div>
                 </div>
                 <div className="bg-white rounded-[10px] border-2 border-black  hover:bg-slate-100 w-[20%] h-[70px] flex flex-col justify-center items-center">
+
                     <p className="font-poppinsRegular relative bottom-3 bg-white text-center w-[66%] right-6">
                         Guests &amp; Rooms
                     </p>

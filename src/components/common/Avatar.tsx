@@ -12,6 +12,7 @@ import { AuthLogin } from "components/Auth/AuthLogin";
 import { AuthSignUp } from "components/Auth/AuthSignUp";
 import { isEmail } from "components/utils/common";
 import { GetUserData } from "components/Auth/GetUserData";
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -29,6 +30,7 @@ export function Avatar() {
 
     const [auth, setAuth] = useState(true);
     const wrapperRef = useRef(null);
+    const navigate = useNavigate()
     useOutsideAlerter({ ref: wrapperRef, callback: () => setIsDropdownOpen(false) })
 
     const dropdownPosition = isDropdownOpen ? 'block' : 'hidden';
@@ -36,8 +38,11 @@ export function Avatar() {
     const handleActionClick = (type: string) => {
         setIsDropdownOpen(!isDropdownOpen);
         console.log(type)
+
         if (type === "Logout") {
             setAuth(false)
+        } else {
+            navigate("/myprofile")
         }
     }
 
