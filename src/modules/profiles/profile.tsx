@@ -43,11 +43,21 @@ export default function Profile() {
         },
     ];
     const lastItem = MyProfileKey[MyProfileKey.length - 1];
-
+const ScrollToTraveller=()=>{
+    const element=document.getElementById('Travellers')
+    if(element){
+    element.scrollIntoView({behavior:'smooth'})    
+}
+}
 
     return (
         <div className="bg-[#DEF2FF] h-full w-full ">
-            <div className="flex  gap-10">
+            <div className="flex gap-10">
+                <div>
+                    {/* <div className="h-fit py-10 w-[250px] bg-white border rounded-2xl">
+                        <Profilesidebar  ToTraveller={ScrollToTraveller}/>
+                    </div> */}
+                </div>
                 <div className="w-full">
                     <div className="h-fit  w-full bg-white border rounded-2xl py-4">
                         <ProgresBar />
@@ -59,7 +69,7 @@ export default function Profile() {
                     <div className="h-fit w-full bg-white border rounded-2xl py-5 mt-10">
                        <Logindetails/>
                     </div>
-                    <div className="h-fit w-full bg-white border rounded-2xl py-5 mt-10">
+                    <div className="h-fit w-full bg-white border rounded-2xl py-5 mt-10" id="Travellers">
                        <Travelers />
                     </div>
                 </div>
