@@ -46,13 +46,8 @@ export default function Profile() {
 
 
     return (
-        <div className="bg-[#DEF2FF] h-full w-full py-10">
-            <div className="flex mx-[5%] gap-10">
-                <div>
-                    <div className="h-fit py-10 w-[250px] bg-white border rounded-2xl">
-                        <Profilesidebar />
-                    </div>
-                </div>
+        <div className="bg-[#DEF2FF] h-full w-full ">
+            <div className="flex  gap-10">
                 <div className="w-full">
                     <div className="h-fit  w-full bg-white border rounded-2xl py-4">
                         <ProgresBar />
