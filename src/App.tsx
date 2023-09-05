@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import './App.css';
 import { useRoutes } from 'react-router-dom';
 import routes from './routes';
-import ScrollToTop from './components/utils/ScrollToTop';
 
 function App() {
   let element = useRoutes(routes);
@@ -15,7 +14,6 @@ function App() {
     <div className="w-full min-h-screen bg-int-background">
       {element}
     </div>
-
   );
 }
 

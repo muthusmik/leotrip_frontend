@@ -8,7 +8,7 @@ import user from '../../assets/icons/user.svg';
 import edit from '../../assets/icons/edit.svg';
 
 
-export default function Profilesidebar() {
+export default function Profilesidebar({ToTraveller}:any) {
 
     const fileInputRef = useRef<HTMLInputElement | null>(null);
     const [userImage, setUserImage] = useState(null);
@@ -42,12 +42,14 @@ export default function Profilesidebar() {
         setIsDropOpen(false);
     };
 
+    
+
     return (
         <>
             <div className="h-48 w-48 mx-auto border bg-gradient-to-tl from-blue-500 via-blue-50 to-blue-500">
                 <img src={userImage || user} alt="user" className={`${user ? 'h-20 w-20 m-14' : ''} ${userImage ? 'h-48 w-48 m-[0]' : ''} z-0 overflow-hidden`} />
                 <button onClick={handleButtonClick} className='w-full'>
-                    <img src={edit} alt="edit" className='border-4 border-white rounded-full ml-[12.5%] h-10 z-40 absolute mt-[-75px]' />
+                    <img src={edit} alt="edit" className='border-4 border-white rounded-full ml-[12.5%] h-10 absolute mt-[-75px]' />
                 </button>
                 <input
                     type="file"
@@ -63,7 +65,7 @@ export default function Profilesidebar() {
                 
                 {isOpen && (
                     <ul className='w-48 hover:bg-gradient-to-r from-white via-white to-blue-200'>
-                        <li onClick={() => handleOptionClick('Travellers') }>&nbsp;&nbsp;&nbsp;&nbsp;-  Travellers</li>
+                        <li onClick={() => ToTraveller() }>&nbsp;&nbsp;&nbsp;&nbsp;-  Travellers</li>
                     </ul>
                 )}
                 <button onClick={Dropdown} className={`flex gap-x-2 w-48 hover:bg-blue-200 ${isDropOpen ? 'bg-blue-200': ''}`}>

@@ -37,17 +37,12 @@ export default function Myprofileform() {
         setSelectedOption(e.target.value);
     };
 
-    const [textareaValue, setTextareaValue] = useState('');
-
-    const handleTextareaChange = (e: any) => {
-        setTextareaValue(e.target.value);
-    };
-
     const [selectedDate, setSelectedDate] = useState(null);
 
     const handleDateChange = (date:any) => {
         setSelectedDate(date);
     };
+    
     return (
         <>
             <div className="bg-white p-10 rounded-md">
