@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { IoRadioButtonOffOutline, IoRadioButtonOnOutline } from 'react-icons/io5';
 
 type Option = {
     value: string;
@@ -16,7 +17,7 @@ const RadioGroup: React.FC<RadioGroupProps> = ({ options, selected, onChange }) 
     return (
         <div className="mt-2">
             {options.map((option) => (
-                <label key={option.value} className={`inline-flex items-center mx-2 py-1 px-2 cursor-pointer rounded-[0.5rem] ${selected === option.value ? 'bg-orange-300' : ''}`}>
+                <label key={option.value} className={`inline-flex items-center mx-2 py-1 px-2 cursor-pointer rounded-[0.5rem]  ${selected === option.value ? 'bg-orange-300' : 'hover:bg-orange-100'}`}>
                     <input
                         type="radio"
                         value={option.value}
@@ -24,11 +25,12 @@ const RadioGroup: React.FC<RadioGroupProps> = ({ options, selected, onChange }) 
                         onChange={() => onChange(option.value)}
                         className="hidden"
                     />
-                    <div className="w-6 h-6 border-2 rounded-full border-blue-500 flex items-center justify-center">
+                    {selected === option.value ? <IoRadioButtonOnOutline size={"1.8rem"} color='blue' /> : <IoRadioButtonOffOutline size={"1.8rem"} color='blue' />}
+                    {/* <div className="w-6 h-6 border-2 rounded-full border-blue-500 flex items-center justify-center">
                         <div className={`w-4 h-4 rounded-full ${selected === option.value ? 'bg-blue-500' : 'bg-white'} flex items-center justify-center`}>
-                            {/* Customize the selected and unselected states */}
+                           
                         </div>
-                    </div>
+                    </div> */}
                     <span className="text-gray-700 text-xl font-poppinsRegular ml-2">{option.label}</span>
                 </label>
             ))}

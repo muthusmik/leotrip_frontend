@@ -10,7 +10,7 @@ type RoomGuestCountComponentProps = {
     setTravellerData: (travellerData: any) => void,
     setShowTravellerDropdown: (showTravellerDropdown: boolean) => void
 }
-    
+
 const options = [
     { value: 'economy', label: 'Economy' },
     { value: 'premiumEconomy', label: "Premium Economy" },
@@ -100,7 +100,7 @@ const TravellerCountComponent = ({ travellerData, setTravellerData, setShowTrave
     const countTag = 'w-[30px] h-full text-center flex items-center justify-center font-poppinsRegular'
 
     return (
-        <div ref={wrapperRef} className="absolute top-[11rem] right-[-80px] bg-white border-4 rounded-[10px] w-[36%] z-10">
+        <div ref={wrapperRef} className="absolute top-[11rem] right-[-2rem] bg-white border-4 rounded-[10px] w-[36%] z-10">
             <p className='text-center font-bold text-2xl font-poppinsRegular my-4'>Travellers and Class</p>
             <hr />
             <div className={mainContainerStyle}>

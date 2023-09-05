@@ -129,10 +129,11 @@ const FlightSearchComponent = () => {
                     label={"From"}
                     value={fromValue}
                     placeholder={"Enter From city"}
-                    setValue={handleFromValueChange}// setValue={setFromValue}
+                    setValue={handleFromValueChange} // setValue={setFromValue}
                     data={autoCompleteData}
                     img={fromFlightSvg}
                     ref={fromInputRef}
+                    usedIn="Flight"
                 />
                 <AutoSuggestionList
                     label={"To"}
@@ -142,14 +143,15 @@ const FlightSearchComponent = () => {
                     data={autoCompleteData}
                     img={toFlightSvg}
                     ref={toInputRef}
+                    usedIn="Flight"
                 />
-                <div className="bg-white rounded-[10px] border-2 border-black w-[20%] h-[70px]  hover:bg-slate-100">
-                    <div className="flex flex-row rounded-[16px] h-full px-2 w-full">
-                        <div className="w-[20%]">
-                            <p className="font-poppinsRegular relative bottom-3 bg-white text-center w-[5.4rem]">Departure</p>
+                <div className="bg-white rounded-[10px] border-2 border-black w-[20%] h-[70px]  hover:border-orange-600">
+                    <div className="flex flex-row rounded-[16px] h-full w-full">
+                        <div className="w-[15%] h-full">
+                            <p className="font-poppinsRegular relative bottom-3 left-3 bg-white text-center w-[5.4rem]">Departure</p>
                             <img src={dateSvg} alt="error" className="w-[90px] h-[43px] relative bottom-3" />
                         </div>
-                        <div className="w-[80%] flex flex-col justify-center ps-4 border-l-2 border-black ">
+                        <div className="w-[80%] flex flex-col justify-center ps-4 border-l-2 border-black hover:border-orange-600">
                             <div className="flex items-center w-full h-full">
                                 <CustomDatePicker onSelect={(e) => handleDateOfJourney(e)} ref={dateOfJourney} minDate={today} maxDate={maxDate} placeholder={"Select Date"} />
                             </div>
@@ -157,13 +159,13 @@ const FlightSearchComponent = () => {
                     </div>
                 </div>
                 {selectedOption === "roundTrip" &&
-                    <div className="bg-white rounded-[10px] border-2 border-black w-[20%] h-[70px]  hover:bg-slate-100">
-                        <div className="flex flex-row rounded-[16px] h-full px-2 w-full">
-                            <div className="w-[20%]">
-                                <p className="font-poppinsRegular relative bottom-3 bg-white text-center w-[3.5rem]">Return</p>
+                    <div className="bg-white rounded-[10px] border-2 border-black w-[20%] h-[70px]  hover:border-orange-600">
+                        <div className="flex flex-row rounded-[16px] h-full w-full">
+                            <div className="w-[15%] h-full">
+                                <p className="font-poppinsRegular relative bottom-3 left-3 bg-white text-center w-[3.5rem]">Return</p>
                                 <img src={dateSvg} alt="error" className="w-[90px] h-[43px] relative bottom-3" />
                             </div>
-                            <div className="w-[80%] flex flex-col justify-center ps-4 border-l-2 border-black ">
+                            <div className="w-[80%] flex flex-col justify-center ps-4 border-l-2 border-black hover:border-orange-600">
                                 <div className="flex items-center w-full h-full">
                                     <CustomDatePicker onSelect={(e) => handleReturnDateOfJourney(e)} ref={returnDateOfJourney} minDate={today} maxDate={maxDate} placeholder={"Select Return Date"} />
                                 </div>
@@ -171,7 +173,7 @@ const FlightSearchComponent = () => {
                         </div>
                     </div>
                 }
-                <div className="bg-white rounded-[10px] border-2 border-black  hover:bg-slate-100 w-[20%] h-[70px] flex flex-col justify-center items-center">
+                <div className="bg-white rounded-[10px] border-2 border-black  hover:border-orange-600 w-[20%] h-[70px] flex flex-col justify-center items-center">
                     <p className="font-poppinsRegular relative bottom-3 bg-white text-center w-[9rem] right-[1.5rem]">
                         Travellers &amp; Class
                     </p>

@@ -8,17 +8,19 @@ type AutoSuggestionProps = {
     value: string,
     setValue: (value: string) => void,
     placeholder: string,
-    img: any
+    img: any,
+    usedIn: string
 };
 
 const AutoSuggestionList = forwardRef<any, AutoSuggestionProps>(
-    ({ label, data, value, setValue, placeholder, img }, ref) => {
+    ({ label, data, value, setValue, placeholder, img, usedIn }, ref) => {
         const [query, setQuery] = useState('')
         const [suggestions, setSuggestions] = useState([]);
         const [suggestionIndex, setSuggestionIndex] = useState(0);
         const [suggestionsActive, setSuggestionsActive] = useState(false);
 
         const inputRef = useRef<HTMLInputElement | null>(null);
+        console.log("USed In..........", usedIn);
 
         useImperativeHandle(ref, () => ({
             focus: () => {
@@ -94,12 +96,12 @@ const AutoSuggestionList = forwardRef<any, AutoSuggestionProps>(
         };
 
         return (
-            <div className="flex flex-row rounded-[10px] max-w-[50%] h-[70px] px-2 border-black bg-white border-2 hover:bg-slate-100">
+            <div className="flex flex-row rounded-[10px] max-w-[50%] h-[70px] border-black bg-white border-2 hover:border-orange-600">
                 <div className="w-[15%] h-full">
-                    <p className={`font-poppinsRegular relative bottom-3 bg-white text-center z-50 ${label === "Location" ? "w-[80px]" : "w-[46px]"} `}>{label}</p>
+                    <p className={`font-poppinsRegular relative bottom-3 left-3 bg-white text-center z-50 ${label === "Location" ? "w-[80px]" : "w-[46px]"} `}>{label}</p>
                     <img src={img} alt="error" className="w-[90px] h-[43px] relative bottom-3 bg-transparent" />
                 </div>
-                <div className="w-[85%] flex flex-col justify-center px-2 border-l-2 border-black z-40">
+                <div className="w-[85%] flex flex-col justify-center px-2 border-l-2 border-black hover:border-orange-600 z-40">
                     <div className="flex items-center h-full w-full">
                         <input
                             type="text"
@@ -112,7 +114,7 @@ const AutoSuggestionList = forwardRef<any, AutoSuggestionProps>(
                         />
                     </div>
                     {suggestionsActive && (
-                        <div className="absolute top-28 w-[24%]">
+                        <div className={`absolute ${usedIn === "Car" || usedIn === "Flight" ? 'top-[10.6rem]' : 'top-[7.4rem]'} w-[24%]`}>
                             <Suggestions />
                         </div>)}
                 </div>

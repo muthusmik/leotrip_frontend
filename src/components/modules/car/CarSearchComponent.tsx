@@ -5,7 +5,7 @@ import getOutCarSvg from '../../../assets/icons/getOutCar.svg';
 import fromFlightSvg from '../../../assets/icons/fromflight.svg';
 import toFlightSvg from '../../../assets/icons/Toflight.svg';
 import dateSvg from '../../../assets/icons/datesvg.svg';
-import timeSvg from '../../../assets/icons/timeIcon.svg';
+import timeSvg from '../../../assets/icons/clock_svg.svg';
 import CustomDatePicker from "components/common/CustomdatePicker";
 import { PrimaryButton } from "styles/Button";
 import RadioGroup from "components/common/RadioGroup";
@@ -100,11 +100,17 @@ const CarSearchComponent = () => {
         }
     }, [date]);
 
-        // useEffect(() => {
-        //     if (pickupTime && dropTimeRef.current) {
-        //         dropTimeRef.current.focus();
-        //     }
-        // }, [pickupTime]);
+    useEffect(() => {
+        if (returnDate && pickUpTimeRef.current) {
+            pickUpTimeRef.current.focus();
+        }
+    }, [returnDate]);
+
+    useEffect(() => {
+        if (pickupTime && dropTimeRef.current) {
+            dropTimeRef.current.focus();
+        }
+    }, [pickupTime]);
 
     const handleFromValueChange = (newValue: any) => {
         setFromValue(newValue);
@@ -122,8 +128,18 @@ const CarSearchComponent = () => {
 
     const handleDateOfJourney = (newValue: any) => {
         setDate(newValue);
-        if (newValue && returnDateOfJourney.current) {
+        if (selectedOption !== "roundTrip" && newValue && pickUpTimeRef.current) {
+            pickUpTimeRef.current.focus();
+        }
+        else if (newValue && returnDateOfJourney.current) {
             returnDateOfJourney.current.focus();
+        }
+    };
+
+    const handleReturnDateOfJourney = (newValue: any) => {
+        setReturnDate(newValue)
+        if (newValue && pickUpTimeRef.current) {
+            pickUpTimeRef.current.focus();
         }
     };
 
@@ -146,7 +162,7 @@ const CarSearchComponent = () => {
             </div>
             <div className='flex flex-row w-full items-center justify-between gap-2 px-4 h-[140px]'>
                 {selectedOption === 'airportTransfer' &&
-                    <div className="bg-white rounded-[10px] border-2 border-black h-[70px] min-w-[20%] max-w-[26%]">
+                    <div className="bg-white rounded-[10px] border-2 border-black hover:border-orange-600 h-[70px] min-w-[20%] max-w-[26%]">
                         <div className="flex flex-row rounded-[16px] h-[70px] px-2 w-full">
                             <div className="w-[5%]">
                                 <p className="font-poppinsRegular relative bottom-3 bg-white text-center w-[140px]">Select Trip Type</p>
@@ -170,6 +186,7 @@ const CarSearchComponent = () => {
                     data={autoCompleteData}
                     img={selectedOption === 'airportTransfer' && tripType === "fromAirport" ? fromFlightSvg : getInCarSvg}
                     ref={fromInputRef}
+                    usedIn={"Car"}
                 />
                 <AutoSuggestionList
                     label={"To"}
@@ -179,14 +196,15 @@ const CarSearchComponent = () => {
                     data={autoCompleteData}
                     img={tripType === "toAirport" ? toFlightSvg : getOutCarSvg}
                     ref={toInputRef}
+                    usedIn={"Car"}
                 />
-                <div className="bg-white rounded-[10px] border-2 border-black h-[70px] min-w-[14%] max-w-[20%] hover:bg-slate-100">
-                    <div className="flex flex-row rounded-[16px] h-full px-2 w-full">
-                        <div className="w-[20%]">
-                            <p className="font-poppinsRegular relative bottom-3 bg-white text-center w-[5.4rem]">Departure</p>
+                <div className="bg-white rounded-[10px] border-2 border-black h-[70px] min-w-[14%] max-w-[20%] hover:border-orange-600">
+                    <div className="flex flex-row rounded-[16px] h-full w-full">
+                        <div className="w-[15%] h-full">
+                            <p className="font-poppinsRegular relative bottom-3 left-3 bg-white text-center w-[5.4rem]">Departure</p>
                             <img src={dateSvg} alt="error" className="w-[90px] h-[43px] relative bottom-3" />
                         </div>
-                        <div className="w-[80%] flex flex-col justify-center ps-4 border-l-2 border-black ">
+                        <div className="w-[80%] flex flex-col justify-center ps-4 border-l-2 border-black hover:border-orange-600">
                             <div className="flex items-center">
                                 <CustomDatePicker onSelect={(e) => handleDateOfJourney(e)} ref={dateOfJourney} minDate={today} maxDate={maxDate} placeholder={"Select Pickup Date"} />
                             </div>
@@ -194,27 +212,27 @@ const CarSearchComponent = () => {
                     </div>
                 </div>
                 {selectedOption === "roundTrip" &&
-                    <div className="bg-white rounded-[10px] border-2 border-black h-[70px] min-w-[14%] max-w-[20%] hover:bg-slate-100">
-                        <div className="flex flex-row rounded-[16px] h-full ps-2 w-full">
-                            <div className="w-[20%]">
-                                <p className="font-poppinsRegular relative bottom-3 bg-white text-center w-[3.6rem]">Return</p>
+                    <div className="bg-white rounded-[10px] border-2 border-black h-[70px] min-w-[14%] max-w-[20%] hover:border-orange-600">
+                        <div className="flex flex-row rounded-[16px] h-full w-full">
+                            <div className="w-[15%] h-full">
+                                <p className="font-poppinsRegular relative bottom-3 left-3 bg-white text-center w-[3.6rem]">Return</p>
                                 <img src={dateSvg} alt="error" className="w-[90px] h-[43px] relative bottom-3" />
                             </div>
-                            <div className="w-[80%] flex flex-col justify-center px-4 border-l-2 border-black ">
+                            <div className="w-[80%] flex flex-col justify-center px-4 border-l-2 border-black hover:border-orange-600">
                                 <div className="flex items-center">
-                                    <CustomDatePicker onSelect={(e) => setReturnDate(e)} ref={returnDateOfJourney} minDate={today} maxDate={maxDate} placeholder={"Select Return Date"} />
+                                    <CustomDatePicker onSelect={(e) => handleReturnDateOfJourney(e)} ref={returnDateOfJourney} minDate={today} maxDate={maxDate} placeholder={"Select Return Date"} />
                                 </div>
                             </div>
                         </div>
                     </div>
                 }
-                <div className="bg-white rounded-[10px] border-2 border-black h-[70px] min-w-[14%] max-w-[20%] hover:bg-slate-100">
-                    <div className="flex flex-row rounded-[16px] h-full px-2 w-full">
-                        <div className="w-[20%]">
-                            <p className="font-poppinsRegular relative bottom-3 bg-white text-center w-[6.5rem]">Pickup-Time</p>
-                            <img src={dateSvg} alt="error" className="w-[90px] h-[43px] relative bottom-3" />
+                <div className="bg-white rounded-[10px] border-2 border-black h-[70px] min-w-[14%] max-w-[20%] hover:border-orange-600">
+                    <div className="flex flex-row rounded-[16px] h-full w-full">
+                        <div className="w-[15%] h-full">
+                            <p className="font-poppinsRegular relative bottom-3 left-3 bg-white text-center w-[6.5rem]">Pickup-Time</p>
+                            <img src={timeSvg} alt="error" className="w-[90px] h-[43px] relative bottom-3 px-1" />
                         </div>
-                        <div className="w-[80%] flex flex-col justify-center ps-4 border-l-2 border-black ">
+                        <div className="w-[80%] flex flex-col justify-center ps-4 border-l-2 border-black hover:border-orange-600">
                             <div className="flex items-center">
                                 <input type="time" className="w-full h-full outline-none bg-transparent" ref={pickUpTimeRef} onChange={(e) => setPickupTime(e.target.value)} />
                             </div>
@@ -222,13 +240,13 @@ const CarSearchComponent = () => {
                     </div>
                 </div>
                 {selectedOption === "roundTrip" &&
-                    <div className="bg-white rounded-[10px] border-2 border-black h-[70px] min-w-[14%] max-w-[20%] hover:bg-slate-100">
-                        <div className="flex flex-row rounded-[16px] h-full px-2 w-full">
-                            <div className="w-[20%]">
-                                <p className="font-poppinsRegular relative bottom-3 bg-white text-center w-[6.5rem]">Drop Time</p>
-                                <img src={dateSvg} alt="error" className="w-[90px] h-[43px] relative bottom-3" />
+                    <div className="bg-white rounded-[10px] border-2 border-black h-[70px] min-w-[14%] max-w-[20%] hover:border-orange-600">
+                        <div className="flex flex-row rounded-[16px] h-full w-full">
+                            <div className="w-[15%] h-full">
+                                <p className="font-poppinsRegular relative bottom-3 left-3 bg-white text-center w-[6.5rem]">Drop Time</p>
+                                <img src={timeSvg} alt="error" className="w-[90px] h-[43px] relative bottom-3 px-1" />
                             </div>
-                            <div className="w-[80%] flex flex-col justify-center ps-4 border-l-2 border-black ">
+                            <div className="w-[80%] flex flex-col justify-center ps-4 border-l-2 border-black hover:border-orange-600">
                                 <div className="flex items-center">
                                     <input type="time" className="w-full h-full outline-none bg-transparent" ref={dropTimeRef} onChange={(e) => setDropTime(e.target.value)} />
                                 </div>

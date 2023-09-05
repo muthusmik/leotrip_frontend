@@ -173,7 +173,7 @@ const CustomDatePicker = forwardRef<any, CustomDatePickerProps>(
                     onClick={handleInputClick}
                     ref={inputRef}
                     readOnly // Make the input box read-only to prevent direct editing
-                    className='h-10 rounded-[10px] font-poppinsRegular w-full text-lg bg-transparent'
+                    className='h-full rounded-[10px] font-poppinsRegular w-full text-lg bg-transparent'
                 />
                 {isDatePickerVisible && (
                     <div ref={wrapperRef} className='fixed mt-2 mx-5 bg-white rounded-2xl shadow-lg p-2 z-40'>

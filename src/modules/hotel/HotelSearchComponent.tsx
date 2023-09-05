@@ -102,33 +102,34 @@ const HotelSearchComponent = () => {
                     data={autoCompleteData}
                     img={locationSvg}
                     ref={fromInputRef}
+                    usedIn={"Hotel"}
                 />
-                <div className="bg-white rounded-[10px] border-2 w-[24%] border-black hover:bg-slate-100 flex flex-row h-[70px] px-2">
-                    <div className="w-[20%]">
-                        <p className="font-poppinsRegular relative bottom-3 bg-white text-center w-[100px]">Check-In</p>
+                <div className="bg-white rounded-[10px] border-2 w-[24%] border-black hover:border-orange-600 flex flex-row h-[70px]">
+                    <div className="w-[15%] h-full">
+                        <p className="font-poppinsRegular relative bottom-3 left-3 bg-white text-center w-[100px]">Check-In</p>
                         <img src={dateSvg} alt="error" className="w-full h-[43px] relative bottom-3" />
                     </div>
-                    <div className="w-[80%] flex flex-col justify-center ps-2 border-l-2 border-black">
+                    <div className="w-[80%] flex flex-col justify-center ps-2 border-l-2 border-black hover:border-orange-600">
                         <div className="flex items-center w-full h-full">
                             <CustomDatePicker onSelect={(e) => handleCheckInDate(e)} ref={checkInRef} minDate={today} maxDate={maxDate} placeholder={"Select Check-In Date"} />
                         </div>
                     </div>
                 </div>
-                <div className="bg-white rounded-[10px] border-2 w-[24%] border-black  hover:bg-slate-100 flex flex-row h-[70px] px-2">
-                    <div className="w-[20%]">
-                        <p className="font-poppinsRegular relative bottom-3 bg-white text-center w-[100px]">Check-Out</p>
+                <div className="bg-white rounded-[10px] border-2 w-[24%] border-black hover:border-orange-600 flex flex-row h-[70px]">
+                    <div className="w-[15%] h-full">
+                        <p className="font-poppinsRegular relative bottom-3 left-3 bg-white text-center w-[100px]">Check-Out</p>
                         <img src={dateSvg} alt="error" className="w-full h-[43px] relative bottom-3" />
                     </div>
-                    <div className="w-[80%] flex flex-col justify-center ps-2 border-l-2 border-black">
+                    <div className="w-[80%] flex flex-col justify-center ps-2 border-l-2 border-black hover:border-orange-600">
                         <div className="flex items-center w-full h-full">
                             <CustomDatePicker onSelect={(e) => handleCheckOutDate(e)} ref={checkOutRef} minDate={dateOfRetrun} maxDate={maxDate} placeholder={"Select Check-Out Date"} />
 
                         </div>
                     </div>
                 </div>
-                <div className="bg-white rounded-[10px] border-2 border-black  hover:bg-slate-100 w-[20%] h-[70px] flex flex-col justify-center items-center">
+                <div className="bg-white rounded-[10px] border-2 border-black  hover:border-orange-600 w-[20%] h-[70px] flex flex-col justify-center items-center">
 
-                    <p className="font-poppinsRegular relative bottom-3 bg-white text-center w-[66%] right-6">
+                    <p className="font-poppinsRegular relative bottom-3 bg-white text-center w-[9rem] right-10">
                         Guests &amp; Rooms
                     </p>
                     <div className="flex justify-center w-full h-full relative bottom-2">

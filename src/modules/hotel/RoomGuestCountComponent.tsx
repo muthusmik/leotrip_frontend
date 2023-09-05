@@ -147,7 +147,7 @@ const RoomGuestCountComponent = ({ roomGuestCount, setRoomGuestCount, showRoomGu
 
     return (
 
-        <div ref={wrapperRef} className="absolute top-[8rem] right-[-80px] bg-white border-4 rounded-[10px] w-[36%] z-10">
+        <div ref={wrapperRef} className="absolute top-[8rem] right-[-2rem] bg-white border-4 rounded-[10px] w-[36%] z-10">
             <p className='text-center font-bold text-2xl font-poppinsRegular my-4'>Rooms and Guests</p>
             <hr />
             <div className={mainContainerStyle}>
