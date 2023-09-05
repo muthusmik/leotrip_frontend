@@ -176,7 +176,7 @@ const CustomDatePicker = forwardRef<any, CustomDatePickerProps>(
                     className='h-10 rounded-[10px] font-poppinsRegular w-full text-lg bg-transparent'
                 />
                 {isDatePickerVisible && (
-                    <div ref={wrapperRef} className='absolute mt-2 mx-5 bg-white rounded-2xl shadow-lg p-2 z-40'>
+                    <div ref={wrapperRef} className='fixed mt-2 mx-5 bg-white rounded-2xl shadow-lg p-2 z-40'>
                         <div className="flex mx-5 mt-1 bg-white items-center text-center justify-between" style={{ userSelect: 'none' }}>
                             <div>{!isHidePrevious && <ChevronLeft onClick={handlePrevMonth} className='w-5' />}</div>
                             <div>{currentDate.toLocaleDateString('default', { month: 'short', year: 'numeric' })}</div>
