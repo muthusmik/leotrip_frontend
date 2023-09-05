@@ -4,17 +4,18 @@ import Holidays from 'date-holidays';
 import useOutsideAlerter from 'hooks/useOutside';
 import { ReactComponent as ChevronRight } from '../../assets/icons/chevron-double-right.svg';
 import { ReactComponent as ChevronLeft } from '../../assets/icons/chevron-double-left.svg';
-
+import moment from "moment";
 
 interface CustomDatePickerProps {
     onSelect: (date: Date) => void;
     minDate: Date;
     maxDate: Date;
     placeholder: string;
+    defaultDate: Date;
 }
 
 const CustomDatePicker = forwardRef<any, CustomDatePickerProps>(
-    ({ onSelect, minDate, maxDate, placeholder }, ref) => {
+    ({ onSelect, minDate, maxDate, placeholder, defaultDate }, ref) => {
 
         const hd = new Holidays();
         hd.init('US');
@@ -169,7 +170,7 @@ const CustomDatePicker = forwardRef<any, CustomDatePickerProps>(
                 <input
                     type="text"
                     placeholder={placeholder}
-                    value={selectedDate ? selectedDate.toLocaleDateString('en-GB') : ''}
+                    value={selectedDate ? selectedDate.toLocaleDateString('en-GB') : moment(defaultDate).format('DD/MM/YYYY ddd')}
                     onClick={handleInputClick}
                     ref={inputRef}
                     readOnly // Make the input box read-only to prevent direct editing

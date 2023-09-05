@@ -128,7 +128,7 @@ const FlightSearchComponent = () => {
                 <AutoSuggestionList
                     label={"From"}
                     value={fromValue}
-                    placeholder={"Enter From city"}
+                    placeholder={"Enter City or Airport"}
                     setValue={handleFromValueChange} // setValue={setFromValue}
                     data={autoCompleteData}
                     img={fromFlightSvg}
@@ -139,7 +139,7 @@ const FlightSearchComponent = () => {
                     label={"To"}
                     value={toValue}
                     setValue={handleToValueChange}
-                    placeholder={"Enter To city"}
+                    placeholder={"Enter City or Airport"}
                     data={autoCompleteData}
                     img={toFlightSvg}
                     ref={toInputRef}
@@ -153,7 +153,7 @@ const FlightSearchComponent = () => {
                         </div>
                         <div className="w-[80%] flex flex-col justify-center ps-4 border-l-2 border-black hover:border-orange-600">
                             <div className="flex items-center w-full h-full">
-                                <CustomDatePicker onSelect={(e) => handleDateOfJourney(e)} ref={dateOfJourney} minDate={today} maxDate={maxDate} placeholder={"Select Date"} />
+                                <CustomDatePicker onSelect={(e) => handleDateOfJourney(e)} ref={dateOfJourney} defaultDate={today} minDate={today} maxDate={maxDate} placeholder={"Select Date"} />
                             </div>
                         </div>
                     </div>
@@ -167,7 +167,7 @@ const FlightSearchComponent = () => {
                             </div>
                             <div className="w-[80%] flex flex-col justify-center ps-4 border-l-2 border-black hover:border-orange-600">
                                 <div className="flex items-center w-full h-full">
-                                    <CustomDatePicker onSelect={(e) => handleReturnDateOfJourney(e)} ref={returnDateOfJourney} minDate={today} maxDate={maxDate} placeholder={"Select Return Date"} />
+                                    <CustomDatePicker onSelect={(e) => handleReturnDateOfJourney(e)} ref={returnDateOfJourney} defaultDate={today} minDate={today} maxDate={maxDate} placeholder={"Select Return Date"} />
                                 </div>
                             </div>
                         </div>

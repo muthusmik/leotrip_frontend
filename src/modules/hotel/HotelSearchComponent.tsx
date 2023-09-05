@@ -97,7 +97,6 @@ const HotelSearchComponent = () => {
                     label={"Location"}
                     value={fromValue}
                     placeholder={"Where you want to stay"}
-                    // setValue={setFromValue}
                     setValue={handleFromValueChange} // Call the new handler
                     data={autoCompleteData}
                     img={locationSvg}
@@ -111,7 +110,7 @@ const HotelSearchComponent = () => {
                     </div>
                     <div className="w-[80%] flex flex-col justify-center ps-2 border-l-2 border-black hover:border-orange-600">
                         <div className="flex items-center w-full h-full">
-                            <CustomDatePicker onSelect={(e) => handleCheckInDate(e)} ref={checkInRef} minDate={today} maxDate={maxDate} placeholder={"Select Check-In Date"} />
+                            <CustomDatePicker onSelect={(e) => handleCheckInDate(e)} ref={checkInRef} defaultDate={today} minDate={today} maxDate={maxDate} placeholder={"Select Check-In Date"} />
                         </div>
                     </div>
                 </div>
@@ -122,8 +121,7 @@ const HotelSearchComponent = () => {
                     </div>
                     <div className="w-[80%] flex flex-col justify-center ps-2 border-l-2 border-black hover:border-orange-600">
                         <div className="flex items-center w-full h-full">
-                            <CustomDatePicker onSelect={(e) => handleCheckOutDate(e)} ref={checkOutRef} minDate={dateOfRetrun} maxDate={maxDate} placeholder={"Select Check-Out Date"} />
-
+                            <CustomDatePicker onSelect={(e) => handleCheckOutDate(e)} ref={checkOutRef} defaultDate={dateOfRetrun} minDate={dateOfRetrun} maxDate={maxDate} placeholder={"Select Check-Out Date"} />
                         </div>
                     </div>
                 </div>

@@ -106,7 +106,7 @@ const BusSearchComponent = () => {
                         </div>
                         <div className="w-[80%] flex flex-col justify-center ps-4 border-l-2 border-black hover:border-orange-600">
                             <div className="flex items-center">
-                                <CustomDatePicker onSelect={(e) => handleDateValue(e)} ref={dateOfJourney} minDate={today} maxDate={maxDate} placeholder={"Select your Date"} />
+                                <CustomDatePicker onSelect={(e) => handleDateValue(e)} ref={dateOfJourney} defaultDate={today} minDate={today} maxDate={maxDate} placeholder={"Select your Date"} />
                             </div>
                         </div>
                     </div>

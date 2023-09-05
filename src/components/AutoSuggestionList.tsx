@@ -20,7 +20,6 @@ const AutoSuggestionList = forwardRef<any, AutoSuggestionProps>(
         const [suggestionsActive, setSuggestionsActive] = useState(false);
 
         const inputRef = useRef<HTMLInputElement | null>(null);
-        console.log("USed In..........", usedIn);
 
         useImperativeHandle(ref, () => ({
             focus: () => {

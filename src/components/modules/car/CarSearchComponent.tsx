@@ -206,7 +206,7 @@ const CarSearchComponent = () => {
                         </div>
                         <div className="w-[80%] flex flex-col justify-center ps-4 border-l-2 border-black hover:border-orange-600">
                             <div className="flex items-center">
-                                <CustomDatePicker onSelect={(e) => handleDateOfJourney(e)} ref={dateOfJourney} minDate={today} maxDate={maxDate} placeholder={"Select Pickup Date"} />
+                                <CustomDatePicker onSelect={(e) => handleDateOfJourney(e)} ref={dateOfJourney} defaultDate={today} minDate={today} maxDate={maxDate} placeholder={"Select Pickup Date"} />
                             </div>
                         </div>
                     </div>
@@ -220,7 +220,7 @@ const CarSearchComponent = () => {
                             </div>
                             <div className="w-[80%] flex flex-col justify-center px-4 border-l-2 border-black hover:border-orange-600">
                                 <div className="flex items-center">
-                                    <CustomDatePicker onSelect={(e) => handleReturnDateOfJourney(e)} ref={returnDateOfJourney} minDate={today} maxDate={maxDate} placeholder={"Select Return Date"} />
+                                    <CustomDatePicker onSelect={(e) => handleReturnDateOfJourney(e)} ref={returnDateOfJourney} defaultDate={dateOfRetrun} minDate={today} maxDate={maxDate} placeholder={"Select Return Date"} />
                                 </div>
                             </div>
                         </div>
