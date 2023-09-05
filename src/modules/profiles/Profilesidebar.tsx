@@ -8,7 +8,7 @@ import user from "../../assets/icons/user.svg";
 import edit from "../../assets/icons/edit.svg";
 // import { useOption } from 'provider/ContextProvider';
 
-export default function Profilesidebar({ setSelectedOption }: any) {
+export default function Profilesidebar({ setSelectedOption,ToTraveller }: any) {
   const [activeItem, setActiveItem] = useState("Travellers");
   const fileInputRef = useRef<HTMLInputElement | null>(null);
   const [userImage, setUserImage] = useState(null);
@@ -41,6 +41,9 @@ export default function Profilesidebar({ setSelectedOption }: any) {
     setIsOpen(true);
     setSelectedOption(option);
     setActiveItem(option);
+    if(option==="Travellers"){
+      ToTraveller()
+    }
   };
   const isItemActive = (option: any) => option === activeItem;
   return (
@@ -57,7 +60,7 @@ export default function Profilesidebar({ setSelectedOption }: any) {
           <img
             src={edit}
             alt="edit"
-            className="border-4 border-white rounded-full ml-[12.5%] h-10 z-40 absolute mt-[-75px]"
+            className='border-4 border-white rounded-full ml-[12.5%] h-10 absolute mt-[-75px]'
           />
         </button>
         <input
@@ -83,7 +86,7 @@ export default function Profilesidebar({ setSelectedOption }: any) {
 
         {isOpen && (
           <ul className="w-48 hover:bg-gradient-to-r from-white via-white to-blue-200">
-            <li onClick={() => handleOptionClick("Travellers")} className={` ${isItemActive("Travellers") ? "bg-gradient-to-r from-white via-white to-blue-200" : ""
+            <li onClick={() => handleOptionClick("Travellers") } className={` ${isItemActive("Travellers") ? "bg-gradient-to-r from-white via-white to-blue-200" : ""
           }`}>
               &nbsp;&nbsp;&nbsp;&nbsp;- Travellers
             </li>

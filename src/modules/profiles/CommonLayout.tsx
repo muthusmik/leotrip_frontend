@@ -15,6 +15,13 @@ const CommonLayout=()=>{
     const handleOptionClick = (option:any) => {
         setSelectedOption(option);
       };
+
+      const ScrollToTraveller=()=>{
+        const element=document.getElementById('Travellers')
+        if(element){
+        element.scrollIntoView({behavior:'smooth'})
+    }
+}
       const renderComponent = () => {
         switch (selectedOption) {
 
@@ -32,12 +39,13 @@ const CommonLayout=()=>{
                 return null; // Render nothing by default
         }
     };
+
     return(
         <div className="bg-[#DEF2FF] h-full w-full py-10">
         <div className="flex mx-[5%] gap-10">
             <div>
                 <div className="h-fit py-10 w-[250px] bg-white border rounded-2xl">
-                <Profilesidebar setSelectedOption={handleOptionClick} />
+                <Profilesidebar setSelectedOption={handleOptionClick} ToTraveller={ScrollToTraveller}/>
                 </div>
             </div>
             <div className="bg-[#DEF2FF] w-full">
