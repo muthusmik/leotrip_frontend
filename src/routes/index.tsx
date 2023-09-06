@@ -9,10 +9,9 @@ import FlightModule from '../modules/flight';
 import HotelModule from '../modules/hotel';
 import CarModule from '../modules/car';
 import CommonLayout from 'modules/profiles/CommonLayout';
+import FlightShowList from 'modules/flight/FlightShowList';
 
 const routes: RouteObject[] = [
-
-
   {
     path: '/',
     element: <HomePage />, // Your bus module component
@@ -24,6 +23,10 @@ const routes: RouteObject[] = [
   {
     path: '/flights',
     element: <FlightModule />, // Your flight module component
+  },
+  {
+    path: '/flightShow',
+    element: <FlightShowList />,
   },
   {
     path: '/hotel',

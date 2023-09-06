@@ -72,7 +72,6 @@ code {
 
 .carousel-container {
   flew-wrap: nowrap;
-
 }
 
 .carousel-item {
@@ -119,17 +118,19 @@ code {
   transform: translateY(-50%);
 }
 
-.worldmap{
+.worldmap {
   background-image: url(./assets/images/Worldmap.svg);
   background-size: 100% 100%;
   background-repeat: no-repeat;
 }
-.bgbus{
+
+.bgbus {
   background-image: url(./assets/images/bgbus.svg);
   background-size: 100% 100%;
   background-repeat: no-repeat;
 }
-.bgcar{
+
+.bgcar {
   background-image: url(./assets/images/bgcar.svg);
   background-size: 100% 100%;
   background-repeat: no-repeat;

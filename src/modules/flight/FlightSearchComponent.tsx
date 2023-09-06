@@ -7,6 +7,7 @@ import CustomDatePicker from "components/common/CustomdatePicker";
 import { PrimaryButton } from "styles/Button";
 import RadioGroup from "components/common/RadioGroup";
 import TravellerCountComponent from "./TravellerCount";
+import { useNavigate } from "react-router";
 
 const autoCompleteData = [
     "Asparagus",
@@ -37,7 +38,7 @@ const options = [
 ];
 
 const FlightSearchComponent = () => {
-
+    const navigate = useNavigate()
     const today = new Date();
     const maxDate = new Date();
     maxDate.setMonth(today.getMonth() + 6);
@@ -64,6 +65,7 @@ const FlightSearchComponent = () => {
 
     const handleSearchFlight = () => {
         console.log("handleSearchFlight................", fromValue, toValue, travellerData, returnDate)
+        navigate("/flightShow" )
     }
 
     useEffect(() => {
