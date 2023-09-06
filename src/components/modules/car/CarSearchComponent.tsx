@@ -76,6 +76,7 @@ const CarSearchComponent = () => {
     const handleSearchCar = () => {
         console.log("WERWEEFWWEFWEfew................", fromValue, toValue, moment(date).format("DD/MM/YYYY"), returnDate, pickupTime, dropTime)
     }
+    
     useEffect(() => {
         if (tripType && fromInputRef.current) {
             fromInputRef.current.focus();
