@@ -8,7 +8,7 @@ import BusModule from '../modules/bus';
 import FlightModule from '../modules/flight';
 import HotelModule from '../modules/hotel';
 import CarModule from '../modules/car';
-import Profile from 'modules/profiles/profile';
+import CommonLayout from 'modules/profiles/CommonLayout';
 
 const routes: RouteObject[] = [
 
@@ -34,9 +34,10 @@ const routes: RouteObject[] = [
     element: <CarModule />, // Your train module component
   },
   {
-    path: '/myprofile',
-    element: <Profile />, // Your train module component
+    path: '/profile',
+    element: <CommonLayout />, // Your train module component
   },
+
   { path: '*', element: <NotFoundPage /> }, // Not found page for unmatched URLs
 ];
 

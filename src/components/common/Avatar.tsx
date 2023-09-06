@@ -13,7 +13,7 @@ import { AuthSignUp } from "components/Auth/AuthSignUp";
 import { isEmail } from "components/utils/common";
 import { GetUserData } from "components/Auth/GetUserData";
 import { useNavigate } from "react-router-dom";
-
+import CommonLayout from '../../modules/profiles/CommonLayout'
 
 
 export function Avatar() {
@@ -35,47 +35,52 @@ export function Avatar() {
 
     const dropdownPosition = isDropdownOpen ? 'block' : 'hidden';
     const dropdownPositionX = isDropdownOpen ? '-130px' : '-1000px';
-    const handleActionClick = (type: string) => {
-        setIsDropdownOpen(!isDropdownOpen);
-        console.log(type)
+    // const handleActionClick = (type: string) => {
+    //     setIsDropdownOpen(!isDropdownOpen);
+    //     console.log(type)
 
-        if (type === "Logout") {
-            setAuth(false)
-        } else {
-            navigate("/myprofile")
-        }
-    }
+    //     if (type === "Logout") {
+    //         setAuth(false)
+    //     }
+    //     else if(type === "Trips")
+    //     {
+    //         navigate('/mytrips', { state: "Flight"})
+    //     }
+    //     else {
+    //         navigate("/myprofile")
+    //     }
+    // }
 
     const MenuOptions = [
         {
             name: 'My Profile',
             icon: UserIcon,
             description: "Manage your profile, traveler details, login details, and password",
-            onClick: () => handleActionClick("Profile")
+            onClick: () => navigate("/profile" ,{state:"Travellers"})
         },
         {
             name: 'My Trips',
             icon: TripIcon,
             description: "Details of your upcoming, completed trips and manage your trips",
-            onClick: () => handleActionClick("Trips")
+            onClick: () => navigate("/profile" ,{state:"Flight"})
         },
         {
             name: 'Saved',
             icon: HeartIcon,
             description: "Manage your Favourite Travel fixtures and schedules",
-            onClick: () => handleActionClick("Trips")
+            onClick: () => <CommonLayout />
         },
         {
             name: 'Offers',
             icon: SearchIcon,
             description: "Details of exciting offers particularly for you",
-            onClick: () => handleActionClick("Trips")
+            onClick: () => <CommonLayout />
         },
 
         {
             name: 'Logout',
             icon: LogoutIcon,
-            onClick: () => { handleActionClick("Logout") }
+            onClick: () =>setAuth(false)
         }
     ];
 

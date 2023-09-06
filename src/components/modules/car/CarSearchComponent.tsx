@@ -218,7 +218,7 @@ const CarSearchComponent = () => {
                                 <p className="font-poppinsRegular relative bottom-3 left-3 bg-white text-center w-[3.6rem]">Return</p>
                                 <img src={dateSvg} alt="error" className="w-[90px] h-[43px] relative bottom-3" />
                             </div>
-                            <div className="w-[80%] flex flex-col justify-center px-4 border-l-2 border-black hover:border-orange-600">
+                            <div className="w-[80%] flex flex-col justify-center ps-4 border-l-2 border-black hover:border-orange-600">
                                 <div className="flex items-center">
                                     <CustomDatePicker onSelect={(e) => handleReturnDateOfJourney(e)} ref={returnDateOfJourney} defaultDate={dateOfRetrun} minDate={today} maxDate={maxDate} placeholder={"Select Return Date"} />
                                 </div>

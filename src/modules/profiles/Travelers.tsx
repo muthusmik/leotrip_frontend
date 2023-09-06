@@ -25,11 +25,22 @@ export default function Travelers() {
             <ModalFullHeight
                 active={isEditModal}
                 closeModal={() => setIsEditModal(false)}
-                width="w-[650px]"
+                width="w-fit"
                 isSubModal={true}
                 transparent={true}>
                 <Travelersform />
             </ModalFullHeight>
+
+            <div className={`flex mx-12 py-3 px-2 hover:bg-gradient-to-r from-white via-white to-blue-200 text-lg border-b-4`}>
+                <p className="w-[20%]">{'Gowtham'}</p>
+                <p className="w-[20%]">{'27'}</p>
+                <p>{'Male'}</p>
+            </div>
+            <div className={`flex mx-12 py-3 px-2 hover:bg-gradient-to-r from-white via-white to-blue-200 text-lg `}>
+                 <p className="w-[20%]">{'Buusha'}</p>
+                 <p className="w-[20%]">{'25'}</p>
+                 <p>{'Male'}</p>
+            </div>
         </>
     );
 }
