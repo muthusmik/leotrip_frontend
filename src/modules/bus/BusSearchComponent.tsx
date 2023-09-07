@@ -87,6 +87,7 @@ const BusSearchComponent = () => {
                     img={fromBusSvg}
                     ref={fromInputRef}
                     usedIn="Bus"
+                    modify="false"
                 />
                 <AutoSuggestionList
                     label={"To"}
@@ -97,6 +98,7 @@ const BusSearchComponent = () => {
                     img={toBusSvg}
                     ref={toInputRef}
                     usedIn="Bus"
+                    modify='false'
                 />
                 <div className="rounded-[10px] border-2 bg-white border-black hover:border-orange-600">
                     <div className="flex flex-row rounded-[16px] h-[70px]">

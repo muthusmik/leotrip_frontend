@@ -14,11 +14,11 @@ export function ButtonOutlined({ children }: ButtonOutlinedProps) {
 }
 
 
-export function Generateotp({ children,ok,cancel, ...props }: any) {
+export function Generateotp({ children, ok, cancel, ...props }: any) {
     return (
         <>
             <button
-                className={`flex rounded-md items-center bg-bluebtn px-5 py-2 text-white font-poppinsRegular${ok ? 'bg-bluebtn' : ''} ${cancel ? 'bg-red-400':''}`}
+                className={`flex rounded-md items-center bg-bluebtn px-5 py-2 text-white font-poppinsRegular${ok ? 'bg-bluebtn' : ''} ${cancel ? 'bg-red-400' : ''}`}
             >
                 {children}
             </button>
@@ -41,18 +41,18 @@ export function Googlesignin({ children, onClick, ...props }: any) {
     );
 }
 
-export function PrimaryButton({ children, outlined, rounded, shadow, blue, block, onClick, loading,profilebtn, ...props }: any) {
+export function PrimaryButton({ children, outlined, rounded, shadow, blue, block, onClick, loading, profilebtn, ...props }: any) {
     return (
-            <button
-                onClick={onClick}
-                className={`flex my-2 items-center justify-center
-                    ${outlined ? "bg-transparent rounded-md border-white border-2 text-white"
-                        : rounded ? "bg-int-sandal rounded-full text-white"
-                            : ""}
+        <button
+            onClick={onClick}
+            className={`flex my-2 items-center justify-center
+                    ${outlined ? "bg-transparent rounded-md border-white border-2 text-white hover:translate-x-1 hover:shadow-lg"
+                    : rounded ? "bg-int-sandal rounded-full text-white"
+                        : ""}
                     ${shadow ? "border-int-sandal border-2 border-opacity-40 text-white" : ""}
                     ${block ? "w-full" : ""}
                     ${blue ? "bg-bluebtn" : "bg-int-sandal"}
-                    ${profilebtn ? "border-primary text-primary bg-transparent border-2 rounded-full": ""}
+                    ${profilebtn ? "border-primary text-primary bg-transparent border-2 rounded-full" : ""}
                     text-center px-5 py-2 font-poppinsRegular uppercase`}
             disabled={loading}
         >

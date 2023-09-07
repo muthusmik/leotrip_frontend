@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useRef } from "react";
 import AutoSuggestionList from "components/AutoSuggestionList";
-import fromFlightSvg from '../../assets/icons/fromflight.svg';
-import toFlightSvg from '../../assets/icons/Toflight.svg';
-import dateSvg from '../../assets/icons/datesvg.svg';
+import fromFlightSvg from '../../../assets/icons/fromflight.svg';
+import toFlightSvg from '../../../assets/icons/Toflight.svg';
+import dateSvg from '../../../assets/icons/datesvg.svg';
 import CustomDatePicker from "components/common/CustomdatePicker";
 import { PrimaryButton } from "styles/Button";
 import RadioGroup from "components/common/RadioGroup";
-import TravellerCountComponent from "./TravellerCount";
+import TravellerCountComponent from "modules/flight/TravellerCount";
 import { useNavigate } from "react-router";
 
 const autoCompleteData = [
@@ -37,26 +37,28 @@ const options = [
     { value: 'roundTrip', label: 'Round-trip' },
 ];
 
-const FlightSearchComponent = () => {
-    const navigate = useNavigate();
+const FlightModifySearchComponent = (props: any) => {
+    const values = props;
+    console.log("Values................", values)
+    const navigate = useNavigate()
     const today = new Date();
     const maxDate = new Date();
     maxDate.setMonth(today.getMonth() + 6);
     const dateOfRetrun = new Date();
     dateOfRetrun.setDate(today.getDate() + 1);
 
-    const [fromValue, setFromValue] = useState("");
-    const [toValue, setToValue] = useState("");
-    const [date, setDate] = useState(today);
-    const [returnDate, setReturnDate] = useState(dateOfRetrun);
-    const [selectedOption, setSelectedOption] = useState<string>('oneWay');
+    const [fromValue, setFromValue] = useState(values.fromValue);
+    const [toValue, setToValue] = useState(values.toValue);
+    const [date, setDate] = useState(values.departureDate);
+    const [returnDate, setReturnDate] = useState(values.returnDate);
+    const [selectedOption, setSelectedOption] = useState<string>(values.selectedOption);
     const [showTravellerDropdown, setShowTravellerDropdown] = useState(false);
 
     const [travellerData, setTravellerData] = useState({
-        adultCount: 1,
-        childCount: 0,
-        infantCount: 0,
-        class: "economy"
+        adultCount: values.travellerData.adultCount,
+        childCount: values.travellerData.childCount,
+        infantCount: values.travellerData.infantCount,
+        class: values.travellerData.class
     })
     const fromInputRef = useRef<any>(null);
     const toInputRef = useRef<any>(null);
@@ -64,16 +66,8 @@ const FlightSearchComponent = () => {
     const returnDateOfJourney = useRef<any>(null);
 
     const handleSearchFlight = () => {
-        const values = {
-            'selectedOption': selectedOption,
-            'fromValue': fromValue,
-            'toValue': toValue,
-            'travellerData': travellerData,
-            'departureDate': date,
-            'returnDate': returnDate
-        }
-        console.log("handleSearchFlight................", values)
-        navigate("/flightShow", { state: { values: values } })
+        console.log("handleSearchFlight................", fromValue, toValue, travellerData, returnDate)
+
     }
 
     useEffect(() => {
@@ -130,11 +124,11 @@ const FlightSearchComponent = () => {
     };
 
     return (
-        <div className="w-full items-center justify-between gap-6 bg-white px-2 rounded-[20px] shadow-lg">
-            <div className="px-4 mt-4 flex">
-                <RadioGroup options={options} selected={selectedOption} onChange={handleOptionChange} modify="false"/>
+        <div className="w-full items-center text-white justify-between px-6 bg-gradient-to-r from-sky-600 to-slate-600 shadow-lg">
+            <div className="my-4 flex">
+                <RadioGroup options={options} selected={selectedOption} onChange={handleOptionChange} modify="true" />
             </div>
-            <div className='flex flex-row w-full items-center justify-between gap-2 px-4 h-[140px]'>
+            <div className='flex flex-row w-full items-center justify-between gap-2'>
                 <AutoSuggestionList
                     label={"From"}
                     value={fromValue}
@@ -144,7 +138,7 @@ const FlightSearchComponent = () => {
                     img={fromFlightSvg}
                     ref={fromInputRef}
                     usedIn="Flight"
-                    modify="false"
+                    modify="true"
                 />
                 <AutoSuggestionList
                     label={"To"}
@@ -155,15 +149,15 @@ const FlightSearchComponent = () => {
                     img={toFlightSvg}
                     ref={toInputRef}
                     usedIn="Flight"
-                    modify='false'
+                    modify="true"
                 />
-                <div className="bg-white rounded-[10px] border-2 border-black w-[20%] h-[70px]  hover:border-orange-600">
+                <div className="w-[20%] h-[70px]">
                     <div className="flex flex-row rounded-[16px] h-full w-full">
                         <div className="w-[15%] h-full">
-                            <p className="font-poppinsRegular relative bottom-3 left-3 bg-white text-center w-[5.4rem]">Departure</p>
-                            <img src={dateSvg} alt="error" className="w-[90px] h-[43px] relative bottom-3" />
+                            <p className="font-poppinsRegular relative bottom-3 left-3 text-center w-[5.4rem]">Departure</p>
+                            {/* <img src={dateSvg} alt="error" className="w-[90px] h-[43px] relative bottom-3" /> */}
                         </div>
-                        <div className="w-[80%] flex flex-col justify-center ps-4 border-l-2 border-black hover:border-orange-600">
+                        <div className="w-[80%] flex flex-col justify-center ps-4">
                             <div className="flex items-center w-full h-full">
                                 <CustomDatePicker onSelect={(e) => handleDateOfJourney(e)} ref={dateOfJourney} defaultDate={today} minDate={today} maxDate={maxDate} placeholder={"Select Date"} />
                             </div>
@@ -171,13 +165,13 @@ const FlightSearchComponent = () => {
                     </div>
                 </div>
                 {selectedOption === "roundTrip" &&
-                    <div className="bg-white rounded-[10px] border-2 border-black w-[20%] h-[70px]  hover:border-orange-600">
+                    <div className=" w-[20%] h-[70px] ">
                         <div className="flex flex-row rounded-[16px] h-full w-full">
                             <div className="w-[15%] h-full">
-                                <p className="font-poppinsRegular relative bottom-3 left-3 bg-white text-center w-[3.5rem]">Return</p>
-                                <img src={dateSvg} alt="error" className="w-[90px] h-[43px] relative bottom-3" />
+                                <p className="font-poppinsRegular relative bottom-3 left-3 text-center w-[3.5rem]">Return</p>
+                                {/* <img src={dateSvg} alt="error" className="w-[90px] h-[43px] relative bottom-3" /> */}
                             </div>
-                            <div className="w-[80%] flex flex-col justify-center ps-4 border-l-2 border-black hover:border-orange-600">
+                            <div className="w-[80%] flex flex-col justify-center ps-4">
                                 <div className="flex items-center w-full h-full">
                                     <CustomDatePicker onSelect={(e) => handleReturnDateOfJourney(e)} ref={returnDateOfJourney} defaultDate={today} minDate={today} maxDate={maxDate} placeholder={"Select Return Date"} />
                                 </div>
@@ -185,16 +179,16 @@ const FlightSearchComponent = () => {
                         </div>
                     </div>
                 }
-                <div className="bg-white rounded-[10px] border-2 border-black  hover:border-orange-600 w-[20%] h-[70px] flex flex-col justify-center items-center">
-                    <p className="font-poppinsRegular relative bottom-3 bg-white text-center w-[9rem] right-[1.5rem]">
+                <div className="w-[20%] h-[70px] flex flex-col">
+                    <p className="font-poppinsRegular relative bottom-3 w-[9rem]">
                         Travellers &amp; Class
                     </p>
                     <div className="flex flex-row justify-center w-full h-full relative bottom-3">
                         <button className="flex flex-row w-full h-full" onClick={() => setShowTravellerDropdown(true)} disabled={showTravellerDropdown}>
-                            <p className="flex text-center font-poppinsRegular w-[90%] h-full text-[16px] rounded-[5px] px-1">
+                            <p className={`flex text-center font-poppinsRegular w-[90%] h-full text-[16px] rounded-[5px] px-1`}>
                                 Travellers: {travellerData.adultCount + travellerData.childCount + travellerData.infantCount}<br />
                                 {/* {travellerData.childCount > 0 ? `, Child: ${travellerData.childCount}` : null}
-                            {travellerData.infantCount > 0 ? `, Infant: ${travellerData.infantCount}` : null} */}
+                                {travellerData.infantCount > 0 ? `, Infant: ${travellerData.infantCount}` : null} */}
                                 Class: {travellerData.class}
                             </p>
                             <svg
@@ -214,21 +208,24 @@ const FlightSearchComponent = () => {
                     </div>
                     {showTravellerDropdown &&
                         <TravellerCountComponent
-                            modify="false"
+                            modify="true"
                             travellerData={travellerData}
                             setTravellerData={setTravellerData}
                             setShowTravellerDropdown={setShowTravellerDropdown}
                         />
                     }
                 </div>
+                <div>
+                    <PrimaryButton outlined onClick={() => handleSearchFlight()}>
+                        <p className="font-poppinsRegular">Search</p>
+                    </PrimaryButton>
+                </div>
             </div>
-            <div className="absolute top-[10.8rem] right-[40%]">
-                <PrimaryButton rounded onClick={() => handleSearchFlight()}>
-                    <p className="w-[200px] font-poppinsRegular">Search Flight</p>
-                </PrimaryButton>
-            </div>
+            {/* <div className="mb-4 flex">
+                <RadioGroup options={options} selected={selectedOption} onChange={handleOptionChange} modify="true" />
+            </div> */}
         </div>
     )
 }
 
-export default FlightSearchComponent;
+export default FlightModifySearchComponent;

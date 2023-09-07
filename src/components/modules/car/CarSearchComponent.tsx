@@ -76,7 +76,7 @@ const CarSearchComponent = () => {
     const handleSearchCar = () => {
         console.log("WERWEEFWWEFWEfew................", fromValue, toValue, moment(date).format("DD/MM/YYYY"), returnDate, pickupTime, dropTime)
     }
-    
+
     useEffect(() => {
         if (tripType && fromInputRef.current) {
             fromInputRef.current.focus();
@@ -159,7 +159,7 @@ const CarSearchComponent = () => {
     return (
         <div className="w-full items-center justify-between gap-6 bg-white px-2 rounded-[20px] shadow-lg">
             <div className="px-4 mt-4 flex">
-                <RadioGroup options={options} selected={selectedOption} onChange={handleOptionChange} />
+                <RadioGroup options={options} selected={selectedOption} onChange={handleOptionChange} modify='fasle' />
             </div>
             <div className='flex flex-row w-full items-center justify-between gap-2 px-4 h-[140px]'>
                 {selectedOption === 'airportTransfer' &&
@@ -188,6 +188,7 @@ const CarSearchComponent = () => {
                     img={selectedOption === 'airportTransfer' && tripType === "fromAirport" ? fromFlightSvg : getInCarSvg}
                     ref={fromInputRef}
                     usedIn={"Car"}
+                    modify="false"
                 />
                 <AutoSuggestionList
                     label={"To"}
@@ -198,6 +199,7 @@ const CarSearchComponent = () => {
                     img={tripType === "toAirport" ? toFlightSvg : getOutCarSvg}
                     ref={toInputRef}
                     usedIn={"Car"}
+                    modify="false"
                 />
                 <div className="bg-white rounded-[10px] border-2 border-black h-[70px] min-w-[14%] max-w-[20%] hover:border-orange-600">
                     <div className="flex flex-row rounded-[16px] h-full w-full">

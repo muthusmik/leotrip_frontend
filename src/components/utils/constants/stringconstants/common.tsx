@@ -14,9 +14,9 @@ export const FOOTER_SECTION = [
 ];
 
 export const ORGANIZATION_ADDRESS =
-    <>Smik Systems (POP) Pvt Ltd,<br />
+    <>Smik Systems Pvt Ltd,<br />
         Saravanampatti,<br />
-        Coimbature - 641008.</>
+        Coimbatore - 641008.</>
 
 export const ORGANIZATION_PHONENUMBER =
     <>

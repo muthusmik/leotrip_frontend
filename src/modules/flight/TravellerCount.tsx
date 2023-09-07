@@ -6,6 +6,7 @@ import RadioGroup from 'components/common/RadioGroup';
 import useOutsideAlerter from 'hooks/useOutside';
 
 type RoomGuestCountComponentProps = {
+    modify: string,
     travellerData: any,
     setTravellerData: (travellerData: any) => void,
     setShowTravellerDropdown: (showTravellerDropdown: boolean) => void
@@ -17,7 +18,7 @@ const options = [
     { value: "business", label: 'Business' }
 ];
 
-const TravellerCountComponent = ({ travellerData, setTravellerData, setShowTravellerDropdown }: RoomGuestCountComponentProps) => {
+const TravellerCountComponent = ({ modify, travellerData, setTravellerData, setShowTravellerDropdown }: RoomGuestCountComponentProps) => {
     const [currentAdultCount, setCurrentAdultCount] = useState(travellerData.adultCount);
     const [currentChildCount, setCurrentChildCount] = useState(travellerData.childCount);
     const [currentInfantCount, setCurrentInfantCount] = useState(travellerData.infantCount);
@@ -100,7 +101,7 @@ const TravellerCountComponent = ({ travellerData, setTravellerData, setShowTrave
     const countTag = 'w-[30px] h-full text-center flex items-center justify-center font-poppinsRegular'
 
     return (
-        <div ref={wrapperRef} className="absolute top-[11rem] right-[-2rem] bg-white border-4 rounded-[10px] w-[36%] z-10">
+        <div ref={wrapperRef} className={`absolute text-black ${modify === "true" ? 'right-2 top-[14rem]' : 'right-[-2rem] top-[11rem]'} bg-white border-4 rounded-[10px] w-[36%] z-10`}>
             <p className='text-center font-bold text-2xl font-poppinsRegular my-4'>Travellers and Class</p>
             <hr />
             <div className={mainContainerStyle}>
@@ -151,7 +152,7 @@ const TravellerCountComponent = ({ travellerData, setTravellerData, setShowTrave
             <div className="flex items-center justify-between py-2 bg-white rounded-xl my-2 mx-4 border">
                 <h2 className="text-center font-poppinsRegular text-xl w-[20%]">Class</h2>
                 <div className='w-[68%]'>
-                    <RadioGroup options={options} selected={selectedOption} onChange={handleOptionChange} />
+                    <RadioGroup options={options} selected={selectedOption} onChange={handleOptionChange} modify='false' />
                 </div>
             </div>
             <hr />

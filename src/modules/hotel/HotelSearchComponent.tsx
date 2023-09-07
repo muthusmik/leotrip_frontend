@@ -102,6 +102,7 @@ const HotelSearchComponent = () => {
                     img={locationSvg}
                     ref={fromInputRef}
                     usedIn={"Hotel"}
+                    modify="false"
                 />
                 <div className="bg-white rounded-[10px] border-2 w-[24%] border-black hover:border-orange-600 flex flex-row h-[70px]">
                     <div className="w-[15%] h-full">
