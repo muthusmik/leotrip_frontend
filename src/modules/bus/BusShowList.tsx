@@ -1,10 +1,10 @@
 import { useLocation } from "react-router-dom";
 import Navbar from "components/common/Navbar";
 import { HomeFooter } from "components/common/Homepagefooter";
-import FlightModifySearchComponent from "components/modules/flight/FlightModifySearch";
 import APPAdd from "components/common/AppAdd";
+import BusModifySearchComponent from "components/modules/bus/BusModifySearch";
 
-function FlightShowList(props: any) {
+function BusShowList(props: any) {
     const locationValue = useLocation();
     const valuesFromProps = locationValue.state;
     console.log("Props............", valuesFromProps);
@@ -12,11 +12,11 @@ function FlightShowList(props: any) {
     return (
         <div>
             <Navbar />
-            <FlightModifySearchComponent {...valuesFromProps} />
+            <BusModifySearchComponent {...valuesFromProps} />
             <APPAdd />
             <HomeFooter />
         </div>
     )
 }
 
-export default FlightShowList;
+export default BusShowList;

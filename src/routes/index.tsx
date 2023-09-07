@@ -10,6 +10,8 @@ import HotelModule from '../modules/hotel';
 import CarModule from '../modules/car';
 import CommonLayout from 'modules/profiles/CommonLayout';
 import FlightShowList from 'modules/flight/FlightShowList';
+import CarShowList from 'modules/car/CarShowList';
+import BusShowList from 'modules/bus/BusShowList';
 
 const routes: RouteObject[] = [
   {
@@ -19,6 +21,10 @@ const routes: RouteObject[] = [
   {
     path: '/bus',
     element: <BusModule />, // Your bus module component
+  },
+  {
+    path: '/busShow',
+    element: <BusShowList />,
   },
   {
     path: '/flights',
@@ -35,6 +41,10 @@ const routes: RouteObject[] = [
   {
     path: '/car',
     element: <CarModule />, // Your train module component
+  },
+  {
+    path: '/carShow',
+    element: <CarShowList />,
   },
   {
     path: '/profile',

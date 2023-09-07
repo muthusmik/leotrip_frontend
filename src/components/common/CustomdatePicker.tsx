@@ -170,7 +170,7 @@ const CustomDatePicker = forwardRef<any, CustomDatePickerProps>(
                 <input
                     type="text"
                     placeholder={placeholder}
-                    value={selectedDate ? selectedDate.toLocaleDateString('en-GB') : moment(defaultDate).format('DD/MM/YYYY ddd')}
+                    value={selectedDate ? moment(selectedDate).format('DD MMM,YY ddd') : moment(defaultDate).format('DD MMM,YY ddd')}
                     onClick={handleInputClick}
                     ref={inputRef}
                     readOnly // Make the input box read-only to prevent direct editing

@@ -14,7 +14,7 @@ type AutoSuggestionProps = {
 
 const AutoSuggestionList = forwardRef<any, AutoSuggestionProps>(
     ({ label, data, value, setValue, placeholder, img, usedIn, modify }, ref) => {
-        const [query, setQuery] = useState('')
+        const [query, setQuery] = useState(value)
         const [suggestions, setSuggestions] = useState([]);
         const [suggestionIndex, setSuggestionIndex] = useState(0);
         const [suggestionsActive, setSuggestionsActive] = useState(false);
@@ -113,7 +113,7 @@ const AutoSuggestionList = forwardRef<any, AutoSuggestionProps>(
                         />
                     </div>
                     {suggestionsActive && (
-                        <div className={`absolute ${modify === "true" ? 'top-[13.4rem]' : (usedIn === "Car" || usedIn === "Flight" ? 'top-[10.6rem]' : 'top-[7.4rem]')} w-[24%]`}>
+                        <div className={`absolute ${modify === "true" ? (usedIn === "Car" || usedIn === "Flight" ? 'top-[13.4rem]' : "top-[3.6rem]") : (usedIn === "Car" || usedIn === "Flight" ? 'top-[10.6rem]' : 'top-[7.4rem]')} w-[24%]`}>
                             <Suggestions />
                         </div>)}
                 </div>

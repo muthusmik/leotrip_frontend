@@ -159,7 +159,7 @@ const FlightModifySearchComponent = (props: any) => {
                         </div>
                         <div className="w-[80%] flex flex-col justify-center ps-4">
                             <div className="flex items-center w-full h-full">
-                                <CustomDatePicker onSelect={(e) => handleDateOfJourney(e)} ref={dateOfJourney} defaultDate={today} minDate={today} maxDate={maxDate} placeholder={"Select Date"} />
+                                <CustomDatePicker onSelect={(e) => handleDateOfJourney(e)} ref={dateOfJourney} defaultDate={date} minDate={today} maxDate={maxDate} placeholder={"Select Date"} />
                             </div>
                         </div>
                     </div>
@@ -173,7 +173,7 @@ const FlightModifySearchComponent = (props: any) => {
                             </div>
                             <div className="w-[80%] flex flex-col justify-center ps-4">
                                 <div className="flex items-center w-full h-full">
-                                    <CustomDatePicker onSelect={(e) => handleReturnDateOfJourney(e)} ref={returnDateOfJourney} defaultDate={today} minDate={today} maxDate={maxDate} placeholder={"Select Return Date"} />
+                                    <CustomDatePicker onSelect={(e) => handleReturnDateOfJourney(e)} ref={returnDateOfJourney} defaultDate={returnDate} minDate={today} maxDate={maxDate} placeholder={"Select Return Date"} />
                                 </div>
                             </div>
                         </div>
