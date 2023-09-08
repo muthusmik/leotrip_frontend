@@ -106,7 +106,7 @@ const AutoSuggestionList = forwardRef<any, AutoSuggestionProps>(
                             type="text"
                             placeholder={placeholder}
                             value={query}
-                            className={`outline-none font-poppinsRegular text-lg ps-1  ${modify === 'true' ? 'bg-transparent' : 'w-full h-full bg-transparent'}`}
+                            className={`outline-none font-poppinsRegular text-lg ps-1  ${modify === 'true' ? 'bg-white/30' : 'w-full h-full bg-transparent'}`}
                             onChange={handleChange}
                             onKeyDown={handleKeyDown}
                             ref={inputRef}

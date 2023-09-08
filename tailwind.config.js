@@ -43,19 +43,19 @@ module.exports = {
         slideInTop: {
           '0%': { transform: 'translateY(-100%)', opacity: 0 },
           '100%': { transform: 'translateY(0)', opacity: 1 },
-      },
-      slideOutTop: {
+        },
+        slideOutTop: {
           '0%': { transform: 'translateY(0)', opacity: 1 },
           '100%': { transform: 'translateY(-100%)', opacity: 0 },
-      },
-      shimmer: {
-        '0%': { transform: 'translateX(-100%)' },
-        '100%': { transform: 'translateX(100%)' },
-      },
-      spin: {
-        '0%': { transform: 'rotate(0deg)' },
-        '100%': { transform: 'rotate(360deg)' },
-      },
+        },
+        shimmer: {
+          '0%': { transform: 'translateX(-100%)' },
+          '100%': { transform: 'translateX(100%)' },
+        },
+        spin: {
+          '0%': { transform: 'rotate(0deg)' },
+          '100%': { transform: 'rotate(360deg)' },
+        },
       },
       animation: {
         'fade-out': 'fadeOut 1s ease-in-out',
@@ -93,7 +93,8 @@ module.exports = {
         "int-yellow": '#F5B540',
         sandalbtnborder: '#636262',
         Genderbut: '#329DE1',
-        'int-sandal':'#FBB040',
+        'int-listingBg': '#DEF2FF',
+        'int-sandal': '#FBB040',
         'int-green-alert': '#97D382',
         'int-black': '#000000',
         'int-light-blue': '#ECEFF0',

@@ -1,32 +1,10 @@
 import React, { useState, useEffect, useRef } from "react";
 import AutoSuggestionList from "components/AutoSuggestionList";
+import DateSelectionComponent from "components/common/DateSelectComponent";
 import fromBusSvg from '../../../assets/icons/frombus.svg';
 import toBusSvg from '../../../assets/icons/tobus.svg';
-import CustomDatePicker from "components/common/CustomdatePicker";
 import { PrimaryButton } from "styles/Button";
-
-const autoCompleteData = [
-    "Asparagus",
-    "Beetroot",
-    "Broccoli",
-    "Cabbage",
-    "Carrot",
-    "Cauliflower",
-    "Celery",
-    "Corn",
-    "Eggplant",
-    "Lettuce",
-    "Mushroom",
-    "Onion",
-    "Parsnip",
-    "Pea",
-    "Potato",
-    "Pumpkin",
-    "Radish",
-    "Spinach",
-    "Tomato",
-    "Turnip",
-];
+import { autoCompleteData } from "components/utils/constants/stringconstants/common";
 
 const BusModifySearchComponent = (props: any) => {
     const values = props;
@@ -74,7 +52,7 @@ const BusModifySearchComponent = (props: any) => {
     }
 
     return (
-        <div className='flex flex-row w-full h-[8rem] items-center justify-between text-white px-6 bg-gradient-to-r from-sky-600 to-slate-600 shadow-lg'>
+        <div className='flex flex-row w-full h-[8rem] items-center justify-between text-white px-6 bg-gradient-to-r from-[#3081ED] to-[#56CBF2] shadow-lg'>
             <div className="relative top-4 flex flex-wrap w-[86%] justify-between">
                 <AutoSuggestionList
                     label={"From"}
@@ -98,17 +76,16 @@ const BusModifySearchComponent = (props: any) => {
                     usedIn="Bus"
                     modify='true'
                 />
-                <div className="flex flex-row h-[70px]">
-                    <div className="w-[15%] h-full">
-                        <p className="font-poppinsRegular relative bottom-3 left-3  text-center w-[6rem]">Travel Date</p>
-                        {/* <img src={dateSvg} alt="error" className="w-[90px] h-[43px] relative bottom-3" /> */}
-                    </div>
-                    <div className="w-[80%] flex flex-col justify-center ps-4">
-                        <div className="flex items-center">
-                            <CustomDatePicker onSelect={(e) => handleDateValue(e)} ref={dateOfJourney} defaultDate={date} minDate={today} maxDate={maxDate} placeholder={"Select your Date"} />
-                        </div>
-                    </div>
-                </div>
+                <DateSelectionComponent
+                    label="Travel Date"
+                    modify="true"
+                    placeholder="Select your Date"
+                    defaultDate={date}
+                    maxDate={maxDate}
+                    minDate={today}
+                    ref={dateOfJourney}
+                    onSelect={handleDateValue}
+                />
             </div>
             <div>
                 <PrimaryButton outlined onClick={() => handleSearchBus()}>

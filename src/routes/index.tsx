@@ -16,7 +16,7 @@ import BusShowList from 'modules/bus/BusShowList';
 const routes: RouteObject[] = [
   {
     path: '/',
-    element: <HomePage />, // Your bus module component
+    element: <HomePage />,
   },
   {
     path: '/bus',
@@ -40,7 +40,7 @@ const routes: RouteObject[] = [
   },
   {
     path: '/car',
-    element: <CarModule />, // Your train module component
+    element: <CarModule />,
   },
   {
     path: '/carShow',
@@ -48,7 +48,7 @@ const routes: RouteObject[] = [
   },
   {
     path: '/profile',
-    element: <CommonLayout />, // Your train module component
+    element: <CommonLayout />,
   },
 
   { path: '*', element: <NotFoundPage /> }, // Not found page for unmatched URLs

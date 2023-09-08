@@ -8,29 +8,7 @@ import CustomDatePicker from "components/common/CustomdatePicker";
 import { PrimaryButton } from "styles/Button";
 import RadioGroup from "components/common/RadioGroup";
 import moment from "moment";
-
-const autoCompleteData = [
-    "Asparagus",
-    "Beetroot",
-    "Broccoli",
-    "Cabbage",
-    "Carrot",
-    "Cauliflower",
-    "Celery",
-    "Corn",
-    "Eggplant",
-    "Lettuce",
-    "Mushroom",
-    "Onion",
-    "Parsnip",
-    "Pea",
-    "Potato",
-    "Pumpkin",
-    "Radish",
-    "Spinach",
-    "Tomato",
-    "Turnip",
-];
+import { autoCompleteData } from "components/utils/constants/stringconstants/common";
 
 const options = [
     { value: 'oneWay', label: 'One-way' },

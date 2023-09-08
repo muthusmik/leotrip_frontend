@@ -4,6 +4,7 @@ import Minus from "../../assets/icons/minus.svg";
 import Plus from "../../assets/icons/plus.svg";
 import RadioGroup from 'components/common/RadioGroup';
 import useOutsideAlerter from 'hooks/useOutside';
+import { wordings } from 'components/utils/constants/stringconstants/common';
 
 type RoomGuestCountComponentProps = {
     modify: string,
@@ -30,13 +31,13 @@ const TravellerCountComponent = ({ modify, travellerData, setTravellerData, setS
             if (currentAdultCount > 1) {
                 setCurrentAdultCount(currentAdultCount - 1);
             } else {
-                alert("Minimum 1 adult is required");
+                alert(wordings.alert.adultOne);
             }
         } else if (type === "INC") {
             if (currentAdultCount < 9) {
                 setCurrentAdultCount(currentAdultCount + 1);
             } else {
-                alert("You have reached the maximum adult count of 9.");
+                alert(wordings.alert.maxAdult);
             }
         }
     };
@@ -47,14 +48,14 @@ const TravellerCountComponent = ({ modify, travellerData, setTravellerData, setS
                 setCurrentChildCount(currentChildCount - 1);
             }
             else {
-                alert("Not allowed")
+                alert(wordings.alert.notAllow)
             }
         } else if (type === "INC") {
             if (currentChildCount < 6) {
                 setCurrentChildCount(currentChildCount + 1);
             }
             else {
-                alert("Maximum 6 children are allowed")
+                alert(wordings.alert.maxChild)
             }
         }
     };
@@ -65,13 +66,13 @@ const TravellerCountComponent = ({ modify, travellerData, setTravellerData, setS
                 setCurrentInfantCount(currentInfantCount - 1);
             }
             else {
-                alert("Not allowed")
+                alert(wordings.alert.notAllow)
             }
         } else if (type === "INC") {
             if (currentInfantCount < 6) {
                 setCurrentInfantCount(currentInfantCount + 1);
             } else {
-                alert("You have reached the maximum room count of 6.");
+                alert(wordings.alert.maxInfant);
             }
         }
     }
@@ -102,10 +103,10 @@ const TravellerCountComponent = ({ modify, travellerData, setTravellerData, setS
 
     return (
         <div ref={wrapperRef} className={`absolute text-black ${modify === "true" ? 'right-2 top-[14rem]' : 'right-[-2rem] top-[11rem]'} bg-white border-4 rounded-[10px] w-[36%] z-10`}>
-            <p className='text-center font-bold text-2xl font-poppinsRegular my-4'>Travellers and Class</p>
+            <p className='text-center font-bold text-2xl font-poppinsRegular my-4'>{wordings.flight.travellers} & {wordings.flight.class}</p>
             <hr />
             <div className={mainContainerStyle}>
-                <h2 className="text-center font-poppinsRegular text-xl">Adults<span className='text-sm'> (12y +)</span></h2>
+                <h2 className="text-center font-poppinsRegular text-xl">{wordings.flight.adults}<span className='text-sm'> (12y +)</span></h2>
                 <div className={subContainerStyle}>
                     <div className={imgContainerStyle} onClick={() => handleAdultCount("DEC")}>
                         <img src={Minus} alt='error in minus svg' className={imgStyle} />
@@ -120,7 +121,7 @@ const TravellerCountComponent = ({ modify, travellerData, setTravellerData, setS
             </div>
             <hr />
             <div className={mainContainerStyle}>
-                <h2 className="text-center font-poppinsRegular text-xl">Children<span className='text-sm'> (2y - 12y)</span></h2>
+                <h2 className="text-center font-poppinsRegular text-xl">{wordings.flight.children}<span className='text-sm'> (2y - 12y)</span></h2>
                 <div className={subContainerStyle}>
                     <div className={imgContainerStyle} onClick={() => handleChildCount("DEC")}>
                         <img src={Minus} alt='error in minus svg' className={imgStyle} />
@@ -135,7 +136,7 @@ const TravellerCountComponent = ({ modify, travellerData, setTravellerData, setS
             </div>
             <hr />
             <div className={mainContainerStyle}>
-                <h2 className="text-center font-poppinsRegular text-xl">Infant<span className='text-sm'> (below 2y)</span></h2>
+                <h2 className="text-center font-poppinsRegular text-xl">{wordings.flight.infant}<span className='text-sm'> (below 2y)</span></h2>
                 <div className={subContainerStyle}>
                     <div className={imgContainerStyle} onClick={() => handleInfantCount("DEC")}>
                         <img src={Minus} alt='error in minus svg' className={imgStyle} />
@@ -150,7 +151,7 @@ const TravellerCountComponent = ({ modify, travellerData, setTravellerData, setS
             </div>
             <hr />
             <div className="flex items-center justify-between py-2 bg-white rounded-xl my-2 mx-4 border">
-                <h2 className="text-center font-poppinsRegular text-xl w-[20%]">Class</h2>
+                <h2 className="text-center font-poppinsRegular text-xl w-[20%]">{wordings.flight.class}</h2>
                 <div className='w-[68%]'>
                     <RadioGroup options={options} selected={selectedOption} onChange={handleOptionChange} modify='false' />
                 </div>
@@ -158,7 +159,7 @@ const TravellerCountComponent = ({ modify, travellerData, setTravellerData, setS
             <hr />
             <div className='flex justify-center my-1'>
                 <PrimaryButton rounded onClick={() => handleApply()}>
-                    <p className="w-[100px] font-poppinsRegular">Apply</p>
+                    <p className="w-[100px] font-poppinsRegular">{wordings.flight.apply}</p>
                 </PrimaryButton>
             </div>
         </div>

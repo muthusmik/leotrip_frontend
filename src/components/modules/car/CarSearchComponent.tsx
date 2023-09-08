@@ -12,29 +12,7 @@ import RadioGroup from "components/common/RadioGroup";
 import CustomSelect from "./CarSelectTripType";
 import moment from "moment";
 import { useNavigate } from "react-router-dom";
-
-const autoCompleteData = [
-    "Asparagus",
-    "Beetroot",
-    "Broccoli",
-    "Cabbage",
-    "Carrot",
-    "Cauliflower",
-    "Celery",
-    "Corn",
-    "Eggplant",
-    "Lettuce",
-    "Mushroom",
-    "Onion",
-    "Parsnip",
-    "Pea",
-    "Potato",
-    "Pumpkin",
-    "Radish",
-    "Spinach",
-    "Tomato",
-    "Turnip",
-];
+import { autoCompleteData } from "components/utils/constants/stringconstants/common";
 
 const options = [
     { value: 'oneWay', label: 'One-way' },
