@@ -5,13 +5,10 @@ import fromBusSvg from '../../assets/icons/frombus.svg';
 import toBusSvg from '../../assets/icons/tobus.svg';
 import { PrimaryButton } from "styles/Button";
 import { useNavigate } from "react-router-dom";
-import { autoCompleteData } from "components/utils/constants/stringconstants/common";
+import { autoCompleteData, wordings, today, maxDate } from "components/utils/constants/stringconstants/common";
 
 const BusSearchComponent = () => {
     const navigate = useNavigate();
-    const today = new Date();
-    const maxDate = new Date();
-    maxDate.setMonth(today.getMonth() + 6);
 
     const [fromValue, setFromValue] = useState("");
     const [toValue, setToValue] = useState("");
@@ -65,9 +62,9 @@ const BusSearchComponent = () => {
         <>
             <div className='flex flex-row w-full items-center justify-between gap-6 bg-white px-10 h-[160px] rounded-[20px] shadow-lg'>
                 <AutoSuggestionList
-                    label={"From"}
+                    label={wordings.bus.fromLabel}
                     value={fromValue}
-                    placeholder={"Enter Source"}
+                    placeholder={wordings.bus.placeholderSource}
                     setValue={handleFromValueChange} // Call the new handler
                     data={autoCompleteData}
                     img={fromBusSvg}
@@ -76,10 +73,10 @@ const BusSearchComponent = () => {
                     modify="false"
                 />
                 <AutoSuggestionList
-                    label={"To"}
+                    label={wordings.bus.toLabel}
                     value={toValue}
                     setValue={handleToValueChange}
-                    placeholder={"Enter Destination"}
+                    placeholder={wordings.bus.placeholderDestination}
                     data={autoCompleteData}
                     img={toBusSvg}
                     ref={toInputRef}
@@ -87,9 +84,9 @@ const BusSearchComponent = () => {
                     modify='false'
                 />
                 <DateSelectionComponent
-                    label="Travel Date"
+                    label={wordings.bus.travelDate}
                     modify="false"
-                    placeholder="Select your Date"
+                    placeholder={wordings.bus.travelDatePlaceholder}
                     defaultDate={today}
                     maxDate={maxDate}
                     minDate={today}
@@ -97,9 +94,9 @@ const BusSearchComponent = () => {
                     onSelect={handleDateValue}
                 />
             </div>
-            <div className="absolute top-[8.3rem] right-[40%]">
+            <div className="absolute top-[8rem] right-[40%]">
                 <PrimaryButton rounded onClick={() => handleSearchBus()}>
-                    <p className="w-[200px] font-poppinsRegular">Search Bus</p>
+                    <p className="w-[200px] py-1 font-poppinsRegular text-xl">{wordings.bus.searchBus}</p>
                 </PrimaryButton>
             </div>
         </>

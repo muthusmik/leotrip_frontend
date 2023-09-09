@@ -93,6 +93,8 @@ module.exports = {
         "int-yellow": '#F5B540',
         sandalbtnborder: '#636262',
         Genderbut: '#329DE1',
+        'int-start': '#3081ED',
+        'int-end': '#56CBF2',
         'int-listingBg': '#DEF2FF',
         'int-sandal': '#FBB040',
         'int-green-alert': '#97D382',

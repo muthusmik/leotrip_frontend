@@ -167,7 +167,7 @@ const FlightSearchComponent = () => {
             </div>
             <div className="absolute top-[10.8rem] right-[40%]">
                 <PrimaryButton rounded onClick={() => handleSearchFlight()}>
-                    <p className="w-[200px] font-poppinsRegular">{wordings.flight.searchFlight}</p>
+                    <p className="w-[200px] py-1 font-poppinsRegular text-xl">{wordings.flight.searchFlight}</p>
                 </PrimaryButton>
             </div>
         </div>

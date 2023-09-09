@@ -76,5 +76,48 @@ export const wordings = {
         'infant': 'Infant',
         'apply': "Apply",
         'searchFlight': 'Search Flight'
+    },
+    'hotel': {
+        'location': "Location",
+        'locationPlaceHolder': 'Where you want to stay',
+        'checkIn': 'Check-In',
+        'checkInPlacholder': 'Select Check-In Date',
+        'checkOut': 'Check-Out',
+        'checkOutPlacholder': 'Select Check-Out Date',
+        'searchHotel': 'Search Hotel',
+        'guests': 'Guests',
+        'rooms': 'Rooms',
+        'adults': 'Adults',
+        'child': 'Child',
+        'children': 'Children',
+        'notes': 'Please provide right number of children along with their right age for best options and prices.',
+        'errorNoteForChildAge': 'Please provide ages for all children.',
+        'apply': 'Apply'
+    },
+    'bus': {
+        'fromLabel': "From",
+        'toLabel': 'To',
+        'placeholderSource': 'Enter Source',
+        'placeholderDestination': 'Enter Destination',
+        'travelDate': 'Travel Date',
+        'travelDatePlaceholder': 'Select your Date',
+        'modifySearch': 'Search',
+        'searchBus': 'Search Bus'
+    },
+    'car': {
+        'tripSelectionLabel': 'Select Trip Type',
+        'fromLabel': "From",
+        'toLabel': 'To',
+        'autoPlaceHolderPickup': 'Pickup Location',
+        'autoPlaceHolderDrop': 'Drop Location',
+        'autoPlaceHolderAirport': 'Airport Name',
+        'dateDepLabel': 'Departure',
+        'dateDepPlaceHolder': 'Select Pickup Date',
+        'dateReturnLabel': 'Return',
+        'dateReturnPlaceHolder': 'Select Return Date',
+        'timePickupLabel': 'Pickup-Time',
+        'timeDropLabel': "Drop Time",
+        'searchCar': 'Search Car',
+        'modifySearch': 'Search'
     }
 }

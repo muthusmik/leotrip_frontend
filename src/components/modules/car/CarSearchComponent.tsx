@@ -1,18 +1,17 @@
 import React, { useState, useEffect, useRef } from "react";
 import AutoSuggestionList from "components/AutoSuggestionList";
+import DateSelectionComponent from "components/common/DateSelectComponent";
+import TripSelectionComponent from "./TripSelectionComponent";
+import TimeSelectionComponent from "components/common/TimeSelectionComponent";
 import getInCarSvg from '../../../assets/icons/getInCar.svg';
 import getOutCarSvg from '../../../assets/icons/getOutCar.svg';
 import fromFlightSvg from '../../../assets/icons/fromflight.svg';
 import toFlightSvg from '../../../assets/icons/Toflight.svg';
-import dateSvg from '../../../assets/icons/datesvg.svg';
-import timeSvg from '../../../assets/icons/clock_svg.svg';
-import CustomDatePicker from "components/common/CustomdatePicker";
 import { PrimaryButton } from "styles/Button";
 import RadioGroup from "components/common/RadioGroup";
-import CustomSelect from "./CarSelectTripType";
 import moment from "moment";
 import { useNavigate } from "react-router-dom";
-import { autoCompleteData } from "components/utils/constants/stringconstants/common";
+import { autoCompleteData, today, dateOfRetrun, maxDate, wordings } from "components/utils/constants/stringconstants/common";
 
 const options = [
     { value: 'oneWay', label: 'One-way' },
@@ -21,19 +20,8 @@ const options = [
     { value: 'hourlyRental', label: 'Hourly Rental' },
 ];
 
-const selectTripType = [
-    { value: 'fromAirport', label: 'From Airport' },
-    { value: 'toAirport', label: 'To Airport' },
-]
-
 const CarSearchComponent = () => {
     const navigate = useNavigate();
-    const today = new Date();
-    const maxDate = new Date();
-    maxDate.setMonth(today.getMonth() + 6);
-
-    const dateOfRetrun = new Date();
-    dateOfRetrun.setDate(today.getDate() + 1);
 
     const [fromValue, setFromValue] = useState("");
     const [toValue, setToValue] = useState("");
@@ -153,26 +141,18 @@ const CarSearchComponent = () => {
             </div>
             <div className='flex flex-row w-full items-center justify-between gap-2 px-4 h-[140px]'>
                 {selectedOption === 'airportTransfer' &&
-                    <div className="bg-white rounded-[10px] border-2 border-black hover:border-orange-600 h-[70px] min-w-[20%] max-w-[26%]">
-                        <div className="flex flex-row rounded-[16px] h-[70px] px-2 w-full">
-                            <div className="w-[5%]">
-                                <p className="font-poppinsRegular relative bottom-3 bg-white text-center w-[140px]">Select Trip Type</p>
-                            </div>
-                            <div className="w-[100%] flex flex-col justify-center px-2">
-                                <div className="flex items-center">
-                                    <select name="" id="" className="w-full h-full outline-none font-poppinsRegular text-lg cursor-pointer" onChange={(e) => handleSelectValue(e.target.value)} ref={selectRef}>
-                                        <option value="fromAirport" defaultValue={tripType}>From Airport</option>
-                                        <option value="toAirport">To Airport</option>
-                                    </select>
-                                </div>
-                                {/* <CustomSelect options={selectTripType} onSelect={handleSelectValue} ref={selectRef} /> */}
-                            </div>
-                        </div>
-                    </div>}
+                    <TripSelectionComponent
+                        label={wordings.car.tripSelectionLabel}
+                        modify="false"
+                        tripType={tripType}
+                        onChange={handleSelectValue}
+                        ref={selectRef}
+                    />
+                }
                 <AutoSuggestionList
-                    label={"From"}
+                    label={wordings.car.fromLabel}
                     value={fromValue}
-                    placeholder={selectedOption === 'airportTransfer' && tripType === "fromAirport" ? "Airport Name" : "Pickup Location"}
+                    placeholder={selectedOption === 'airportTransfer' && tripType === "fromAirport" ? wordings.car.autoPlaceHolderAirport : wordings.car.autoPlaceHolderPickup}
                     setValue={handleFromValueChange}
                     data={autoCompleteData}
                     img={selectedOption === 'airportTransfer' && tripType === "fromAirport" ? fromFlightSvg : getInCarSvg}
@@ -181,45 +161,45 @@ const CarSearchComponent = () => {
                     modify="false"
                 />
                 <AutoSuggestionList
-                    label={"To"}
+                    label={wordings.car.toLabel}
                     value={toValue}
                     setValue={handleToValueChange}
-                    placeholder={selectedOption === 'airportTransfer' && tripType === "toAirport" ? "Airport Name" : "Drop Location"}
+                    placeholder={selectedOption === 'airportTransfer' && tripType === "toAirport" ? wordings.car.autoPlaceHolderAirport : wordings.car.autoPlaceHolderDrop}
                     data={autoCompleteData}
                     img={tripType === "toAirport" ? toFlightSvg : getOutCarSvg}
                     ref={toInputRef}
                     usedIn={"Car"}
                     modify="false"
                 />
-                <div className="bg-white rounded-[10px] border-2 border-black h-[70px] min-w-[14%] max-w-[20%] hover:border-orange-600">
-                    <div className="flex flex-row rounded-[16px] h-full w-full">
-                        <div className="w-[15%] h-full">
-                            <p className="font-poppinsRegular relative bottom-3 left-3 bg-white text-center w-[5.4rem]">Departure</p>
-                            <img src={dateSvg} alt="error" className="w-[90px] h-[43px] relative bottom-3" />
-                        </div>
-                        <div className="w-[80%] flex flex-col justify-center ps-4 border-l-2 border-black hover:border-orange-600">
-                            <div className="flex items-center">
-                                <CustomDatePicker onSelect={(e) => handleDateOfJourney(e)} ref={dateOfJourney} defaultDate={today} minDate={today} maxDate={maxDate} placeholder={"Select Pickup Date"} />
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <DateSelectionComponent
+                    label={wordings.car.dateDepLabel}
+                    modify="false"
+                    placeholder={wordings.car.dateDepPlaceHolder}
+                    defaultDate={date}
+                    maxDate={maxDate}
+                    minDate={today}
+                    ref={dateOfJourney}
+                    onSelect={handleDateOfJourney}
+                />
                 {selectedOption === "roundTrip" &&
-                    <div className="bg-white rounded-[10px] border-2 border-black h-[70px] min-w-[14%] max-w-[20%] hover:border-orange-600">
-                        <div className="flex flex-row rounded-[16px] h-full w-full">
-                            <div className="w-[15%] h-full">
-                                <p className="font-poppinsRegular relative bottom-3 left-3 bg-white text-center w-[3.6rem]">Return</p>
-                                <img src={dateSvg} alt="error" className="w-[90px] h-[43px] relative bottom-3" />
-                            </div>
-                            <div className="w-[80%] flex flex-col justify-center ps-4 border-l-2 border-black hover:border-orange-600">
-                                <div className="flex items-center">
-                                    <CustomDatePicker onSelect={(e) => handleReturnDateOfJourney(e)} ref={returnDateOfJourney} defaultDate={dateOfRetrun} minDate={today} maxDate={maxDate} placeholder={"Select Return Date"} />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <DateSelectionComponent
+                        label={wordings.car.dateReturnLabel}
+                        modify="false"
+                        placeholder={wordings.car.dateReturnPlaceHolder}
+                        defaultDate={returnDate}
+                        maxDate={maxDate}
+                        minDate={today}
+                        ref={returnDateOfJourney}
+                        onSelect={handleReturnDateOfJourney}
+                    />
                 }
-                <div className="bg-white rounded-[10px] border-2 border-black h-[70px] min-w-[14%] max-w-[20%] hover:border-orange-600">
+                <TimeSelectionComponent
+                    label={wordings.car.timePickupLabel}
+                    modify='false'
+                    ref={pickUpTimeRef}
+                    onChange={(e) => setPickupTime(e)}
+                />
+                {/* <div className="bg-white rounded-[10px] border-2 border-black h-[70px] min-w-[14%] max-w-[20%] hover:border-orange-600">
                     <div className="flex flex-row rounded-[16px] h-full w-full">
                         <div className="w-[15%] h-full">
                             <p className="font-poppinsRegular relative bottom-3 left-3 bg-white text-center w-[6.5rem]">Pickup-Time</p>
@@ -231,26 +211,32 @@ const CarSearchComponent = () => {
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> */}
                 {selectedOption === "roundTrip" &&
-                    <div className="bg-white rounded-[10px] border-2 border-black h-[70px] min-w-[14%] max-w-[20%] hover:border-orange-600">
-                        <div className="flex flex-row rounded-[16px] h-full w-full">
-                            <div className="w-[15%] h-full">
-                                <p className="font-poppinsRegular relative bottom-3 left-3 bg-white text-center w-[6.5rem]">Drop Time</p>
-                                <img src={timeSvg} alt="error" className="w-[90px] h-[43px] relative bottom-3 px-1" />
-                            </div>
-                            <div className="w-[80%] flex flex-col justify-center ps-4 border-l-2 border-black hover:border-orange-600">
-                                <div className="flex items-center">
-                                    <input type="time" className="w-full h-full outline-none bg-transparent" ref={dropTimeRef} onChange={(e) => setDropTime(e.target.value)} />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <TimeSelectionComponent
+                        label={wordings.car.timeDropLabel}
+                        modify='false'
+                        ref={dropTimeRef}
+                        onChange={(e) => setDropTime(e)}
+                    />
+                    // <div className="bg-white rounded-[10px] border-2 border-black h-[70px] min-w-[14%] max-w-[20%] hover:border-orange-600">
+                    //     <div className="flex flex-row rounded-[16px] h-full w-full">
+                    //         <div className="w-[15%] h-full">
+                    //             <p className="font-poppinsRegular relative bottom-3 left-3 bg-white text-center w-[6.5rem]">Drop Time</p>
+                    //             <img src={timeSvg} alt="error" className="w-[90px] h-[43px] relative bottom-3 px-1" />
+                    //         </div>
+                    //         <div className="w-[80%] flex flex-col justify-center ps-4 border-l-2 border-black hover:border-orange-600">
+                    //             <div className="flex items-center">
+                    //                 <input type="time" className="w-full h-full outline-none bg-transparent" ref={dropTimeRef} onChange={(e) => setDropTime(e.target.value)} />
+                    //             </div>
+                    //         </div>
+                    //     </div>
+                    // </div>
                 }
             </div>
             <div className="absolute top-[10.8rem] right-[40%]">
                 <PrimaryButton rounded onClick={() => handleSearchCar()}>
-                    <p className="w-[200px] font-poppinsRegular">Search Car</p>
+                    <p className="w-[200px] py-1 font-poppinsRegular text-xl">{wordings.car.searchCar}</p>
                 </PrimaryButton>
             </div>
         </div>
