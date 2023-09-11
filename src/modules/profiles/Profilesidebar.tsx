@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import profileuser from "../../assets/icons/profileuser.svg";
 import profilerolling from "../../assets/icons/profilerolling.svg";
 import profilelove from "../../assets/icons/profilelove.svg";
@@ -9,7 +9,7 @@ import edit from "../../assets/icons/edit.svg";
 // import { useOption } from 'provider/ContextProvider';
 
 export default function Profilesidebar({ setSelectedOption,ToTraveller }: any) {
-  const [activeItem, setActiveItem] = useState("Travellers");
+  const [activeItem, setActiveItem] = useState(setSelectedOption);
   const fileInputRef = useRef<HTMLInputElement | null>(null);
   const [userImage, setUserImage] = useState(null);
   const handleButtonClick = () => {
@@ -27,7 +27,10 @@ export default function Profilesidebar({ setSelectedOption,ToTraveller }: any) {
       reader.readAsDataURL(selectedFile);
     }
   };
-
+// useEffect(()=>{
+//   console.log("setSelectedOption",setSelectedOption)
+//   handleOptionClick(activeItem)
+// },[])
   const [isOpen, setIsOpen] = useState(false);
   const [isDropOpen, setIsDropOpen] = useState(false);
 
@@ -38,7 +41,10 @@ export default function Profilesidebar({ setSelectedOption,ToTraveller }: any) {
     setIsOpen(!isOpen);
   };
   const handleOptionClick = (option: any) => {
-    setIsOpen(true);
+    // if(option==="Flight"){
+      setIsOpen(true);
+    //}
+    
     setSelectedOption(option);
     setActiveItem(option);
     if(option==="Travellers"){
@@ -60,7 +66,7 @@ export default function Profilesidebar({ setSelectedOption,ToTraveller }: any) {
           <img
             src={edit}
             alt="edit"
-            className='border-4 border-white rounded-full ml-[12.5%] h-10 absolute mt-[-75px]'
+            className='border-4 border-white rounded-full ml-[12.3%]  h-10 absolute mt-[-75px]'
           />
         </button>
         <input
@@ -81,7 +87,7 @@ export default function Profilesidebar({ setSelectedOption,ToTraveller }: any) {
           }`}
         >
           <img src={profileuser} alt="profileuser" className="mt-3" />
-          <span onClick={() => handleOptionClick("Travellers")}>My Profile</span>
+          <span onClick={() => handleOptionClick("My Profile")}>My Profile</span>
         </button>
 
         {isOpen && (

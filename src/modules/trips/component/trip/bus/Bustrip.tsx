@@ -14,12 +14,13 @@ export default function Profile() {
 
   return (
     <div className="bg-[#DEF2FF] h-full w-full">
+      <div className="text-3xl font-poppinsRegular font-bold mb-5">My Trips</div>
       <div className="flex  gap-10">
         <div className="w-full">
-          <div className="h-fit w-full bg-white border rounded-2xl py-4">
+          <div className="h-fit w-full bg-white border rounded-2xl pt-4 pb-0">
             <TripHead activeTab={activeTab} onTabChange={handleTabChange} />
           </div>
-          <div className="h-fit w-full bg-white border rounded-2xl py-4 mt-10">
+          <div className="h-fit w-full bg-white border rounded-2xl py-4 mt-5">
             {activeTab === "upcoming" &&
               TravelDetails.map((travelData, index) => (
                 <TripBus key={index} data={travelData} />

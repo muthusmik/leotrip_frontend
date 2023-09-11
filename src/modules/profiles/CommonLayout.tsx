@@ -12,10 +12,6 @@ const CommonLayout=()=>{
 
     const [selectedOption, setSelectedOption] = useState(selectedOpt);
 
-    const handleOptionClick = (option:any) => {
-        setSelectedOption(option);
-      };
-
       const ScrollToTraveller=()=>{
         const element=document.getElementById('Travellers')
         if(element){
@@ -26,6 +22,8 @@ const CommonLayout=()=>{
         switch (selectedOption) {
 
             case 'Travellers':
+                return <Profile />;
+                case 'My Profile':
                 return <Profile />;
             case 'Flight':
                 return <Flighttrip />;
@@ -45,7 +43,7 @@ const CommonLayout=()=>{
         <div className="flex mx-[5%] gap-10">
             <div>
                 <div className="h-fit py-10 w-[250px] bg-white border rounded-2xl">
-                <Profilesidebar setSelectedOption={handleOptionClick} ToTraveller={ScrollToTraveller}/>
+                <Profilesidebar setSelectedOption={selectedOption} ToTraveller={ScrollToTraveller}/>
                 </div>
             </div>
             <div className="bg-[#DEF2FF] w-full">
