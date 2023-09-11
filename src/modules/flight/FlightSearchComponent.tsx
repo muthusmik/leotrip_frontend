@@ -8,7 +8,7 @@ import { PrimaryButton } from "styles/Button";
 import RadioGroup from "components/common/RadioGroup";
 import { useNavigate } from "react-router";
 import { autoCompleteData } from "components/utils/constants/stringconstants/common";
-import { wordings } from "components/utils/constants/stringconstants/common";
+import { wordings, today, maxDate, dateOfRetrun } from "components/utils/constants/stringconstants/common";
 
 const options = [
     { value: 'oneWay', label: 'One-way' },
@@ -17,11 +17,6 @@ const options = [
 
 const FlightSearchComponent = () => {
     const navigate = useNavigate();
-    const today = new Date();
-    const maxDate = new Date();
-    maxDate.setMonth(today.getMonth() + 6);
-    const dateOfRetrun = new Date();
-    dateOfRetrun.setDate(today.getDate() + 1);
 
     const [fromValue, setFromValue] = useState("");
     const [toValue, setToValue] = useState("");

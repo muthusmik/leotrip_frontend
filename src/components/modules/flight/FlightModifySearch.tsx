@@ -97,7 +97,7 @@ const FlightModifySearchComponent = (props: any) => {
 
     return (
         <div className="w-full items-center text-white justify-between px-6 pb-2 bg-gradient-to-r from-[#3081ED] to-[#56CBF2] shadow-lg">
-            <div className="my-4 flex">
+            <div className="mb-4 flex">
                 <RadioGroup options={options} selected={selectedOption} onChange={handleOptionChange} modify="true" />
             </div>
             <div className='flex flex-row w-full items-center justify-between gap-2'>
@@ -152,7 +152,6 @@ const FlightModifySearchComponent = (props: any) => {
                     setTravellerData={setTravellerData}
                     setShowTravellerDropdown={setShowTravellerDropdown}
                 />
-
                 <div>
                     <PrimaryButton outlined onClick={() => handleSearchFlight()}>
                         <p className="font-poppinsRegular">{wordings.flight.modifySearch}</p>

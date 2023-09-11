@@ -15,7 +15,7 @@ const BusSearchComponent = () => {
     const [date, setDate] = useState(today)
     const fromInputRef = useRef<any>(null);
     const toInputRef = useRef<any>(null);
-    const dateOfJourney = useRef<any>(null);
+    const dateOfJourneyRef = useRef<any>(null);
 
     const handleSearchBus = () => {
         const values = {
@@ -23,7 +23,7 @@ const BusSearchComponent = () => {
             'toValue': toValue,
             'departureDate': date,
         }
-        console.log("WERWEEFWWEFWEfew................", fromValue, toValue, date)
+        console.log("Bus Values................fromValue, toValue, date", fromValue, toValue, date)
         navigate("/busShow", { state: values })
     }
 
@@ -34,23 +34,29 @@ const BusSearchComponent = () => {
     }, [fromValue]);
 
     useEffect(() => {
-        if (toValue && dateOfJourney.current) {
-            dateOfJourney.current.focus();
+        console.log("toValue", toValue, dateOfJourneyRef.current);
+
+        if (toValue && dateOfJourneyRef.current) {
+            dateOfJourneyRef.current.focus();
+            console.log("Inside useEffect...........", toValue && dateOfJourneyRef.current);
+
         }
     }, [toValue]);
 
     const handleFromValueChange = (newValue: any) => {
         setFromValue(newValue);
+        console.log("New value.............handleFromValueChange", newValue, " &&", toInputRef.current);
         if (newValue && toInputRef.current) {
             toInputRef.current.focus();
         }
     };
+
     const handleToValueChange = (newValue: any) => {
         setToValue(newValue);
-        if (newValue && dateOfJourney.current) {
-            dateOfJourney.current.focus();
-            console.log("New value.............", dateOfJourney.current);
-
+        console.log("New value.............handleToValueChange", newValue && dateOfJourneyRef.current, dateOfJourneyRef.current);
+        if (newValue && dateOfJourneyRef.current) {
+            dateOfJourneyRef.current.focus();
+            console.log("New value.............", dateOfJourneyRef.current.focus());
         }
     };
 
@@ -65,7 +71,7 @@ const BusSearchComponent = () => {
                     label={wordings.bus.fromLabel}
                     value={fromValue}
                     placeholder={wordings.bus.placeholderSource}
-                    setValue={handleFromValueChange} // Call the new handler
+                    setValue={handleFromValueChange}
                     data={autoCompleteData}
                     img={fromBusSvg}
                     ref={fromInputRef}
@@ -90,7 +96,7 @@ const BusSearchComponent = () => {
                     defaultDate={today}
                     maxDate={maxDate}
                     minDate={today}
-                    ref={dateOfJourney}
+                    ref={dateOfJourneyRef}
                     onSelect={handleDateValue}
                 />
             </div>

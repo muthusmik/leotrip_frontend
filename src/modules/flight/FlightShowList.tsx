@@ -15,7 +15,6 @@ function FlightShowList(props: any) {
             <Navbar />
             <FlightModifySearchComponent {...valuesFromProps} />
             <FlightListing />
-            <APPAdd />
             <HomeFooter />
         </div>
     )

@@ -1,3 +1,5 @@
+import airasia from '../../../../assets/icons/airAsiaSvg.svg';
+
 export const today = new Date();
 export const maxDate = new Date();
 maxDate.setMonth(today.getMonth() + 6);
@@ -121,3 +123,78 @@ export const wordings = {
         'modifySearch': 'Search'
     }
 }
+
+export const tableTitle = ['AirLines', 'Departure', 'Duration', 'Arrival', 'Price', 'Recommended'];
+
+export const options = ["Non Stop", "Morning Departue", "Spicejet", "Air India", "Indigo", "Air Asia"]
+
+export const AirLinesList = ['Air Asia', 'Indigo', 'Air India', 'Spice Jet', 'Vistara']
+
+export const flightList = [
+    {
+        id: 0,
+        airLineName: "Air Asia",
+        flightNo: 'I5-743',
+        departureFrom: 'Chennai',
+        destinationTo: 'Coimbatore',
+        departureTime: 'Mon Sep 11 2023 13:09:31 GMT+0530',
+        arrivingTime: 'Tue Sep 12 2023 13:09:31 GMT+0530',
+        stop: "1",
+        price: 4330
+    },
+    {
+        id: 1,
+        airLineName: "Air Asia",
+        flightNo: 'I5-743',
+        departureFrom: 'Bangalore',
+        destinationTo: 'Coimbatore',
+        departureTime: 'Mon Sep 11 2023 13:09:31 GMT+0530',
+        arrivingTime: 'Tue Sep 12 2023 13:09:31 GMT+0530',
+        stop: "3",
+        price: 4000
+    },
+    {
+        id: 2,
+        airLineName: "Air Asia",
+        flightNo: 'I5-743',
+        departureFrom: 'Chennai',
+        destinationTo: 'Bangalore',
+        departureTime: 'Mon Sep 11 2023 13:09:31 GMT+0530',
+        arrivingTime: 'Tue Sep 12 2023 13:09:31 GMT+0530',
+        stop: "1",
+        price: 4330
+    },
+    {
+        id: 3,
+        airLineName: "Air Asia",
+        flightNo: 'I5-743',
+        departureFrom: 'Chennai',
+        destinationTo: 'Coimbatore',
+        departureTime: 'Mon Sep 11 2023 13:09:31 GMT+0530',
+        arrivingTime: 'Tue Sep 12 2023 13:09:31 GMT+0530',
+        stop: "1",
+        price: 4330
+    },
+    {
+        id: 4,
+        airLineName: "Air Asia",
+        flightNo: 'I5-743',
+        departureFrom: 'Chennai',
+        destinationTo: 'Coimbatore',
+        departureTime: 'Mon Sep 11 2023 13:09:31 GMT+0530',
+        arrivingTime: 'Tue Sep 12 2023 13:09:31 GMT+0530',
+        stop: "1",
+        price: 4330
+    },
+    {
+        id: 5,
+        airLineName: "Air Asia",
+        flightNo: 'I5-743',
+        departureFrom: 'Chennai',
+        destinationTo: 'Coimbatore',
+        departureTime: 'Mon Sep 11 2023 13:09:31 GMT+0530',
+        arrivingTime: 'Tue Sep 12 2023 13:09:31 GMT+0530',
+        stop: "1",
+        price: 4330
+    }
+]

@@ -11,7 +11,7 @@ import SearchBackground from 'components/common/SearchBackground';
 
 function BusModule() {
     return (
-        <div>
+        <>
             <Navbar />
             <SearchBackground>
                 <BusSearchComponent />
@@ -22,7 +22,7 @@ function BusModule() {
             <AboutUs />
             <APPAdd />
             <HomeFooter />
-        </div>
+        </>
     );
 }
 
