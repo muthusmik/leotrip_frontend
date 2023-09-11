@@ -22,3 +22,25 @@ export const ORGANIZATION_PHONENUMBER =
     <>
         +91 9988774455.<br />4587 - 458763.
     </>
+
+export const TRIPS={
+    bus: {
+        from: 'From',
+        to: "To",
+        cancel: "Cancel Booking",
+        change: "Change Travel Dates",
+        view: "View Booking",
+        bookingid: "Booking ID",
+        rating: "Rating",
+    },
+    hotel:{
+        checkin: "Check-In",
+        checkout: "Check-Out",
+        checkintime: "Check In from 02:00PM",
+        checkouttime: "Check Out from 12:00PM",
+    },
+    Car:{
+        pickup: "Pick-Up",
+        drop: "Drop",
+    },
+};

@@ -14,11 +14,12 @@ export function ButtonOutlined({ children }: ButtonOutlinedProps) {
 }
 
 
-export function Generateotp({ children,ok,cancel, ...props }: any) {
+export function Generateotp({ children,ok,cancel,view, ...props }: any) {
     return (
         <>
             <button
-                className={`flex rounded-md items-center bg-bluebtn px-5 py-2 text-white font-poppinsRegular${ok ? 'bg-bluebtn' : ''} ${cancel ? 'bg-red-400':''}`}
+                className={`flex rounded-md items-center bg-bluebtn px-5 py-2 text-white font-poppinsRegular 
+                    ${ok ? 'bg-bluebtn' : ''} ${cancel ? 'bg-red-400':''} ${view ? 'bg-gradient-to-r from-primary to-bluebtn h-7':''}`}
             >
                 {children}
             </button>

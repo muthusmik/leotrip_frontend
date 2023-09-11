@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import './App.css';
 import { useRoutes } from 'react-router-dom';
 import routes from './routes';
-import ScrollToTop from './components/utils/ScrollToTop';
 //  import { Commonprovider } from 'provider/Commonprovider';
 
 function App() {

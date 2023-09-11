@@ -46,7 +46,7 @@ const Rating = () => {
         Tell about your review here ...
       </p>
       <Textarea
-        className="border-1 rounded-md w-[70%] h-[200px] px-5"
+        className="border-[3px] outline-none w-[100%] rounded-md border-gray-300 focus:border-blue-300 hover:border-blue-300 focus:shadow-md shadow-int-mid-blue py-3"
         placeholder="Write your review here..."
         value={review}
         onChange={handleReviewChange}
