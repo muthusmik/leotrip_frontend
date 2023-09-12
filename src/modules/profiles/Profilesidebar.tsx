@@ -9,7 +9,7 @@ import edit from "../../assets/icons/edit.svg";
 // import { useOption } from 'provider/ContextProvider';
 
 export default function Profilesidebar({ setSelectedOption,ToTraveller }: any) {
-  const [activeItem, setActiveItem] = useState(setSelectedOption);
+  const [activeItem, setActiveItem] = useState("Travellers");
   const fileInputRef = useRef<HTMLInputElement | null>(null);
   const [userImage, setUserImage] = useState(null);
   const handleButtonClick = () => {
@@ -41,10 +41,7 @@ export default function Profilesidebar({ setSelectedOption,ToTraveller }: any) {
     setIsOpen(!isOpen);
   };
   const handleOptionClick = (option: any) => {
-    // if(option==="Flight"){
       setIsOpen(true);
-    //}
-    
     setSelectedOption(option);
     setActiveItem(option);
     if(option==="Travellers"){
