@@ -43,7 +43,7 @@ const CommonLayout=()=>{
         <div className="flex mx-[5%] gap-10">
             <div>
                 <div className="h-fit py-10 w-[250px] bg-white border rounded-2xl">
-                <Profilesidebar setSelectedOption={selectedOption} ToTraveller={ScrollToTraveller}/>
+                <Profilesidebar setSelectedOption={setSelectedOption} ToTraveller={ScrollToTraveller}/>
                 </div>
             </div>
             <div className="bg-[#DEF2FF] w-full">

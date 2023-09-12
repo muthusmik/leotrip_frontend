@@ -9,7 +9,7 @@ import edit from "../../assets/icons/edit.svg";
 // import { useOption } from 'provider/ContextProvider';
 
 export default function Profilesidebar({ setSelectedOption,ToTraveller }: any) {
-  const [activeItem, setActiveItem] = useState(setSelectedOption);
+  const [activeItem, setActiveItem] = useState("Travellers");
   const fileInputRef = useRef<HTMLInputElement | null>(null);
   const [userImage, setUserImage] = useState(null);
   const handleButtonClick = () => {
