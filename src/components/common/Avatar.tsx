@@ -117,8 +117,8 @@ export function Avatar() {
                 </div>
             ) : (
                 <div className="p-2 flex cursor-pointer hover:bg-int-background rounded-[10px] " onClick={() => setIsDropdownOpen(!isDropdownOpen)}>
-                    <img src={AvatarIcon} alt={''} className="p-1 rounded-full  border-2 md:border-0 sm:border-0 border-int-dark-blue lg:w-10 md:w-10" />
-                    <span className="font-poppinsRegular text-lg md:text-lg text-black  mx-1 justify-content mt-2 text-center">Hi  <b>Leo</b></span>
+                    <img src={AvatarIcon} alt={''} className="p-1 rounded-full  border-0 md:border-0 sm:border-0 border-int-dark-blue w-24 lg:w-10 md:w-10" />
+                    <span className="font-poppinsRegular text-sm md:text-lg text-black  mx-1 justify-content mt-2 text-center">Hi  <b>Leo</b></span>
                 </div>
             )}
             {isDropdownOpen && (

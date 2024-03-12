@@ -59,7 +59,7 @@ export  function OfferSlider() {
 
     return (
         <div className="h-80 w-[80%] mx-[10%] border-white rounded-3xl shadow-card mb-[4%]">
-            <div className="h-[18%] rounded-t-3xl linear text-center font-poppinsRegular text-3xl pt-3 linerar">
+            <div className="h-[18%] rounded-t-3xl linear text-center font-poppinsRegular text-md sm:text-lg md:text-3xl  pt-3 linerar">
                 Offers For You
             </div>
             <Slidercomponent offers={offers} Box={Box}/>

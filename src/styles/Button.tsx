@@ -80,8 +80,8 @@ const ToggleSliderButton = () => {
     return (
         <div className={`toggle-slider-button `}>
             <button className={`slider flex bg-white rounded-full font-PoppinsSemiBold text-lg shadow-lg`} onClick={handleToggle}>
-                <span className="status">{isToggled ? (<div className="bg-bluebtn px-10 py-2 rounded-full text-white">Flight</div>) : (<div className="px-10 py-2">Flight</div>)}</span>
-                <span className="status">{isToggled ? (<div className="px-10 py-2">Hotel</div>) : (<div className="bg-bluebtn px-10 py-2 rounded-full text-white">Hotel</div>)}</span>
+                <span className="status">{isToggled ? (<div className="bg-bluebtn px-2 py-2 rounded-full text-white md:px-10 text-sm md:text-lg">Flight</div>) : (<div className="px-2 py-2 md:px-10 text-sm md:text-lg">Flight</div>)}</span>
+                <span className="status">{isToggled ? (<div className="px-2 py-2 md:px-10 text-sm md:text-lg">Hotel</div>) : (<div className="bg-bluebtn px-2 py-2 rounded-full text-white md:px-10 text-sm md:text-lg">Hotel</div>)}</span>
             </button>
         </div>
     );
