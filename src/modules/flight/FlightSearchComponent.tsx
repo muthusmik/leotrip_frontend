@@ -7,6 +7,7 @@ import CustomDatePicker from "components/common/CustomdatePicker";
 import { PrimaryButton } from "styles/Button";
 import RadioGroup from "components/common/RadioGroup";
 import TravellerCountComponent from "./TravellerCount";
+import { useNavigate } from "react-router-dom";
 
 const autoCompleteData = [
     "Asparagus",
@@ -31,19 +32,23 @@ const autoCompleteData = [
     "Turnip",
 ];
 
+
+
 const options = [
     { value: 'oneWay', label: 'One-way' },
     { value: 'roundTrip', label: 'Round-trip' },
 ];
 
 const FlightSearchComponent = () => {
-
+    const navigate=useNavigate();
     const today = new Date();
     const maxDate = new Date();
     maxDate.setMonth(today.getMonth() + 6);
     const dateOfRetrun = new Date();
     dateOfRetrun.setDate(today.getDate() + 1);
-
+    const [errormsg, setErrormsg] = useState('');
+    const [fromerrormsg, setFromerrormsg] = useState('');
+    const [toerrormsg, setToErrormsg] = useState('');
     const [fromValue, setFromValue] = useState("");
     const [toValue, setToValue] = useState("");
     const [date, setDate] = useState(today);
@@ -63,6 +68,19 @@ const FlightSearchComponent = () => {
     const returnDateOfJourney = useRef<any>(null);
 
     const handleSearchFlight = () => {
+        if (fromValue == '') {
+            setFromerrormsg('Please Select the Valid Location !');
+        }
+        else if (toValue == '') {
+            setToErrormsg('Please Select the Valid Location !');
+        }
+        // else if ((fromValue.suggestion.airport_code).localeCompare(toValue.suggestion.airport_code) === 0) {
+        //     setErrormsg('Source and Destination cannot be same');
+        // }
+        else {
+            setErrormsg('')
+            navigate("/flight/flight-oneway", { state: options })
+        }
         console.log("handleSearchFlight................", fromValue, toValue, travellerData, returnDate)
     }
 
@@ -125,16 +143,20 @@ const FlightSearchComponent = () => {
                 <RadioGroup options={options} selected={selectedOption} onChange={handleOptionChange} />
             </div>
             <div className='flex flex-row w-full items-center justify-between gap-2 px-4 h-[140px]'>
-                <AutoSuggestionList
-                    label={"From"}
-                    value={fromValue}
-                    placeholder={"Enter From city"}
-                    // setValue={setFromValue}
-                    setValue={handleFromValueChange}
-                    data={autoCompleteData}
-                    img={fromFlightSvg}
-                    ref={fromInputRef}
-                />
+                <div className="flex flex-col w-auto">
+                    <AutoSuggestionList
+                        label={"From"}
+                        value={fromValue}
+                        placeholder={"Enter From city"}
+                        // setValue={setFromValue}
+                        setValue={handleFromValueChange}
+                        data={autoCompleteData}
+                        img={fromFlightSvg}
+                        ref={fromInputRef}
+                    />
+                    {(fromValue === '') ? <h6 className="flex flex-wrap text-int-red w-full">{fromerrormsg}</h6> : null}
+                </div>
+                <div className="flex flex-col">
                 <AutoSuggestionList
                     label={"To"}
                     value={toValue}
@@ -144,6 +166,8 @@ const FlightSearchComponent = () => {
                     img={toFlightSvg}
                     ref={toInputRef}
                 />
+                {(toValue === '') ? <h6 className="flex flex-wrap text-int-red w-full">{toerrormsg}</h6> : null}
+                </div>
                 <div className="bg-white rounded-[10px] border-2 border-black w-[20%] h-[70px]  hover:bg-slate-100">
                     <div className="flex flex-row rounded-[16px] h-full px-2 w-full">
                         <div className="w-[20%]">

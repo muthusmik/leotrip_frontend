@@ -119,7 +119,7 @@ function Navbar() {
                     </div>
                     <div className="flex row md:hidden mx-3">
                         <Avatar />
-                        <div className='m-auto mx-3' onClick={handlemenu}>
+                        <div className='m-auto mx-2' onClick={handlemenu}>
                             <img src={menu} alt='404' />
                         </div>
                     </div>

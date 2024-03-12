@@ -133,7 +133,7 @@ const CarSearchComponent = () => {
             <div className="px-4 mt-4 flex">
                 <RadioGroup options={options} selected={selectedOption} onChange={handleOptionChange} />
             </div>
-            <div className='flex flex-row w-full items-center justify-between gap-2 px-4 h-[140px]'>
+            <div className='flex flex-col md:flex-row w-full items-center justify-between gap-2 px-4 h-auto py-9'>
                 {selectedOption === 'airportTransfer' &&
                     <div className="bg-white rounded-[10px] border-2 border-black h-[70px] min-w-[20%] max-w-[26%]">
                         <div className="flex flex-row rounded-[16px] h-[70px] px-2 w-full">
@@ -198,7 +198,7 @@ const CarSearchComponent = () => {
                     </div>
                 }
             </div>
-            <div className="absolute top-[10.8rem] right-[40%]">
+            <div className="absolute  right-[18%] top-[28rem]  top-[17rem] sm:top-[17rem] md:top-[7rem]">
                 <PrimaryButton rounded onClick={() => handleSearchCar()}>
                     <p className="w-[200px] font-poppinsRegular">Search Car</p>
                 </PrimaryButton>
