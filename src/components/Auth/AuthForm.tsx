@@ -77,6 +77,7 @@ export function AuthForm({ proceed }: AuthFormProps) {
     return (
         <div>
             {UserEmailorPhone.length > 4 && !isNaN(UserEmailorPhone.substr(0, 4)) ? (
+
                 <PhoneInput
                     value={UserEmailorPhone}
                     inputProps={{
@@ -89,8 +90,9 @@ export function AuthForm({ proceed }: AuthFormProps) {
 
 
                     }}
-                    inputStyle={{ width: "100%", fontSize: "18px" }}
-                    containerStyle={{ width: "100%", marginBottom: "1%", }}
+                    
+                    inputStyle={{ width: "100%", fontSize: "18px"}}
+                    containerStyle={{ width: "100%", marginBottom: "1%",}}
                 />
             ) : (
                 <input
@@ -99,14 +101,15 @@ export function AuthForm({ proceed }: AuthFormProps) {
                     placeholder="Enter Email or Mobile"
                     value={UserEmailorPhone}
                     onChange={handleInputChange}
-                    className="w-full h-[65px] mb-1 py-2 px-3 rounded outline-none border transition-all duration-300 focus:shadow shadow-int-mid-blue focus:border-int-dark-blue"
+                    className="w-full h-[50px] mb-1 py-2 px-3 rounded outline-none border transition-all duration-300 focus:shadow shadow-int-mid-blue focus:border-int-dark-blue"
+
                 />
             )}
-            <div id="recaptcha-container"></div>
+            <div  id="recaptcha-container"></div>
             {error && <div className="text-red-500 text-xs font-semibold mb-2 mx-1 flex">
                 <img src={Error} alt={''} className='w-4 mx-1' />
                 {error}</div>}
-            <PrimaryButton block onClick={handleClick} loading={loader}>Sign In</PrimaryButton>
+            <PrimaryButton block onClick={handleClick} loading={loader}>GENERATE OTP (One Time Password)</PrimaryButton>
         </div>
     );
 }

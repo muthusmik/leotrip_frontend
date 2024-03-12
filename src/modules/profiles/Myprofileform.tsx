@@ -50,7 +50,7 @@ export default function Myprofileform() {
     };
     return (
         <>
-            <div className="bg-white p-10 rounded-md">
+            <div className="h-[100%] bg-white p-10 rounded-md">
                 <p className="text-3xl font-poppinsBold mb-5">Edit Profile</p>
                 <form onSubmit={handleSubmit} className="grid grid-rows-4 grid-flow-col gap-x-14 gap-y-4 mx-8">
                     <div>

@@ -51,10 +51,10 @@ export function PrimaryButton({ children, outlined, rounded, shadow, blue, block
                         : rounded ? "bg-int-sandal rounded-full text-white"
                             : ""}
                     ${shadow ? "border-int-sandal border-2 border-opacity-40 text-white" : ""}
-                    ${block ? "w-full" : ""}
-                    ${blue ? "bg-bluebtn" : "bg-int-sandal"}
+                    ${block ? "w-[80%]" : ""}
+                    ${blue ? "bg-bluebtn" : "bg-int-blue rounded text-white mx-8"}
                     ${profilebtn ? "border-primary text-primary bg-transparent border-2 rounded-full": ""}
-                    text-center px-5 py-2 font-poppinsRegular uppercase`}
+                    text-center px-5 py-2 text-sm font-poppinsRegular uppercase`}
             disabled={loading}
         >
             {loading ? (

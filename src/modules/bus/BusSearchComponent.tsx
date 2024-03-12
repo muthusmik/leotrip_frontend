@@ -124,7 +124,7 @@ const BusSearchComponent = () => {
         </div>
         <div></div>
       </div>
-      <div className="absolute top-[8.3rem]  top-[17rem] sm:top-[17rem] md:top-[7rem] inset-x-auto ">
+      <div className="absolute   top-[17rem] sm:top-[17rem] md:top-[7rem] inset-x-auto ">
         <PrimaryButton rounded onClick={() => handleSearchBus()}>
           <p className="w-[200px] font-poppinsBold">Search Bus</p>
         </PrimaryButton>

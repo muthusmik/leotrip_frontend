@@ -54,6 +54,7 @@ export default function Profilesidebar({ setSelectedOption,ToTraveller }: any) {
   const isItemActive = (option: any) => option === activeItem;
   return (
     <>
+    <div className="w-full">
       <div className="h-48 w-48 mx-auto border bg-gradient-to-tl from-blue-500 via-blue-50 to-blue-500">
         <img
           src={userImage || user}
@@ -147,6 +148,7 @@ export default function Profilesidebar({ setSelectedOption,ToTraveller }: any) {
           <img src={profilelogout} alt="profilelogout" className="mt-3" />
           Logout
         </button>
+      </div>
       </div>
     </>
   );
