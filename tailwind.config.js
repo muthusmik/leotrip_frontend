@@ -8,6 +8,8 @@ module.exports = {
       center: true,
     },
     screens: {
+      // xs: '350px',
+
       sm: '640px',
       // => @media (min-width: 640px) { ... }
 
@@ -94,6 +96,7 @@ module.exports = {
         sandalbtnborder: '#636262',
         Genderbut: '#329DE1',
         'int-sandal':'#EC8E03',
+        'int-blue':'#5562D2',
         'int-green-alert': '#97D382',
         'int-black': '#000000',
         'int-light-blue': '#ECEFF0',

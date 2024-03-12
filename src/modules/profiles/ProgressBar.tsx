@@ -9,7 +9,7 @@ export default function ProgresBar() {
     return (
         <>
             <p className="ml-10 mb-3 font-poppinsRegular">Complete your Profile</p>
-            <div className="w-[600px] mb-2 ml-10"><Example /></div>
+            <div className="mb-2 ml-10"><Example /></div>
             <p className="font-poppinsRegular ml-10">Get the best out of MakeMyTrip by adding the remaining details!</p>
         </>
     );

@@ -43,24 +43,26 @@ export default function Profile() {
     const lastItem = MyProfileKey[MyProfileKey.length - 1];
 
     return (
-        <div className="bg-[#DEF2FF] h-full w-full ">
-            <div className="flex gap-10">
-                <div className="w-full">
-                    <div className="h-fit  w-full bg-white border rounded-2xl py-4">
+        <>
+         <div className="w-full h-full">
+            <div className="w-full h-full flex">
+                <div className="w-full h-full">
+                    <div className="h-fit w-[100%] bg-white border rounded-2xl py-4">
                         <ProgresBar />
-                        <ProfileProgressBanar />
+                        <ProfileProgressBanar/>
                     </div>
                     <div className="h-fit w-full bg-white border rounded-2xl py-4 mt-10">
                         <MyProfile MyProfileKey={MyProfileKey} lastItem={lastItem} />
                     </div>
-                    <div className="h-fit w-full bg-white border rounded-2xl py-5 mt-10">
+                    <div className="h-fit  bg-white border rounded-2xl py-5 mt-10 mx-2">
                         <Logindetails />
                     </div>
-                    <div className="h-fit w-full bg-white border rounded-2xl py-5 mt-10" id="Travellers">
+                   <div className="h-fit w-full bg-white border rounded-2xl py-5 mt-10" id="Travellers">
                         <Travelers />
                     </div>
                 </div>
             </div>
         </div>
+        </>
     );
 }
