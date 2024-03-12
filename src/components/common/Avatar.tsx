@@ -111,14 +111,14 @@ export function Avatar() {
     return (
         <div ref={wrapperRef} className=" relative mx-2 ml-[5%]">
             {!auth ? (
-                <div className="border-int-dark-blue border-2 rounded-[10px] p-1 flex" onClick={() => setIsOpenAuthModal(true)}>
+                <div className="border-int-dark-blue border-2 rounded-[10px] p-2 flex " onClick={() => setIsOpenAuthModal(true)}>
                     <img src={AvatarIcon} alt={''} />
-                    <span className="font-poppinsRegular text-lg text-int-dark-blue mx-2 text-center">Login/Register</span>
+                    <span className="font-poppinsRegular text-lg text-int-dark-blue pe-3 mx-2 text-center text-wrap hidden lg:flex ">Login/Register</span>
                 </div>
             ) : (
                 <div className="p-2 flex cursor-pointer hover:bg-int-background rounded-[10px] " onClick={() => setIsDropdownOpen(!isDropdownOpen)}>
-                    <img src={AvatarIcon} alt={''} className="p-1 rounded-full md:border-0 border-2 border-int-dark-blue mdlg:w-10 md:w-5" />
-                    <span className="font-poppinsRegular text-lg md:text-lg text-black mx-1 justify-content mt-2 text-center">Hi  <b>Leo</b></span>
+                    <img src={AvatarIcon} alt={''} className="p-1 rounded-full  border-2 md:border-0 sm:border-0 border-int-dark-blue lg:w-10 md:w-10" />
+                    <span className="font-poppinsRegular text-lg md:text-lg text-black  mx-1 justify-content mt-2 text-center">Hi  <b>Leo</b></span>
                 </div>
             )}
             {isDropdownOpen && (
