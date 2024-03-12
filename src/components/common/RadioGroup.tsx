@@ -8,15 +8,16 @@ type Option = {
 interface RadioGroupProps {
     options: Option[];
     selected: string;
+    type:string;
     onChange: (value: string) => void;
 }
 
-const RadioGroup: React.FC<RadioGroupProps> = ({ options, selected, onChange }) => {
+const RadioGroup: React.FC<RadioGroupProps> = ({type, options, selected, onChange }) => {
 
     return (
         <div className="mt-2">
             {options.map((option) => (
-                <label key={option.value} className={`inline-flex items-center mx-2 py-1 px-2 cursor-pointer rounded-[0.5rem] ${selected === option.value ? 'bg-orange-300' : ''}`}>
+                <label key={option.value} className={`inline-flex items-center mx-2  py-1 px-2 cursor-pointer rounded-[0.5rem] ${selected === option.value ? ((type === 'home') ?'bg-orange-300' : '' ) : ''}`}>
                     <input
                         type="radio"
                         value={option.value}
@@ -29,7 +30,7 @@ const RadioGroup: React.FC<RadioGroupProps> = ({ options, selected, onChange }) 
                             {/* Customize the selected and unselected states */}
                         </div>
                     </div>
-                    <span className="text-gray-700 text-xl font-poppinsRegular ml-2">{option.label}</span>
+                    <span className={` text-sm md:text-md  font-poppinsRegular ml-2 ${type === 'home' ? 'text-gray-700 lg:text-lg' : 'text-white'}`}>{option.label}</span>
                 </label>
             ))}
         </div>
