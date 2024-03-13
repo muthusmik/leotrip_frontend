@@ -151,7 +151,7 @@ const TravellerCountComponent = ({ travellerData, setTravellerData, setShowTrave
             <div className="flex items-center justify-between py-2 bg-white rounded-xl my-2 mx-4 border">
                 <h2 className="text-center font-poppinsRegular text-xl w-[20%]">Class</h2>
                 <div className='w-[68%]'>
-                    <RadioGroup options={options} selected={selectedOption} onChange={handleOptionChange} />
+                    <RadioGroup type={'home'} options={options} selected={selectedOption} onChange={handleOptionChange} />
                 </div>
             </div>
             <hr />

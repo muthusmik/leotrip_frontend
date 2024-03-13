@@ -131,7 +131,7 @@ const CarSearchComponent = () => {
     return (
         <div className="w-full items-center justify-between gap-6 bg-white px-2 rounded-[20px] shadow-lg">
             <div className="px-4 mt-4 flex">
-                <RadioGroup options={options} selected={selectedOption} onChange={handleOptionChange} />
+                <RadioGroup type={'home'} options={options} selected={selectedOption} onChange={handleOptionChange} />
             </div>
             <div className='flex flex-col md:flex-row w-full items-center justify-between gap-2 px-4 h-auto py-9'>
                 {selectedOption === 'airportTransfer' &&

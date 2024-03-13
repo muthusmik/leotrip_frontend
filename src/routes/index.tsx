@@ -9,7 +9,7 @@ import FlightModule from '../modules/flight';
 import HotelModule from '../modules/hotel';
 import CarModule from '../modules/car';
 import CommonLayout from 'modules/profiles/CommonLayout';
-import FlightOneWay from '../modules/flight/flightList/oneWay'
+import FlightOneWay from '../modules/flight/flightList/oneWay/index'
 const routes: RouteObject[] = [
 
 
