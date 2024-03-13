@@ -1,9 +1,10 @@
 import AutoSuggestionList from "components/AutoSuggestionListingPage";
 import RadioGroup from "components/common/RadioGroup";
 import React, { useRef, useState } from "react";
-import fromFlightSvg from '../../../assets/icons/fromflight.svg';
-import CustomDatePicker from "components/common/CustomdatePicker";
+import CustomDatePicker from "../../../components/CustomdatePickerlistpage";
 import TravellerCountComponent from "../TravellerCount";
+import { ButtonListOutlined } from "styles/Button";
+import Checkbox from "components/common/CheckBox";
 const autoCompleteData = [
     "Asparagus",
     "Beetroot",
@@ -86,87 +87,100 @@ const FlightModifySearch = () => {
 
 
     return (
-        <div className="bg-gradient-to-r from-bg-blue-start to-bg-blue-end">
-            <div className="container">
-                <div className="px-4 mt-4 flex">
+        <div className="bg-gradient-to-r from-bg-blue-start to-bg-blue-end p-5">
+            <div className="mx-5">
+                <div className=" flex">
                     <RadioGroup type={'list'} options={options} selected={selectedOption} onChange={handleOptionChange} />
                 </div>
-                <div className="flex flex-row mx-5 mt-5">
+                <div className="flex flex-row my-3">
                     <div>
-                        <div className="flex flex-col">
-                            <AutoSuggestionList
-                                label={"From"}
-                                value={fromValue}
-                                placeholder={"Enter From city"}
-                                // setValue={setFromValue}
-                                setValue={handleFromValueChange}
-                                data={autoCompleteData}
-                                // img={fromFlightSvg}
-                                ref={fromInputRef}
-                            />
-                            {(fromValue === '') ? <h6 className="flex flex-wrap text-int-red w-full">{fromerrormsg}</h6> : null}
-                        </div>
+                        <AutoSuggestionList
+                            label={"From"}
+                            value={fromValue}
+                            placeholder={"Enter From city"}
+                            // setValue={setFromValue}
+                            setValue={handleFromValueChange}
+                            data={autoCompleteData}
+                            ref={fromInputRef} />
                     </div>
                     <div>
-                        <div className="flex flex-col">
-                            <AutoSuggestionList
-                                label={"To"}
-                                value={toValue}
-                                setValue={handleToValueChange}
-                                placeholder={"Enter To city"}
-                                data={autoCompleteData}
-                                // img={toFlightSvg}
-                                ref={toInputRef}
-                            />
-                            {(toValue === '') ? <h6 className="flex flex-wrap text-int-red w-full">{toerrormsg}</h6> : null}
-                        </div>
+                        <AutoSuggestionList
+                            label={"To"}
+                            value={fromValue}
+                            placeholder={"Enter To city"}
+                            // setValue={setFromValue}
+                            setValue={handleFromValueChange}
+                            data={autoCompleteData}
+                            ref={fromInputRef} />
                     </div>
-                    <div className="border border-int-blue border-2   h-[50%] bg-int-blue">
-                        <div className="flex items-center w-full h-full">
-                            <CustomDatePicker onSelect={(e) => handleDateOfJourney(e)} ref={dateOfJourney} minDate={today} maxDate={maxDate} placeholder={"Select Date"} />
-                        </div>
+                    <div>
+                        <CustomDatePicker onSelect={(e) => handleDateOfJourney(e)} ref={dateOfJourney} minDate={today} maxDate={maxDate} placeholder={"Departure Date"} />
                     </div>
                     {selectedOption === "roundTrip" &&
-                        <div className="border border-int-blue border-2  h-[50%] bg-int-blue ms-3">
-                            <div className="flex items-center w-full h-full">
-                                <CustomDatePicker onSelect={(e) => handleReturnDateOfJourney(e)} ref={returnDateOfJourney} minDate={today} maxDate={maxDate} placeholder={"Select Return Date"} />
-                            </div>
+                        <div>
+                            <CustomDatePicker onSelect={(e) => handleDateOfJourney(e)} ref={dateOfJourney} minDate={today} maxDate={maxDate} placeholder={"Return Date"} />
                         </div>
                     }
-                    <div className="border border-int-blue border-2  h-[50%] bg-int-blue ms-3">
-                        <div className="flex flex-row justify-center w-full h-full relative mt-2">
-                            <button className="flex flex-row " onClick={() => setShowTravellerDropdown(true)} disabled={showTravellerDropdown}>
-                                <p className="flex text-center font-poppinsRegular ">
-                                    Travellers: {travellerData.adultCount + travellerData.childCount + travellerData.infantCount}<br />
-                                    {/* {travellerData.childCount > 0 ? `, Child: ${travellerData.childCount}` : null}
+                    <div>
+                        <div className="mx-3">
+                            <p className="font-poppinsRegular  text-white">
+                                Travellers
+                            </p>
+                            <div className="flex flex-row justify-center w-full h-full  bottom-3 bg-int-blue">
+                                <button className="flex flex-row w-full h-full justify-center items-center " onClick={() => setShowTravellerDropdown(true)} disabled={showTravellerDropdown}>
+                                    <p className="flex text-center font-poppinsRegular  ps-3 justify-center text-white">
+                                        Travellers
+                                        {/* {travellerData.adultCount + travellerData.childCount + travellerData.infantCount}<br /> */}
+                                        {/* {travellerData.childCount > 0 ? `, Child: ${travellerData.childCount}` : null}
                             {travellerData.infantCount > 0 ? `, Infant: ${travellerData.infantCount}` : null} */}
-                                    {/* Class: {travellerData.class} */}
-                                </p>
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    className="h-full w-8 text-gray-700"
-                                    viewBox="0 0 20 20"
-                                    fill="currentColor"
-                                    aria-hidden="true"
-                                >
-                                    <path
-                                        fillRule="evenodd"
-                                        d="M6.293 7.293a1 1 0 011.414 0L10 9.586l2.293-2.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z"
-                                        clipRule="evenodd"
-                                    />
-                                </svg>
-                            </button>
+                                        {/* Class: {travellerData.class} */}
+                                    </p>
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        className="h-full w-8 text-white"
+                                        viewBox="0 0 20 20"
+                                        fill="currentColor"
+                                        aria-hidden="true"
+                                    >
+                                        <path
+                                            fillRule="evenodd"
+                                            d="M6.293 7.293a1 1 0 011.414 0L10 9.586l2.293-2.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z"
+                                            clipRule="evenodd"
+                                        />
+                                    </svg>
+                                </button>
+                            </div>
+                            {showTravellerDropdown &&
+                                <TravellerCountComponent
+                                    travellerData={travellerData}
+                                    setTravellerData={setTravellerData}
+                                    setShowTravellerDropdown={setShowTravellerDropdown}
+                                />
+                            }
                         </div>
-                        {showTravellerDropdown &&
-                            <TravellerCountComponent
-                                travellerData={travellerData}
-                                setTravellerData={setTravellerData}
-                                setShowTravellerDropdown={setShowTravellerDropdown}
-                            />
-                        }
+                    </div>
+                    <div className="my-auto justify-center items-center mb-0 pb-0 mx-5">
+                        <ButtonListOutlined >search</ButtonListOutlined>
                     </div>
                 </div>
-                <div></div>
+                <div className="flex flex-row mt-5">
+                    <div className="flex mx-3">
+                        <Checkbox color={'indigo'} />
+                        <p className="text-white mx-3">Defence Forces</p>
+                    </div>
+                    <div className="flex mx-3">
+                        <Checkbox color={'indigo'} />
+                        <p className="text-white mx-3">Students</p>
+                    </div>
+                    <div className="flex mx-3">
+                        <Checkbox color={'indigo'} />
+                        <p className="text-white mx-3">Senior Citizens</p>
+                    </div>
+                    <div className="flex mx-3">
+                        <Checkbox color={'indigo'} />
+                        <p className="text-white mx-3">Doctors Nurses</p>
+                    </div>
+                </div>
             </div>
         </div >
     );

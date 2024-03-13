@@ -41,10 +41,10 @@ const AutoSuggestionList = forwardRef<any, AutoSuggestionProps>(
             // setValue(query);
             setQuery(query);
             if (query.length > 1) {
-                console.log("dataaaaaa",data)
+                console.log("dataaaaaa", data)
                 const filterSuggestions = data.filter(
-                    (suggestion:any) => suggestion.toLowerCase().indexOf(query.toLowerCase()) > -1
-                );                
+                    (suggestion: any) => suggestion.toLowerCase().indexOf(query.toLowerCase()) > -1
+                );
                 setSuggestions(filterSuggestions);
                 setSuggestionsActive(true);
             } else {
@@ -82,9 +82,9 @@ const AutoSuggestionList = forwardRef<any, AutoSuggestionProps>(
                 setSuggestionsActive(false);
             }
         };
-        useEffect(()=>{
-            console.log("sugggggggggg",suggestions)
-        },[suggestions])
+        useEffect(() => {
+            console.log("sugggggggggg", suggestions)
+        }, [suggestions])
         const Suggestions = () => {
             return (
                 <ul className="suggestions bg-slate-600 z-50">
@@ -105,23 +105,25 @@ const AutoSuggestionList = forwardRef<any, AutoSuggestionProps>(
         };
 
         return (
-            <div className="flex flex-row bg-int-blue  z-40  px-2 border-int-blue border-2 h-[50px]  w-[80%] sm:w-[60%] md:w-[60%] lg:w-[70%]">
-               
-                <div className="w-auto flex flex-col justify-center px-2  border-black ">
+            <div className="flex flex-row z-40 h-auto mx-5 w-auto">
+                <div className="flex flex-col">
+                    <label className="text-white mt-0 pt-0">{label}</label>
+                    <div className="w-auto justify-center   border-black ">
                         <input
                             type="text"
                             placeholder={placeholder}
                             value={query}
-                            className="outline-none font-poppinsRegular text-sm lg:text-lg h-full ps-1 w-full bg-transparent z-50"
+                            className="outline-none font-poppinsRegular text-sm text-white  lg:text-md h-full ps-1 w-full bg-int-blue z-50 mb-2"
                             onChange={handleChange}
                             onKeyDown={handleKeyDown}
                             ref={inputRef}
                         />
-                    {suggestionsActive && (
-                        <div className="absolute top-28 w-[24%]">
-                            <Suggestions />
-                        </div>
-                    )}
+                        {suggestionsActive && (
+                            <div className="absolute top-28 w-[24%]">
+                                <Suggestions />
+                            </div>
+                        )}
+                    </div>
                 </div>
             </div>
         );

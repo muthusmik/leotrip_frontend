@@ -117,6 +117,8 @@ module.exports = {
         'int-brown': '#EC8E03',
         'bg-blue-start':'#3048ED',
         'bg-blue-end':'#56CBF2',
+        'light-black':'#808080',
+        'int-dark-red':'#C00000'
       },
       fontSize: {
         button: [
