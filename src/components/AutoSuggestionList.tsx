@@ -6,6 +6,7 @@ import React, {
     useEffect,
 } from "react";
 import useOutsideAlerter from "hooks/useOutside";
+import flight from '../assets/icons/dropdown-flight.png';
 
 type AutoSuggestionProps = {
     data: any;
@@ -24,7 +25,7 @@ const AutoSuggestionList = forwardRef<any, AutoSuggestionProps>(
         const [suggestionsActive, setSuggestionsActive] = useState(false);
 
         const inputRef = useRef<HTMLInputElement | null>(null);
-
+        console.log("dfghjk", suggestions);
         useImperativeHandle(ref, () => ({
             focus: () => {
                 inputRef.current?.focus();
@@ -36,15 +37,16 @@ const AutoSuggestionList = forwardRef<any, AutoSuggestionProps>(
             ref: wrapperRef,
             callback: () => setSuggestionsActive(false),
         });
-        const handleChange = (e: { target: { value: string } }) => {
+        const handleChange = (e: { target: { value: any } }) => {
             const query = e.target.value.toLowerCase();
             // setValue(query);
             setQuery(query);
             if (query.length > 1) {
-                console.log("dataaaaaa",data)
+                console.log("dataaaaaa", data)
                 const filterSuggestions = data.filter(
-                    (suggestion:any) => suggestion.toLowerCase().indexOf(query.toLowerCase()) > -1
-                );                
+                    (suggestion: any) => suggestion.city.toLowerCase().indexOf(query.toLowerCase()) > -1
+                );
+                console.log("asdfghjk", filterSuggestions);
                 setSuggestions(filterSuggestions);
                 setSuggestionsActive(true);
             } else {
@@ -54,9 +56,10 @@ const AutoSuggestionList = forwardRef<any, AutoSuggestionProps>(
         };
 
         const handleClick = (e: any) => {
+            console.log("dataeeeee", e)
             setSuggestions([]);
-            setValue(e.target.innerText);
-            setQuery(e.target.innerText);
+            setValue(e);
+            setQuery(e);
             setSuggestionsActive(false);
         };
 
@@ -82,25 +85,50 @@ const AutoSuggestionList = forwardRef<any, AutoSuggestionProps>(
                 setSuggestionsActive(false);
             }
         };
-        useEffect(()=>{
-            console.log("sugggggggggg",suggestions)
-        },[suggestions])
+        useEffect(() => {
+            console.log("sugggggggggg", suggestions)
+        }, [suggestions])
         const Suggestions = () => {
             return (
-                <ul className="suggestions bg-slate-600 z-50">
-                    {suggestions.map((suggestion, index) => {
-                        return (
-                            <li
-                                // className={index === suggestionIndex ? "active" : ""}
-                                className="cursor-pointer hover:bg-gray-500  "
-                                key={index}
-                                onClick={handleClick}
-                            >
-                                {suggestion}
-                            </li>
-                        );
-                    })}
+                // <ul className="suggestions bg-slate-600 z-50 absolute mt-1 w-[100%] max-h-30 overflow-y-auto bg-white border border-black">
+                //     {suggestions.map((suggestion, index) => (
+                //         <div key={index} className="flex items-center p-2 hover:bg-sky-200" onClick={() => handleClick(suggestion['city'])}>
+                //             <img src={flight} alt="fli" className="w-[13%] h-[13%]" />
+                //             <div className="w-[40%] h-[13%]">
+                //                 <h4>{suggestion['city']},{suggestion['countryCode']}</h4>
+                //                 <small>{suggestion['airportName']}</small>
+                //             </div>
+
+                //             {/* <li
+                //                 className="cursor-pointer flex-1 px-3 py-1"
+                //                 onClick={() => handleClick(suggestion['city'])}
+                //             >
+                //                 {suggestion['city']}
+                //             </li> */}
+                //             {/* <span className="text-xs text-gray-500 ml-2">
+                //                 {"Base on " + suggestion['city']}
+                //             </span> */}
+                //             <p className="ml-2 w-4 h-4">{suggestion['countryFlag']}</p>
+                //             {/* <img src={flight} alt="country icon" className="ml-2 w-4 h-4" /> */}
+                //         </div>
+                //     ))}
+                // </ul>
+                <ul className="suggestions bg-slate-600 z-50 absolute mt-1 w-full max-h-30 overflow-y-auto bg-white border border-black">
+                    {suggestions.map((suggestion, index) => (
+                        <div key={index} className="flex items-center p-2 hover:bg-sky-200" onClick={() => handleClick(suggestion['city'])}>
+                            <img src={flight} alt="fli" className="w-1/6 h-1/6 sm:w-[13%] sm:h-[13%] lg:w-[10%] lg:h-[10%]" />
+                            <div className="w-2/3 sm:w-[40%] sm:h-[13%] lg:w-[60%] lg:h-[13%]">
+                                <h4>{suggestion['city']}, {suggestion['countryCode']}</h4>
+                                <small>{suggestion['airportName']}</small>
+                            </div>
+                            <p className="ml-2 w-4 h-4">{suggestion['countryFlag']}</p>
+                        </div>
+                    ))}
                 </ul>
+
+
+
+
             );
         };
 
@@ -132,7 +160,8 @@ const AutoSuggestionList = forwardRef<any, AutoSuggestionProps>(
                         />
                     </div>
                     {suggestionsActive && (
-                        <div className="absolute top-28 w-[24%]">
+
+                        <div className="absolute top-40 w-[24%] ml-[-5%] ">
                             <Suggestions />
                         </div>
                     )}
@@ -143,3 +172,4 @@ const AutoSuggestionList = forwardRef<any, AutoSuggestionProps>(
 );
 
 export default AutoSuggestionList;
+
