@@ -1,40 +1,53 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 type Option = {
-    value: string;
-    label: string;
+  value: string;
+  label: string;
 };
 
 interface RadioGroupProps {
-    options: Option[];
-    selected: string;
-    onChange: (value: string) => void;
+  options: Option[];
+  selected: string;
+  onChange: (value: string) => void;
 }
 
-const RadioGroup: React.FC<RadioGroupProps> = ({ options, selected, onChange }) => {
-
-    return (
-        <div className="mt-2">
-            {options.map((option) => (
-                <label key={option.value} className={`inline-flex items-center mx-2 py-1 px-2 cursor-pointer rounded-[0.5rem] ${selected === option.value ? 'bg-orange-300' : ''}`}>
-                    <input
-                        type="radio"
-                        value={option.value}
-                        checked={selected === option.value}
-                        onChange={() => onChange(option.value)}
-                        className="hidden"
-                    />
-                    <div className="w-6 h-6 border-2 rounded-full border-blue-500 flex items-center justify-center">
-                        <div className={`w-4 h-4 rounded-full ${selected === option.value ? 'bg-blue-500' : 'bg-white'} flex items-center justify-center`}>
-                            {/* Customize the selected and unselected states */}
-                        </div>
-                    </div>
-                    <span className="text-gray-700 text-xl font-poppinsRegular ml-2">{option.label}</span>
-                </label>
-            ))}
-        </div>
-    );
+const RadioGroup: React.FC<RadioGroupProps> = ({
+  options,
+  selected,
+  onChange,
+}) => {
+  return (
+    <div className="mt-2 flex flex-wrap">
+      {options.map((option) => (
+        <label
+          key={option.value}
+          className={`inline-flex items-center mx-2 py-1 px-2 cursor-pointer rounded-[0.5rem] text-xs sm:text-sm md:text-md   ${
+            selected === option.value ? "bg-orange-300" : ""
+          }`}
+        >
+          <input
+            type="radio"
+            value={option.value}
+            checked={selected === option.value}
+            onChange={() => onChange(option.value)}
+            className="hidden"
+          />
+          <div className="w-6 h-6  border-2 rounded-full border-blue-500 flex items-center justify-center">
+            <div
+              className={`w-4 h-4 rounded-full ${
+                selected === option.value ? "bg-blue-500" : "bg-white"
+              } flex items-center justify-center`}
+            >
+              {/* Customize the selected and unselected states */}
+            </div>
+          </div>
+          <span className="text-gray-700 text-xs sm:text-sm  lg:text-xl font-poppinsRegular ml-2  ">
+            {option.label}
+          </span>
+        </label>
+      ))}
+    </div>
+  );
 };
 
 export default RadioGroup;
-
