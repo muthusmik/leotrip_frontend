@@ -9,39 +9,28 @@ import RadioGroup from "components/common/RadioGroup";
 import TravellerCountComponent from "./TravellerCount";
 import { useNavigate } from "react-router-dom";
 
-// const autoCompleteData = [
-//     "Asparagus",
-//     "Beetroot",
-//     "Broccoli",
-//     "Cabbage",
-//     "Chennai",
-//     "Chennai",
-//     "Carrot",
-//     "Cauliflower",
-//     "Celery",
-//     "Corn",
-//     "Eggplant",
-//     "Lettuce",
-//     "Mushroom",
-//     "Onion",
-//     "Parsnip",
-//     "Pea",
-//     "Potato",
-//     "Pumpkin",
-//     "Radish",
-//     "Spinach",
-//     "Tomato",
-//     "Turnip",
-    
-// ];
 const autoCompleteData = [
-  { airportName: "Indira Gandhi International Airport",  city: "Chennai", countryCode: "IN", countryFlag: "🇮🇳" },
-  { airportName: "Chhatrapati Shivaji Maharaj International Airport",  city: "Andhra", countryCode: "IN", countryFlag: "🇮🇳" },
-  { airportName: "Kempegowda International Airport", city: "Andhra", countryCode: "IN", countryFlag: "🇮🇳" },
-  { airportName: "Chennai International Airport",  city: "Chennai", countryCode: "IN", countryFlag: "🇮🇳" },
-  { airportName: "Netaji Subhas Chandra Bose International Airport",  city: "Tirupati", countryCode: "IN", countryFlag: "🇮🇳" },
-  ];
-  
+    "Asparagus",
+    "Beetroot",
+    "Broccoli",
+    "Cabbage",
+    "Carrot",
+    "Cauliflower",
+    "Celery",
+    "Corn",
+    "Eggplant",
+    "Lettuce",
+    "Mushroom",
+    "Onion",
+    "Parsnip",
+    "Pea",
+    "Potato",
+    "Pumpkin",
+    "Radish",
+    "Spinach",
+    "Tomato",
+    "Turnip",
+];
 
 
 

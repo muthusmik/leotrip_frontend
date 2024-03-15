@@ -13,6 +13,13 @@ export function ButtonOutlined({ children }: ButtonOutlinedProps) {
     )
 }
 
+export function ButtonListOutlined({ children }: ButtonOutlinedProps) {
+    return (
+        <Button variant="outlined" className='flex rounded items-center px-4 py-2 space-x-4 border-white text-white'>
+            {children}
+        </Button>
+    )
+}
 
 export function Generateotp({ children,ok,cancel,view, ...props }: any) {
     return (
