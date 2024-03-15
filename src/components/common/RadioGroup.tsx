@@ -30,11 +30,13 @@ const RadioGroup: React.FC<RadioGroupProps> = ({type, options, selected, onChang
                             {/* Customize the selected and unselected states */}
                         </div>
                     </div>
-                    <span className={` text-sm md:text-md  font-poppinsRegular ml-2 ${type === 'home' ? 'text-gray-700 lg:text-lg' : 'text-white'}`}>{option.label}</span>
-                </label>
-            ))}
-        </div>
-    );
+          <span className="text-gray-700 text-xs sm:text-sm  lg:text-xl font-poppinsRegular ml-2  ">
+            {option.label}
+          </span>
+        </label>
+      ))}
+    </div>
+  );
 };
 
 export default RadioGroup;
