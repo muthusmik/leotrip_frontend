@@ -1,9 +1,235 @@
 import Checkbox from "components/common/CheckBox";
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import arrow from '../../../../assets/icons/Arrowtick.svg'
 import AI from '../../../../assets/images/AI.png';
 import { PrimaryButton } from "styles/Button";
+import ModalFullHeight from "styles/ModalFullHeight";
+import FlightDetails from "./FlightDetails";
+import { useNavigate } from "react-router-dom";
 const flights = [
+    {
+        "airline": "Air India",
+        'airlinecode': 'I5-743',
+        "departure": "05 : 00",
+        "duration": "2h 30m",
+        "arrival": "06 : 05",
+        "stops": 0,
+        "price": 200
+    },
+    {
+        "airline": "Indigo",
+        'airlinecode': 'I5-743',
+        "departure": "05 : 00",
+        "duration": "1h 45m",
+        "arrival": "06 : 05",
+        "stops": 1,
+        "price": 150
+    },
+    {
+        "airline": "Spice Jet",
+        'airlinecode': 'I5-743',
+        "departure": "05 : 00",
+        "duration": "3h",
+        "arrival": "06 : 05",
+        "stops": 2,
+        "price": 180
+    },
+    {
+        "airline": "Air Asia",
+        'airlinecode': 'I5-743',
+        "departure": "05 : 00",
+        "duration": "2h",
+        "arrival": "06 : 05",
+        "stops": 0,
+        "price": 220
+    },
+    {
+        "airline": "Vistara",
+        'airlinecode': 'I5-743',
+        "departure": "05 : 00",
+        "duration": "1h 15m",
+        "arrival": "06 : 05",
+        "stops": 1,
+        "price": 250
+    },
+    {
+        "airline": "Air India",
+        'airlinecode': 'I5-743',
+        "departure": "05 : 00",
+        "duration": "2h 30m",
+        "arrival": "06 : 05",
+        "stops": 0,
+        "price": 200
+    },
+    {
+        "airline": "Indigo",
+        'airlinecode': 'I5-743',
+        "departure": "05 : 00",
+        "duration": "1h 45m",
+        "arrival": "06 : 05",
+        "stops": 1,
+        "price": 150
+    },
+    {
+        "airline": "Spice Jet",
+        'airlinecode': 'I5-743',
+        "departure": "05 : 00",
+        "duration": "3h",
+        "arrival": "06 : 05",
+        "stops": 2,
+        "price": 180
+    },
+    {
+        "airline": "Air Asia",
+        'airlinecode': 'I5-743',
+        "departure": "05 : 00",
+        "duration": "2h",
+        "arrival": "06 : 05",
+        "stops": 0,
+        "price": 220
+    },
+    {
+        "airline": "Vistara",
+        'airlinecode': 'I5-743',
+        "departure": "05 : 00",
+        "duration": "1h 15m",
+        "arrival": "06 : 05",
+        "stops": 1,
+        "price": 250
+    }, {
+        "airline": "Air India",
+        'airlinecode': 'I5-743',
+        "departure": "05 : 00",
+        "duration": "2h 30m",
+        "arrival": "06 : 05",
+        "stops": 0,
+        "price": 200
+    },
+    {
+        "airline": "Indigo",
+        'airlinecode': 'I5-743',
+        "departure": "05 : 00",
+        "duration": "1h 45m",
+        "arrival": "06 : 05",
+        "stops": 1,
+        "price": 150
+    },
+    {
+        "airline": "Spice Jet",
+        'airlinecode': 'I5-743',
+        "departure": "05 : 00",
+        "duration": "3h",
+        "arrival": "06 : 05",
+        "stops": 2,
+        "price": 180
+    },
+    {
+        "airline": "Air Asia",
+        'airlinecode': 'I5-743',
+        "departure": "05 : 00",
+        "duration": "2h",
+        "arrival": "06 : 05",
+        "stops": 0,
+        "price": 220
+    },
+    {
+        "airline": "Vistara",
+        'airlinecode': 'I5-743',
+        "departure": "05 : 00",
+        "duration": "1h 15m",
+        "arrival": "06 : 05",
+        "stops": 1,
+        "price": 250
+    },
+    {
+        "airline": "Air India",
+        'airlinecode': 'I5-743',
+        "departure": "05 : 00",
+        "duration": "2h 30m",
+        "arrival": "06 : 05",
+        "stops": 0,
+        "price": 200
+    },
+    {
+        "airline": "Indigo",
+        'airlinecode': 'I5-743',
+        "departure": "05 : 00",
+        "duration": "1h 45m",
+        "arrival": "06 : 05",
+        "stops": 1,
+        "price": 150
+    },
+    {
+        "airline": "Spice Jet",
+        'airlinecode': 'I5-743',
+        "departure": "05 : 00",
+        "duration": "3h",
+        "arrival": "06 : 05",
+        "stops": 2,
+        "price": 180
+    },
+    {
+        "airline": "Air Asia",
+        'airlinecode': 'I5-743',
+        "departure": "05 : 00",
+        "duration": "2h",
+        "arrival": "06 : 05",
+        "stops": 0,
+        "price": 220
+    },
+    {
+        "airline": "Vistara",
+        'airlinecode': 'I5-743',
+        "departure": "05 : 00",
+        "duration": "1h 15m",
+        "arrival": "06 : 05",
+        "stops": 1,
+        "price": 250
+    }, {
+        "airline": "Air India",
+        'airlinecode': 'I5-743',
+        "departure": "05 : 00",
+        "duration": "2h 30m",
+        "arrival": "06 : 05",
+        "stops": 0,
+        "price": 200
+    },
+    {
+        "airline": "Indigo",
+        'airlinecode': 'I5-743',
+        "departure": "05 : 00",
+        "duration": "1h 45m",
+        "arrival": "06 : 05",
+        "stops": 1,
+        "price": 150
+    },
+    {
+        "airline": "Spice Jet",
+        'airlinecode': 'I5-743',
+        "departure": "05 : 00",
+        "duration": "3h",
+        "arrival": "06 : 05",
+        "stops": 2,
+        "price": 180
+    },
+    {
+        "airline": "Air Asia",
+        'airlinecode': 'I5-743',
+        "departure": "05 : 00",
+        "duration": "2h",
+        "arrival": "06 : 05",
+        "stops": 0,
+        "price": 220
+    },
+    {
+        "airline": "Vistara",
+        'airlinecode': 'I5-743',
+        "departure": "05 : 00",
+        "duration": "1h 15m",
+        "arrival": "06 : 05",
+        "stops": 1,
+        "price": 250
+    },
     {
         "airline": "Air India",
         'airlinecode': 'I5-743',
@@ -50,11 +276,38 @@ const flights = [
         "price": 250
     }
 ];
-
+const flightsPerPage = 10;
 const FlightList = () => {
+    const navigate=useNavigate();
+    const [isOpenAuthModal, setIsOpenAuthModal] = useState<boolean>(false);
+    const [visibleFlights, setVisibleFlights] = useState(flightsPerPage);
+    const tableRef = useRef<HTMLTableElement>(null);
+    useEffect(() => {
+        const handleScroll = () => {
+            const table = tableRef.current;
+            if (table) {
+                const { scrollTop, scrollHeight, clientHeight } = table;
+                if (scrollTop + clientHeight >= scrollHeight) {
+                    setVisibleFlights(prevVisibleFlights => prevVisibleFlights + flightsPerPage);
+                }
+            }
+        };
+
+        const tableElement = tableRef.current;
+        if (tableElement) {
+            tableElement.addEventListener('scroll', handleScroll);
+            return () => {
+                tableElement.removeEventListener('scroll', handleScroll);
+            };
+        }
+    }, []);
+    const handleProceed = () => {
+        // setIsOpenAuthModal(true)
+        navigate("/flight/review")
+    }
     return (
         <div className="">
-            <table className="w-[95%] font-poppinsRegular">
+            <table className="w-[95%] font-poppinsRegular" ref={tableRef}>
                 <thead >
                     <tr className="flex flex-row bg-white border border-black border-1 rounded-lg justify-between diashow-img  text-xl p-5">
                         <th >AIRLINE</th>
@@ -66,7 +319,7 @@ const FlightList = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {flights.map((flight, index) => (
+                    {flights.slice(0, visibleFlights).map((flight, index) => (
                         <>
                             <tr key={index} className="flex flex-row bg-white border border-black border-1 rounded-lg justify-between p-5 diashow-img">
                                 <td>
@@ -98,7 +351,7 @@ const FlightList = () => {
                                     </div>
                                 </td>
                                 <td>
-                                    <PrimaryButton rounded>
+                                    <PrimaryButton rounded onClick={handleProceed}>
                                         <p className="font-poppinsRegular">BOOK NOW</p>
                                     </PrimaryButton>
                                 </td>
@@ -111,6 +364,14 @@ const FlightList = () => {
                     ))}
                 </tbody>
             </table>
+            <ModalFullHeight
+                active={isOpenAuthModal}
+                closeModal={() => setIsOpenAuthModal(false)}
+                width="w-[920px]"
+                isSubModal={true}
+                transparent={true}>
+                <FlightDetails close={() => setIsOpenAuthModal(false)} proceed={handleProceed} />
+            </ModalFullHeight>
             {/* <div className="">
                 <div className="w-[95%]">
                     <div className="flex flex-row bg-white border border-black border-1 rounded-lg justify-between p-5 diashow-img">

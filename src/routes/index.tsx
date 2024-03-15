@@ -10,6 +10,8 @@ import HotelModule from '../modules/hotel';
 import CarModule from '../modules/car';
 import CommonLayout from 'modules/profiles/CommonLayout';
 import FlightOneWay from '../modules/flight/flightList/oneWay/index'
+import FlightReview from 'modules/flight/review'
+import HotelList from 'modules/hotel/hotelList';
 const routes: RouteObject[] = [
 
 
@@ -41,8 +43,16 @@ const routes: RouteObject[] = [
   { path: '*', element: <NotFoundPage /> }, // Not found page for unmatched URLs
   {
     path: 'flight/flight-oneway',
-    element:<FlightOneWay />
-}
+    element: <FlightOneWay />
+  },
+  {
+    path: '/flight/review',
+    element: <FlightReview />
+  },
+  {
+    path:'hotel/hotelList',
+    element:<HotelList/>
+  }
 ];
 
 export default routes;

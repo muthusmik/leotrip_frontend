@@ -105,10 +105,10 @@ const AutoSuggestionList = forwardRef<any, AutoSuggestionProps>(
         };
 
         return (
-            <div className="flex flex-row z-40 h-auto mx-5 w-auto">
-                <div className="flex flex-col">
+            <div className="custom-datepicker cursor-pointer ">
+                <div className="flex flex-col mx-5">
                     <label className="text-white mt-0 pt-0">{label}</label>
-                    <div className="w-auto justify-center   border-black ">
+                    <div className="w-auto h-8 justify-center border-black ">
                         <input
                             type="text"
                             placeholder={placeholder}
