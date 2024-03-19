@@ -73,7 +73,7 @@ const HotelModifySearch = () => {
     };
 
     const handleSearchHotel = () => {
-
+            
     }
 
     const handleRoomGuestDropdown = () => {

@@ -12,6 +12,7 @@ import CommonLayout from 'modules/profiles/CommonLayout';
 import FlightOneWay from '../modules/flight/flightList/oneWay/index'
 import FlightReview from 'modules/flight/review'
 import HotelList from 'modules/hotel/hotelList';
+import RoomDetails from 'modules/hotel/hotelList/RoomDetails';
 const routes: RouteObject[] = [
 
 
@@ -52,7 +53,11 @@ const routes: RouteObject[] = [
   {
     path:'hotel/hotelList',
     element:<HotelList/>
-  }
+  },
+  // {
+  //   path:'hotel/hotel-details',
+  //   element:<RoomDetails/>
+  // }
 ];
 
 export default routes;

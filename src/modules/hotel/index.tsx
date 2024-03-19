@@ -14,7 +14,7 @@ function HotelModule() {
         <div>
             <Navbar />
             <SearchBackground>
-                <HotelSearchComponent />
+            <HotelSearchComponent />
             </SearchBackground>
             <Carousel />
             <OfferSlider />

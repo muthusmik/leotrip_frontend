@@ -43,8 +43,9 @@ const AutoSuggestionList = forwardRef<any, AutoSuggestionProps>(
             if (query.length > 1) {
                 console.log("dataaaaaa", data)
                 const filterSuggestions = data.filter(
-                    (suggestion: any) => suggestion.toLowerCase().indexOf(query.toLowerCase()) > -1
+                    (suggestion: any) => suggestion.city.toLowerCase().indexOf(query.toLowerCase()) > -1
                 );
+                console.log("asdfghjk", filterSuggestions);
                 setSuggestions(filterSuggestions);
                 setSuggestionsActive(true);
             } else {
@@ -54,9 +55,10 @@ const AutoSuggestionList = forwardRef<any, AutoSuggestionProps>(
         };
 
         const handleClick = (e: any) => {
+            console.log("dataeeeee", e)
             setSuggestions([]);
-            setValue(e.target.innerText);
-            setQuery(e.target.innerText);
+            setValue(e);
+            setQuery(e);
             setSuggestionsActive(false);
         };
 
@@ -90,14 +92,23 @@ const AutoSuggestionList = forwardRef<any, AutoSuggestionProps>(
                 <ul className="suggestions bg-slate-600 z-50">
                     {suggestions.map((suggestion, index) => {
                         return (
-                            <li
-                                // className={index === suggestionIndex ? "active" : ""}
-                                className="cursor-pointer hover:bg-gray-500  "
-                                key={index}
-                                onClick={handleClick}
-                            >
-                                {suggestion}
-                            </li>
+                            // <li
+                            //     // className={index === suggestionIndex ? "active" : ""}
+                            //     className="cursor-pointer hover:bg-gray-500  "
+                            //     key={index}
+                            //     onClick={handleClick}
+                            // >
+                            //     {suggestion}
+                            // </li>
+                            <div key={index} className="flex items-center p-2 hover:bg-sky-200" onClick={() => handleClick(suggestion['city'])}>
+                            {/* <img src={flight} alt="fli" className="w-[10%] h-[10%] " /> */}
+                            <div className="w-[70%] ml-[5%]">
+                                <h5 className="text-sm md:text-md lg:text-lg">{suggestion['city']}, <span>({suggestion['iataCode']})</span></h5>
+                                <small className="text-gray-400">{suggestion['airportName']}</small>
+                            </div>
+                            <p className="ml-2 w-[13%] h-[13%] flex">{suggestion['countryFlag']}</p>
+                            {/* <div className=""><CountryFlag countryCode={suggestion['countryCode']} svg style={{ width: '25px', height: '25px' }}/></div> */}
+                        </div>
                         );
                     })}
                 </ul>
