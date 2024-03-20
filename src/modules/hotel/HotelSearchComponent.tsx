@@ -5,38 +5,27 @@ import dateSvg from '../../assets/icons/datesvg.svg';
 import CustomDatePicker from "components/common/CustomdatePicker";
 import { PrimaryButton } from "styles/Button";
 import RoomGuestCountComponent from "./RoomGuestCountComponent";
+import { useNavigate } from "react-router-dom";
 
 const autoCompleteData = [
-    "Asparagus",
-    "Beetroot",
-    "Broccoli",
-    "Cabbage",
-    "Carrot",
-    "Cauliflower",
-    "Celery",
-    "Corn",
-    "Eggplant",
-    "Lettuce",
-    "Mushroom",
-    "Onion",
-    "Parsnip",
-    "Pea",
-    "Potato",
-    "Pumpkin",
-    "Radish",
-    "Spinach",
-    "Tomato",
-    "Turnip",
-];
+    { airportName: "Indira Gandhi International Airport",  city: "Delhi",  iataCode: "DEL",countryCode: "IN", countryFlag: "????" },
+    { airportName: "Chhatrapati Shivaji Maharaj International Airport",  city: "Mumbai", iataCode: "BOM",countryCode: "IN", countryFlag: "????" },
+    { airportName: "Kempegowda International Airport", city: "Bangalore", iataCode: "BLR",countryCode: "IN", countryFlag: "????" },
+    { airportName: "Chennai International Airport",  city: "Chennai", iataCode: "MAA",countryCode: "IN", countryFlag: "????" },
+    { airportName: "Netaji Subhas Chandra Bose International Airport",  city: "Kolkata", iataCode: "CCU",countryCode: "IN", countryFlag: "????" },
+    { airportName: "Los Angeles International Airport", city: "Los Angeles", iataCode: "LAX", countryCode: "US", countryFlag: "????" }
+    ];
 
 const HotelSearchComponent = () => {
-
+    const navigate=useNavigate();
     const today = new Date();
     const maxDate = new Date();
     maxDate.setMonth(today.getMonth() + 6);
     const dateOfRetrun = new Date();
     dateOfRetrun.setDate(today.getDate() + 1);
 
+    const [errormsg, setErrormsg] = useState('');
+    const [fromerrormsg, setFromerrormsg] = useState('');
     const [fromValue, setFromValue] = useState("");
     const [checkInDate, setCheckInDate] = useState();
     const [checkOutDate, setCheckOutDate] = useState(dateOfRetrun);
@@ -83,7 +72,14 @@ const HotelSearchComponent = () => {
     };
 
     const handleSearchHotel = () => {
-
+        if (fromValue == '') {
+            setFromerrormsg('Please Select the Valid Location !');
+        }
+        else {
+            setErrormsg('')
+            navigate("/hotel/hotelList")
+        }
+        console.log("handleHotelSearch................", fromValue)
     }
 
     const handleRoomGuestDropdown = () => {

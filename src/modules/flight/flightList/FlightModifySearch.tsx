@@ -92,8 +92,8 @@ const FlightModifySearch = () => {
                 <div className=" flex">
                     <RadioGroup type={'list'} options={options} selected={selectedOption} onChange={handleOptionChange} />
                 </div>
-                <div className="flex flex-row my-3">
-                    <div>
+                <div className="flex flex-col mdlg:flex-row my-3 hover:flex-row">
+                    <div className="my-1">
                         <AutoSuggestionList
                             label={"From"}
                             value={fromValue}
@@ -103,7 +103,7 @@ const FlightModifySearch = () => {
                             data={autoCompleteData}
                             ref={fromInputRef} />
                     </div>
-                    <div>
+                    <div className="my-1">
                         <AutoSuggestionList
                             label={"To"}
                             value={fromValue}
@@ -113,16 +113,16 @@ const FlightModifySearch = () => {
                             data={autoCompleteData}
                             ref={fromInputRef} />
                     </div>
-                    <div>
+                    <div className="my-1">
                         <CustomDatePicker onSelect={(e) => handleDateOfJourney(e)} ref={dateOfJourney} minDate={today} maxDate={maxDate} placeholder={"Departure Date"} />
                     </div>
                     {selectedOption === "roundTrip" &&
-                        <div>
+                        <div className="my-1">
                             <CustomDatePicker onSelect={(e) => handleDateOfJourney(e)} ref={dateOfJourney} minDate={today} maxDate={maxDate} placeholder={"Return Date"} />
                         </div>
                     }
-                    <div>
-                        <div className="mx-3">
+                    <div className="my-1">
+                        <div className="mx-5">
                             <p className="font-poppinsRegular  text-white">
                                 Travellers
                             </p>
@@ -141,7 +141,7 @@ const FlightModifySearch = () => {
                                         viewBox="0 0 20 20"
                                         fill="currentColor"
                                         aria-hidden="true"
-                                    >
+                                     >
                                         <path
                                             fillRule="evenodd"
                                             d="M6.293 7.293a1 1 0 011.414 0L10 9.586l2.293-2.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z"
@@ -159,11 +159,11 @@ const FlightModifySearch = () => {
                             }
                         </div>
                     </div>
-                    <div className="my-auto justify-center items-center mb-0 pb-0 mx-5">
+                    <div className="my-auto  flex justify-center items-center mb-0 pb-0 mx-5 mt-5">
                         <ButtonListOutlined >search</ButtonListOutlined>
                     </div>
                 </div>
-                <div className="flex flex-row mt-5">
+                <div className="flex flex-col mdlg:flex-row mt-5">
                     <div className="flex mx-3">
                         <Checkbox color={'indigo'} />
                         <p className="text-white mx-3">Defence Forces</p>

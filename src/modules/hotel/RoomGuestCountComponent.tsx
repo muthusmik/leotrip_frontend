@@ -106,7 +106,7 @@ const RoomGuestCountComponent = ({ roomGuestCount, setRoomGuestCount, showRoomGu
                                 handleChildAgeChange(i, validValue);
                             }}
                             placeholder={`Child ${i + 1} age`}
-                            className='outline-none w-full font-poppinsRegular '
+                            className='outline-none w-full font-poppinsRegular bg-gradient-to-r from-bg-blue-start to-bg-blue-end '
                             min={0}
                             max={17}
                         />
