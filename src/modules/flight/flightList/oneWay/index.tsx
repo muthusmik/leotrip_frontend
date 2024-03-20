@@ -21,4 +21,4 @@ const Oneway = () => {
         </div>
     );
 }
-export default Oneway;  
+export default Oneway;

@@ -139,6 +139,7 @@ const CarSearchComponent = () => {
       <div className="w-full items-center justify-between gap-6 bg-white px-2 rounded-[20px] shadow-lg mt-44 md:mt-auto ">
         <div className="px-4 mt-4 flex ">
           <RadioGroup
+	  type={'home'}
             options={options}
             selected={selectedOption}
             onChange={handleOptionChange}

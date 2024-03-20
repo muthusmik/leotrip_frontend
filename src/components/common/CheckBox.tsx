@@ -1,9 +1,16 @@
-const Checkbox = (props:any) => {
+import { useState } from "react";
+
+const Checkbox = (props: any) => {
   const { extra, color, ...rest } = props;
+  const [isChecked, setIsChecked] = useState(false);
+
+  const toggleCheckbox = () => {
+    setIsChecked(!isChecked);
+  };
   return (
     <input
       type="checkbox"
-      className={`defaultCheckbox relative flex h-[20px] min-h-[20px] w-[20px] min-w-[20px] appearance-none items-center 
+      className={`defaultCheckbox relative flex h-[20px] min-h-[20px] w-[20px] min-w-[20px] appearance-none items-center
       justify-center rounded-md border border-gray-300 text-white/0 outline-none transition duration-[0.2s]
       checked:border-none checked:text-white hover:cursor-pointer dark:border-white/10 ${
         color === "red"
@@ -34,8 +41,11 @@ const Checkbox = (props:any) => {
           ? "checked:border-none checked:bg-indigo-500 dark:checked:bg-indigo-400"
           : color === "gray"
           ? "checked:border-none checked:bg-gray-500 dark:checked:bg-gray-400"
+          : color === "black"
+          ? "border-solid border-4 border-black checked:bg-gray-500 dark:checked:bg-gray-400 "
           : "checked:bg-brand-500 dark:checked:bg-brand-400"
       } ${extra}`}
+      onChange={toggleCheckbox}
       name="weekly"
       {...rest}
     />
