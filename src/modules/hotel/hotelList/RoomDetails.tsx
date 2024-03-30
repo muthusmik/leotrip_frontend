@@ -1,36 +1,47 @@
-import room1 from '../../../assets/images/room1.jpg'
+
+import React from 'react';
+import room1 from '../../../assets/images/room1.jpg';
 import window from '../../../assets/icons/window.png';
 import bed from '../../../assets/icons/bed.png';
 import tick from '../../../assets/icons/tick.png';
 import close from '../../../assets/icons/close.png';
 
-const rooms = [
-    {
-        price: "4,199",
-        offerprice: "3,779",
-        taxesAndFees: "453",
+interface Room {
+  price: string;
+  offerprice: string;
+  taxesAndFees: string;
+}
 
-    },
-    {
-        price: "4,199",
-        offerprice: "3,779",
-        taxesAndFees: "453",
+interface Props {
+  showModal: boolean;
+  closeModal: () => void;
+}
 
-    },
-    {
-        price: "4,199",
-        offerprice: "3,779",
-        taxesAndFees: "453",
-
-    }
+const rooms: Room[] = [
+  {
+    price: "4,199",
+    offerprice: "3,779",
+    taxesAndFees: "453",
+  },
+  {
+    price: "4,199",
+    offerprice: "3,779",
+    taxesAndFees: "453",
+  },
+  {
+    price: "4,199",
+    offerprice: "3,779",
+    taxesAndFees: "453",
+  }
 ];
-const RoomDetails = ({ showModal, closeModal }) => {
+
+const RoomDetails: React.FC<Props> = ({ showModal, closeModal }) => {
     const modalDisplay = showModal ? '' : 'hidden';
     return (
         <div className={`modal fixed w-full h-full top-0 left-0 flex items-center justify-center ${modalDisplay}`}>
             <div className="modal-overlay absolute w-full h-full bg-gray-900 opacity-10"></div>
             <div className="modal-container bg-white w-[70%]  h-full mx-auto rounded shadow-lg z-50 overflow-y-auto">
-                <div className="modal-content py-4 text-left px-6">
+                <div className="modal-content py-4 text-left px-6 ">
                     <div className="flex justify-between items-center pb-3">
 
                         <button onClick={closeModal} className="modal-close cursor-pointer z-50">
@@ -53,7 +64,7 @@ const RoomDetails = ({ showModal, closeModal }) => {
                             <hr className='border-2 w-[80%] mx-32' />
                         </div>
 
-                        <h1 className='hover:font-bold mx-20'>Room Amenities</h1>
+                        <h1 className='hover:font-bold '>Room Amenities</h1>
                         <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mx-20 w-full'>
                             <div className='flex item-center my-2'>
                                 <img src={tick} alt='tick' className='w-6 h-6' />
@@ -61,7 +72,7 @@ const RoomDetails = ({ showModal, closeModal }) => {
                             </div>
                         </div>
 
-                        <h1 className='hover:font-bold mx-20 my-5'>Popular with Guests</h1>
+                        <h1 className='hover:font-bold my-5'>Popular with Guests</h1>
                         <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mx-20 w-full'>
                             <div className='flex item-center my-2'>
                                 <img src={tick} alt='tick' className='w-6 h-6' />
@@ -90,7 +101,7 @@ const RoomDetails = ({ showModal, closeModal }) => {
                         </div>
 
 
-                        <h1 className='hover:font-bold mx-20 my-5'>Room Features</h1>
+                        <h1 className='hover:font-bold my-5'>Room Features</h1>
                         <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4  mx-20 w-full'>
                             <div className='flex item-center my-2'>
                                 <img src={tick} alt='tick' className='w-6 h-6' />
@@ -118,14 +129,14 @@ const RoomDetails = ({ showModal, closeModal }) => {
                             </div>
                         </div>
 
-                        <h1 className='hover:font-bold mx-20 my-2'>Childcare</h1>
+                        <h1 className='hover:font-bold  my-2'>Childcare</h1>
                         <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4  mx-20 w-full'>
                             <div className='flex item-center my-2'>
                                 <img src={tick} alt='tick' className='w-6 h-6' />
                                 <p className='ml-2'>Cribs</p>
                             </div>
                         </div>
-                        <h1 className='hover:font-bold mx-20 my-2'>Beds and Blanket</h1>
+                        <h1 className='hover:font-bold  my-2'>Beds and Blanket</h1>
                         <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4  mx-20 w-full'>
                             <div className='flex item-center my-2'>
                                 <img src={tick} alt='tick' className='w-6 h-6' />
@@ -142,7 +153,7 @@ const RoomDetails = ({ showModal, closeModal }) => {
                         </div>
 
 
-                        <h1 className='hover:font-bold mx-20'>Safety and Security</h1>
+                        <h1 className='hover:font-bold '>Safety and Security</h1>
                         <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4  mx-20 w-full'>
                             <div className='flex item-center my-2'>
                                 <img src={tick} alt='tick' className='w-6 h-6' />
@@ -154,7 +165,7 @@ const RoomDetails = ({ showModal, closeModal }) => {
                             </div>
                         </div>
 
-                        <h1 className='hover:font-bold mx-20 my-2'>Media and Entertainment</h1>
+                        <h1 className='hover:font-bold my-2'>Media and Entertainment</h1>
                         <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mx-20 w-full'>
                             <div className='flex item-center my-2'>
                                 <img src={tick} alt='tick' className='w-6 h-6' />
@@ -162,7 +173,7 @@ const RoomDetails = ({ showModal, closeModal }) => {
                             </div>
                         </div>
 
-                        <h1 className='hover:font-bold mx-20 my-5'>Bathroom</h1>
+                        <h1 className='hover:font-bold  my-5'>Bathroom</h1>
                         <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4  mx-20 w-full'>
                             <div className='flex item-center my-2'>
                                 <img src={tick} alt='tick' className='w-6 h-6' />
@@ -190,7 +201,7 @@ const RoomDetails = ({ showModal, closeModal }) => {
                             </div>
                         </div>
 
-                        <h1 className='hover:font-bold mx-20 my-5'>Other Facilities</h1>
+                        <h1 className='hover:font-bold my-5'>Other Facilities</h1>
                         <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mx-20 w-full'>
                             <div className='flex item-center my-2'>
                                 <img src={tick} alt='tick' className='w-6 h-6' />
@@ -204,7 +215,7 @@ const RoomDetails = ({ showModal, closeModal }) => {
                         <div className=''>
                             <div className='grid grid-cols-2'>
                                 <div>
-                                    <div className='border-b-4 border-r-4'>
+                                    <div className='border-b-4 border-r-4 h-56'>
                                         <h1 className='text-lg'>Room With Free Cancellation</h1>
                                         <div className='ml-10 text-md'>
                                             <div className='flex item-center my-2'>
@@ -224,7 +235,7 @@ const RoomDetails = ({ showModal, closeModal }) => {
                                     </div>
 
 
-                                    <div className='border-b-4 border-r-4'>
+                                    <div className='border-b-4 border-r-4 h-56'>
                                         <h1 className='text-lg'>Room With Free Cancellation | Breakfast only</h1>
                                         <div className='ml-10 text-md'>
                                             <div className='flex item-center my-2'>
@@ -241,7 +252,7 @@ const RoomDetails = ({ showModal, closeModal }) => {
                                     </div>
 
 
-                                    <div className='border-b-4 border-r-4'>
+                                    <div className='border-b-4 border-r-4 h-56'>
                                         <h1 className='text-lg'>Room With Free Cancellation | Breakfast only</h1>
                                         <div className='ml-10 text-md'>
                                             <div className='flex item-center my-2'>
@@ -263,7 +274,7 @@ const RoomDetails = ({ showModal, closeModal }) => {
                                 <div className=''>
                                     <div className=''>
                                         {rooms.map((room, index) => (
-                                            <div key={index} className=' h-52 pl-10 border-b-4'>
+                                            <div key={index} className=' h-56 pl-10 pt-5 border-b-4'>
                                                 <div className='relative'>
                                                     <div>
                                                         <small>per night</small>

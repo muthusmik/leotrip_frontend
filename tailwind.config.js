@@ -54,6 +54,10 @@ module.exports = {
           '0%': { transform: 'translateX(-100%)' },
           '100%': { transform: 'translateX(100%)' },
         },
+        pop: {
+          '0%': { transform: 'rotate(0deg)' },
+          '100%': { transform: 'rotate(360deg)' },
+        },
         spin: {
           '0%': { transform: 'rotate(0deg)' },
           '100%': { transform: 'rotate(360deg)' },
@@ -85,9 +89,15 @@ module.exports = {
       fontFamily: {
         poppinsBold: ['Poppins-Bold'],
         poppinsRegular: ['Poppins-Regular'],
-        PoppinsSemiBold: ['Poppins-SemiBold'],
+        poppinsSemiBold: ['Poppins-SemiBold'],
         poppinsBlack: ['poppins-Black'],
+        inter: ['Inter', 'sans-serif'],
+        interBold: ['Inter', 'sans-serif'],
+        interSemibold: ['Inter', 'sans-serif'],
+        interBlack: ['Inter', 'sans-serif'],
+
       },
+
 
       colors: {
         "primary": '#52A0D2',
@@ -110,6 +120,8 @@ module.exports = {
         'int-dark-blue': '#56A0BB',
         'int-very-dark-blue': '#498EA8',
         'int-green': '#B2DAA4',
+        'dark-green': '#059F05',
+        'int-blue-rev': "#3649F4",
         'int-green-alert': '#97D382',
         'int-dark': '#333333',
         'int-background': '#FAFAFA',
@@ -120,9 +132,22 @@ module.exports = {
         'light-black': '#808080',
         'int-dark-red': '#C00000',
         'int-green-dark': "#048904",
-        'int-gray': "#808080"
+        'int-gray': "#808080",
+        'int-gray-100': '#AEAEAE'
       },
       fontSize: {
+        'xxs': ['0.5rem', '0.625rem'],   // font size, line height
+        'xs': ['0.75rem', '1rem'],
+        'sm': ['0.875rem', '1.25rem'],
+        'base': ['1rem', '1.5rem'],
+        'lg': ['1.125rem', '1.75rem'],
+        'xl': ['1.25rem', '1.75rem'],
+        '1xl': ['1.375rem', '1.75rem'],
+        '2xl': ['1.5rem', '2rem'],
+        '3xl': ['1.875rem', '2.25rem'],
+        '4xl': ['2.25rem', '2.5rem'],
+        '5xl': ['3rem', '1'],
+        '6xl': ['4rem', '1'],
         button: [
           '14px',
           {

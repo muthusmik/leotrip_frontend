@@ -1,13 +1,12 @@
 import { useState } from "react";
 import { PrimaryButton } from "styles/Button";
 
-
 interface AuthLoginProps {
-    Back: () => void;
-    UserAuthMedium: string;
-    verifyOTPProps?: any;
-    isPassword: boolean;
-    openDataModal: () => void;
+  Back: () => void;
+  UserAuthMedium: string;
+  verifyOTPProps?: any;
+  isPassword: boolean;
+  openDataModal: () => void;
 }
 
 export function AuthLogin({ Back, UserAuthMedium, verifyOTPProps, isPassword, openDataModal }: AuthLoginProps) {

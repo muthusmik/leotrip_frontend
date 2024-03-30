@@ -13,6 +13,8 @@ import FlightOneWay from "../modules/flight/flightList/oneWay/index";
 import FlightReview from "modules/flight/review";
 import HotelList from "modules/hotel/hotelList";
 import BusListing from "modules/bus/buslist";
+import ViewRoom from "modules/hotel/viewroom";
+import HotelReview from "modules/hotel/hotelreview";
 const routes: RouteObject[] = [
   {
     path: "/",
@@ -55,6 +57,18 @@ const routes: RouteObject[] = [
   {
     path: "bus/busList",
     element: <BusListing />,
+  },
+  {
+    path: "bus/busdetail",
+    element: <BusListing />,
+  },
+    {
+    path: "hotel/viewRoom",
+    element: <ViewRoom />,
+  },
+  {
+    path: "hotel/hotelreview",
+    element: <HotelReview/>,
   },
 ];
 
