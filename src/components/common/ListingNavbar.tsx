@@ -34,7 +34,7 @@ function Navbar() {
     const [isScrolled, setIsScrolled] = useState(false);
     const [openMenu, setOpenMenu] = useState(false)
     const handleScroll = () => {
-        console.log(window.scrollY)
+       
         if (window.scrollY > 200) {
             setIsScrolled(true);
         } else if (window.scrollY > 190 && window.scrollY < 200) {
@@ -89,7 +89,7 @@ function Navbar() {
         <>
             <nav className={`navbar bg-white  pt-1 shadow-bottom sticky top-0 ${isScrolled ? (openMenu ? "flex flex-wrap h-[125px] animate-slide-in-top" : "h-16 animate-slide-in-top") : (openMenu ? "flex flex-wrap h-[150px] " : 'h-20')
                 } transition-all duration-300 z-50 `}>
-                <div className={`container border-int-dark-blue border-5 flex justify-between items-center ${isScrolled ? 'h-12' : 'h-16 mt-3'} transition-all duration-300 `}>
+                <div className={`container border-int-dark-blue border-5 flex justify-between items-center ${isScrolled ? 'h-12' : 'h-12 mt-3'} transition-all duration-300 `}>
                     <div className="flex ml-3 items-center space-x-6 md:space-x-16 md:ml-0 lg:ml-[5%] w-full">
                         <Link to="/" className='w-[10%]'>
                             <Leo className={`${isScrolled ? 'w-10' : 'w-20'} h-auto`} />
@@ -106,7 +106,7 @@ function Navbar() {
                                         }`}
                                 >
                                     <div className={`${isScrolled ? "h-[20px]" : "h-[30px"} mb-1 ${isScrolled ? 'scale-90' : ''} transition-all duration-300`}>
-                                        <img src={link.icon} alt={''} className={`${isScrolled ? 'w-8' : 'w-10'} h-auto`} />
+                                        <img src={link.icon} alt={''} className={`${isScrolled ? 'w-8 h-8' : 'w-10 h-[40px]'}`} />
                                     </div>
                                     <span className={` font-poppinsRegular ${isScrolled ? 'text-sm' : 'mt-2'} transition-all duration-300`}>{link.label}</span>
                                 </Link>

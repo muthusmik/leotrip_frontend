@@ -99,7 +99,7 @@ const AutoSuggestionList = forwardRef<any, AutoSuggestionProps>(
                                 <h5 className="text-sm md:text-md lg:text-lg">{suggestion['city']}, <span>({suggestion['iataCode']})</span></h5>
                                 <small className="text-gray-400">{suggestion['airportName']}</small>
                             </div>
-                            <p className="ml-2 w-[13%] h-[13%] flex">{suggestion['countryFlag']}</p>
+                            <p className="ml-2 w-[13%] h-[13%] flex">{suggestion['countryCode']}</p>
                             <div className=""><CountryFlag countryCode={suggestion['countryCode']} svg style={{ width: '25px', height: '25px' }}/></div>
                         </div>
                     ))}

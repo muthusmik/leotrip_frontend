@@ -1,4 +1,3 @@
-
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -9,6 +8,8 @@ import pool from '../../../assets/icons/pool.png';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import RoomDetails from './RoomDetails';
+
+
 
 
 const hotels = [{
@@ -24,6 +25,7 @@ const hotels = [{
     "offerfees": 4000,
     "tax": "+800 taxes & fees",
     "day": "per night"
+    
 },
 {
     "rating": 4.2,
@@ -144,6 +146,7 @@ const HotelDetails = ({ }) => {
         arrows: false,
         infinite: true,
         speed: 300,
+
         slidesToShow: 3,
         slidesToScroll: 1,
         autoplay: true, // Enable automatic sliding
@@ -183,11 +186,12 @@ const HotelDetails = ({ }) => {
                     <div key={index} className="flex flex-col md:flex-row bg-white w-[100%]  h-full shadow-inner  rounded-md border-gray-400 my-5">
                         <div className=" w-[100%] md:w-[30%]">
                             <div className="mx-3 py-2 ">
-                                <img src={hotel1} alt="error" className="w-[100%] h-[165px] rounded-tl-lg" />
+                                <img src={hotel1} alt="error" className="w-[100%] h-[165px] rounded-tl-lg" onClick={openModal}/>
+                                <RoomDetails showModal={showModal} closeModal={closeModal} />
                             </div>
                             <div className="w-[96%] hidden md:block">
                             <Slider {...settings}>
-                                <div className="flex mx-3 py-2 ">
+                                <div className="flex mx-3 py-2">
                                     <img src={hotel1} alt="error" className="w-[81%] h-[45px] rounded-bl-lg" />
                                 </div>
                                 <div className="flex mx-3 py-2">
@@ -223,8 +227,8 @@ const HotelDetails = ({ }) => {
                                 <p className="text-sm">{hotel.day}</p>
                             </div>
                             {/* <button className='flex uppercase bg-[#ec8e03] rounded-md items-center pl-2 text-white pr-5 py-2 font-poppinsRegular w-[80%] text-center justify-center ml-6 mt-8 mb-3'><Link to="/hotel/hotel-details">VIEW BOOK</Link></button> */}
-                            <button className='flex uppercase bg-[#ec8e03] rounded-md items-center pl-2 text-white pr-5 py-2 font-poppinsRegular w-[80%] text-center justify-center ml-6 mt-8 mb-3' onClick={openModal}>VIEW BOOK</button>
-                            <RoomDetails showModal={showModal} closeModal={closeModal} />
+                            <button className='flex uppercase bg-[#ec8e03] rounded-md items-center pl-2 text-white pr-5 py-2 font-poppinsRegular w-[80%] text-center justify-center ml-6 mt-8 mb-3'><Link to='/hotel/viewRoom'>VIEW BOOK</Link></button>
+                            
                         </div>
 
                     </div>

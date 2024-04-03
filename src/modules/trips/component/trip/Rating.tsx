@@ -1,5 +1,5 @@
+import Textarea from "@material-tailwind/react/components/Textarea";
 import React, { useState } from "react";
-import { Textarea } from "@material-tailwind/react";
 import { Generateotp } from "styles/Button";
 
 const Rating = () => {

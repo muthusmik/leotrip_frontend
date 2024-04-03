@@ -1,11 +1,13 @@
 import { Button } from "@material-tailwind/react";
 import React, { useState } from "react";
 import google from "../assets/icons/google.svg";
+import { log } from "console";
 
 type ButtonOutlinedProps = {
   children: React.ReactNode;
   onMouseEnter?: React.MouseEventHandler<HTMLButtonElement>;
   onMouseLeave?: React.MouseEventHandler<HTMLButtonElement>;
+  onclick?: React.MouseEventHandler<HTMLButtonElement>;
 };
 export function ButtonOutlined({ children }: ButtonOutlinedProps) {
   return (
@@ -22,10 +24,31 @@ export function ButtonListOutlined({ children }: ButtonOutlinedProps) {
   return (
     <Button
       variant="outlined"
-      className="flex rounded items-center px-4 py-2 space-x-4 border-white text-white"
+      className="flex rounded items-center px-4 py-2 space-x-4 border-white text-white px-10"
     >
       {children}
     </Button>
+  );
+}
+
+export function ReviewButton({
+  children,
+  color,
+  count,
+  spanClassName,
+}: React.PropsWithChildren<{
+  color: "green" | "red" | string;
+  count: number;
+  spanClassName: string;
+}>) {
+  return (
+    <button
+      type="button"
+      className={`inline-flex items-center bg-white text-sm border-2 border-${color}-600 font-poppinsRegular text-center text-black rounded-full  mx-4 my-4 ps-1`}
+    >
+      {children}
+      <span className={spanClassName}>{count}</span>
+    </button>
   );
 }
 
@@ -33,13 +56,15 @@ export function ButtonListing({
   children,
   onMouseEnter,
   onMouseLeave,
+  onclick,
 }: ButtonOutlinedProps) {
   return (
     <Button
       variant="outlined"
-      className="flex rounded-xl items-center px-4 py-2 space-x-8  text-black shadow-2xl border-solid border-2 mx-4 font-poppinsRegular hover:bg-white hover:text-int-dark-blue hover:border-int-dark-blue"
+      className="flex rounded-xl  items-center px-4 py-2 space-x-8  text-black shadow-xl border border-int-gray-100 mx-4 font-poppinsRegular   hover:bg-white hover:text-int-dark-blue hover:border-int-dark-blue text-sm font-medium"
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
+      onClick={onclick}
     >
       {children}
     </Button>
@@ -78,7 +103,15 @@ export function Googlesignin({ children, onClick, ...props }: any) {
     </>
   );
 }
-
+export function ContinueBooking({ children }:any) {
+  return (
+    <Button
+      className="flex my-2 items-center justify-center bg-int-sandal rounded-full text-white"
+    >
+      {children}
+    </Button>
+  );
+}
 export function PrimaryButton({
   children,
   outlined,

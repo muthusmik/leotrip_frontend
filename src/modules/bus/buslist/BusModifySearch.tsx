@@ -67,8 +67,8 @@ const FlightModifySearch = () => {
 
   return (
     <div className="bg-gradient-to-r from-bg-blue-start to-bg-blue-end p-5  md:max-w-[100%] w-full">
-      <div className="flex flex-col mdlg:flex-row my-3  align-center justify-center">
-        <div className="my-1 w-full">
+      <div className="flex flex-col mdlg:flex-row my-3  align-center justify-center md:max-w-[85%] mx-auto">
+        <div className="my-1 w-[60%] mx-auto">
           <AutoSuggestionList
             label={"From"}
             value={fromValue}
@@ -78,7 +78,7 @@ const FlightModifySearch = () => {
             ref={fromInputRef}
           />
         </div>
-        <div className="my-1  w-full">
+        <div className="my-1  w-[60%] mx-auto">
           <AutoSuggestionList
             label={"To"}
             value={fromValue}
@@ -88,7 +88,7 @@ const FlightModifySearch = () => {
             ref={fromInputRef}
           />
         </div>
-        <div className="my-1  w-full">
+        <div className="my-1  w-[60%] mx-auto">
           <CustomDatePicker
             onSelect={(e) => handleDateOfJourney(e)}
             ref={dateOfJourney}
@@ -98,7 +98,7 @@ const FlightModifySearch = () => {
           />
         </div>
 
-        <div className="my-auto  flex justify-center items-center mb-0 pb-0 mx-5 mt-5   ">
+        <div className="my-auto  flex justify-center items-center mb-0 pb-0 mx-5 mt-5   mx-auto">
           <ButtonListOutlined>search</ButtonListOutlined>
         </div>
       </div>
