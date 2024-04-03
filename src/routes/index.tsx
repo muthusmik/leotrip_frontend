@@ -15,6 +15,8 @@ import HotelList from "modules/hotel/hotelList";
 import BusListing from "modules/bus/buslist";
 import ViewRoom from "modules/hotel/viewroom";
 import HotelReview from "modules/hotel/hotelreview";
+import BusDetail from "modules/bus/busdetail/BusDetail";
+import BusInfo from "modules/bus/busdetail";
 const routes: RouteObject[] = [
   {
     path: "/",
@@ -60,15 +62,15 @@ const routes: RouteObject[] = [
   },
   {
     path: "bus/busdetail",
-    element: <BusListing />,
+    element: <BusInfo />,
   },
-    {
+  {
     path: "hotel/viewRoom",
     element: <ViewRoom />,
   },
   {
     path: "hotel/hotelreview",
-    element: <HotelReview/>,
+    element: <HotelReview />,
   },
 ];
 

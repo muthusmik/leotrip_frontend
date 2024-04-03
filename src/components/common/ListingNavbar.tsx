@@ -34,7 +34,7 @@ function Navbar() {
     const [isScrolled, setIsScrolled] = useState(false);
     const [openMenu, setOpenMenu] = useState(false)
     const handleScroll = () => {
-        console.log(window.scrollY)
+       
         if (window.scrollY > 200) {
             setIsScrolled(true);
         } else if (window.scrollY > 190 && window.scrollY < 200) {

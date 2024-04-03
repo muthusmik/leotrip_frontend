@@ -35,12 +35,71 @@ const rooms: Room[] = [
   }
 ];
 
+
+const roomdetails = [
+    {
+        "title": "Room With Free Cancellation",
+        "details": [
+            {
+                "icon": require('../../../assets/icons/tick.png'),
+                "alt": "tick",
+                "description": "Free Cancellation till 3 hrs before check in"
+            },
+            {
+                "icon": require('../../../assets/icons/close.png'),
+                "alt": "close",
+                "description": "No meals included"
+            },
+            {
+                "icon": require('../../../assets/icons/tick.png'),
+                "alt": "tick",
+                "description": "Flexible contract - RA1 DSB2B"
+            }
+        ]
+    },
+    {
+        "title": "Room With Free Cancellation | Breakfast only",
+        "details": [
+            {
+                "icon":require('../../../assets/icons/tick.png'),
+                "alt": "tick",
+                "description": "Free Cancellation till 3 hrs before check in"
+            },
+            {
+                "icon": require('../../../assets/icons/tick.png'),
+                "alt": "tick",
+                "description": "Free Breakfast"
+            }
+        ]
+    },
+    {
+        "title": "Room With Free Cancellation | Breakfast only",
+        "details": [
+            {
+                "icon":require('../../../assets/icons/tick.png'),
+                "alt": "tick",
+                "description": "Free Cancellation till 3 hrs before check in"
+            },
+            {
+                "icon":require('../../../assets/icons/tick.png'),
+                "alt": "close",
+                "description": "Free Breakfast"
+            },
+            {
+                "icon": require('../../../assets/icons/tick.png'),
+                "alt": "tick",
+                "description": "Buffet Breakfast Free WIFI Shuttle drop to US Conculate Free Cancellation"
+            }
+        ]
+    }
+]
+
 const RoomDetails: React.FC<Props> = ({ showModal, closeModal }) => {
     const modalDisplay = showModal ? '' : 'hidden';
     return (
         <div className={`modal fixed w-full h-full top-0 left-0 flex items-center justify-center ${modalDisplay}`}>
             <div className="modal-overlay absolute w-full h-full bg-gray-900 opacity-10"></div>
-            <div className="modal-container bg-white w-[70%]  h-full mx-auto rounded shadow-lg z-50 overflow-y-auto">
+            <div className="modal-container bg-white w-[100%]  md:w-[70%] h-full mx-auto rounded shadow-lg z-50 overflow-y-auto">
                 <div className="modal-content py-4 text-left px-6 ">
                     <div className="flex justify-between items-center pb-3">
 
@@ -51,7 +110,7 @@ const RoomDetails: React.FC<Props> = ({ showModal, closeModal }) => {
                             </svg>
                         </button>
                     </div>
-                    <div className="modal-body p-4 sm:p-6 md:p-8 lg:p-10 xl:p-12" style={{ height: '100vh', overflowY: 'auto' }}>
+                    <div className="modal-body p-4 sm:p-6 md:p-8 lg:p-10 xl:p-12 text-sm" style={{ height: '100vh', overflowY: 'auto' }}>
                         <div className="">
                             <img src={room1} alt='room' className='w-full h-96' />
                         </div>
@@ -212,84 +271,97 @@ const RoomDetails: React.FC<Props> = ({ showModal, closeModal }) => {
                         <div className='my-10'>
                             <hr className='border-2 w-[80%] mx-32' />
                         </div>
-                        <div className=''>
-                            <div className='grid grid-cols-2'>
-                                <div>
-                                    <div className='border-b-4 border-r-4 h-56'>
-                                        <h1 className='text-lg'>Room With Free Cancellation</h1>
-                                        <div className='ml-10 text-md'>
-                                            <div className='flex item-center my-2'>
-                                                <img src={tick} alt='tick' className='w-6 h-6' />
-                                                <p className='ml-2'>Free Cancellation till 3 hrs before check in <a>KNOW MORE</a></p>
-                                            </div>
-                                            <div className='flex item-center my-2'>
-                                                <img src={close} alt='close' className='w-6 h-6' />
-                                                <p className='ml-2'>No meals included</p>
-                                            </div>
-                                            <div className='flex item-center my-2 mb-6'>
-                                                <img src={tick} alt='tick' className='w-6 h-6' />
-                                                <p className='ml-2'>Flexible contract - RA1 DSB2B</p>
-                                            </div>
+                        <div className='grid grid-cols-1 md:grid-cols-2 border-2'>
+                            {/* <div className='text-sm'>
+                                <div className='h-auto  border'>
+                                    <h1 className='text-lg'>Room With Free Cancellation</h1>
+                                    <div className='ml-10 text-md'>
+                                        <div className='flex item-center my-2'>
+                                            <img src={tick} alt='tick' className='w-6 h-6' />
+                                            <p className='ml-2'>Free Cancellation till 3 hrs before check in <a>KNOW MORE</a></p>
                                         </div>
-                                        <button className='font-bold text-[#485BFF] pl-16 pb-2'>MORE DETAILS</button>
-                                    </div>
-
-
-                                    <div className='border-b-4 border-r-4 h-56'>
-                                        <h1 className='text-lg'>Room With Free Cancellation | Breakfast only</h1>
-                                        <div className='ml-10 text-md'>
-                                            <div className='flex item-center my-2'>
-                                                <img src={tick} alt='tick' className='w-6 h-6' />
-                                                <p className='ml-2'>Free Cancellation till 3 hrs before check in <a>KNOW MORE</a></p>
-                                            </div>
-                                            <div className='flex item-center my-2 mb-6 pt-2'>
-                                                <img src={tick} alt='close' className='w-6 h-6' />
-                                                <p className='ml-2'>Free Breakfast</p>
-                                            </div>
-
+                                        <div className='flex item-center my-2'>
+                                            <img src={close} alt='close' className='w-6 h-6' />
+                                            <p className='ml-2'>No meals included</p>
                                         </div>
-                                        <button className='font-bold text-[#485BFF] pl-16 pb-2'>MORE DETAILS</button>
-                                    </div>
-
-
-                                    <div className='border-b-4 border-r-4 h-56'>
-                                        <h1 className='text-lg'>Room With Free Cancellation | Breakfast only</h1>
-                                        <div className='ml-10 text-md'>
-                                            <div className='flex item-center my-2'>
-                                                <img src={tick} alt='tick' className='w-6 h-6' />
-                                                <p className='ml-2'>Free Cancellation till 3 hrs before check in <a>KNOW MORE</a></p>
-                                            </div>
-                                            <div className='flex item-center my-2'>
-                                                <img src={tick} alt='close' className='w-6 h-6' />
-                                                <p className='ml-2'>Free Breakfast</p>
-                                            </div>
-                                            <div className='flex item-center my-2 mb-6'>
-                                                <img src={tick} alt='tick' className='w-6 h-6' />
-                                                <p className='ml-2'>Buffet Breakfast Free WIFI Shuttle drop to US Conculate Free Cancellation</p>
-                                            </div>
+                                        <div className='flex item-center my-2 mb-6'>
+                                            <img src={tick} alt='tick' className='w-6 h-6' />
+                                            <p className='ml-2'>Flexible contract - RA1 DSB2B</p>
                                         </div>
-                                        <button className='font-bold  text-[#485BFF] pl-16 pb-2'>MORE DETAILS</button>
                                     </div>
+                                    <button className='font-bold text-[#485BFF] pl-16 pb-2 text-sm'>MORE DETAILS</button>
                                 </div>
+                                <div className=' h-auto  border'>
+                                    <h1 className='text-lg'>Room With Free Cancellation | Breakfast only</h1>
+                                    <div className='ml-10 text-md'>
+                                        <div className='flex item-center my-2'>
+                                            <img src={tick} alt='tick' className='w-6 h-6' />
+                                            <p className='ml-2'>Free Cancellation till 3 hrs before check in <a>KNOW MORE</a></p>
+                                        </div>
+                                        <div className='flex item-center my-2 mb-6 pt-2'>
+                                            <img src={tick} alt='close' className='w-6 h-6' />
+                                            <p className='ml-2'>Free Breakfast</p>
+                                        </div>
+
+                                    </div>
+                                    <button className='font-bold text-[#485BFF] pl-16 pb-2 text-sm'>MORE DETAILS</button>
+                                </div>
+                                <div className='h-auto  border' >
+                                    <h1 className='text-lg' >Room With Free Cancellation | Breakfast only</h1>
+                                    <div className='ml-10 text-md'>
+                                        <div className='flex item-center my-2'>
+                                            <img src={tick} alt='tick' className='w-6 h-6' />
+                                            <p className='ml-2'>Free Cancellation till 3 hrs before check in <a>KNOW MORE</a></p>
+                                        </div>
+                                        <div className='flex item-center my-2'>
+                                            <img src={tick} alt='close' className='w-6 h-6' />
+                                            <p className='ml-2'>Free Breakfast</p>
+                                        </div>
+                                        <div className='flex item-center my-2 mb-6'>
+                                            <img src={tick} alt='tick' className='w-6 h-6' />
+                                            <p className='ml-2'>Buffet Breakfast Free WIFI Shuttle drop to US Conculate Free Cancellation</p>
+                                        </div>
+                                    </div>
+                                    <button className='font-bold  text-[#485BFF] pl-16 pb-2 text-sm'>MORE DETAILS</button>
+                                </div>
+                            </div> */}
+
+                            <div className='text-sm'>
+                                {roomdetails.map((room, index) => (
+                                    <div key={index} className='h-56 border'>
+                                        <h1 className='text-md font-bold'>{room.title}</h1>
+                                        <div className='ml-10 text-md'>
+                                            {room.details.map((detail, detailIndex) => (
+                                                <div className='flex item-center my-2' key={detailIndex}>
+                                                    <img src={detail.icon} alt={detail.alt} className='w-6 h-6' />
+                                                    <p className='ml-2'>{detail.description}</p>
+                                                </div>
+                                            ))}
+                                        </div>
+                                        <button className='font-bold text-[#485BFF] pl-16  pt-5 text-sm'>MORE DETAILS</button>
+                                    </div>
+                                ))}
+                            </div>
+
+
+                            <div>
                                 <div className=''>
-                                    <div className=''>
-                                        {rooms.map((room, index) => (
-                                            <div key={index} className=' h-56 pl-10 pt-5 border-b-4'>
-                                                <div className='relative'>
-                                                    <div>
-                                                        <small>per night</small>
-                                                        <p><small className='line-through'>&#x20B9;{room.price}</small></p>
-                                                        <p className='font-bold'>&#x20B9;{room.offerprice}</p>
-                                                        <p>+ {room.taxesAndFees} taxes & fees</p>
-                                                        <p className='font-bold'>To Get Offer to <span className='text-[#485BFF]'>LOGIN NOW</span></p>
-                                                    </div>
-                                                    <button className='bg-gradient-to-r from-cyan-500 to-blue-500 rounded-md p-1 absolute buttom-0 right-0 mt-2 mr-2'>SELECT ROOM</button>
+                                    {rooms.map((room, index) => (
+                                        <div key={index} className='h-56 pl-10 py-5 border'>
+                                            <div className=''>
+                                                <div className=''>
+                                                    <small>per night</small>
+                                                    <p><small className='line-through'>&#x20B9;{room.price}</small></p>
+                                                    <p className='font-bold'>&#x20B9;{room.offerprice}</p>
+                                                    <p>+ {room.taxesAndFees} taxes & fees</p>
+                                                    <p className='font-bold text-sm'>To Get Offer to <span className='text-[#485BFF]'>LOGIN NOW</span></p>
+                                                </div>
+                                                <div className='flex justify-end'>
+                                                    <button className='bg-gradient-to-r from-cyan-500 to-blue-500 rounded-md p-1  bottom-0 right-0 mt-3 me-2'>SELECT ROOM</button>
                                                 </div>
                                             </div>
-                                        ))}
-                                    </div>
-
-
+                                        </div>
+                                    ))}
                                 </div>
                             </div>
                         </div>

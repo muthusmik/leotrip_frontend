@@ -21,7 +21,7 @@ const ViewRoom = () => {
       <div>
         <RoomPage />
       </div>
-      <div>
+       <div>
         <Rooms />
       </div>
       <div id="locations" style={{ marginTop: '20px' }}>

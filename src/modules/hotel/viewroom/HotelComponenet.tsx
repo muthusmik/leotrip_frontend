@@ -62,14 +62,14 @@ const HotelComponent = () => {
     return (
         <>
             <div className='bg-white mx-5 border border-2 border-[#e5e5e5] font-poppinsRegular'>
-                <div className="flex">
+                <div className="flex flex-wrap justify-center">
                     {hotelData.map((hotel, index) => (
-                        <div className="" key={index}>
-                            <div className="card mb-3 mx-5 my-5 border border-[#e5e5e5] border-2">
+                        <div className="flex-shrink-0 w-full sm:w-1/2 lg:w-1/4 xl:w-1/4 mb-5 my-2 px-3" key={index}>
+                            <div className="card border border-[#e5e5e5] border-2">
                                 <div className="card-body text-center">
-                                    <img src={hotel.image} alt='error' />
+                                    <img src={hotel.image} alt='error' className="mx-auto" />
                                     <h5 className="font-bold pt-3">{hotel.name}</h5>
-                                    <div className="flex ml-24 my-2">
+                                    <div className="flex justify-center my-2">
                                         {Array.from({ length: hotel.reviewStars }, (_, index) => (
                                             <svg
                                                 key={index}

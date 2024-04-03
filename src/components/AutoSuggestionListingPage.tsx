@@ -6,6 +6,7 @@ import React, {
   useEffect,
 } from "react";
 import useOutsideAlerter from "hooks/useOutside";
+import CountryFlag from "react-country-flag";
 
 type AutoSuggestionProps = {
   data: any;
@@ -84,7 +85,7 @@ const AutoSuggestionList = forwardRef<any, AutoSuggestionProps>(
     useEffect(() => {}, [suggestions]);
     const Suggestions = () => {
       return (
-        <ul className="suggestions bg-slate-600 z-50">
+        <ul className="suggestions bg-white z-50">
           {suggestions.map((suggestion, index) => {
             return (
               <div
@@ -102,8 +103,10 @@ const AutoSuggestionList = forwardRef<any, AutoSuggestionProps>(
                   </small>
                 </div>
                 <p className="ml-2 w-[13%] h-[13%] flex">
-                  {suggestion["countryFlag"]}
+                  {suggestion["countryCode"]}
                 </p>
+                <div className=""><CountryFlag countryCode={suggestion['countryCode']} svg style={{ width: '25px', height: '25px' }}/></div>
+
               </div>
             );
           })}

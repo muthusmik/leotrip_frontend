@@ -6,6 +6,12 @@ const Checkbox = (props: any) => {
 
   const toggleCheckbox = () => {
     setIsChecked(!isChecked);
+    const inputElement = document.querySelector("input");
+    if (inputElement) {
+      console.log("Generated className:", inputElement.className);
+    } else {
+      console.log("fail");
+    }
   };
   return (
     <input
@@ -43,6 +49,8 @@ const Checkbox = (props: any) => {
           ? "checked:border-none checked:bg-gray-500 dark:checked:bg-gray-400"
           : color === "black"
           ? "border-solid border-4 border-black checked:bg-gray-500 dark:checked:bg-gray-400"
+          : color === "darkgreen"
+          ? "border-solid border-4 border-black  checked:bg-white dark:checked:bg-white"
           : "checked:bg-brand-500 dark:checked:bg-brand-400"
       } ${extra}`}
       onChange={toggleCheckbox}
