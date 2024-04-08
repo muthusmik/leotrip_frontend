@@ -1,9 +1,20 @@
 import React from "react";
+import { useState } from "react";
 import Bus from "../../../assets/images/icons-bus.png";
 import { travelsdetails } from "../buslist/json";
 import TravelerDetails from "./TravelerDetails";
 import ContactDetails from "components/common/ContactDetails";
+import RadioButton from "./Insurance";
+import Acko from "../../../assets/images/Acko.png";
+import { insurance } from "../buslist/json";
+import { Link } from "react-router-dom";
+
 const BusDetail = () => {
+  const [selectedOption, setSelectedOption] = useState("");
+
+  const handleOptionChange = (value: any) => {
+    setSelectedOption(value);
+  };
   return (
     <div className="flex flex-col mx-7 font-poppinsRegular">
       <div className="flex justify-center w-full">
@@ -140,6 +151,40 @@ const BusDetail = () => {
       </div>
       <div className="my-5">
         <TravelerDetails />
+      </div>
+      <div>
+        <div className="bg-int-dark-grey border p-5">
+          <div className="flex flex-col">
+            <RadioButton
+              value="Yes, I want to secure my trip with insurance."
+              selectedOption={selectedOption}
+              onChange={handleOptionChange}
+              label="Yes, I want to secure my trip with insurance."
+            />
+            <div className="flex justify-between items-center">
+              <div className="bg-int-light-sandal ms-8 w-max my-4 items-center flex ">
+                <span className="bg-int-sandal  w-1.5 h-8 inline-block"></span>
+                <span className="text-int-wood px-2">
+                  More than 36% of our customers choose to secure their trip.
+                </span>
+              </div>
+              <div></div>
+            </div>
+            <RadioButton
+              value="No, I do not want to insure my trip."
+              selectedOption={selectedOption}
+              onChange={handleOptionChange}
+              label="No, I do not want to insure my trip."
+            />
+          </div>
+        </div>
+      </div>
+      <div className="mx-auto my-10">
+        <button className="mx-auto bg-int-sandal  px-12 py-3 text-center text-white  font-semibold rounded-xl text-lg">
+          <span className="font-poppinsRegular">
+            <Link to="/bus/payment">Continue Booking</Link>
+          </span>
+        </button>
       </div>
     </div>
   );

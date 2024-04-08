@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { couponData } from "../buslist/json";
 import Adult from "../../../assets/icons/adult.png";
+import { Link } from "react-router-dom";
 
 const Coupon = () => {
   const [selectedCoupon, setSelectedCoupon] = useState("");
@@ -38,7 +39,7 @@ const Coupon = () => {
   };
 
   return (
-    <div>
+    <div className="sticky top-10">
       <div className="border text-sm bg-white font-poppinsRegular">
         <div className="flex justify-between bg-gradient-to-r from-cyan-400 to-blue-400 p-3">
           <p className="text-lg">Price Summary</p>
@@ -105,8 +106,7 @@ const Coupon = () => {
           </h1>
         </div>
       </div>
-      <hr />
-      <hr />
+
       <div className="border text-sm bg-white mt-5 font-poppinsRegular">
         <div className="bg-gradient-to-r from-cyan-400 to-blue-400 p-3 ">
           <p className="text-lg">Have a coupon code</p>
@@ -167,6 +167,13 @@ const Coupon = () => {
             </div>
           </div>
         </div>
+      </div>
+      <div className="flex my-10">
+        <button className="mx-auto bg-int-sandal  px-12 py-3 text-center text-white  font-semibold rounded-xl text-lg">
+          <span className="font-poppinsRegular">
+            <Link to="/bus/payment">Continue Booking</Link>
+          </span>
+        </button>
       </div>
     </div>
   );

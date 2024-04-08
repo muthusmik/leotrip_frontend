@@ -149,7 +149,7 @@ const LocationDropdown = () => {
                     <div className='mx-3 lg:mx-10 border-b-2 flex flex-col md:flex-row p-4'>
                         <div className='w-full lg:w-1/3 flex items-center mb-4 lg:mb-0'>
                             <img src={ellipsis} alt='ellipsis' className='w-10 h-10' />
-                            <h1 className='m-2 font-bold'>Cancellation/prepayment</h1>
+                            <h1 className='p-2 font-bold text-justify'>Cancellation/prepayment</h1>
                         </div>
                         <div className='w-full lg:w-2/3'>
                             <p className='p-2 text-sm'>Cancellation and prepayment policies vary according to accommodation type. Please check what <a className='text-blue-400'>conditions</a> may apply to each option when making your selection.</p>

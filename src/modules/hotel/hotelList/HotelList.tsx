@@ -1,7 +1,7 @@
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import hotel1 from '../../../assets/images/colorful_houses_buildings_road_hd_travel.jpg';
+import hotel1 from '../../../assets/images/img(1).jpg';
 import locationicon from '../../../assets/icons/locationicon.png';
 import couple from '../../../assets/icons/couple.png';
 import pool from '../../../assets/icons/pool.png';
@@ -181,12 +181,12 @@ const HotelDetails = ({ }) => {
     return (
         <div>
             <h1 className="text-2xl">Showing properties in Chennai</h1>
-            <div className="">
+            <div className="text-sm">
                 {hotels.map((hotel, index) => (
                     <div key={index} className="flex flex-col md:flex-row bg-white w-[100%]  h-full shadow-inner  rounded-md border-gray-400 my-5">
-                        <div className=" w-[100%] md:w-[30%]">
+                        <div className="w-[100%] md:w-[30%]">
                             <div className="mx-3 py-2 ">
-                                <img src={hotel1} alt="error" className="w-[100%] h-[165px] rounded-tl-lg" onClick={openModal}/>
+                                <img src={hotel1} alt="error" className="w-[100%] h-[300px] md:h-[200px] rounded-tl-lg" onClick={openModal}/>
                                 <RoomDetails showModal={showModal} closeModal={closeModal} />
                             </div>
                             <div className="w-[96%] hidden md:block">
@@ -220,7 +220,7 @@ const HotelDetails = ({ }) => {
                         </div>
                         <div className=" w-[100%] md:w-[30%]">
                             <p className="w-[50%] bg-gradient-to-r from-bg-blue-start to-bg-blue-end text-white rounded-md text-center pb-1 ml-2 mt-4">free cancellation</p>
-                            <div className="text-end pt-12">
+                            <div className="text-end pt-12 pe-5">
                                 <p className="text-sm line-through">&#x20B9; {hotel.fees}</p>
                                 <p className="text-sm ">&#x20B9; {hotel.offerfees}</p>
                                 <p className="text-sm ">&#x20B9; {hotel.tax}</p>

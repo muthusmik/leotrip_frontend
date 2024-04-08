@@ -31,7 +31,7 @@ const BusFilter = () => {
 
   return (
     <>
-      <div className=" w-[80%]  border border-gray-100  mx-auto rounded-xl px-4 bg-white">
+      <div className=" w-[80%]  border border-gray-100  mx-auto rounded-xl px-4 bg-white sticky top-10">
         <div className="flex flex-row justify-between">
           <h1 className="my-3 font-medium font-poppinsRegular">Filters</h1>
           <button className=" my-3 font-medium font-poppinsRegular">
@@ -44,7 +44,7 @@ const BusFilter = () => {
           style={{ height: "50px" }}
           className="flex flex-row items-center justify-start my-auto"
         >
-          <Checkbox color={"indigo"} name="filter" />
+          <Checkbox color={"indigo"} name="filter" className="" />
           <label
             htmlFor={"filter"}
             className="mx-2 font-medium font-poppinsRegular"

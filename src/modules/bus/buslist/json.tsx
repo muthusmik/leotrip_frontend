@@ -1,3 +1,7 @@
+import Sleeper from "../../../assets/images/sleeper.png";
+import Seater from "../../../assets/images/seater.png";
+import Engine from "../../../assets/icons/engine.png";
+
 export const travels = [
   {
     name: "KRS Travels",
@@ -242,6 +246,7 @@ export const comment = [
     name: "Gowtham",
     date: "21-10-2023",
     status: "Good",
+    rating: 4.8,
   },
   {
     avatar:
@@ -249,6 +254,7 @@ export const comment = [
     name: "Alice",
     date: "15-09-2023",
     status: "Excellent",
+    rating: 4.4,
   },
 ];
 
@@ -737,4 +743,290 @@ export const countries = [
   { name: "Yemen", code: "+967" },
   { name: "Zambia", code: "+260" },
   { name: "Zimbabwe", code: "+263" },
+];
+
+export const insurance = [
+  {
+    imageUrl: require("../../../assets/images/Acko.png").default,
+    altText: "Image 1",
+  },
+  {
+    imageUrl: require("../../../assets/images/Acko.png").default,
+    altText: "Image 2",
+  },
+  {
+    imageUrl: require("../../../assets/images/Acko.png").default,
+    altText: "Image 3",
+  },
+];
+
+const SeatButton = ({ seatNumber, setSelectedSeat, image }: any) => (
+  <button onClick={() => setSelectedSeat(seatNumber)}>
+    <img src={image} alt={seatNumber.toString()} className="h-6 w-6" />
+  </button>
+);
+
+export const Seating = ({ setSelectedSeat }: any) => [
+  <SeatButton
+    key={1}
+    seatNumber={1}
+    setSelectedSeat={setSelectedSeat}
+    image={Seater}
+  />,
+  <SeatButton
+    key={2}
+    seatNumber={2}
+    setSelectedSeat={setSelectedSeat}
+    image={Seater}
+  />,
+  <SeatButton
+    key={3}
+    seatNumber={3}
+    setSelectedSeat={setSelectedSeat}
+    image={Seater}
+  />,
+  <SeatButton
+    key={4}
+    seatNumber={4}
+    setSelectedSeat={setSelectedSeat}
+    image={Seater}
+  />,
+  <SeatButton
+    key={5}
+    seatNumber={5}
+    setSelectedSeat={setSelectedSeat}
+    image={Seater}
+  />,
+  <SeatButton
+    key={6}
+    seatNumber={6}
+    setSelectedSeat={setSelectedSeat}
+    image={Seater}
+  />,
+  <SeatButton
+    key={7}
+    seatNumber={7}
+    setSelectedSeat={setSelectedSeat}
+    image={Seater}
+  />,
+  <SeatButton
+    key={8}
+    seatNumber={8}
+    setSelectedSeat={setSelectedSeat}
+    image={Seater}
+  />,
+  <SeatButton
+    key={9}
+    seatNumber={9}
+    setSelectedSeat={setSelectedSeat}
+    image={Seater}
+  />,
+];
+
+export const Sleep = ({ setSelectedSeat }: any) => [
+  <SeatButton
+    key={1}
+    seatNumber={1}
+    setSelectedSeat={setSelectedSeat}
+    image={Sleeper}
+  />,
+  <SeatButton
+    key={2}
+    seatNumber={2}
+    setSelectedSeat={setSelectedSeat}
+    image={Sleeper}
+  />,
+  <SeatButton
+    key={3}
+    seatNumber={3}
+    setSelectedSeat={setSelectedSeat}
+    image={Sleeper}
+  />,
+  <SeatButton
+    key={4}
+    seatNumber={4}
+    setSelectedSeat={setSelectedSeat}
+    image={Sleeper}
+  />,
+  <SeatButton
+    key={5}
+    seatNumber={5}
+    setSelectedSeat={setSelectedSeat}
+    image={Sleeper}
+  />,
+  <SeatButton
+    key={6}
+    seatNumber={6}
+    setSelectedSeat={setSelectedSeat}
+    image={Sleeper}
+  />,
+];
+
+export const Sleeplower = ({ setSelectedSeat }: any) => [
+  <SeatButton
+    key={7}
+    seatNumber={7}
+    setSelectedSeat={setSelectedSeat}
+    image={Sleeper}
+  />,
+  <SeatButton
+    key={8}
+    seatNumber={8}
+    setSelectedSeat={setSelectedSeat}
+    image={Sleeper}
+  />,
+  <SeatButton
+    key={9}
+    seatNumber={9}
+    setSelectedSeat={setSelectedSeat}
+    image={Sleeper}
+  />,
+  <SeatButton
+    key={10}
+    seatNumber={10}
+    setSelectedSeat={setSelectedSeat}
+    image={Sleeper}
+  />,
+  <SeatButton
+    key={11}
+    seatNumber={11}
+    setSelectedSeat={setSelectedSeat}
+    image={Sleeper}
+  />,
+  <SeatButton
+    key={12}
+    seatNumber={12}
+    setSelectedSeat={setSelectedSeat}
+    image={Sleeper}
+  />,
+];
+
+export const Sleeplowerleft = ({ setSelectedSeat }: any) => [
+  <SeatButton
+    key={13}
+    seatNumber={13}
+    setSelectedSeat={setSelectedSeat}
+    image={Sleeper}
+  />,
+  <SeatButton
+    key={14}
+    seatNumber={14}
+    setSelectedSeat={setSelectedSeat}
+    image={Sleeper}
+  />,
+  <SeatButton
+    key={15}
+    seatNumber={15}
+    setSelectedSeat={setSelectedSeat}
+    image={Sleeper}
+  />,
+  <SeatButton
+    key={16}
+    seatNumber={16}
+    setSelectedSeat={setSelectedSeat}
+    image={Sleeper}
+  />,
+  <SeatButton
+    key={17}
+    seatNumber={17}
+    setSelectedSeat={setSelectedSeat}
+    image={Sleeper}
+  />,
+  <SeatButton
+    key={18}
+    seatNumber={18}
+    setSelectedSeat={setSelectedSeat}
+    image={Sleeper}
+  />,
+];
+
+export const Sleeplowerright = ({ setSelectedSeat }: any) => [
+  <SeatButton
+    key={19}
+    seatNumber={19}
+    setSelectedSeat={setSelectedSeat}
+    image={Sleeper}
+  />,
+  <SeatButton
+    key={20}
+    seatNumber={20}
+    setSelectedSeat={setSelectedSeat}
+    image={Sleeper}
+  />,
+  <SeatButton
+    key={21}
+    seatNumber={21}
+    setSelectedSeat={setSelectedSeat}
+    image={Sleeper}
+  />,
+  <SeatButton
+    key={22}
+    seatNumber={22}
+    setSelectedSeat={setSelectedSeat}
+    image={Sleeper}
+  />,
+  <SeatButton
+    key={23}
+    seatNumber={23}
+    setSelectedSeat={setSelectedSeat}
+    image={Sleeper}
+  />,
+  <SeatButton
+    key={24}
+    seatNumber={24}
+    setSelectedSeat={setSelectedSeat}
+    image={Sleeper}
+  />,
+];
+
+export const ticket = [
+  {
+    departureCity: "Chennai",
+    arrivalCity: "Coimbatore",
+    departureStop: "Selayur",
+    arrivalStop: "Saravanampatti",
+    departureTime: "9:40 PM",
+    arrivalTime: "6:30 AM",
+    duration: "7 hr 50 min",
+  },
+];
+
+export const summary = [
+  {
+    baseFare: "Base Fare",
+    fare: "₹ 1,200",
+    tax: "Taxes",
+    taxAmount: "₹ 200",
+    convinenceFee: "Convenience Fee",
+    convienceAmount: "₹ 50",
+    coupon: "E-Coupon(SUPERME)",
+    feeAmount: "₹ -100",
+    total: "Total Amount",
+    totalAmount: "₹ 1350",
+  },
+];
+
+export const booking = [
+  {
+    pickday: "Thu,",
+    pickdate: " 12 Sep 2023",
+    pickUpTime: "02:00 PM onwards",
+    dropday: "Fri,",
+    dropdate: "13 Sep 2023",
+    dropoffTime: "02:00 PM onwards",
+    passengers: "3 Adults",
+    contactNumber: "9988774455",
+    guestName: "Guest Name",
+    email: "user@gmail.com",
+    busType: "A/C SEATER / SLEEPER (2+1)",
+  },
+];
+
+export const amenities = [
+  {
+    wifi: "Wi-Fi",
+    ac: "AC",
+    tv: "TV",
+    charging: "Charging Point",
+  },
 ];

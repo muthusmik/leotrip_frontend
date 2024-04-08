@@ -1,0 +1,10 @@
+<svg
+  className="fill-current h-4 w-4"
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 20 20"
+>
+  <path
+    fillRule="evenodd"
+    d="M10 3c.265 0 .52.106.707.293l7 7a1 1 0 0 1-1.414 1.414L10 5.414 3.707 11.707a1 1 0 0 1-1.414-1.414l7-7A1 1 0 0 1 10 3z"
+  />
+</svg>

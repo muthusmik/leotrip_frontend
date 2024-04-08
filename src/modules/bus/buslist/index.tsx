@@ -16,10 +16,10 @@ const BusListing = () => {
         <BusModifySearch />
       </div>
       <div className="flex flex-row bg-[#DEF2FF] h-full py-7">
-        <div className="w-[27%]">
+        <div className="w-[27%] sticky top-10">
           <BusFilter />
         </div>
-        <div className="w-[70%] ">
+        <div className="w-[70%]  ">
           <BusList />
         </div>
       </div>

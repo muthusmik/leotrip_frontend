@@ -100,13 +100,12 @@ const HotelComponent = () => {
                     continue Booking
                 </button>
             </div>
-
-            <div className='flex w-ful bg-gray-100 pb-2'>
-                            <img src={mastercard} alt='card' className='w-10 h-6 mt-3' />
-                            <img src={visa} alt='card' className='w-20 h-6 pl-10 mt-3' />
-                            <img src={paypal} alt='card' className='w-18 h-6 pl-10 mt-3' />
-                            <img src={rupay} alt='card' className='w-18 h-6 pl-10 mt-3' />
-                        </div>
+            <div className='flex w-full bg-gray-100 pb-2 '>
+                            <img src={mastercard} alt='mastercard' className='w-10 h-6 mt-3 mr-3 lg:mr-10' />
+                            <img src={visa} alt='visa' className='w-10 h-6  mt-3 mr-3 lg:mr-10' />
+                            <img src={paypal} alt='paypal' className='w-10 h-6  mt-3 mr-3 lg:mr-10' />
+                            <img src={rupay} alt='rupay' className='w-10 h-6  mt-3 ' />
+            </div>
         </>
     );
 };
