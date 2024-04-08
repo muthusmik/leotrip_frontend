@@ -4,6 +4,9 @@ import BookingInfo from "./BookingInfo";
 import TripSecure from "./TripSecure";
 import PriceSummary from "./PriceSummary";
 import CouponCode from "./CouponCode";
+import AddPassenger from "components/common/AdultDetails";
+import AdultDetails from "components/common/AdultDetails";
+import ChildDetails from "components/common/ChildDetails";
 // import { useState } from "react";
 
 const HotelReview = () => {
@@ -17,6 +20,16 @@ const HotelReview = () => {
                 <div className="flex flex-col md:flex-row justify-between ">
                     <div className="w-fit  md:w-7/12 lg:w-8/12 m-5 pb-3 text-sm">
                         <BookingInfo />
+                        <div className="bg-white my-5 pb-5">
+                            <h1 className="pl-2 py-3 font-bold">GUEST DETAILS</h1>
+                            <div className="mx-5">
+                            <AdultDetails/>
+                            </div>
+                            <div className="mx-5">
+                            <ChildDetails/>
+                            </div>
+                        </div>
+                        
                         <TripSecure />
                     </div>
                     <div className="w-fit md:w-5/12 lg:w-4/12 my-5 mx-auto md:mx-5">
@@ -24,6 +37,7 @@ const HotelReview = () => {
                         <CouponCode />
                     </div>
                 </div>
+                
 
                 {/* Model */}
                 {/* <div>

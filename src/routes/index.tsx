@@ -10,13 +10,21 @@ import HotelModule from "../modules/hotel";
 import CarModule from "../modules/car";
 import CommonLayout from "modules/profiles/CommonLayout";
 import FlightOneWay from "../modules/flight/flightList/oneWay/index";
-import FlightReview from "modules/flight/review";
+import FlightReview from "../modules/flight/flightreview";
 import HotelList from "modules/hotel/hotelList";
 import BusListing from "modules/bus/buslist";
 import ViewRoom from "modules/hotel/viewroom";
 import HotelReview from "modules/hotel/hotelreview";
 import BusDetail from "modules/bus/busdetail/BusDetail";
 import BusInfo from "modules/bus/busdetail";
+import BusPaymentDetails from "modules/bus/Payment";
+import TicketDetails from "modules/hotel/payment/TicketDetails";
+import BookingDetails from "modules/hotel/payment/BookingDetails";
+import Traveller from "modules/flight/traveller";
+import FlightListRoundTrip from "modules/flight/flightList/roundTrip/FlightListRoundTrip";
+import RoundTrip from "modules/flight/flightList/roundTrip";
+import FlightReviewDetails from "modules/flight/flightList/roundTrip/FlightReviewDetails";
+import FlightFareDetails from "modules/flight/flightList/roundTrip/FlightFareDetails";
 const routes: RouteObject[] = [
   {
     path: "/",
@@ -53,6 +61,10 @@ const routes: RouteObject[] = [
     element: <FlightReview />,
   },
   {
+    path: "/flight/traveller",
+    element: <Traveller />,
+  },
+  {
     path: "hotel/hotelList",
     element: <HotelList />,
   },
@@ -71,6 +83,27 @@ const routes: RouteObject[] = [
   {
     path: "hotel/hotelreview",
     element: <HotelReview />,
+  },
+  {
+    path: "hotel/payment",
+    // element: <TicketDetails />,
+    element: <BookingDetails />,
+  },
+  {
+    path: "bus/payment",
+    element: <BusPaymentDetails />,
+  },
+  {
+    path: "flights/roundtripSearch",
+    element: <RoundTrip />,
+  },
+  {
+    path: "flights/reviewDetails",
+    element: <FlightReviewDetails />,
+  },
+  {
+    path: "flights/fare",
+    element: <FlightFareDetails />,
   },
 ];
 

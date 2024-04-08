@@ -2,10 +2,18 @@ import React, { useState } from "react";
 import AddPassenger from "components/common/AddPassenger";
 import Lock from "../../../assets/images/icons-lock.png";
 import ContactDetails from "components/common/ContactDetails";
+import Bussiness from "./Bussiness";
+import AdultDetails from "components/common/AdultDetails";
 const TravelerDetails = () => {
   const [activeButton, setActiveButton] = useState("personal");
+  const [showGST, setShowGST] = useState(false);
   const handleButtonClick = (button: any) => {
     setActiveButton(button);
+    if (showGST) {
+      setShowGST(false);
+    } else {
+      setShowGST(true);
+    }
   };
   return (
     <>
@@ -55,34 +63,36 @@ const TravelerDetails = () => {
             </div>
           </div>
           <div className="mt-5 ">
-            <AddPassenger />
+            <AdultDetails />
           </div>
+          {showGST && (
+            <div>
+              <Bussiness />
+            </div>
+          )}
           <div className="mt-5">
             <ContactDetails />
           </div>
-          <hr className="h-3.5 border-light-black"></hr>
-          <div>
-            <div className="flex items-center ">
-              <input
-                type="checkbox"
-                className="form-checkbox h-4 w-4 text-green-500"
-                onChange={(e) => {
-                  if (e.target.checked) {
-                    // Checkbox is checked
-                    // Perform actions for checked state
-                  } else {
-                    // Checkbox is unchecked
-                    // Perform actions for unchecked state
-                  }
-                }}
-              />
-              <label htmlFor="checkbox" className="ml-2 font-medium">
-                I have a GST number (optional)
-              </label>
-            </div>
-          </div>
-          <div>
-            <div className="bg-int-dark-grey border">dfg</div>
+        </div>
+        <hr className="h-3.5 border-light-black pl-0"></hr>
+        <div>
+          <div className="flex items-center ">
+            <input
+              type="checkbox"
+              className="form-checkbox h-4 w-4 text-green-500"
+              onChange={(e) => {
+                if (e.target.checked) {
+                  // Checkbox is checked
+                  // Perform actions for checked state
+                } else {
+                  // Checkbox is unchecked
+                  // Perform actions for unchecked state
+                }
+              }}
+            />
+            <label htmlFor="checkbox" className="ml-2 font-medium">
+              I have a GST number (optional)
+            </label>
           </div>
         </div>
       </div>

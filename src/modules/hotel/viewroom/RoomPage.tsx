@@ -166,11 +166,11 @@ const RoomPage = () => {
 
             <div className='mx-5 my-2' id="highlights">
                 <div className='bg-white p-3 border-2 border-[#e0e4e7]'>
-                    <div className='flex justify-around'>
+                    <div className='flex flex-col md:flex-row justify-around items-center'>
                         <img src={anti} alt="err" className=' w-12 h-12' />
-                        <div>
+                        <div className='text-center'>
                             <h1 className='font-bold'>Hygiene Plus</h1>
-                            <p className='text-gray-400 text-sm'>This property has self-selected and self-certified</p>
+                            <p className='text-gray-400 text-sm text-justify'>This property has self-selected and self-certified</p>
                         </div>
                         <img src={checkin1} alt="err" className=' w-12 h-12' />
                         <div>
@@ -187,7 +187,7 @@ const RoomPage = () => {
 
                     <h1 className='font-bold text-md pt-5'>Taj Wellington Mews</h1>
                     <span className="flex flex-row text-gray-400"><img src={location} alt="l" className="" />49, Raja Muthiah Rd, Tharamani, Periyamedu Park Town, Chennai, Tamil Nadu</span>
-                    <div className='flex justify-start gap-5 mt-5'>
+                    <div className='flex  flex-col md:flex-row justify-start items-center gap-5 mt-5'>
                         <span className="flex flex-row "><img src={removebg} alt="l" className="w-5 h-5" />Front desk 24 x 7</span>
                         <span className="flex flex-row "><img src={removebg} alt="l" className="w-5 h-5" />Excellent breakfast</span>
                         <span className="flex flex-row "><img src={removebg} alt="l" className="w-5 h-5" />Excellent food & dining</span>

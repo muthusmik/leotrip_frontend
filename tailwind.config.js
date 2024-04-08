@@ -138,6 +138,9 @@ module.exports = {
         "int-dark-sky": "#0C83CF",
         "int-dark-sea-blue": "#1324C3",
         "int-dark-grey": "#d9d9d9",
+        "int-light-sandal": "#e7c99c",
+        "int-wood": "#975c05",
+        "int-blue-dark": "#0015D7",
       },
       fontSize: {
         xxs: ["0.5rem", "0.625rem"], // font size, line height
