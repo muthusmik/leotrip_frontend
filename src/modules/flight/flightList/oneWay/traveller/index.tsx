@@ -7,10 +7,10 @@ import FlightPriceSummary from "./FlightPriceSummary";
 import TravellerDetails from "./TravellerDetails";
 import AddressForm from "./AddressForm";
 import ContactInformation from "./ContactInfomation";
-import mastercard from '../../../assets/images/mastercard.png';
-import rupay from '../../../assets/images/RuPay.png';
-import visa from '../../../assets/images/visacard.png';
-import paypal from '../../../assets/images/paypal.png';
+import mastercard from '../../../../../assets/images/mastercard.png';
+import rupay from '../../../../../assets/images/RuPay.png';
+import visa from '../../../../../assets/images/visacard.png';
+import paypal from '../../../../../assets/images/paypal.png';
 
 const Traveller = () => {
 

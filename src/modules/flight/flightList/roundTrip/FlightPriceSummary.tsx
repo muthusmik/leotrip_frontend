@@ -11,7 +11,7 @@ const PriceSummary = () => {
   };
 
   return (
-    <div className="border text-sm bg-white">
+    <div className="border text-sm bg-white font-poppinsRegular">
       <div className="flex justify-between bg-gradient-to-r from-cyan-400 to-blue-400 p-3">
         <p className="text-xl">Price Summary</p>
         <div className="flex items-center me-5">

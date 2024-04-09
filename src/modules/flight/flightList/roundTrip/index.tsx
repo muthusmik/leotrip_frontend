@@ -1,9 +1,8 @@
 import React from "react";
 import Navbar from "components/common/ListingNavbar";
-
-import ReviewDetails from "modules/flight/review/ReviewDetails";
+import ReviewDetails from "../oneWay/flightreview/ReviewDetails";
 import FlightListRoundTrip from "./FlightListRoundTrip";
-import FlightModifySearch from "modules/bus/buslist/BusModifySearch";
+import FlightModifySearch from "../FlightModifySearch";
 import FlightFilterRoundTrip from "./FlightFilterRoundTrip";
 import FlightFilter from "../oneWay/FligthFilter";
 import RoundTripFlights from "./RoundTripFlights";

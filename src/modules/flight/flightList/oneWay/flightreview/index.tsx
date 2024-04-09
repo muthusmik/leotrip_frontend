@@ -7,10 +7,10 @@ import RefundPolicy from "./RefundPolicy";
 import InformationPolicy from "./InformationPolicy";
 import TravelInsurance from "./TravelInsurance";
 import ContactInformation from "../traveller/ContactInfomation";
-import mastercard from '../../../assets/images/mastercard.png';
-import rupay from '../../../assets/images/RuPay.png';
-import visa from '../../../assets/images/visacard.png';
-import paypal from '../../../assets/images/paypal.png';
+import mastercard from '../../../../../assets/images/mastercard.png';
+import rupay from '../../../../../assets/images/RuPay.png';
+import visa from '../../../../../assets/images/visacard.png';
+import paypal from '../../../../../assets/images/paypal.png';
 import FlightPriceSummary from "../traveller/FlightPriceSummary";
 
 const Oneway = () => {

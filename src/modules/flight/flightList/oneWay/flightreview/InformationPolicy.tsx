@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import done from '../../../assets/icons/f-icon-9.png';
+import done from '../../../../../assets/icons/f-icon-9.png';
 const InformationPolicy = () => {
     const [selectedOption, setSelectedOption] = useState('');
 

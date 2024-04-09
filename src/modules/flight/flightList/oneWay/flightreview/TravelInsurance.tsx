@@ -1,18 +1,18 @@
 
-import suitcase from '../../../assets/images/suitcase.png';
-import Larrow from '../../../assets/icons/Arrowleft.svg';
-import Rarrow from '../../../assets/icons/Arrowright.svg';
+import suitcase from '../../../../../assets/images/suitcase.png';
+import Larrow from '../../../../../assets/icons/Arrowleft.svg';
+import Rarrow from '../../../../../assets/icons/Arrowright.svg';
 import { useState } from 'react';
 import RadioButton from '../traveller/Insurance';
 const items = [
-    { image: require('../../../assets/images/suitcase.png'), offer: '24×7 Support', description: 'Baggage Assistance' },
-    { image: require('../../../assets/images/suitcase.png'), offer: 'Flat 50,000', description: 'Personal Accident' },
-    { image: require('../../../assets/images/suitcase.png'), offer: 'Flat 500', description: ' Loss of Checked-ln Baggage' },
-    { image: require('../../../assets/images/suitcase.png'), offer: 'Flat 50,000', description: 'Delay of Checked-in Baggage' },
-    { image: require('../../../assets/images/suitcase.png'), offer: '24×7 Support', description: 'Baggage Assistance' },
-    { image: require('../../../assets/images/suitcase.png'), offer: 'Flat 50,000', description: 'Personal Accident' },
-    { image: require('../../../assets/images/suitcase.png'), offer: 'Flat 500', description: ' Loss of Checked-ln Baggage' },
-    { image: require('../../../assets/images/suitcase.png'), offer: 'Flat 50,000', description: 'Delay of Checked-in Baggage' },
+    { image: require('../../../../../assets/images/suitcase.png'), offer: '24×7 Support', description: 'Baggage Assistance' },
+    { image: require('../../../../../assets/images/suitcase.png'), offer: 'Flat 50,000', description: 'Personal Accident' },
+    { image: require('../../../../../assets/images/suitcase.png'), offer: 'Flat 500', description: ' Loss of Checked-ln Baggage' },
+    { image: require('../../../../../assets/images/suitcase.png'), offer: 'Flat 50,000', description: 'Delay of Checked-in Baggage' },
+    { image: require('../../../../../assets/images/suitcase.png'), offer: '24×7 Support', description: 'Baggage Assistance' },
+    { image: require('../../../../../assets/images/suitcase.png'), offer: 'Flat 50,000', description: 'Personal Accident' },
+    { image: require('../../../../../assets/images/suitcase.png'), offer: 'Flat 500', description: ' Loss of Checked-ln Baggage' },
+    { image: require('../../../../../assets/images/suitcase.png'), offer: 'Flat 50,000', description: 'Delay of Checked-in Baggage' },
 
 ];
 const TravelInsurance = () => {
