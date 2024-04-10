@@ -1,3 +1,4 @@
+import React from "react";
 import { button } from "@material-tailwind/react";
 import AirAsia from "../../../../assets/images/AA.png";
 import arrow from "../../../../assets/icons/Arrowtick.svg";
@@ -8,7 +9,14 @@ import Coin from "../../../../assets/icons/coin.png";
 import flight from "../../../../assets/images/flight.svg";
 import { Step, Stepper } from "@material-tailwind/react";
 
+import Dollar from "../../../../assets/icons/dollar.png";
+import Calender from "../../../../assets/icons/calender.png";
+import Trolly from "../../../../assets/icons/trolly.png";
+import Travelbag from "../../../../assets/icons/travelbag.png";
+
 import { ClassNames } from "@emotion/react";
+import FareRadioButtons from "./FareRadioButtons";
+import FlightReviewModal from "./FlightReviewModal";
 const RoundTripFlights = () => {
   const flightPickup = [
     {
@@ -33,6 +41,13 @@ const RoundTripFlights = () => {
       price: 4520,
     },
   ];
+  const [selectedFare, setSelectedFare] = React.useState("low");
+  const prices = {
+    low: "4,320",
+    comfort: "5,320",
+    premium: "6,320",
+  };
+
   const [showModal, setShowModal] = useState(false);
 
   const openModal = () => {
@@ -118,10 +133,11 @@ const RoundTripFlights = () => {
               ₹ <span className=" line-through">8,640</span>
             </h1>
             <h1 className="text-2xl ms-3">8,340</h1>
-            <button className="mx-auto bg-int-sandal px-12 py-3 text-center text-white rounded text-base">
-              <Link to="/flights/reviewDetails">
-                <span className="font-poppinsRegular">BOOK NOW</span>
-              </Link>
+            <button
+              className="mx-auto bg-int-sandal px-12 py-3 text-center text-white rounded text-base"
+              onClick={openModal}
+            >
+              <span className="font-poppinsRegular">BOOK NOW</span>
             </button>
           </div>
         </div>
@@ -130,93 +146,7 @@ const RoundTripFlights = () => {
       {showModal && (
         <div className="fixed top-0 left-0 font-poppinsRegular w-full h-full bg-black bg-opacity-80 flex justify-center items-center z-50">
           <div className="bg-white p-8 rounded-lg overflow-y-auto max-h-[90vh] w-[70%] ">
-            <div
-              style={{
-                background: "linear-gradient(90deg, #3081ED 0%, #56CBF2 100%)",
-              }}
-              className="py-3"
-            >
-              <div className="flex flex-row items-center">
-                <img src={Coin} alt="404" className="h-12 w-12 ms-5" />
-                <h1 className="text-1xl ms-5">More Fare Options Available</h1>
-              </div>
-            </div>
-            <div className="flex flex-row">
-              <div className="w-[50%] bg-white border p-5">
-                <p>
-                  <span className="bg-[#FDDFB3] px-4 text-sm"> DEPART</span>
-                </p>
-                <div className="flex flex-row items-center mt-3">
-                  <h1>MAA</h1>
-                  <img src={arrow} alt="arrow" className="h-3 px-5" />
-                  <h1>CJB</h1>
-                </div>
-                <div className="flex items-center justify-around mt-3 ">
-                  <div className="flex items-center ">
-                    <img src={AI} alt="404" className="h-10 w-10" />
-                    <div className="ml-5 text-light-black">
-                      <h1 className="text-black text-base">Air India</h1>
-                      <p className="text-sm">UK-993</p>
-                      <p className="text-sm">ECONOMY</p>
-                    </div>
-                  </div>
-                  <div>
-                    <div className="text-center ">
-                      <h1 className="text-lg">05 : 00</h1>
-                      <p className="text-light-black text-sm">Chennai (MAA)</p>
-                      <p className="text-light-black text-sm">
-                        Fri 05 May 2023
-                      </p>
-                      <p className="text-light-black text-sm">Terminal - 3</p>
-                    </div>
-                  </div>
-                  <div>
-                    <small className="text-light-black px-16">01h 05m</small>
-                    <Stepper className="flex items-center">
-                      <Step className="w-3 h-3"></Step>
-                      <div className="flex-1 border-2 border-dotted border-gray-400"></div>
-                      <Step
-                        className="w-7 h-7 bg-cover"
-                        style={{ backgroundImage: `url(${flight})` }}
-                      ></Step>
-                      <div className="flex-1 border-t-2 border-dashed border-gray-400"></div>
-                      <Step className="w-3 h-3"></Step>
-                    </Stepper>
-                    <p className=" px-1 text-int-blue text-sm text-center p-0 my-2">
-                      <span className="border-dotted border-2 border-int-blue rounded-3xl px-2 py-1">
-                        Retails Fare
-                      </span>
-                    </p>
-                  </div>
-                  <div>
-                    <div className="text-center ">
-                      <h1 className="text-lg">06 : 00</h1>
-                      <p className="text-light-black text-sm">
-                        Coimbatore (CJB)
-                      </p>
-                      <p className="text-light-black text-sm">
-                        Fri 05 May 2023
-                      </p>
-                      <p className="text-light-black text-sm">Terminal - 3</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="w-[50%] bg-white border p-5">
-                <p>
-                  <span className="bg-[#FDDFB3] px-4 text-sm"> RETURN</span>
-                </p>
-              </div>
-            </div>
-            <div>
-              <button
-                className="mt-4 bg-blue-500 text-white px-4 py-2 rounded"
-                onClick={closeModal}
-              >
-                Close
-              </button>
-            </div>
+            <FlightReviewModal />
           </div>
         </div>
       )}

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import protect from '../../../assets/images/protect.png';
+import protect from '../../../../../assets/images/protect.png';
 const RefundPolicy = () => {
     const [selectedOption, setSelectedOption] = useState('');
 

@@ -1,5 +1,5 @@
 import { SetStateAction, useState } from "react";
-import Lock from "../../../assets/images/icons-lock.png";
+import Lock from "../../../../../assets/images/icons-lock.png";
 import ChildDetails from "components/common/ChildDetails";
 import InfantDetails from "components/common/InfantDetails";
 import AdultDetails from "components/common/AdultDetails";

@@ -30,9 +30,9 @@ function AddressForm() {
   };
 
   const images = {
-    image1: require("../../../assets/icons/Leo-white.svg"),
-    image2: require("../../../assets/icons/Leo-white.svg"),
-    image3: require("../../../assets/icons/Leo-white.svg"),
+    image1: require("../../../../../assets/icons/Leo-white.svg"),
+    image2: require("../../../../../assets/icons/Leo-white.svg"),
+    image3: require("../../../../../assets/icons/Leo-white.svg"),
   };
   const [selectedOption, setSelectedOption] = useState("");
   const handleOptionChange = (value) => {

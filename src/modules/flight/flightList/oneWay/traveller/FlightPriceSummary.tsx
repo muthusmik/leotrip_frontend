@@ -1,13 +1,23 @@
 import { useState } from "react";
-import adults from '../../../assets/icons/adult.svg';
-import child from '../../../assets/icons/child.png';
-import baby from '../../../assets/icons/icons8-crawling-baby-skin-type-3-48.png';
+import adults from '../../../../../assets/icons/adult.svg';
+import child from '../../../../../assets/icons/child.png';
+import baby from '../../../../../assets/icons/icons8-crawling-baby-skin-type-3-48.png';
 
 const FlightPriceSummary = () => {
     // price summary
     const [showCharity, setShowCharity] = useState(true);
     const handleToggleCharity = () => {
         setShowCharity(!showCharity);
+    };
+
+    const [Charity, setCharity] = useState(true);
+
+    const handleRemoveCharity = () => {
+        setCharity(!Charity);
+    };
+
+    const handleAddCharity = () => {
+        setCharity(true);
     };
     return (
 
@@ -47,9 +57,17 @@ const FlightPriceSummary = () => {
                                 <p>Total Tax</p>
                                 <small className='pe-2'>&#x20B9;<span className='pl-2'>290</span></small>
                             </div>
-                            <div className=' flex justify-between'>
-                                <p>Charity <button className="text-blue-500" onClick={handleToggleCharity}>Remove</button></p>
-                                <small className='pe-2'>&#x20B9;<span className='pl-2'>10</span></small>
+                            <div className=''>
+                                {Charity ? (
+                                    <div className="flex justify-between">
+                                        <p>Charity <button className="text-blue-500" onClick={handleRemoveCharity}>Remove</button></p>
+                                        <small className='pe-2'>&#x20B9;<span className='pl-2'>10</span></small>
+                                    </div>
+                                ) : (
+                                    <div>
+                                        <p>Charity <button className="text-blue-500" onClick={handleAddCharity}>Add</button></p>
+                                    </div>
+                                )}
                             </div>
                         </div>
                     )}
