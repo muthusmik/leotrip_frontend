@@ -1,10 +1,18 @@
-@import "https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap";
-@import "https://fonts.googleapis.com/icon?family=Material+Icons";
+@font-face {
+  font-family: 'Poppins-Regular';
+  src: local('poppins'), url('../public/fonts/Poppins-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Poppins-Bold';
+  src: local('poppins'), url('../public/fonts/Poppins-Bold.ttf') format('truetype');
+}
 
 body {
   margin: 0;
-  background-color: #eff3f8!important;
-  font-family: Quicksand, Avenir, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -13,7 +21,122 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-@font-face {
-  font-family: 'Poppins';
-  src: local('Poppins'), url(./asset/fonts/Poppins/Poppins-SemiBold.ttf) format('truetype');
+
+/* Navbar.css */
+.navbar {
+  display: flex;
+  justify-content: center;
+  background-color: #333;
+  height: 50px;
+}
+
+.nav-item {
+  text-decoration: none;
+  color: white;
+  padding: 10px 20px;
+  transition: background-color 0.3s;
+}
+
+.nav-item.active {
+  background-color: #555;
+}
+
+/* Toast */
+.Toastify .custom-toast {
+  width: unset;
+  min-width: 248px;
+  top: 22px;
+  border-radius: 10px
+}
+
+.Toastify .Toastify__close-button {
+  align-self: center;
+}
+
+.Toastify .Toastify__progress-bar--success {
+  @apply bg-int-green-alert
+}
+
+.Toastify .Toastify__progress-bar {
+  height: 3px;
+}
+
+.custom-toast .Toastify__toast {
+  border-radius: 11px;
+  min-height: unset;
+}
+
+.custom-toast .custom-body-toast {
+  @apply text-int-grey-90 text-button mr-2 p-0
+}
+
+.carousel-container {
+  flew-wrap: nowrap;
+
+}
+
+.carousel-item {
+  min-width: 100%;
+  width: 100%;
+  transition: 1s cubic-bezier(0.39, 0.575, 0.565, 1);
+}
+
+.linerar {
+  background-image: linear-gradient(to top left, white, white, #cee5f5, #78b7df, #52A0D2);
+}
+
+/* OfferSlider.css */
+
+.slide-container {
+  display: flex;
+  width: 100%;
+  /* Make the container full width */
+  transition: transform 0.5s ease-in-out;
+}
+
+
+/* Auth Slider */
+.arrow-prev,
+.arrow-next {
+  background: transparent;
+  border: none;
+  font-size: 24px;
+  color: #FFFF;
+  cursor: pointer;
+}
+
+.arrow-prev {
+  position: absolute;
+  left: 0;
+  bottom: 10px;
+  transform: translateY(-50%);
+}
+
+.arrow-next {
+  position: absolute;
+  right: 0;
+  bottom: 10px;
+  transform: translateY(-50%);
+}
+
+.worldmap{
+  background-image: url(./assets/images/Worldmap.svg);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+.bgbus{
+  background-image: url(./assets/images/bgbus.svg);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+.bgcar{
+  background-image: url(./assets/images/bgcar.svg);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
+.hotelticket{
+  background-image: url(./assets/images/hotelticket.svg);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
 }
